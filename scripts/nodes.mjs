@@ -1,21 +1,59 @@
-import fs from "fs";
 import markers from "../json/base/meta/Global/global_markers.glo.json" assert { type: "json" };
-import globals from "../json/base/meta/Global/globals.glo.json" assert { type: "json" };
+import { writeFileSync } from "./fs.mjs";
 import { normalizePoint } from "./lib.mjs";
 
+const markerSets = [];
+const actors = [];
+const worlds = [];
+
 const nodes = markers.ptContent[0].arGlobalMarkerActors.map((marker) => {
-  const { x, y } = normalizePoint(marker.tWorldTransform.wp);
-  //   const { x, y } = marker.tWorldTransform.wp;
-  const data = marker.ptData[0];
-  const guid = data?.dwEntranceName;
-  const locationName = globals.ptContent[0].arStartLocationNames.find(
-    (locationName) => locationName.uGUID === guid
-  );
+  const point = normalizePoint(marker.tWorldTransform.wp);
+
+  if (
+    markerSets.some(
+      (markerSet) => markerSet.id === marker.snoMarkerSet.value
+    ) === false
+  ) {
+    markerSets.push({
+      id: marker.snoMarkerSet.value,
+      name: marker.snoMarkerSet.name,
+    });
+  }
+  if (actors.some((actor) => actor.id === marker.snoActor.value) === false) {
+    actors.push({
+      id: marker.snoActor.value,
+      name: marker.snoActor.name || "Unknown",
+    });
+  }
+
+  if (worlds.some((world) => world.id === marker.snoWorld.value) === false) {
+    worlds.push({
+      id: marker.snoWorld.value,
+      name: marker.snoWorld.name || "Unknown",
+    });
+  }
+
   return {
-    x,
-    y,
-    name: locationName?.szName,
+    id: marker.unk_770f3b7,
+    name: marker.snoMarkerSet.name,
+    point,
+    actor: marker.snoActor.name || "Unknown",
+    world: marker.snoWorld.name || "Unknown",
   };
 });
-fs.writeFileSync("out/nodes.json", JSON.stringify(nodes, null, 2));
-console.log("done", nodes.length);
+
+const sanctuaryNodes = nodes.filter((node) => node.worldId === 69068);
+
+writeFileSync(
+  "../out/sanctuaryNodes.json",
+  JSON.stringify(sanctuaryNodes, null, 2)
+);
+writeFileSync("../out/nodes.json", JSON.stringify(nodes, null, 2));
+writeFileSync("../out/markerSets.json", JSON.stringify(markerSets, null, 2));
+writeFileSync("../out/actors.json", JSON.stringify(actors, null, 2));
+writeFileSync("../out/worlds.json", JSON.stringify(worlds, null, 2));
+console.log("sanctuaryNodes", sanctuaryNodes.length);
+console.log("nodes", nodes.length);
+console.log("markerSets", markerSets.length);
+console.log("actors", actors.length);
+console.log("worlds", worlds.length);

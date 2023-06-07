@@ -13,8 +13,5 @@ export const normalizePoint = ({ x, y }) => {
   const scaledY = y * SCALE;
   const rotatedX = scaledX * Math.cos(DEG_45) - scaledY * Math.sin(DEG_45);
   const rotatedY = scaledX * Math.sin(DEG_45) + scaledY * Math.cos(DEG_45);
-  return {
-    x: -rotatedX + OFFSET.x,
-    y: -rotatedY + OFFSET.y,
-  };
+  return [-rotatedY + OFFSET.y, -rotatedX + OFFSET.x];
 };

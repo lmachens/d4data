@@ -29,6 +29,15 @@
   <body>
     <div id="map"></div>
     <script>
+      const stringToColor = (value) => {
+        let hash = 0;
+        for (let i = 0; i < value.length; i++) {
+          hash = value.charCodeAt(i) + ((hash << 5) - hash);
+        }
+
+        return `hsl(${hash % 360}, 65%, 50%)`;
+      };
+
       const SCALE = 1.0666667222976685;
       const DEG_45 = Math.PI / 4; // 45 degrees in radians
 
@@ -50,21 +59,23 @@
         .then((response) => response.json())
         .then((nodes) => {
           nodes.forEach((node) => {
-            L.circleMarker([node.y, node.x], {
+            L.circleMarker(node.point, {
               radius: 2,
-              color: node.name ? "orange" : "white",
+              color: stringToColor(node.actor),
             })
-              .bindTooltip(node.name || "None")
+              .bindTooltip(
+                `${node.name || "None"}<br/>${node.actor}<br/>${
+                  node.world
+                }<br/>${node.id}`
+              )
               .addTo(map);
           });
 
-          fetch("camps.json")
+          fetch("territories.json")
             .then((response) => response.json())
-            .then((camps) => {
-              camps.forEach((camp) => {
-                const coordinates = camp.map((point) => [point.y, point.x]);
-
-                const polygons = L.polygon(coordinates, {
+            .then((territories) => {
+              territories.forEach((territory) => {
+                const polygons = L.polygon(territory.points, {
                   color: "lightblue",
                   fill: false,
                   weight: 2,
