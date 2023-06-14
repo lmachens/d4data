@@ -5,7 +5,6 @@ import { addTerms } from "./i18n.mjs";
 
 const terms = {};
 const territories = continent.unk_675bda3.value.map((camp) => {
-  // return camp.arPoints;
   const stringList = JSON.parse(
     readFileSync(
       `../json/enUS_Text/meta/StringList/Territory_${camp.snoTerritory.name}.stl.json`

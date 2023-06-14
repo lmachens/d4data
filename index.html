@@ -49,13 +49,16 @@
         crs: worldCRS,
         minZoom: -20,
       });
-      L.tileLayer("https://diablo4.th.gl/map_tiles/{z}/{y}/{x}.jpg", {
-        tileSize: 512,
-        minNativeZoom: 0,
-        maxNativeZoom: 5,
-      }).addTo(map);
+      L.tileLayer(
+        "https://raw.githubusercontent.com/lmachens/diablo4.th.gl/main/public/map_tiles/{z}/{y}/{x}.webp",
+        {
+          tileSize: 512,
+          minNativeZoom: 0,
+          maxNativeZoom: 5,
+        }
+      ).addTo(map);
 
-      fetch("nodes.json")
+      fetch("out/services.json")
         .then((response) => response.json())
         .then((nodes) => {
           nodes.forEach((node) => {
@@ -64,14 +67,15 @@
               color: stringToColor(node.actor),
             })
               .bindTooltip(
-                `${node.name || "None"}<br/>${node.actor}<br/>${
-                  node.world
-                }<br/>${node.id}`
+                () =>
+                  `${node.name || "None"}<br/>${node.actor}<br/>${
+                    node.world
+                  }<br/>${node.id}<br/>${node.type}<br/>${node.role}`
               )
               .addTo(map);
           });
 
-          fetch("territories.json")
+          fetch("out/territories.json")
             .then((response) => response.json())
             .then((territories) => {
               territories.forEach((territory) => {

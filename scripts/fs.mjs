@@ -11,3 +11,7 @@ export function readFileSync(filePath, ...args) {
 export function writeFileSync(filePath, ...args) {
   return fs.writeFileSync(path.resolve(__dirname, filePath), ...args);
 }
+
+export function readdirSync(filePath, ...args) {
+  return fs.readdirSync(path.resolve(__dirname, filePath), ...args);
+}

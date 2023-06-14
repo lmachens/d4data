@@ -15,3 +15,7 @@ export const normalizePoint = ({ x, y }) => {
   const rotatedY = scaledX * Math.sin(DEG_45) + scaledY * Math.cos(DEG_45);
   return [-rotatedY + OFFSET.y, -rotatedX + OFFSET.x];
 };
+
+export const toCamelCase = (str) => {
+  return str[0].toLowerCase() + str.slice(1);
+};
