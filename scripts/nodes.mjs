@@ -44,7 +44,8 @@ const worlds = [];
 // });
 
 const nodes = [];
-const terms = {};
+const enTerms = {};
+const deTerms = {};
 
 readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
   if (fileName.endsWith(".json") === false) {
@@ -60,22 +61,25 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
     // console.log(fileName, marker.snoname.groupName, marker.snoname.name);
     const point = normalizePoint(marker.transform.wp);
     const stringId = `${marker.snoname.groupName}_${marker.snoname.name}`;
-    let text = "Unknown";
     try {
-      const stringList = JSON.parse(
+      const enStringList = JSON.parse(
         readFileSync(`../json/enUS_Text/meta/StringList/${stringId}.stl.json`)
       );
-      if (stringList.arStrings[0]?.szText) {
-        text = stringList.arStrings[0].szText;
-        terms[stringId] = text;
+      if (enStringList.arStrings[0]?.szText) {
+        enTerms[stringId] = enStringList.arStrings[0]?.szText;
+      }
+      const deStringList = JSON.parse(
+        readFileSync(`../json/deDE_Text/meta/StringList/${stringId}.stl.json`)
+      );
+      if (deStringList.arStrings[0]?.szText) {
+        deTerms[stringId] = deStringList.arStrings[0]?.szText;
       }
     } catch (e) {
       //
     }
 
     nodes.push({
-      id: "id",
-      name: text,
+      id: stringId,
       point,
       actor: marker.snoname.name,
       world: "Unknown",
@@ -102,9 +106,15 @@ writeFileSync("../out/worlds.json", JSON.stringify(worlds, null, 2));
 
 addTerms(
   {
-    nodes: terms,
+    nodes: enTerms,
   },
   "en"
+);
+addTerms(
+  {
+    nodes: deTerms,
+  },
+  "de"
 );
 
 console.log("sanctuaryNodes", sanctuaryNodes.length);

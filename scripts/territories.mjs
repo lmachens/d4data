@@ -1,21 +1,22 @@
 import continent from "../json/base/meta/World/Sanctuary_Eastern_Continent.wrl.json" assert { type: "json" };
 import { normalizePoint } from "./lib.mjs";
-import { readFileSync, writeFileSync } from "./fs.mjs";
-import { addTerms } from "./i18n.mjs";
+import { writeFileSync } from "./fs.mjs";
+import { LOCALES, readTerm } from "./i18n.mjs";
 
-const terms = {};
-const territories = continent.unk_675bda3.value.map((camp) => {
-  const stringList = JSON.parse(
-    readFileSync(
-      `../json/enUS_Text/meta/StringList/Territory_${camp.snoTerritory.name}.stl.json`
-    )
-  );
+const terms = LOCALES.reduce((acc, locale) => {
+  acc[locale] = {};
+  return acc;
+}, {});
 
-  terms[camp.snoTerritory.name] = stringList.arStrings[0].szText;
+const territories = continent.unk_675bda3.map((camp) => {
+  LOCALES.forEach((locale) => {
+    const term = readTerm(`Territory_${camp.snoTerritory.name}`, locale);
+    terms[locale][camp.snoTerritory.name] = term;
+  });
 
   return {
     id: camp.snoTerritory.name,
-    points: camp.arPoints.value.map((vector) => normalizePoint(vector.value)),
+    points: camp.arPoints.map((vector) => normalizePoint(vector)),
   };
 });
 
@@ -34,11 +35,5 @@ writeFileSync(
     2
   )
 );
-
-addTerms(
-  {
-    territories: terms,
-  },
-  "en"
-);
+writeFileSync("../out/territories.terms.json", JSON.stringify(terms, null, 2));
 console.log("done", territories.length);
