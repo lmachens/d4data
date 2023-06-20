@@ -1,28 +1,19 @@
-import { readFileSync, writeFileSync } from "./fs.mjs";
+import { readFileSync } from "./fs.mjs";
 
-export const LOCALES = ["enUS", "deDE", "frFR", "ruRU"];
-export function addTerms(obj, locale = "en") {
-  const pathName = `../out/${locale}.json`;
-  let dict;
-  try {
-    dict = JSON.parse(readFileSync(pathName));
-  } catch (err) {
-    dict = {};
-  }
-  dict = Object.assign(dict, obj);
-  writeFileSync(pathName, JSON.stringify(dict, null, 2));
-}
+export const LOCALES = ["enUS", "deDE", "frFR", "ruRU", "esES"];
 
-export function readTerm(name, locale = LOCALES[0]) {
+export function readTerms(name, locale = LOCALES[0]) {
   try {
     const stringList = JSON.parse(
       readFileSync(`../json/${locale}_Text/meta/StringList/${name}.stl.json`)
     );
-    if (!stringList.arStrings[0]?.szText) {
-      return null;
-    }
-    return stringList.arStrings[0].szText;
+    return stringList.arStrings;
   } catch (err) {
-    return null;
+    return [];
   }
+}
+
+export function readTerm(name, locale = LOCALES[0]) {
+  const terms = readTerms(name, locale);
+  return terms[0];
 }

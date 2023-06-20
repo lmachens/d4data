@@ -1,6 +1,5 @@
-import markers from "../json/base/meta/Global/global_markers.glo.json" assert { type: "json" };
 import { readFileSync, readdirSync, writeFileSync } from "./fs.mjs";
-import { addTerms } from "./i18n.mjs";
+import { LOCALES, readTerm } from "./i18n.mjs";
 import { normalizePoint } from "./lib.mjs";
 
 const markerSets = [];
@@ -44,8 +43,15 @@ const worlds = [];
 // });
 
 const nodes = [];
-const enTerms = {};
-const deTerms = {};
+const spawnNodes = [];
+const terms = LOCALES.reduce((acc, locale) => {
+  acc[locale] = {
+    zones: {},
+    markers: {},
+    spawnMarkers: {},
+  };
+  return acc;
+}, {});
 
 readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
   if (fileName.endsWith(".json") === false) {
@@ -54,36 +60,49 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
   const markerSet = JSON.parse(
     readFileSync("../json/base/meta/MarkerSet/" + fileName)
   );
+  const id = fileName.split(" ")[0];
+  if (markerSet.__type__ === "MarkerSetDefinition") {
+    LOCALES.forEach((locale) => {
+      const term = readTerm(`LevelArea_${id}`, locale);
+      if (term) {
+        terms[locale].zones[`LevelArea_${id}`] = term;
+      }
+    });
+  }
+
   markerSet.tMarkerSet.forEach((marker) => {
-    // if (["Material"].includes(marker.snoname.groupName)) {
-    //   return;
-    // }
-    // console.log(fileName, marker.snoname.groupName, marker.snoname.name);
+    const spawnLocType = marker.ptBase[0]?.gbidSpawnLocType;
+
     const point = normalizePoint(marker.transform.wp);
     const stringId = `${marker.snoname.groupName}_${marker.snoname.name}`;
     try {
-      const enStringList = JSON.parse(
-        readFileSync(`../json/enUS_Text/meta/StringList/${stringId}.stl.json`)
-      );
-      if (enStringList.arStrings[0]?.szText) {
-        enTerms[stringId] = enStringList.arStrings[0]?.szText;
-      }
-      const deStringList = JSON.parse(
-        readFileSync(`../json/deDE_Text/meta/StringList/${stringId}.stl.json`)
-      );
-      if (deStringList.arStrings[0]?.szText) {
-        deTerms[stringId] = deStringList.arStrings[0]?.szText;
-      }
+      LOCALES.forEach((locale) => {
+        const term = readTerm(stringId, locale);
+        if (!term) {
+          return;
+        }
+        if (spawnLocType) {
+          terms[locale].spawnMarkers[stringId] = term;
+        } else {
+          terms[locale].markers[stringId] = term;
+        }
+      });
     } catch (e) {
       //
     }
-
-    nodes.push({
-      id: stringId,
+    const node = {
+      id: spawnLocType ? marker.dwHash : stringId,
       point,
       actor: marker.snoname.name,
-      world: "Unknown",
-    });
+      zone: id,
+    };
+
+    if (spawnLocType) {
+      node.spawnType = spawnLocType.name;
+      spawnNodes.push(node);
+    } else {
+      nodes.push(node);
+    }
   });
 });
 const sanctuaryNodes = nodes.filter((node) => node.worldId === 69068);
@@ -100,22 +119,12 @@ writeFileSync(
   JSON.stringify(lilithShrines, null, 2)
 );
 writeFileSync("../out/nodes.json", JSON.stringify(nodes, null, 2));
+writeFileSync("../out/spawnNodes.json", JSON.stringify(spawnNodes, null, 2));
 writeFileSync("../out/markerSets.json", JSON.stringify(markerSets, null, 2));
 writeFileSync("../out/actors.json", JSON.stringify(actors, null, 2));
 writeFileSync("../out/worlds.json", JSON.stringify(worlds, null, 2));
 
-addTerms(
-  {
-    nodes: enTerms,
-  },
-  "en"
-);
-addTerms(
-  {
-    nodes: deTerms,
-  },
-  "de"
-);
+writeFileSync("../out/nodes.terms.json", JSON.stringify(terms, null, 2));
 
 console.log("sanctuaryNodes", sanctuaryNodes.length);
 console.log("lilithShrines", lilithShrines.length);
