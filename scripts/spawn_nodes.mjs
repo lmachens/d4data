@@ -33,12 +33,15 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
     }
     const point = normalizePoint(marker.transform.wp);
 
+    const [zone, subzone] = id.split("_");
+
     const node = {
       // id: id + "_" + marker.nID,
       x: point[0] / 1.65,
       y: point[1] / 1.65,
       spawnType: spawnLocType.name,
-      zone: id,
+      zone,
+      subzone,
     };
     spawnNodes.push(node);
   });

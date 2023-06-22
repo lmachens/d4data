@@ -15,16 +15,12 @@ const HELLTIDE_WORLD_STATES = [
   "Bounty_LE_Tier1_Kehj_LowDesert",
   "Bounty_LE_Tier1_Kehj_Oasis",
 ];
-const helltideEvents = [];
+const bountiesEvents = [];
 bounties.ptContent[0].arBountyZones.forEach((bountyZone) => {
   bountyZone.arBounties.forEach((bounty) => {
-    if (
-      !HELLTIDE_WORLD_STATES.some((worldState) =>
-        bounty.snoWorldState.name.startsWith(worldState)
-      )
-    ) {
-      return;
-    }
+    const isHelltide = HELLTIDE_WORLD_STATES.some((worldState) =>
+      bounty.snoWorldState.name.startsWith(worldState)
+    );
     const [, , , zone, subzone] = bounty.snoWorldState.name.split("_");
     const terms = readTerms(`Quest_${bounty.snoQuest.name}`);
     const name = terms.find((term) => term.szLabel === "Name").szText;
@@ -42,19 +38,20 @@ bounties.ptContent[0].arBountyZones.forEach((bountyZone) => {
       description,
       zone,
       subzone,
+      isHelltide,
       x: position[0] / 1.65,
       y: position[1] / 1.65,
     };
-    helltideEvents.push(event);
+    bountiesEvents.push(event);
   });
 });
 
 writeFileSync(
-  `../out/events.helltide.json`,
+  `../out/bounties.json`,
   JSON.stringify(
-    helltideEvents.sort((a, b) => a.zone.localeCompare(b.zone)),
+    bountiesEvents.sort((a, b) => a.zone.localeCompare(b.zone)),
     null,
     2
   )
 );
-console.log(`Processed ${helltideEvents.length} helltideEvents`);
+console.log(`Processed ${bountiesEvents.length} bountiesEvents`);
