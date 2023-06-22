@@ -38,7 +38,7 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
       x: point[0] / 1.65,
       y: point[1] / 1.65,
       spawnType: spawnLocType.name,
-      // zone: id,
+      zone: id,
     };
     spawnNodes.push(node);
   });

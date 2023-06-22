@@ -4,6 +4,7 @@ import { normalizePoint } from "./lib.mjs";
 
 const sideQuests = [];
 const campaignQuests = [];
+const bounties = [];
 readdirSync("../json/base/meta/Quest").forEach((fileName) => {
   if (fileName.endsWith(".qst.json") === false) {
     return;
@@ -16,10 +17,12 @@ readdirSync("../json/base/meta/Quest").forEach((fileName) => {
     return;
   }
 
+  let point;
   if (markerSet.unk_ff5c704.x === 0 && markerSet.unk_ff5c704.y === 0) {
-    return;
+    point = normalizePoint(markerSet.vecStartLocation);
+  } else {
+    point = normalizePoint(markerSet.unk_ff5c704);
   }
-  const point = normalizePoint(markerSet.unk_ff5c704);
   const terms = readTerms(`Quest_${id}`, "enUS");
   const name = terms.find((term) => term.szLabel === "Name");
   const toast = terms.find((term) => term.szLabel === "Toast");
@@ -27,13 +30,21 @@ readdirSync("../json/base/meta/Quest").forEach((fileName) => {
     return;
   }
   const quest = {
-    // id,
+    id,
     x: point[0] / 1.65,
     y: point[1] / 1.65,
     name: name.szText,
     description: toast.szText,
   };
-  if (markerSet.eQuestType === 0) {
+  if (id.startsWith("Bounty_")) {
+    if (
+      markerSet.arQuestPhases.some(
+        (questPhase) => questPhase.snoReward.value === 1236629
+      )
+    ) {
+      bounties.push(quest);
+    }
+  } else if (markerSet.eQuestType === 0) {
     sideQuests.push(quest);
   } else if (markerSet.eQuestType === 2) {
     campaignQuests.push(quest);
@@ -58,6 +69,14 @@ writeFileSync(
     2
   )
 );
+writeFileSync(
+  `../out/quests.bounties.json`,
+  JSON.stringify(
+    bounties.sort((a, b) => a.name.localeCompare(b.name)),
+    null,
+    2
+  )
+);
 console.log(
-  `Processed ${sideQuests.length} side quests and ${campaignQuests.length} campaign quests.`
+  `Processed ${sideQuests.length} side quests and ${campaignQuests.length} campaign quests and ${bounties.length} bounties.`
 );
