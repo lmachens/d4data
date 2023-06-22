@@ -23,7 +23,10 @@ bounties.ptContent[0].arBountyZones.forEach((bountyZone) => {
     );
     const [, , , zone, subzone] = bounty.snoWorldState.name.split("_");
     const terms = readTerms(`Quest_${bounty.snoQuest.name}`);
-    const name = terms.find((term) => term.szLabel === "Name").szText;
+    const name = terms
+      .find((term) => term.szLabel === "Name")
+      .szText.replace("{c_red}", "")
+      .replace("{/c}", "");
     const description = terms.find((term) => term.szLabel === "Toast").szText;
 
     const quest = JSON.parse(
@@ -33,16 +36,25 @@ bounties.ptContent[0].arBountyZones.forEach((bountyZone) => {
     );
     const position = normalizePoint(quest.vecStartLocation);
     const event = {
-      id: bounty.snoQuest.name,
+      // id: bounty.snoQuest.name,
       name,
       description,
       zone,
-      subzone,
-      isHelltide,
+      // subzone,
+      // isHelltide,
       x: position[0] / 1.65,
       y: position[1] / 1.65,
     };
-    bountiesEvents.push(event);
+    if (
+      !bountiesEvents.some(
+        (bounty) =>
+          bounty.name === event.name &&
+          bounty.x === event.x &&
+          bounty.y === event.y
+      )
+    ) {
+      bountiesEvents.push(event);
+    }
   });
 });
 
