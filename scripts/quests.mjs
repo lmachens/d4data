@@ -25,8 +25,11 @@ readdirSync("../json/base/meta/Quest").forEach((fileName) => {
   }
   const terms = readTerms(`Quest_${id}`, "enUS");
   const name = terms.find((term) => term.szLabel === "Name");
-  const toast = terms.find((term) => term.szLabel === "Toast");
+  const toast =
+    terms.find((term) => term.szLabel === "Toast") ||
+    terms.find((term) => term.szLabel !== "Name");
   if (!name || !toast) {
+    console.log(`Missing terms for ${id}`);
     return;
   }
   const quest = {
