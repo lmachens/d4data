@@ -1,6 +1,6 @@
 # Definition: GlobalUIData
 # Hash: f8ed47a9
-# Flags: 00000000 00000010 00000011 00011010
+# Flags: 0x2031a
 # Inherits: GlobalBase (15d1144c)
 # Inherits: PolymorphicBase (5d4bac71)
 
@@ -44,7 +44,7 @@
 0xc8: unk_f65fa83 # DT_FLOAT (32 bits used)
 0xcc: unk_d30a7e3 # DT_VECTOR2D
 0xd4: unk_1b1414e # DT_SNO (32 bits used) {group 0x2c "Texture"}
-0xd8: unk_87ac7ca # DT_SNO (32 bits used) {group 0x2c "Texture"}
+0xd8: snoMinimapNoiseTexture # DT_SNO (32 bits used) {group 0x2c "Texture"}
 0xdc: unk_a48542c # DT_SNO (32 bits used) {group 0x2c "Texture"}
 0xe0: unk_ef09f54 # DT_FLOAT (32 bits used)
 0xe4: unk_11c15f5 # DT_FLOAT (32 bits used)
@@ -58,11 +58,11 @@
 0x104: unk_72dd8a6 # DT_RGBACOLOR (32 bits used)
 0x108: flBorderWidth # DT_FLOAT (32 bits used)
 0x10c: flBorderStrength # DT_FLOAT (32 bits used)
-0x110: unk_8086880 # DT_FLOAT (32 bits used)
+0x110: flHighlightedBorderStrength # DT_FLOAT (32 bits used)
 0x114: unk_c4559fc # DT_FLOAT (32 bits used)
 0x118: unk_786fe3d # DT_FLOAT (32 bits used)
-0x11c: unk_1b8406b # DT_FLOAT (32 bits used)
-0x120: unk_a2ff294 # DT_FLOAT (32 bits used)
+0x11c: flMinimapDistortionFactor # DT_FLOAT (32 bits used)
+0x120: flMinimapDistortionScale # DT_FLOAT (32 bits used)
 0x124: unk_8badfc2 # DT_FLOAT (32 bits used)
 0x128: unk_d55c009 # DT_FLOAT (32 bits used)
 0x12c: unk_d0f26d6 # DT_FLOAT (32 bits used)
@@ -83,7 +83,7 @@
 0x16c: unk_f2cc835 # DT_UINT (32 bits used)
 0x170: unk_a5093bf # DT_FLOAT (32 bits used)
 0x174: unk_eeb8012 # DT_UINT (32 bits used)
-0x178: unk_887a373 # DT_SNO (32 bits used) {group 0x25 "Shader"}
+0x178: snoFoWShader # DT_SNO (32 bits used) {group 0x25 "Shader"}
 0x17c: unk_5dbe647 # DT_SNO (32 bits used) {group 0x25 "Shader"}
 0x180: unk_149bdee # DT_FLOAT (32 bits used)
 0x184: unk_10d9d74 # DT_FLOAT (32 bits used)
@@ -93,8 +93,8 @@
 0x194: unk_5c6981e # DT_FLOAT (32 bits used)
 0x198: unk_62b69ec # DT_INT (1 bits used)
 0x19c: unk_3a17c48 # DT_FLOAT (32 bits used)
-0x1a0: tRegions # DT_FIXEDARRAY [5 array size] => unknown 0x36837ce3
-0x344: unk_88f4ecc # unknown 0x5960905c
+0x1a0: tRegions # DT_FIXEDARRAY [5 array size] => ObjectiveRegionParams
+0x344: tTerritoryRegion # TerritoryRegionParams
 0x35c: unk_2c3270 # DT_FLOAT (32 bits used)
 0x360: unk_ec0001f # DT_FLOAT (32 bits used)
 0x364: unk_c0496bf # DT_FLOAT (32 bits used)
@@ -145,7 +145,7 @@
 0x5e0: unk_7c3f20c # DT_FLOAT (32 bits used)
 0x5e4: unk_f993efd # DT_UINT (32 bits used)
 0x5e8: unk_ba98f17 # DT_UINT (32 bits used)
-0x5f0: unk_8c77381 # DT_FIXEDARRAY [6 array size] => HeroDetailsArray
+0x5f0: arHeroDetailsEntries # DT_FIXEDARRAY [6 array size] => HeroDetailsArray
 0x650: unk_934d708 # DT_FLOAT (32 bits used)
 0x654: fCreatedTangents # DT_FLOAT (32 bits used)
 0x658: unk_e3de54d # DT_FLOAT (32 bits used)
@@ -164,7 +164,7 @@
 0x689: unk_15da863 # DT_BYTE (8 bits used)
 0x68c: unk_67c326a # DT_FLOAT (32 bits used)
 0x690: unk_994e59c # DT_FIXEDARRAY [4 array size] => ScrollbarStyle
-0x780: unk_c6bdf51 # DT_UINT (32 bits used)
+0x780: nMaxRecentAchievements # DT_UINT (32 bits used)
 0x788: unk_90ccf89 # DT_VARIABLEARRAY (32 bits used) {group 0x49 "Item"} => DT_SNO
 0x798: unk_2738127 # DT_UINT (32 bits used)
 0x79c: unk_d9cee69 # unknown 0x22d9402d
@@ -233,7 +233,7 @@
 0xa10: arBountyIcons # DT_FIXEDARRAY [10 array size] => BountyIcons
 0xa88: arBountyTierIcons # DT_FIXEDARRAY [3 array size] => BountyTierIcons
 0xab8: unk_aa34698 # DT_UINT (32 bits used)
-0xac0: tClassInfo # DT_FIXEDARRAY [5 array size] => unknown 0xa77b14db
+0xac0: tClassInfo # DT_FIXEDARRAY [5 array size] => ClassInfoDataArray
 0xb60: unk_51e3091 # DT_VARIABLEARRAY => unknown 0x7a02a8d6
 0xb70: unk_dc621b6 # DT_VARIABLEARRAY (32 bits used) => DT_ENUM
 0xb80: unk_1ff54e # DT_VARIABLEARRAY (32 bits used) => DT_ENUM

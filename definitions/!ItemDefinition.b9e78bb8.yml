@@ -1,25 +1,25 @@
 # Definition: ItemDefinition
 # Hash: b9e78bb8
-# SNOFileHeader.dwFormatHash: 9e8fd627
-# Flags: 00000000 00000000 01000011 00011010
+# SNOFileHeader.dwFormatHash: 1a7e2c76
+# Flags: 0x431a
 
 0x8: snoActor # DT_SNO (32 bits used) {group 0x1 "Actor"}
 0xc: snoItemType # DT_SNO (32 bits used) {group 0x62 "ItemType"}
 0x10: eMagicType # DT_ENUM (32 bits used)
 0x14: dwFlags # DT_UINT (32 bits used)
-0x18: unk_d645403 # DT_VARIABLEARRAY (32 bits used) {group 0x7a "Dye"} => DT_SNO
-0x28: unk_a56b90b # DT_ENUM (32 bits used)
+0x18: ptInitialDyes # DT_VARIABLEARRAY (32 bits used) {group 0x7a "Dye"} => DT_SNO
+0x28: eComponentStyleType # DT_ENUM (32 bits used)
 0x2c: dwComponentStyle # DT_UINT (32 bits used)
 0x30: snoLore # DT_SNO (32 bits used) {group 0x3b "Lore"}
 0x34: nMaxStackSize # DT_INT (32 bits used)
-0x38: unk_d8f474d # DT_INT (32 bits used)
+0x38: nBaseCostCurrency # DT_INT (32 bits used)
 0x3c: unk_11efbc0 # DT_INT (32 bits used)
 0x40: eCurrencyType # DT_ENUM (32 bits used)
-0x44: unk_e6a0bdf # DT_INT (32 bits used)
-0x48: unk_debbc21 # DT_INT (32 bits used)
-0x4c: unk_cb9e62d # DT_INT (32 bits used)
-0x50: unk_c3b966f # DT_INT (32 bits used)
-0x54: unk_8875e7a # DT_ENUM (32 bits used)
+0x44: nDropMinLevel # DT_INT (32 bits used)
+0x48: nDropMaxLevel # DT_INT (32 bits used)
+0x4c: nVendorDropMinLevel # DT_INT (32 bits used)
+0x50: nVendorDropMaxLevel # DT_INT (32 bits used)
+0x54: eDropMinWorldTier # DT_ENUM (32 bits used)
 0x58: unk_440d049 # DT_INT (32 bits used)
 0x5c: ePreferredZone # DT_ENUM (32 bits used)
 0x60: snoBaseItem # DT_SNO (32 bits used) {group 0x49 "Item"}
@@ -28,21 +28,21 @@
 0x6c: snoSalvageTreasureClassMagic # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
 0x70: snoSalvageTreasureClassRare # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
 0x74: snoSalvageTreasureClassLegendary # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
-0x78: unk_13fbf8b # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
-0x7c: unk_af5e44f # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
+0x78: snoSalvageTreasureClassUnique # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
+0x7c: snoSalvageTreasureClassSetItem # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
 0x80: snoRareNamePrefixStringList # DT_SNO (32 bits used) {group 0x2a "StringList"}
 0x84: snoRareNameSuffixStringList # DT_SNO (32 bits used) {group 0x2a "StringList"}
 0x88: snoSetItemBonus # DT_SNO (32 bits used) {group 0x6d "SetItemBonus"}
 0x8c: snoPower # DT_SNO (32 bits used) {group 0x1d "Power"}
-0x90: unk_da84fbb # DT_INT (32 bits used)
-0x94: unk_ba8730c # DT_INT (32 bits used)
+0x90: nTomeLevel # DT_INT (32 bits used)
+0x94: nFixedIPowerLevel # DT_INT (32 bits used)
 0x98: unk_ae0eeff # DT_ENUM (32 bits used)
 0xa0: ptAttributes # DT_VARIABLEARRAY => AttributeSpecifier
 0xb0: arInherentAffixes # DT_VARIABLEARRAY (32 bits used) {group 0x68 "Affix"} => DT_SNO
 0xc0: arForcedAffixes # DT_VARIABLEARRAY (32 bits used) {group 0x68 "Affix"} => DT_SNO
 0xd0: unk_e6191d6 # DT_VARIABLEARRAY (32 bits used) {group 0x12} => DT_GBID
 0xe0: unk_192312c # DT_VARIABLEARRAY (32 bits used) {group 0x12} => DT_GBID
-0xf0: unk_9da2273 # DT_FIXEDARRAY (32 bits used) [5 array size] => DT_INT
+0xf0: fUsableByClass # DT_FIXEDARRAY (32 bits used) [5 array size] => DT_INT
 0x108: ptSocketedEffects # DT_VARIABLEARRAY => SocketedEffects
 0x118: snoRunePower # DT_SNO (32 bits used) {group 0x1d "Power"}
 0x11c: snoRecipe # DT_SNO (32 bits used) {group 0x31 "Recipe"}
@@ -53,14 +53,14 @@
 0x140: arReputation # DT_VARIABLEARRAY => ReputationValuePair
 0x150: tInvImages # DT_FIXEDARRAY [5 array size] => InventoryImages
 0x178: unk_75d565b # DT_UINT (32 bits used)
-0x17c: unk_954d4f9 # DT_INT (1 bits used)
+0x17c: fMustKeepInInventory # DT_INT (1 bits used)
 0x180: fBottomless # DT_INT (1 bits used)
 0x184: eItemUseType # DT_ENUM (32 bits used)
-0x188: unk_db54dcf # DT_SNO (32 bits used) {group 0x1d "Power"}
-0x18c: unk_4bfa38e # DT_SNO (32 bits used) {group 0x16 "LevelArea"}
+0x188: snoPowerUpPower # DT_SNO (32 bits used) {group 0x1d "Power"}
+0x18c: snoItemUseLevelAreaRequirement # DT_SNO (32 bits used) {group 0x16 "LevelArea"}
 0x190: unk_f772ea # DT_UINT (32 bits used)
 0x194: eDisplayedQualityLevel # DT_ENUM (32 bits used)
-0x198: unk_4a49da6 # DT_INT (32 bits used)
+0x198: nCustomDropWeight # DT_INT (32 bits used)
 0x19c: snoPowerPassive # DT_SNO (32 bits used) {group 0x1d "Power"}
 0x1a0: eGemType # DT_ENUM (32 bits used)
 0x1a4: snoPotionPower # DT_SNO (32 bits used) {group 0x1d "Power"}

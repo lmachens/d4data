@@ -1,6 +1,6 @@
 # Definition: 1cf6b4f9
 # Hash: 1cf6b4f9
-# Flags: 00000000 00000000 00000011 00000000
+# Flags: 0x300
 
 0x0: unk_281a24e # DT_INT (1 bits used)
 0x4: unk_db52f49 # DT_INT (1 bits used)
@@ -15,11 +15,11 @@
 0x168: unk_78feaff # DT_INT (1 bits used)
 0x170: unk_88e388f # unknown 0xcbfdd2ea
 0x1a8: unk_8a05110 # unknown 0xcbfdd2ea
-0x1e0: unk_759aeb1 # unknown 0xcbfdd2ea
-0x218: unk_121eb51 # unknown 0xcbfdd2ea
+0x1e0: pathCloudShadowIntensity # unknown 0xcbfdd2ea
+0x218: pathCloudShadowOffset # unknown 0xcbfdd2ea
 0x250: unk_27336d0 # DT_FLOAT (32 bits used)
 0x254: unk_969434 # DT_INT (1 bits used)
-0x258: unk_59a2b11 # DT_FLOAT (32 bits used)
+0x258: flCloudScale # DT_FLOAT (32 bits used)
 0x260: unk_cc56e3e # MaterialTexture
 0x288: unk_5733630 # MaterialTexture
 0x2b0: unk_635ca57 # unknown 0xcbfdd2ea
@@ -31,13 +31,13 @@
 0x308: snoFogParticle # DT_SNO (32 bits used) {group 0x1b "Particle"}
 0x30c: snoSound # DT_SNO (32 bits used) {group 0x28 "Sound"}
 0x310: snoSkyboxActor # DT_SNO (32 bits used) {group 0x1 "Actor"}
-0x314: unk_ad9d4b2 # DT_FLOAT (32 bits used)
+0x314: aSkyboxYaw # DT_FLOAT (32 bits used)
 0x318: unk_d76517b # DT_INT (1 bits used)
-0x31c: unk_7cb032 # DT_RANGE => DT_FLOAT
-0x324: unk_e72cb18 # DT_RANGE => DT_FLOAT
-0x330: unk_8ec223e # unknown 0xcbfdd2ea
-0x368: unk_47e37f4 # DT_RANGE => DT_FLOAT
-0x370: unk_d3eca1 # DT_FLOAT (32 bits used)
+0x31c: flLightningAltitude # DT_RANGE => DT_FLOAT
+0x324: flLightningAzimuth # DT_RANGE => DT_FLOAT
+0x330: pathLightningThreshold # unknown 0xcbfdd2ea
+0x368: tLightningDelayRange # DT_RANGE => DT_FLOAT
+0x370: flThunderDelayMax # DT_FLOAT (32 bits used)
 0x374: snoLightning # DT_SNO (32 bits used) {group 0x17 "Light"}
 0x378: snoLightningEffectGroup # DT_SNO (32 bits used) {group 0xe "EffectGroup"}
 0x37c: snoThunder # DT_SNO (32 bits used) {group 0x28 "Sound"}
@@ -55,8 +55,8 @@
 0x4b8: unk_4c76230 # DT_SNO (32 bits used) {group 0x2c "Texture"}
 0x4bc: unk_afd6821 # bcQuat
 0x4cc: fSunEnabled # DT_INT (1 bits used)
-0x4d0: unk_73993c2 # unknown 0x560ae4cf
-0x508: unk_ca1414a # unknown 0xcbfdd2ea
+0x4d0: pathSunColor # unknown 0x560ae4cf
+0x508: pathSunIntensity # unknown 0xcbfdd2ea
 0x540: unk_b9380cd # unknown 0xcbfdd2ea
 0x578: unk_d83665 # DT_FLOAT (32 bits used)
 0x57c: unk_8ff1cc9 # DT_INT (1 bits used)
@@ -68,8 +68,8 @@
 0x5c8: flSunRadius # DT_FLOAT (32 bits used)
 0x5cc: unk_9e754d5 # DT_FLOAT (32 bits used)
 0x5d0: unk_aa224d7 # DT_INT (1 bits used)
-0x5d4: unk_dd0d1ca # DT_FLOAT (32 bits used)
-0x5d8: unk_a7d19b0 # DT_FLOAT (32 bits used)
+0x5d4: flSunShadowAltitude # DT_FLOAT (32 bits used)
+0x5d8: flSunShadowAzimuth # DT_FLOAT (32 bits used)
 0x5dc: unk_daea413 # DT_FLOAT (32 bits used)
 0x5e0: unk_2935034 # unknown 0xcbfdd2ea
 0x618: unk_83a1898 # DT_FLOAT (32 bits used)
@@ -106,14 +106,14 @@
 0xa70: unk_4e2cb52 # unknown 0xcbfdd2ea
 0xaa8: unk_a0d23db # DT_INT (1 bits used)
 0xaac: flBlendApproachSpeed # DT_FLOAT (32 bits used)
-0xab0: unk_2f42898 # unknown 0x4a900441
-0xac0: unk_580b325 # DT_SNO (32 bits used) {group 0x39 "Material"}
-0xac4: unk_9f4feca # DT_SNO (32 bits used) {group 0x39 "Material"}
-0xac8: unk_26d2ca2 # unknown 0xcbfdd2ea
+0xab0: tWaveSettings # HeightFieldWaveSettings
+0xac0: snoOceanMaterial # DT_SNO (32 bits used) {group 0x39 "Material"}
+0xac4: snoGroundFogMaterial # DT_SNO (32 bits used) {group 0x39 "Material"}
+0xac8: pathWaterBloodiness # unknown 0xcbfdd2ea
 0xb00: unk_832195e # unknown 0xcbfdd2ea
 0xb38: unk_d9ac5a8 # unknown 0xcbfdd2ea
 0xb70: flSSAOOcclusionRadius # DT_FLOAT (32 bits used)
-0xb74: unk_ca026c6 # DT_FLOAT (32 bits used)
+0xb74: flSSAOOcclusionStrength # DT_FLOAT (32 bits used)
 0xb78: unk_6356b81 # DT_FLOAT (32 bits used)
 0xb7c: unk_c1c86a0 # DT_FLOAT (32 bits used)
 0xb80: unk_cc9331e # DT_FLOAT (32 bits used)
@@ -133,7 +133,7 @@
 0xc58: unk_62ddb30 # DT_INT (1 bits used)
 0xc5c: unk_202fc35 # bcQuat
 0xc6c: unk_4e6515c # DT_INT (1 bits used)
-0xc70: unk_f37fb19 # unknown 0x1d308425
+0xc70: tShoreWaveSettings # ShoreWaveSettings
 0xc90: unk_ee76094 # DT_RGBACOLOR (32 bits used)
 0xc94: unk_403296d # DT_INT (1 bits used)
 0xc98: null or eof # DT_NULL

@@ -1,24 +1,26 @@
 {
- "__fileName__": "data/base/meta/Quest/QST_Hawe_Delta_02.qst",
+ "__fileName__": "base/meta/Quest/QST_Hawe_Delta_02.qst",
  "__snoID__": 600407,
  "__type__": "QuestDefinition",
  "__typeHash__": 1053929211,
  "eQuestType": 2,
- "unk_f88ee86": -1,
- "unk_4c4339b": 0,
- "unk_f522ece": 2,
+ "ePlayerQuestType": -1,
+ "eEventQuestType": 0,
+ "eInstanceQuestType": 2,
  "eRepeatType": 0,
  "eVignetteType": 0,
  "unk_43f3849": 0,
  "unk_48a2b16": -1,
- "unk_d060a69": {
+ "tMarkerHandleStartLocation": {
   "__type__": "MarkerHandle",
   "__typeHash__": 3934284334,
   "snoMarkerSet": {
-   "value": 927069,
-   "group": 24,
+   "__raw__": 927069,
+   "__group__": 24,
+   "__type__": "DT_SNO",
+   "__typeHash__": 2764331143,
+   "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_01).mrk",
    "groupName": "MarkerSet",
-   "type": "sno",
    "name": "Hawe_Delta (Hawe_Delta_01)"
   },
   "nID": 6
@@ -28,68 +30,67 @@
   "y": 1145.52001953125,
   "z": -0.014148700051009655
  },
- "unk_6a4ec7f": {
-  "value": 69068,
-  "group": 48,
+ "snoWorldStartLocation": {
+  "__raw__": 69068,
+  "__group__": 48,
+  "__type__": "DT_SNO",
+  "__typeHash__": 2764331143,
+  "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
   "groupName": "World",
-  "type": "sno",
   "name": "Sanctuary_Eastern_Continent"
  },
- "unk_c2e8448": {
+ "tMarkerHandleDevStartLocation": {
   "__type__": "MarkerHandle",
   "__typeHash__": 3934284334,
   "snoMarkerSet": {
-   "value": 927069,
-   "group": 24,
+   "__raw__": 927069,
+   "__group__": 24,
+   "__type__": "DT_SNO",
+   "__typeHash__": 2764331143,
+   "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_01).mrk",
    "groupName": "MarkerSet",
-   "type": "sno",
    "name": "Hawe_Delta (Hawe_Delta_01)"
   },
   "nID": 6
  },
- "unk_ff5c704": {
+ "vecDevStartLocation": {
   "x": -1186.3499755859375,
   "y": 1145.52001953125,
   "z": -0.014148700051009655
  },
- "unk_506369e": {
-  "value": 69068,
-  "group": 48,
+ "snoWorldDevStartLocation": {
+  "__raw__": 69068,
+  "__group__": 48,
+  "__type__": "DT_SNO",
+  "__typeHash__": 2764331143,
+  "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
   "groupName": "World",
-  "type": "sno",
   "name": "Sanctuary_Eastern_Continent"
  },
  "unk_d2181f0": 237348,
  "snoLevelArea": {
-  "value": 937238,
-  "group": 22,
+  "__raw__": 937238,
+  "__group__": 22,
+  "__type__": "DT_SNO",
+  "__typeHash__": 2764331143,
+  "__targetFileName__": "base/meta/LevelArea/Hawe_DeltaEast_02.lvl",
   "groupName": "LevelArea",
-  "type": "sno",
   "name": "Hawe_DeltaEast_02"
  },
- "unk_f956a05": 1,
- "unk_14dee1b": 0,
+ "unk_f956a05": true,
+ "unk_14dee1b": false,
  "flParticipationRadius": 12,
  "unk_8881b0e": 20,
  "dwNextUID": 76,
- "unk_b89b77f": 0,
- "unk_c18cabd": 0,
+ "fPrioritySideQuest": false,
+ "unk_c18cabd": false,
  "unk_79f6e17": 0,
- "gbidSubzoneModifierTag": {
-  "value": 4294967295,
-  "type": "gbid",
-  "group": 60
- },
- "snoBountySubzone": {
-  "value": -1,
-  "group": 80,
-  "groupName": "SubZone",
-  "type": "sno"
- },
+ "gbidSubzoneModifierTag": null,
+ "snoBountySubzone": null,
  "eBountyTier": -1,
  "eBountyType": -1,
- "unk_313dbf6": 0,
- "unk_834fdbf": 4294967295,
+ "unk_313dbf6": false,
+ "dwRegionSourceCallbackUID": 4294967295,
  "unk_b83e7b1": 6,
  "unk_942bcdb": 1,
  "dwFlags": 4,
@@ -104,7 +105,7 @@
    "eType": 0,
    "arCallbackSets": [
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 13,
      "ptLink": [],
@@ -122,17 +123,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 46,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 2197444774,
           "eVariableType": 1,
@@ -144,17 +140,19 @@
             "eParamType": 4,
             "dwPad": 0,
             "snoActor": {
-             "value": 594317,
-             "group": 1,
+             "__raw__": 594317,
+             "__group__": 1,
+             "__type__": "DT_SNO",
+             "__typeHash__": 2764331143,
+             "__targetFileName__": "base/meta/Actor/NPC_QST_Neyrelle_Follower_Magic.acr",
              "groupName": "Actor",
-             "type": "sno",
              "name": "NPC_QST_Neyrelle_Follower_Magic"
             }
            }
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 3941013568,
           "eVariableType": 1,
@@ -169,10 +167,12 @@
              "__type__": "MarkerHandle",
              "__typeHash__": 3934284334,
              "snoMarkerSet": {
-              "value": 929445,
-              "group": 24,
+              "__raw__": 929445,
+              "__group__": 24,
+              "__type__": "DT_SNO",
+              "__typeHash__": 2764331143,
+              "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
               "groupName": "MarkerSet",
-              "type": "sno",
               "name": "Hawe_Delta (Hawe_Delta_02)"
              },
              "nID": 2
@@ -189,20 +189,16 @@
        "eIndicatorType": 2,
        "unk_9c1ea4f": 51,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(idActor, idActorDetector)\r\n\r\n\t-- Neyrelle decides to take a risk again\r\n\tlocal followerNeyrelle = Hydra.QuestGetFollower(\"NPC_QST_Neyrelle_Follower_Magic\")\r\n\tHydra.QuestFollowerTakeOwnership(followerNeyrelle)\r\n\tHydra.ActorEnableAI(followerNeyrelle, false)\r\n\tHydra.ActorSetCannotBeTargetedByAI(followerNeyrelle, true)\r\n\tHydra.QActorMoveToLocationDynamicSpeed(followerNeyrelle, locNeyrelleDoor, \"NPC_Run\", true)\r\n\tHydra.QActorFaceSameAsActor(followerNeyrelle, locNeyrelleDoor)\r\n\tHydra.QActorPlaySimpleConversation(conv_DoorLocked, followerNeyrelle)\r\n\tHydra.QActorWait(followerNeyrelle, 1)\r\n\tHydra.QActorMoveToLocationDynamicSpeed(followerNeyrelle, locRigging, \"NPC_Run\", true)\r\n\tHydra.QActorFaceSameAsActor(followerNeyrelle, locRigging)\r\n\tHydra.WaitForQEmpty(followerNeyrelle)\r\n\t\r\n\tHydra.QActorAnim(followerNeyrelle, \"AnimKey_Climb_OutWindow\")\r\n\tHydra.Wait(4)\r\n\tHydra.ActorDelete(followerNeyrelle)\r\n\t\r\n\t\ttDrownedSpawners = Hydra.ActorsInGroup(\"QST_Hawe_Delta_DrownedAttackSpawners\")\r\n\tfor i, Spawner in ipairs(tDrownedSpawners) do\r\n\t\tHydra.ActorEnable(Spawner, true)\r\n\tend\r\n\t\r\n\tHydra.Wait(4)\r\n\t\r\n\tHydra.QActorPlaySimpleConversation(conv_NeyrelleWounded, idNeyrelleWounded)\r\n\r\n\tHydra.WaitForConversationFinished(conv_NeyrelleWounded)\r\n\tHydra.EventSend(\"DoorFound\")\r\n\t\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -262,68 +258,52 @@
          "y": 1190
         },
         "flRadius": 88.80913543701172,
-        "bValid": 1,
-        "unk_16e2f51": 0
+        "bValid": true,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [
         {
-         "value": 937238,
-         "group": 22,
+         "__raw__": 937238,
+         "__group__": 22,
+         "__type__": "DT_SNO",
+         "__typeHash__": 2764331143,
+         "__targetFileName__": "base/meta/LevelArea/Hawe_DeltaEast_02.lvl",
          "groupName": "LevelArea",
-         "type": "sno",
          "name": "Hawe_DeltaEast_02"
         }
        ],
        "arSubzones": [],
        "arSnonameTokens": [
         {
-         "value": 594317,
-         "group": 1,
+         "__raw__": 594317,
+         "__group__": 1,
+         "__type__": "DT_SNO_NAME",
+         "__typeHash__": 3339108615,
+         "__targetFileName__": "base/meta/Actor/NPC_QST_Neyrelle_Follower_Magic.acr",
          "groupName": "Actor",
-         "type": "sno",
          "name": "NPC_QST_Neyrelle_Follower_Magic"
         }
        ],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 0,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": false,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -334,21 +314,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -356,24 +326,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -381,25 +341,19 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "--Hydra.QuestAdvancePhase()\r\n"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     },
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 50,
      "ptLink": [
       {
-       "__type__": "Type_2b920147",
+       "__type__": "QuestObjectiveSetLink",
        "__typeHash__": 730988871,
-       "unk_d17aff0": 18,
+       "dwDestinationPhaseUID": 18,
        "eLinkType": 1
       }
      ],
@@ -417,17 +371,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 30,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 334654326,
           "eVariableType": 7,
@@ -444,13 +393,13 @@
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 2197444774,
           "eVariableType": 1,
           "unk_67545b": [
            {
-            "__type__": "Type_4d3d23af",
+            "__type__": "ScriptEventParamAllowAny",
             "__typeHash__": 1295852463,
             "dwType": 1295852463,
             "eParamType": 0,
@@ -459,13 +408,13 @@
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 2344914334,
           "eVariableType": 11,
           "unk_67545b": [
            {
-            "__type__": "Type_4d3d23af",
+            "__type__": "ScriptEventParamAllowAny",
             "__typeHash__": 1295852463,
             "dwType": 1295852463,
             "eParamType": 0,
@@ -482,20 +431,16 @@
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(sEventName, idActor, nUserParam)\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -506,52 +451,32 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 0,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": false,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -562,21 +487,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -584,24 +499,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -609,54 +514,38 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "Hydra.QuestAdvancePhase()\r\n"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     }
    ],
    "unk_4b2de13": 4294967295,
    "unk_188a07a": [],
-   "unk_61c2846": 0,
-   "unk_951ad2a": {
-    "value": -1,
-    "group": 51,
-    "groupName": "Condition",
-    "type": "sno"
-   },
-   "snoReward": {
-    "value": -1,
-    "group": 52,
-    "groupName": "TreasureClass",
-    "type": "sno"
-   },
-   "unk_189b89b": 0,
+   "unk_61c2846": false,
+   "unk_951ad2a": null,
+   "snoReward": null,
+   "unk_189b89b": false,
    "nTimerDuration": 0,
-   "unk_2bde7b6": 0,
+   "unk_2bde7b6": false,
    "unk_d3b7ed7": [],
    "unk_8280b0e": 20,
-   "unk_eff642d": 0,
-   "unk_fc27941": 0,
+   "unk_eff642d": false,
+   "unk_fc27941": false,
    "unk_d9a8a05": 4294967295,
    "unk_5d4cfc0": 4294967295,
    "unk_669bcf8": 4294967295,
    "unk_287ecb5": 4294967295,
    "unk_6344bd7": 0,
-   "unk_9c63f9d": "Hydra.ActorSetTargetable(idBreakableDoor, false)\r\nHydra.ActorSetInvulnerable(idBreakableDoor, true)\r\n\r\nHydra.ActorSetCannotBeTargetedByAI(idLorathKneel, true)\r\nHydra.ActorSetCannotBeTargetedByAI(idNeyrelleWounded, true)\r\n\r\n--[[\r\ntDrowned = Hydra.ActorsInGroup(\"QST_Hawe_Delta_NeyrelleDrowned\")\r\n\tfor i, Drowned in ipairs(tDrowned) do\r\n\t\tHydra.ActorAIForcePrimaryTarget(Drowned, idNeyrelleWounded)\r\n\t\tHydra.ActorSetInvulnerable(Drowned, true)\r\n\t\tHydra.ActorSetTargetable(Drowned, false)\r\n\tend--]]",
-   "unk_c820299": "",
    "unk_fab6e45": {
     "__type__": "MarkerHandle",
     "__typeHash__": 3934284334,
     "snoMarkerSet": {
-     "value": 927069,
-     "group": 24,
+     "__raw__": 927069,
+     "__group__": 24,
+     "__type__": "DT_SNO",
+     "__typeHash__": 2764331143,
+     "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_01).mrk",
      "groupName": "MarkerSet",
-     "type": "sno",
      "name": "Hawe_Delta (Hawe_Delta_01)"
     },
     "nID": 6
@@ -667,10 +556,12 @@
     "z": -0.014148700051009655
    },
    "unk_ed8215b": {
-    "value": 69068,
-    "group": 48,
+    "__raw__": 69068,
+    "__group__": 48,
+    "__type__": "DT_SNO",
+    "__typeHash__": 2764331143,
+    "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
     "groupName": "World",
-    "type": "sno",
     "name": "Sanctuary_Eastern_Continent"
    },
    "unk_f6ded77": {
@@ -683,12 +574,7 @@
     "__typeHash__": 1797021084,
     "hImageHandle": 0
    },
-   "snoAudioContext": {
-    "value": -1,
-    "group": 93,
-    "groupName": "AudioContext",
-    "type": "sno"
-   }
+   "snoAudioContext": null
   },
   {
    "__type__": "QuestPhase",
@@ -700,7 +586,7 @@
    "eType": 0,
    "arCallbackSets": [
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 45,
      "ptLink": [],
@@ -718,17 +604,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 40,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 3095850554,
           "eVariableType": 12,
@@ -740,8 +621,9 @@
             "eParamType": 35,
             "dwPad": 0,
             "gbidActorGroup": {
-             "value": 3717529921,
-             "type": "gbid",
+             "__raw__": 3717529921,
+             "__type__": "DT_GBID",
+             "__typeHash__": 1028170061,
              "group": 24,
              "name": "QST_Hawe_Delta_DrownedAttack2"
             }
@@ -757,20 +639,16 @@
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(szGroup)\r\n\r\n\tHydra.ActorSetCannotBeTargetedByAI(idBreakableDoor, false)\r\n\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -781,52 +659,32 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 0,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": false,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -837,21 +695,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -859,24 +707,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -884,25 +722,19 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "--Hydra.QuestAdvancePhase()"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     },
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 16,
      "ptLink": [
       {
-       "__type__": "Type_2b920147",
+       "__type__": "QuestObjectiveSetLink",
        "__typeHash__": 730988871,
-       "unk_d17aff0": 21,
+       "dwDestinationPhaseUID": 21,
        "eLinkType": 1
       }
      ],
@@ -920,23 +752,18 @@
         "__typeHash__": 2935055576,
         "eEventType": 0,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 1189140265,
           "eVariableType": 1,
           "unk_67545b": [
            {
-            "__type__": "Type_4d3d23af",
+            "__type__": "ScriptEventParamAllowAny",
             "__typeHash__": 1295852463,
             "dwType": 1295852463,
             "eParamType": 0,
@@ -945,7 +772,7 @@
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 1189140251,
           "eVariableType": 1,
@@ -960,10 +787,12 @@
              "__type__": "MarkerHandle",
              "__typeHash__": 3934284334,
              "snoMarkerSet": {
-              "value": 929445,
-              "group": 24,
+              "__raw__": 929445,
+              "__group__": 24,
+              "__type__": "DT_SNO",
+              "__typeHash__": 2764331143,
+              "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
               "groupName": "MarkerSet",
-              "type": "sno",
               "name": "Hawe_Delta (Hawe_Delta_02)"
              },
              "nID": 27
@@ -980,20 +809,16 @@
        "eIndicatorType": 2,
        "unk_9c1ea4f": 0,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(idActorKiller, idActorKilled)\r\n\tlocal followerLorath = Hydra.QuestGetFollower(\"NPC_QST_Lorath_Follower\")\r\n\tHydra.ActorEnable(idDoorFrame)\r\n\tHydra.ActorSetCannotBeTargetedByAI(idNeyrelleWounded, false)\r\n\ttDrowned = Hydra.ActorsInGroup(\"QST_Hawe_Delta_NeyrelleDrowned\")\r\n\t\r\n\tfor i, Drowned in ipairs(tDrowned) do\r\n\t\tHydra.ActorEnable(Drowned)\r\n\t\tHydra.ActorAIForcePrimaryTarget(Drowned, idNeyrelleWounded)\r\n\tend\r\n\t\r\n\r\n\tif Hydra.ActorIsValid(followerLorath) then\r\n\t\tHydra.QActorMoveToLocationDynamicSpeed(followerLorath, locLorathDoor, \"NPC_Run\", false)\r\n\t\tHydra.ActorAIForcePrimaryTarget(followerLorath, idDrownedAttacker)\r\n\t\tHydra.QActorWait(followerLorath, 1)\r\n\tend\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -1004,52 +829,32 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 0,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": false,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -1060,21 +865,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -1082,24 +877,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -1107,54 +892,38 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "Hydra.QuestAdvancePhase()\r\n"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     }
    ],
    "unk_4b2de13": 4294967295,
    "unk_188a07a": [],
-   "unk_61c2846": 0,
-   "unk_951ad2a": {
-    "value": -1,
-    "group": 51,
-    "groupName": "Condition",
-    "type": "sno"
-   },
-   "snoReward": {
-    "value": -1,
-    "group": 52,
-    "groupName": "TreasureClass",
-    "type": "sno"
-   },
-   "unk_189b89b": 0,
+   "unk_61c2846": false,
+   "unk_951ad2a": null,
+   "snoReward": null,
+   "unk_189b89b": false,
    "nTimerDuration": 0,
-   "unk_2bde7b6": 0,
+   "unk_2bde7b6": false,
    "unk_d3b7ed7": [],
    "unk_8280b0e": 20,
-   "unk_eff642d": 0,
-   "unk_fc27941": 0,
+   "unk_eff642d": false,
+   "unk_fc27941": false,
    "unk_d9a8a05": 4294967295,
    "unk_5d4cfc0": 4294967295,
    "unk_669bcf8": 4294967295,
    "unk_287ecb5": 4294967295,
    "unk_6344bd7": 0,
-   "unk_9c63f9d": "Hydra.ActorSetCannotBeTargetedByAI(idBreakableDoor, true)\r\nHydra.ActorSetTargetable(idBreakableDoor, true)\r\nHydra.ActorSetInvulnerable(idBreakableDoor, false)",
-   "unk_c820299": "",
    "unk_fab6e45": {
     "__type__": "MarkerHandle",
     "__typeHash__": 3934284334,
     "snoMarkerSet": {
-     "value": 929445,
-     "group": 24,
+     "__raw__": 929445,
+     "__group__": 24,
+     "__type__": "DT_SNO",
+     "__typeHash__": 2764331143,
+     "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
      "groupName": "MarkerSet",
-     "type": "sno",
      "name": "Hawe_Delta (Hawe_Delta_02)"
     },
     "nID": 5
@@ -1165,10 +934,12 @@
     "z": 0.06930220127105713
    },
    "unk_ed8215b": {
-    "value": 69068,
-    "group": 48,
+    "__raw__": 69068,
+    "__group__": 48,
+    "__type__": "DT_SNO",
+    "__typeHash__": 2764331143,
+    "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
     "groupName": "World",
-    "type": "sno",
     "name": "Sanctuary_Eastern_Continent"
    },
    "unk_f6ded77": {
@@ -1181,12 +952,7 @@
     "__typeHash__": 1797021084,
     "hImageHandle": 0
    },
-   "snoAudioContext": {
-    "value": -1,
-    "group": 93,
-    "groupName": "AudioContext",
-    "type": "sno"
-   }
+   "snoAudioContext": null
   },
   {
    "__type__": "QuestPhase",
@@ -1198,7 +964,7 @@
    "eType": 0,
    "arCallbackSets": [
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 19,
      "ptLink": [],
@@ -1216,23 +982,18 @@
         "__typeHash__": 2935055576,
         "eEventType": 39,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 1189140265,
           "eVariableType": 1,
           "unk_67545b": [
            {
-            "__type__": "Type_4d3d23af",
+            "__type__": "ScriptEventParamAllowAny",
             "__typeHash__": 1295852463,
             "dwType": 1295852463,
             "eParamType": 0,
@@ -1241,7 +1002,7 @@
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 3095850554,
           "eVariableType": 12,
@@ -1253,8 +1014,9 @@
             "eParamType": 35,
             "dwPad": 0,
             "gbidActorGroup": {
-             "value": 22989591,
-             "type": "gbid",
+             "__raw__": 22989591,
+             "__type__": "DT_GBID",
+             "__typeHash__": 1028170061,
              "group": 24,
              "name": "QST_Hawe_Delta_NeyrelleDrowned"
             }
@@ -1270,20 +1032,16 @@
        "eIndicatorType": 2,
        "unk_9c1ea4f": 49,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(idActorKiller, szGroup)\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -1294,23 +1052,18 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       },
@@ -1327,17 +1080,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 40,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 3095850554,
           "eVariableType": 12,
@@ -1349,8 +1097,9 @@
             "eParamType": 35,
             "dwPad": 0,
             "gbidActorGroup": {
-             "value": 2975963951,
-             "type": "gbid",
+             "__raw__": 2975963951,
+             "__type__": "DT_GBID",
+             "__typeHash__": 1028170061,
              "group": 24,
              "name": "QST_Hawe_Delta_DrownedAttack"
             }
@@ -1366,20 +1115,16 @@
        "eIndicatorType": 2,
        "unk_9c1ea4f": 49,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(szGroup)\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -1390,23 +1135,18 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       },
@@ -1423,17 +1163,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 40,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 3095850554,
           "eVariableType": 12,
@@ -1445,8 +1180,9 @@
             "eParamType": 35,
             "dwPad": 0,
             "gbidActorGroup": {
-             "value": 3717529921,
-             "type": "gbid",
+             "__raw__": 3717529921,
+             "__type__": "DT_GBID",
+             "__typeHash__": 1028170061,
              "group": 24,
              "name": "QST_Hawe_Delta_DrownedAttack2"
             }
@@ -1462,20 +1198,16 @@
        "eIndicatorType": 2,
        "unk_9c1ea4f": 49,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(szGroup)\r\n\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -1486,52 +1218,32 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 0,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": false,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -1542,21 +1254,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -1564,24 +1266,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -1589,18 +1281,12 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "local followerLorath = Hydra.QuestGetFollower(\"NPC_QST_Lorath_Follower\")\r\n\r\nif Hydra.ActorIsValid(followerLorath) then\r\n\tHydra.QuestFollowerTakeOwnership(followerLorath)\r\n\tHydra.ActorEnableAI(followerLorath, false)\r\n\tHydra.ActorSetAIState(followerLorath, \"idle\")\r\n\tHydra.QActorPlaySimpleConversation(conv_LorathCheck, followerLorath)\r\n\tHydra.ActorSetCannotBeTargetedByAI(followerLorath, true)\r\n\tHydra.QActorMoveToLocationDynamicSpeed(followerLorath, idLorathKneel, \"NPC_Run\", true)\r\n\tHydra.QActorFaceSameAsActor(followerLorath, idLorathKneel)\r\n\tHydra.QActorSetAnimSetOverride(followerLorath, \"NPC_lorath_nonCombat_2HT\")\r\n\tHydra.WaitForQEmpty(followerLorath)\r\n\tHydra.QActorDelete(followerLorath)\r\nend\r\nHydra.ActorEnable(idLorathNearNeyrelle)\r\nHydra.EventSend(\"DrownedKilled\")\r\n"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     },
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 28,
      "ptLink": [],
@@ -1618,17 +1304,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 2,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 4119258519,
           "eVariableType": 1,
@@ -1639,12 +1320,12 @@
             "dwType": 106673333,
             "eParamType": 7,
             "dwPad": 0,
-            "bIsPlayer": 1
+            "bIsPlayer": true
            }
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 4119258505,
           "eVariableType": 1,
@@ -1656,8 +1337,9 @@
             "eParamType": 35,
             "dwPad": 0,
             "gbidActorGroup": {
-             "value": 22989591,
-             "type": "gbid",
+             "__raw__": 22989591,
+             "__type__": "DT_GBID",
+             "__typeHash__": 1028170061,
              "group": 24,
              "name": "QST_Hawe_Delta_NeyrelleDrowned"
             }
@@ -1672,20 +1354,9 @@
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
-       "snoWorld": {
-        "value": -1,
-        "group": 48,
-        "groupName": "World",
-        "type": "sno"
-       },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(idActorDamager, idActorDamaged)\r\n\r\n\ttDrowned = Hydra.ActorsInGroup(\"QST_Hawe_Delta_NeyrelleDrowned\")\r\n\tfor i, Drowned in ipairs(tDrowned) do\r\n\t\tHydra.ActorAIForcePrimaryTarget(Drowned, idActorDamager)\r\n\tend\r\n\r\nend\r\n",
-       "fDebugDisable": 0,
+       "snoWorld": null,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -1696,52 +1367,32 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 0,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": false,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -1752,21 +1403,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -1774,24 +1415,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -1799,25 +1430,19 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "--Hydra.QuestAdvancePhase()\r\n"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     },
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 48,
      "ptLink": [
       {
-       "__type__": "Type_2b920147",
+       "__type__": "QuestObjectiveSetLink",
        "__typeHash__": 730988871,
-       "unk_d17aff0": 24,
+       "dwDestinationPhaseUID": 24,
        "eLinkType": 1
       }
      ],
@@ -1835,17 +1460,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 30,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 334654326,
           "eVariableType": 7,
@@ -1862,13 +1482,13 @@
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 2197444774,
           "eVariableType": 1,
           "unk_67545b": [
            {
-            "__type__": "Type_4d3d23af",
+            "__type__": "ScriptEventParamAllowAny",
             "__typeHash__": 1295852463,
             "dwType": 1295852463,
             "eParamType": 0,
@@ -1877,13 +1497,13 @@
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 2344914334,
           "eVariableType": 11,
           "unk_67545b": [
            {
-            "__type__": "Type_4d3d23af",
+            "__type__": "ScriptEventParamAllowAny",
             "__typeHash__": 1295852463,
             "dwType": 1295852463,
             "eParamType": 0,
@@ -1900,20 +1520,16 @@
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(sEventName, idActor, nUserParam)\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -1924,52 +1540,32 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 0,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": false,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -1980,21 +1576,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -2002,24 +1588,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -2027,54 +1603,38 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "Hydra.QuestAdvancePhase()\r\n"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     }
    ],
    "unk_4b2de13": 4294967295,
    "unk_188a07a": [],
-   "unk_61c2846": 0,
-   "unk_951ad2a": {
-    "value": -1,
-    "group": 51,
-    "groupName": "Condition",
-    "type": "sno"
-   },
-   "snoReward": {
-    "value": -1,
-    "group": 52,
-    "groupName": "TreasureClass",
-    "type": "sno"
-   },
-   "unk_189b89b": 0,
+   "unk_61c2846": false,
+   "unk_951ad2a": null,
+   "snoReward": null,
+   "unk_189b89b": false,
    "nTimerDuration": 0,
-   "unk_2bde7b6": 0,
+   "unk_2bde7b6": false,
    "unk_d3b7ed7": [],
    "unk_8280b0e": 20,
-   "unk_eff642d": 0,
-   "unk_fc27941": 0,
+   "unk_eff642d": false,
+   "unk_fc27941": false,
    "unk_d9a8a05": 4294967295,
    "unk_5d4cfc0": 4294967295,
    "unk_669bcf8": 4294967295,
    "unk_287ecb5": 4294967295,
    "unk_6344bd7": 0,
-   "unk_9c63f9d": "",
-   "unk_c820299": "",
    "unk_fab6e45": {
     "__type__": "MarkerHandle",
     "__typeHash__": 3934284334,
     "snoMarkerSet": {
-     "value": 929445,
-     "group": 24,
+     "__raw__": 929445,
+     "__group__": 24,
+     "__type__": "DT_SNO",
+     "__typeHash__": 2764331143,
+     "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
      "groupName": "MarkerSet",
-     "type": "sno",
      "name": "Hawe_Delta (Hawe_Delta_02)"
     },
     "nID": 5
@@ -2085,10 +1645,12 @@
     "z": 0.06930220127105713
    },
    "unk_ed8215b": {
-    "value": 69068,
-    "group": 48,
+    "__raw__": 69068,
+    "__group__": 48,
+    "__type__": "DT_SNO",
+    "__typeHash__": 2764331143,
+    "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
     "groupName": "World",
-    "type": "sno",
     "name": "Sanctuary_Eastern_Continent"
    },
    "unk_f6ded77": {
@@ -2101,12 +1663,7 @@
     "__typeHash__": 1797021084,
     "hImageHandle": 0
    },
-   "snoAudioContext": {
-    "value": -1,
-    "group": 93,
-    "groupName": "AudioContext",
-    "type": "sno"
-   }
+   "snoAudioContext": null
   },
   {
    "__type__": "QuestPhase",
@@ -2118,14 +1675,14 @@
    "eType": 0,
    "arCallbackSets": [
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 22,
      "ptLink": [
       {
-       "__type__": "Type_2b920147",
+       "__type__": "QuestObjectiveSetLink",
        "__typeHash__": 730988871,
-       "unk_d17aff0": 27,
+       "dwDestinationPhaseUID": 27,
        "eLinkType": 1
       }
      ],
@@ -2143,17 +1700,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 10,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 2304262567,
           "eVariableType": 1,
@@ -2168,10 +1720,12 @@
              "__type__": "MarkerHandle",
              "__typeHash__": 3934284334,
              "snoMarkerSet": {
-              "value": 929445,
-              "group": 24,
+              "__raw__": 929445,
+              "__group__": 24,
+              "__type__": "DT_SNO",
+              "__typeHash__": 2764331143,
+              "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
               "groupName": "MarkerSet",
-              "type": "sno",
               "name": "Hawe_Delta (Hawe_Delta_02)"
              },
              "nID": 5
@@ -2180,7 +1734,7 @@
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 1739417742,
           "eVariableType": 4,
@@ -2192,17 +1746,19 @@
             "eParamType": 10,
             "dwPad": 0,
             "snoConversation": {
-             "value": 723868,
-             "group": 12,
+             "__raw__": 723868,
+             "__group__": 12,
+             "__type__": "DT_SNO",
+             "__typeHash__": 2764331143,
+             "__targetFileName__": "base/meta/Conversation/QST_Hawe_Delta_Cine_CHN.cnv",
              "groupName": "Conversation",
-             "type": "sno",
              "name": "QST_Hawe_Delta_Cine_CHN"
             }
            }
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 1387993843,
           "eVariableType": 1,
@@ -2213,7 +1769,7 @@
             "dwType": 106673333,
             "eParamType": 7,
             "dwPad": 0,
-            "bIsPlayer": 1
+            "bIsPlayer": true
            }
           ]
          }
@@ -2226,20 +1782,16 @@
        "eIndicatorType": 2,
        "unk_9c1ea4f": 0,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(idActorNPC, sConversation, idActorPlayer)\r\n\tHydra.ActorSetSheathPreference(idLorathKneel, 1)\r\n\tHydra.ActorSetAnimSetOverride(idLorathKneel, ANIM_LORATH_KNEEL, false)\r\n\tHydra.Wait(0.5)\r\n\tHydra.ActorPlaySimpleConversation(conv_LorathGoAhead, idLorathKneel)\r\n\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -2250,52 +1802,32 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 0,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": false,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -2306,21 +1838,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -2328,24 +1850,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -2353,54 +1865,38 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "Hydra.QuestAdvancePhase()\r\n"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     }
    ],
    "unk_4b2de13": 4294967295,
    "unk_188a07a": [],
-   "unk_61c2846": 0,
-   "unk_951ad2a": {
-    "value": -1,
-    "group": 51,
-    "groupName": "Condition",
-    "type": "sno"
-   },
-   "snoReward": {
-    "value": -1,
-    "group": 52,
-    "groupName": "TreasureClass",
-    "type": "sno"
-   },
-   "unk_189b89b": 0,
+   "unk_61c2846": false,
+   "unk_951ad2a": null,
+   "snoReward": null,
+   "unk_189b89b": false,
    "nTimerDuration": 0,
-   "unk_2bde7b6": 0,
+   "unk_2bde7b6": false,
    "unk_d3b7ed7": [],
    "unk_8280b0e": 20,
-   "unk_eff642d": 0,
-   "unk_fc27941": 0,
+   "unk_eff642d": false,
+   "unk_fc27941": false,
    "unk_d9a8a05": 4294967295,
    "unk_5d4cfc0": 4294967295,
    "unk_669bcf8": 4294967295,
    "unk_287ecb5": 4294967295,
    "unk_6344bd7": 0,
-   "unk_9c63f9d": "",
-   "unk_c820299": "",
    "unk_fab6e45": {
     "__type__": "MarkerHandle",
     "__typeHash__": 3934284334,
     "snoMarkerSet": {
-     "value": 929445,
-     "group": 24,
+     "__raw__": 929445,
+     "__group__": 24,
+     "__type__": "DT_SNO",
+     "__typeHash__": 2764331143,
+     "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
      "groupName": "MarkerSet",
-     "type": "sno",
      "name": "Hawe_Delta (Hawe_Delta_02)"
     },
     "nID": 5
@@ -2411,10 +1907,12 @@
     "z": 0.06930220127105713
    },
    "unk_ed8215b": {
-    "value": 69068,
-    "group": 48,
+    "__raw__": 69068,
+    "__group__": 48,
+    "__type__": "DT_SNO",
+    "__typeHash__": 2764331143,
+    "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
     "groupName": "World",
-    "type": "sno",
     "name": "Sanctuary_Eastern_Continent"
    },
    "unk_f6ded77": {
@@ -2427,12 +1925,7 @@
     "__typeHash__": 1797021084,
     "hImageHandle": 0
    },
-   "snoAudioContext": {
-    "value": -1,
-    "group": 93,
-    "groupName": "AudioContext",
-    "type": "sno"
-   }
+   "snoAudioContext": null
   },
   {
    "__type__": "QuestPhase",
@@ -2444,7 +1937,7 @@
    "eType": 0,
    "arCallbackSets": [
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 64,
      "ptLink": [],
@@ -2462,17 +1955,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 46,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 2197444774,
           "eVariableType": 1,
@@ -2483,12 +1971,12 @@
             "dwType": 106673333,
             "eParamType": 7,
             "dwPad": 0,
-            "bIsPlayer": 1
+            "bIsPlayer": true
            }
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 3941013568,
           "eVariableType": 1,
@@ -2503,10 +1991,12 @@
              "__type__": "MarkerHandle",
              "__typeHash__": 3934284334,
              "snoMarkerSet": {
-              "value": 929445,
-              "group": 24,
+              "__raw__": 929445,
+              "__group__": 24,
+              "__type__": "DT_SNO",
+              "__typeHash__": 2764331143,
+              "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
               "groupName": "MarkerSet",
-              "type": "sno",
               "name": "Hawe_Delta (Hawe_Delta_02)"
              },
              "nID": 86
@@ -2522,20 +2012,9 @@
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
-       "snoWorld": {
-        "value": -1,
-        "group": 48,
-        "groupName": "World",
-        "type": "sno"
-       },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(idActor, idActorDetector)\r\n\r\n\tlocal tPlayers = Hydra.QuestGetParticipants()\r\n\t\r\n\tfor i = 1, #tPlayers do\r\n\t\tHydra.ActorPlayConversation(conv_Whisper_01, tPlayers[i])\r\n\tend\r\n\r\n\r\nend\r\n",
-       "fDebugDisable": 0,
+       "snoWorld": null,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -2546,52 +2025,32 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 0,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": false,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -2602,21 +2061,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -2624,24 +2073,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -2649,25 +2088,19 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "--Hydra.QuestAdvancePhase()\r\n"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     },
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 54,
      "ptLink": [
       {
-       "__type__": "Type_2b920147",
+       "__type__": "QuestObjectiveSetLink",
        "__typeHash__": 730988871,
-       "unk_d17aff0": 66,
+       "dwDestinationPhaseUID": 66,
        "eLinkType": 1
       }
      ],
@@ -2685,17 +2118,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 46,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 2197444774,
           "eVariableType": 1,
@@ -2706,12 +2134,12 @@
             "dwType": 106673333,
             "eParamType": 7,
             "dwPad": 0,
-            "bIsPlayer": 1
+            "bIsPlayer": true
            }
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 3941013568,
           "eVariableType": 1,
@@ -2726,10 +2154,12 @@
              "__type__": "MarkerHandle",
              "__typeHash__": 3934284334,
              "snoMarkerSet": {
-              "value": 929445,
-              "group": 24,
+              "__raw__": 929445,
+              "__group__": 24,
+              "__type__": "DT_SNO",
+              "__typeHash__": 2764331143,
+              "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
               "groupName": "MarkerSet",
-              "type": "sno",
               "name": "Hawe_Delta (Hawe_Delta_02)"
              },
              "nID": 66
@@ -2746,20 +2176,16 @@
        "eIndicatorType": 2,
        "unk_9c1ea4f": 0,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(idActor, idActorDetector)\r\n\r\n\tlocal tPlayers = Hydra.QuestGetParticipants()\r\n\t\r\n\tfor i = 1, #tPlayers do\r\n\t\tHydra.ActorPlayConversation(conv_Whisper, tPlayers[i])\r\n\tend\r\n\r\n\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -2770,52 +2196,32 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 0,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": false,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -2826,21 +2232,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -2848,24 +2244,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -2873,54 +2259,38 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "Hydra.QuestAdvancePhase()\r\n"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     }
    ],
    "unk_4b2de13": 4294967295,
    "unk_188a07a": [],
-   "unk_61c2846": 0,
-   "unk_951ad2a": {
-    "value": -1,
-    "group": 51,
-    "groupName": "Condition",
-    "type": "sno"
-   },
-   "snoReward": {
-    "value": -1,
-    "group": 52,
-    "groupName": "TreasureClass",
-    "type": "sno"
-   },
-   "unk_189b89b": 0,
+   "unk_61c2846": false,
+   "unk_951ad2a": null,
+   "snoReward": null,
+   "unk_189b89b": false,
    "nTimerDuration": 0,
-   "unk_2bde7b6": 0,
+   "unk_2bde7b6": false,
    "unk_d3b7ed7": [],
    "unk_8280b0e": 20,
-   "unk_eff642d": 0,
-   "unk_fc27941": 0,
+   "unk_eff642d": false,
+   "unk_fc27941": false,
    "unk_d9a8a05": 4294967295,
    "unk_5d4cfc0": 4294967295,
    "unk_669bcf8": 4294967295,
    "unk_287ecb5": 4294967295,
    "unk_6344bd7": 0,
-   "unk_9c63f9d": "",
-   "unk_c820299": "",
    "unk_fab6e45": {
     "__type__": "MarkerHandle",
     "__typeHash__": 3934284334,
     "snoMarkerSet": {
-     "value": 929445,
-     "group": 24,
+     "__raw__": 929445,
+     "__group__": 24,
+     "__type__": "DT_SNO",
+     "__typeHash__": 2764331143,
+     "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
      "groupName": "MarkerSet",
-     "type": "sno",
      "name": "Hawe_Delta (Hawe_Delta_02)"
     },
     "nID": 1
@@ -2931,10 +2301,12 @@
     "z": 1.2983200550079346
    },
    "unk_ed8215b": {
-    "value": 69068,
-    "group": 48,
+    "__raw__": 69068,
+    "__group__": 48,
+    "__type__": "DT_SNO",
+    "__typeHash__": 2764331143,
+    "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
     "groupName": "World",
-    "type": "sno",
     "name": "Sanctuary_Eastern_Continent"
    },
    "unk_f6ded77": {
@@ -2947,12 +2319,7 @@
     "__typeHash__": 1797021084,
     "hImageHandle": 0
    },
-   "snoAudioContext": {
-    "value": -1,
-    "group": 93,
-    "groupName": "AudioContext",
-    "type": "sno"
-   }
+   "snoAudioContext": null
   },
   {
    "__type__": "QuestPhase",
@@ -2964,7 +2331,7 @@
    "eType": 0,
    "arCallbackSets": [
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 67,
      "ptLink": [],
@@ -2982,17 +2349,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 27,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 1387993843,
           "eVariableType": 1,
@@ -3003,12 +2365,12 @@
             "dwType": 106673333,
             "eParamType": 7,
             "dwPad": 0,
-            "bIsPlayer": 1
+            "bIsPlayer": true
            }
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 1072510348,
           "eVariableType": 1,
@@ -3023,10 +2385,12 @@
              "__type__": "MarkerHandle",
              "__typeHash__": 3934284334,
              "snoMarkerSet": {
-              "value": 929445,
-              "group": 24,
+              "__raw__": 929445,
+              "__group__": 24,
+              "__type__": "DT_SNO",
+              "__typeHash__": 2764331143,
+              "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
               "groupName": "MarkerSet",
-              "type": "sno",
               "name": "Hawe_Delta (Hawe_Delta_02)"
              },
              "nID": 1
@@ -3043,20 +2407,16 @@
        "eIndicatorType": 2,
        "unk_9c1ea4f": 71,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(idActorPlayer, idActorGizmo)\r\n\t-- Play IGC\r\n\tCampaignForcedPartyGatherPlayIGC(conv_CHT, idActorPlayer)\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -3067,23 +2427,18 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       },
@@ -3100,17 +2455,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 64,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 3623153331,
           "eVariableType": 20,
@@ -3122,17 +2472,19 @@
             "eParamType": 38,
             "dwPad": 0,
             "snoEffectGroup": {
-             "value": 934324,
-             "group": 14,
+             "__raw__": 934324,
+             "__group__": 14,
+             "__type__": "DT_SNO",
+             "__typeHash__": 2764331143,
+             "__targetFileName__": "base/meta/EffectGroup/Conv_QST_Hawe_Delta_Cine_CHT.efg",
              "groupName": "EffectGroup",
-             "type": "sno",
              "name": "Conv_QST_Hawe_Delta_Cine_CHT"
             }
            }
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 1387993843,
           "eVariableType": 1,
@@ -3143,7 +2495,7 @@
             "dwType": 106673333,
             "eParamType": 0,
             "dwPad": 0,
-            "bIsPlayer": 1
+            "bIsPlayer": true
            }
           ]
          }
@@ -3156,20 +2508,16 @@
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(snoCameraEffectGroup, idActorPlayer)\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -3180,52 +2528,32 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 0,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": false,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -3236,21 +2564,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -3258,24 +2576,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -3283,18 +2591,12 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "Hydra.EventSend(\"CameraEventCompleted\")\r\n"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     },
     {
-     "__type__": "Type_11b9d2b9",
+     "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
      "dwUID": 70,
      "ptLink": [],
@@ -3312,17 +2614,12 @@
         "__typeHash__": 2935055576,
         "eEventType": 30,
         "dwListenerFlags": 0,
-        "snoCondition": {
-         "value": -1,
-         "group": 51,
-         "groupName": "Condition",
-         "type": "sno"
-        },
-        "unk_c3ba01d": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 334654326,
           "eVariableType": 7,
@@ -3339,13 +2636,13 @@
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 2197444774,
           "eVariableType": 1,
           "unk_67545b": [
            {
-            "__type__": "Type_4d3d23af",
+            "__type__": "ScriptEventParamAllowAny",
             "__typeHash__": 1295852463,
             "dwType": 1295852463,
             "eParamType": 0,
@@ -3354,13 +2651,13 @@
           ]
          },
          {
-          "__type__": "Type_bd82039e",
+          "__type__": "ScriptMessageMapFilter",
           "__typeHash__": 3179414430,
           "tKey": 2344914334,
           "eVariableType": 11,
           "unk_67545b": [
            {
-            "__type__": "Type_4d3d23af",
+            "__type__": "ScriptEventParamAllowAny",
             "__typeHash__": 1295852463,
             "dwType": 1295852463,
             "eParamType": 0,
@@ -3377,20 +2674,16 @@
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": {
-        "value": 69068,
-        "group": 48,
+        "__raw__": 69068,
+        "__group__": 48,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
         "groupName": "World",
-        "type": "sno",
         "name": "Sanctuary_Eastern_Continent"
        },
-       "unk_e879cce": {
-        "value": -1,
-        "group": 12,
-        "groupName": "Conversation",
-        "type": "sno"
-       },
-       "unk_28bc3c5": "function Start(sEventName, idActor, nUserParam)\r\nend\r\n",
-       "fDebugDisable": 0,
+       "unk_e879cce": null,
+       "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
         "__typeHash__": 2884204419,
@@ -3401,52 +2694,32 @@
          "y": 0
         },
         "flRadius": 0,
-        "bValid": 0,
-        "unk_16e2f51": 0
+        "bValid": false,
+        "bManuallySpecified": false
        },
        "arRegionOverrides": [],
        "unk_6a71535": 0,
        "arLevelAreas": [],
        "arSubzones": [],
        "arSnonameTokens": [],
-       "unk_a71fd1a": {
+       "tReputationObjective": {
         "__type__": "ReputationValuePair",
         "__typeHash__": 2871889556,
-        "snoReputation": {
-         "value": -1,
-         "group": 105,
-         "groupName": "Reputation",
-         "type": "sno"
-        },
+        "snoReputation": null,
         "nValue": 0
        }
       }
      ],
-     "unk_a845fa9": 1,
-     "unk_89d02b1": {
-      "value": -1,
-      "group": 73,
-      "groupName": "Item",
-      "type": "sno"
-     },
+     "unk_a845fa9": true,
+     "unk_89d02b1": null,
      "unk_68d4eb0": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 3,
       "nGoldTier": 3,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -3457,21 +2730,11 @@
      "tReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -3479,24 +2742,14 @@
       },
       "unk_f8ed991": []
      },
-     "unk_b3249db": {
+     "tKeyedDungeonReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
-      "snoTreasureClass": {
-       "value": -1,
-       "group": 52,
-       "groupName": "TreasureClass",
-       "type": "sno"
-      },
+      "snoTreasureClass": null,
       "nXPTier": 0,
       "nGoldTier": 0,
-      "snoTrackedReward": {
-       "value": -1,
-       "group": 126,
-       "groupName": "TrackedReward",
-       "type": "sno"
-      },
-      "unk_b0fd814": 0,
+      "snoTrackedReward": null,
+      "unk_b0fd814": false,
       "unk_186d5e6": {
        "__type__": "Type_e12242af",
        "__typeHash__": 3777118895,
@@ -3504,54 +2757,38 @@
       },
       "unk_f8ed991": []
      },
-     "unk_8c63f3c": 0,
-     "unk_e903c4e": {
-      "value": -1,
-      "group": 12,
-      "groupName": "Conversation",
-      "type": "sno"
-     },
-     "unk_8f432f8": [],
-     "unk_98d4504": "Hydra.QuestAdvancePhase()\r\n"
+     "unk_8c63f3c": false,
+     "unk_e903c4e": null,
+     "unk_8f432f8": []
     }
    ],
    "unk_4b2de13": 4294967295,
    "unk_188a07a": [],
-   "unk_61c2846": 0,
-   "unk_951ad2a": {
-    "value": -1,
-    "group": 51,
-    "groupName": "Condition",
-    "type": "sno"
-   },
-   "snoReward": {
-    "value": -1,
-    "group": 52,
-    "groupName": "TreasureClass",
-    "type": "sno"
-   },
-   "unk_189b89b": 0,
+   "unk_61c2846": false,
+   "unk_951ad2a": null,
+   "snoReward": null,
+   "unk_189b89b": false,
    "nTimerDuration": 0,
-   "unk_2bde7b6": 0,
+   "unk_2bde7b6": false,
    "unk_d3b7ed7": [],
    "unk_8280b0e": 20,
-   "unk_eff642d": 0,
-   "unk_fc27941": 0,
+   "unk_eff642d": false,
+   "unk_fc27941": false,
    "unk_d9a8a05": 4294967295,
    "unk_5d4cfc0": 4294967295,
    "unk_669bcf8": 4294967295,
    "unk_287ecb5": 4294967295,
    "unk_6344bd7": 0,
-   "unk_9c63f9d": "",
-   "unk_c820299": "",
    "unk_fab6e45": {
     "__type__": "MarkerHandle",
     "__typeHash__": 3934284334,
     "snoMarkerSet": {
-     "value": 929445,
-     "group": 24,
+     "__raw__": 929445,
+     "__group__": 24,
+     "__type__": "DT_SNO",
+     "__typeHash__": 2764331143,
+     "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
      "groupName": "MarkerSet",
-     "type": "sno",
      "name": "Hawe_Delta (Hawe_Delta_02)"
     },
     "nID": 1
@@ -3562,10 +2799,12 @@
     "z": 1.2983200550079346
    },
    "unk_ed8215b": {
-    "value": 69068,
-    "group": 48,
+    "__raw__": 69068,
+    "__group__": 48,
+    "__type__": "DT_SNO",
+    "__typeHash__": 2764331143,
+    "__targetFileName__": "base/meta/World/Sanctuary_Eastern_Continent.wrl",
     "groupName": "World",
-    "type": "sno",
     "name": "Sanctuary_Eastern_Continent"
    },
    "unk_f6ded77": {
@@ -3578,175 +2817,114 @@
     "__typeHash__": 1797021084,
     "hImageHandle": 0
    },
-   "snoAudioContext": {
-    "value": -1,
-    "group": 93,
-    "groupName": "AudioContext",
-    "type": "sno"
-   }
+   "snoAudioContext": null
   }
  ],
- "unk_1755172": [],
+ "arRequiredReputations": [],
  "arReputationRewards": [],
- "unk_46e3956": [],
- "snoStartCondition": {
-  "value": -1,
-  "group": 51,
-  "groupName": "Condition",
-  "type": "sno"
- },
- "unk_c47e01a": "",
- "unk_993f312": "",
- "unk_39af3bb": "",
- "unk_857ebd2": "",
- "unk_556de93": "",
+ "arRequiredCompletedQuests": [],
+ "snoStartCondition": null,
  "arFollowers": [
   {
    "__type__": "QuestFollower",
    "__typeHash__": 2974844252,
    "snoActor": {
-    "value": 447593,
-    "group": 1,
+    "__raw__": 447593,
+    "__group__": 1,
+    "__type__": "DT_SNO",
+    "__typeHash__": 2764331143,
+    "__targetFileName__": "base/meta/Actor/NPC_QST_Lorath_Follower.acr",
     "groupName": "Actor",
-    "type": "sno",
     "name": "NPC_QST_Lorath_Follower"
    },
-   "unk_74ee52d": {
+   "tSpawnBehavior": {
     "__type__": "Type_da8a2315",
     "__typeHash__": 3666486037,
     "unk_6c68319": 0,
-    "unk_d64b2c9": 0,
-    "snoSummonPower": {
-     "value": -1,
-     "group": 29,
-     "groupName": "Power",
-     "type": "sno"
-    },
+    "unk_d64b2c9": false,
+    "snoSummonPower": null,
     "tMarkerHandle": {
      "__type__": "MarkerHandle",
      "__typeHash__": 3934284334,
-     "snoMarkerSet": {
-      "value": -1,
-      "group": 24,
-      "groupName": "MarkerSet",
-      "type": "sno"
-     },
+     "snoMarkerSet": null,
      "nID": -1
     },
     "eVisibility": 0,
-    "unk_209d19e": 0
+    "unk_209d19e": false
    },
    "arPhases": [
     {
      "__type__": "Type_bc83f219",
      "__typeHash__": 3162763801,
      "dwPhase": 15,
-     "unk_74ee52d": {
+     "tSpawnBehavior": {
       "__type__": "Type_da8a2315",
       "__typeHash__": 3666486037,
       "unk_6c68319": 3,
-      "unk_d64b2c9": 0,
-      "snoSummonPower": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "unk_d64b2c9": false,
+      "snoSummonPower": null,
       "tMarkerHandle": {
        "__type__": "MarkerHandle",
        "__typeHash__": 3934284334,
        "snoMarkerSet": {
-        "value": 929445,
-        "group": 24,
+        "__raw__": 929445,
+        "__group__": 24,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
         "groupName": "MarkerSet",
-        "type": "sno",
         "name": "Hawe_Delta (Hawe_Delta_02)"
        },
        "nID": 94
       },
       "eVisibility": 0,
-      "unk_209d19e": 0
+      "unk_209d19e": false
      },
-     "unk_c49c579": {
-      "value": -1,
-      "group": 51,
-      "groupName": "Condition",
-      "type": "sno"
-     },
+     "snoPlayerAttachCondition": null,
      "arLevelAreas": []
     },
     {
      "__type__": "Type_bc83f219",
      "__typeHash__": 3162763801,
      "dwPhase": 18,
-     "unk_74ee52d": {
+     "tSpawnBehavior": {
       "__type__": "Type_da8a2315",
       "__typeHash__": 3666486037,
       "unk_6c68319": 0,
-      "unk_d64b2c9": 0,
-      "snoSummonPower": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "unk_d64b2c9": false,
+      "snoSummonPower": null,
       "tMarkerHandle": {
        "__type__": "MarkerHandle",
        "__typeHash__": 3934284334,
-       "snoMarkerSet": {
-        "value": -1,
-        "group": 24,
-        "groupName": "MarkerSet",
-        "type": "sno"
-       },
+       "snoMarkerSet": null,
        "nID": -1
       },
       "eVisibility": 0,
-      "unk_209d19e": 0
+      "unk_209d19e": false
      },
-     "unk_c49c579": {
-      "value": -1,
-      "group": 51,
-      "groupName": "Condition",
-      "type": "sno"
-     },
+     "snoPlayerAttachCondition": null,
      "arLevelAreas": []
     },
     {
      "__type__": "Type_bc83f219",
      "__typeHash__": 3162763801,
      "dwPhase": 21,
-     "unk_74ee52d": {
+     "tSpawnBehavior": {
       "__type__": "Type_da8a2315",
       "__typeHash__": 3666486037,
       "unk_6c68319": 0,
-      "unk_d64b2c9": 0,
-      "snoSummonPower": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "unk_d64b2c9": false,
+      "snoSummonPower": null,
       "tMarkerHandle": {
        "__type__": "MarkerHandle",
        "__typeHash__": 3934284334,
-       "snoMarkerSet": {
-        "value": -1,
-        "group": 24,
-        "groupName": "MarkerSet",
-        "type": "sno"
-       },
+       "snoMarkerSet": null,
        "nID": -1
       },
       "eVisibility": 0,
-      "unk_209d19e": 0
+      "unk_209d19e": false
      },
-     "unk_c49c579": {
-      "value": -1,
-      "group": 51,
-      "groupName": "Condition",
-      "type": "sno"
-     },
+     "snoPlayerAttachCondition": null,
      "arLevelAreas": []
     }
    ]
@@ -3755,74 +2933,58 @@
    "__type__": "QuestFollower",
    "__typeHash__": 2974844252,
    "snoActor": {
-    "value": 594317,
-    "group": 1,
+    "__raw__": 594317,
+    "__group__": 1,
+    "__type__": "DT_SNO",
+    "__typeHash__": 2764331143,
+    "__targetFileName__": "base/meta/Actor/NPC_QST_Neyrelle_Follower_Magic.acr",
     "groupName": "Actor",
-    "type": "sno",
     "name": "NPC_QST_Neyrelle_Follower_Magic"
    },
-   "unk_74ee52d": {
+   "tSpawnBehavior": {
     "__type__": "Type_da8a2315",
     "__typeHash__": 3666486037,
     "unk_6c68319": 0,
-    "unk_d64b2c9": 0,
-    "snoSummonPower": {
-     "value": -1,
-     "group": 29,
-     "groupName": "Power",
-     "type": "sno"
-    },
+    "unk_d64b2c9": false,
+    "snoSummonPower": null,
     "tMarkerHandle": {
      "__type__": "MarkerHandle",
      "__typeHash__": 3934284334,
-     "snoMarkerSet": {
-      "value": -1,
-      "group": 24,
-      "groupName": "MarkerSet",
-      "type": "sno"
-     },
+     "snoMarkerSet": null,
      "nID": -1
     },
     "eVisibility": 0,
-    "unk_209d19e": 0
+    "unk_209d19e": false
    },
    "arPhases": [
     {
      "__type__": "Type_bc83f219",
      "__typeHash__": 3162763801,
      "dwPhase": 15,
-     "unk_74ee52d": {
+     "tSpawnBehavior": {
       "__type__": "Type_da8a2315",
       "__typeHash__": 3666486037,
       "unk_6c68319": 3,
-      "unk_d64b2c9": 0,
-      "snoSummonPower": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "unk_d64b2c9": false,
+      "snoSummonPower": null,
       "tMarkerHandle": {
        "__type__": "MarkerHandle",
        "__typeHash__": 3934284334,
        "snoMarkerSet": {
-        "value": 929445,
-        "group": 24,
+        "__raw__": 929445,
+        "__group__": 24,
+        "__type__": "DT_SNO",
+        "__typeHash__": 2764331143,
+        "__targetFileName__": "base/meta/MarkerSet/Hawe_Delta (Hawe_Delta_02).mrk",
         "groupName": "MarkerSet",
-        "type": "sno",
         "name": "Hawe_Delta (Hawe_Delta_02)"
        },
        "nID": 93
       },
       "eVisibility": 0,
-      "unk_209d19e": 0
+      "unk_209d19e": false
      },
-     "unk_c49c579": {
-      "value": -1,
-      "group": 51,
-      "groupName": "Condition",
-      "type": "sno"
-     },
+     "snoPlayerAttachCondition": null,
      "arLevelAreas": []
     }
    ]
@@ -3833,21 +2995,13 @@
  "unk_2aa5f20": [],
  "unk_b43b442": [],
  "gbidSurveyType": {
-  "value": 2427452660,
-  "type": "gbid",
+  "__raw__": 2427452660,
+  "__type__": "DT_GBID",
+  "__typeHash__": 1028170061,
   "group": 57,
   "name": "QuestHighChance"
  },
- "unk_b37e635": {
-  "value": 4294967295,
-  "type": "gbid",
-  "group": 57
- },
- "snoAudioContext": {
-  "value": -1,
-  "group": 93,
-  "groupName": "AudioContext",
-  "type": "sno"
- },
- "unk_af3a4c1": []
+ "gbidNightmareDungeonSurveyType": null,
+ "snoAudioContext": null,
+ "arAllReferencedItems": []
 }

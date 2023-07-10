@@ -1,7 +1,14 @@
 const fs = require('fs');
 const node_path = require('node:path');
 const definitions = require('./definitions.json');
+
+const attributes = Object.values(require('./attributes.json')).reduce((t, v) => {
+  t[v.eAttrib] = v;
+  return t;
+}, {});
+
 const snoGroups = require('./json/snoGroups.json');
+const snoFileInfo = require('./json/snoFileInfo.json');
 
 const DEV_NONE = 0;
 const DEV_INFO = 1;
@@ -12,6 +19,7 @@ const devAttributes = DEV_INFO;
 process.chdir(__dirname);
 
 let toc = {};
+let snoPayloadMap = {};
 let gbid = fs.existsSync('json/GBID.json') ? JSON.parse(fs.readFileSync('json/GBID.json'), null, ' ') : {};
 let readLog = [];
 let fieldHashes = {};
@@ -93,6 +101,40 @@ else {
   toc = JSON.parse(fs.readFileSync('json/base/CoreTOC.dat.json'));
 }
 
+let tocLookup = {};
+
+Object.keys(toc).forEach(group => {
+  Object.keys(toc[group]).forEach(snoID => {
+    tocLookup[snoID] = {
+      group,
+      name: toc[group][snoID],
+    };
+  });
+});
+
+if (fs.existsSync('data/base/CoreTOCSharedPayloadsMapping.dat')) {
+  let file = fs.readFileSync('data/base/CoreTOCSharedPayloadsMapping.dat');
+  let entryCount = file.readUInt32LE(4);
+
+  for (let i = 0; i < entryCount; i++) {
+    let source = file.readUInt32LE(8 + i * 8);
+    let destination = file.readUInt32LE(12 + i * 8);
+
+    if (tocLookup[source] && tocLookup[destination]) {
+      let [sourceDir, sourceExt] = snoFileInfo[tocLookup[source].group];
+      let sourceName = tocLookup[source].name;
+      let [destinationDir, destinationExt] = snoFileInfo[tocLookup[destination].group];
+      let destinationName = tocLookup[destination].name;
+      snoPayloadMap[`base/payload/${sourceDir}/${sourceName}.${sourceExt}`] = `base/payload/${destinationDir}/${destinationName}.${destinationExt}`;
+    }
+  }
+
+  fs.writeFileSync('json/base/CoreTOCSharedPayloadsMapping.dat.json', JSON.stringify(snoPayloadMap, null, ' '));
+}
+else {
+  snoPayloadMap = JSON.parse(fs.readFileSync('json/base/CoreTOCSharedPayloadsMapping.dat.json'));
+}
+
 function devCombine(normal, dev, verbose) {
   let ret = {};
 
@@ -146,11 +188,19 @@ let basicTypes = {
     readLog.push({fieldPath: fieldPath.join('.') + ' @ ' + offset, value: ret});
     ret.value = file.readUInt8(offset);
     results.readLength += 1;
+
+    if (field.serializedBitCount === 1) {
+      ret.value = Boolean(ret.value);
+    }
   },
   "DT_WORD": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
     readLog.push({fieldPath: fieldPath.join('.') + ' @ ' + offset, value: ret});
     ret.value = file.readUInt16LE(offset);
     results.readLength += 2;
+
+    if (field.serializedBitCount === 1) {
+      ret.value = Boolean(ret.value);
+    }
   },
   "DT_ENUM": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
     ret.value = file.readInt32LE(offset);
@@ -160,6 +210,10 @@ let basicTypes = {
     readLog.push({fieldPath: fieldPath.join('.') + ' @ ' + offset, value: ret});
     ret.value = file.readInt32LE(offset);
     results.readLength += 4;
+
+    if (field.serializedBitCount === 1) {
+      ret.value = Boolean(ret.value);
+    }
   },
   "DT_FLOAT": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
     readLog.push({fieldPath: fieldPath.join('.') + ' @ ' + offset, value: ret});
@@ -179,48 +233,75 @@ let basicTypes = {
   },
   "DT_SNO": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
     readLog.push({fieldPath: fieldPath.join('.') + ' @ ' + offset, value: ret});
-    ret.value = file.readInt32LE(offset);
+    results.readLength += 4;
 
-    if (devAttributes >= DEV_INFO) {
-      ret.group = field.group;
-      ret.groupName = snoGroups[field.group];
-      ret.type = 'sno';
-      if (toc[ret.group] && toc[ret.group][ret.value]) {
-        ret.name = toc[ret.group][ret.value];
-      }
+    ret.__raw__ = file.readInt32LE(offset);
+
+    if (ret.__raw__ === -1 || ret.__raw__ === 0xFFFFFFFF) {
+      ret.__raw__ = null;
+      return;
     }
 
-    results.readLength += 4;
+    ret.__group__ = field.group;
+    ret.__type__ = 'DT_SNO';
+    ret.__typeHash__ = typeHashes[0];
+
+    if (toc[ret.__group__] && snoFileInfo[ret.__group__]) {
+      ret.__targetFileName__ = 'base/meta/' + snoFileInfo[ret.__group__][0] + '/' + toc[ret.__group__][ret.__raw__] + '.' + snoFileInfo[ret.__group__][1];
+    }
+
+    ret.groupName = snoGroups[ret.__group__];
+
+    if (toc[ret.__group__] && toc[ret.__group__][ret.__raw__]) {
+      ret.name = toc[ret.__group__][ret.__raw__];
+    }
   },
   "DT_SNO_NAME": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
     readLog.push({fieldPath: fieldPath.join('.') + ' @ ' + offset, value: ret});
-    ret.value = file.readInt32LE(offset + 4);
-    ret.group = file.readInt32LE(offset);
-    ret.groupName = snoGroups[ret.group];
-    ret.type = 'sno';
+    results.readLength += 8;
 
-    if (devAttributes >= DEV_INFO) {
-      if (toc[ret.group] && toc[ret.group][ret.value]) {
-        ret.name = toc[ret.group][ret.value];
-      }
+    ret.__raw__ = file.readInt32LE(offset + 4);
+
+    if (ret.__raw__ === -1 || ret.__raw__ === 0xFFFFFFFF) {
+      ret.__raw__ = null;
+      return;
     }
 
-    results.readLength += 8;
+    ret.__group__ = file.readInt32LE(offset);
+    ret.__type__ = 'DT_SNO_NAME';
+    ret.__typeHash__ = typeHashes[0];
+
+    if (toc[ret.__group__] && snoFileInfo[ret.__group__]) {
+      ret.__targetFileName__ = 'base/meta/' + snoFileInfo[ret.__group__][0] + '/' + toc[ret.__group__][ret.__raw__] + '.' + snoFileInfo[ret.__group__][1];
+    }
+
+    ret.groupName = snoGroups[ret.__group__];
+
+    if (toc[ret.__group__] && toc[ret.__group__][ret.__raw__]) {
+      ret.name = toc[ret.__group__][ret.__raw__];
+    }
   },
   "DT_GBID": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
     readLog.push({fieldPath: fieldPath.join('.') + ' @ ' + offset, value: ret});
-    ret.value = file.readUInt32LE(offset);
-    ret.type = 'gbid';
+    results.readLength += 4;
+
+    ret.__raw__ = file.readUInt32LE(offset);
+
+    if (ret.__raw__ === -1 || ret.__raw__ === 0xFFFFFFFF) {
+      ret.__raw__ = null;
+      return;
+    }
+
+    ret.__type__ = 'DT_GBID';
+    ret.__typeHash__ = typeHashes[0];
 
     if (devAttributes >= DEV_INFO) {
       ret.group = field.group;
 
-      if (gbid[ret.group] && gbid[ret.group][ret.value] && gbid[ret.group][ret.value].length) {
-        ret.name = gbid[ret.group][ret.value][0];
+      if (gbid[ret.group] && gbid[ret.group][ret.__raw__] && gbid[ret.group][ret.__raw__].length) {
+        ret.name = gbid[ret.group][ret.__raw__][0];
       }
     }
-
-    results.readLength += 4;
   },
   "DT_STARTLOC_NAME": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
     readLog.push({fieldPath: fieldPath.join('.') + ' @ ' + offset, value: ret});
@@ -233,6 +314,10 @@ let basicTypes = {
     ret.value = file.readUInt32LE(offset);
 
     results.readLength += 4;
+
+    if (field.serializedBitCount === 1) {
+      ret.value = Boolean(ret.value);
+    }
   },
   "DT_ACD_NETWORK_NAME": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
     readLog.push({fieldPath: fieldPath.join('.') + ' @ ' + offset, value: ret});
@@ -251,6 +336,10 @@ let basicTypes = {
     ret.value = file.readBigInt64LE(offset).toString(16);
 
     results.readLength += 8;
+
+    if (field.serializedBitCount === 1) {
+      ret.value = Boolean(ret.value);
+    }
   },
   "DT_RANGE": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
     readLog.push({fieldPath: fieldPath.join('.') + ' @ ' + offset, value: ret});
@@ -597,6 +686,10 @@ function readStructure(file, typeHashes, offset, field, fieldPath, results = { r
 
     type.fields.forEach(field => {
       ret[field.name] = readStructure(file, field.type, offset + field.offset, field, [...fieldPath, field.name], subresults);
+
+      if (ret.eAttribute !== null && ret.eAttribute !== undefined) {
+        ret.__eAttribute_name__ = attributes[ret.eAttribute].name;
+      }    
     });
 
     results.readLength += type.size;
@@ -715,10 +808,21 @@ fileNames.forEach((fileName, index) => {
           gbMap[data.eGameBalanceType].push(newFileName);
         }
 
-        fs.writeFileSync(newFileName, JSON.stringify(devCombine(data, {
-          __fileName__: fileName,
-          __snoID__: snoID,
-        }), null, ' ') + '\n');
+        let payloadName = fileName.replace(/^data\/base\/meta/g, 'base/payload');
+
+        if (snoPayloadMap[payloadName]) {
+          fs.writeFileSync(newFileName, JSON.stringify(devCombine(data, {
+            __fileName__: fileName.replace(/^data\//g, ''),
+            __snoID__: snoID,
+            __payloadOverride__: snoPayloadMap[payloadName],
+          }), null, ' ') + '\n');
+        }
+        else {
+          fs.writeFileSync(newFileName, JSON.stringify(devCombine(data, {
+            __fileName__: fileName.replace(/^data\//g, ''),
+            __snoID__: snoID,
+          }), null, ' ') + '\n');
+        }
 
         success++;
       }

@@ -1,6 +1,6 @@
 # Definition: GlobalAVData
 # Hash: cb3159a2
-# Flags: 00000000 00000010 00000011 00111010
+# Flags: 0x2033a
 # Inherits: GlobalBase (15d1144c)
 # Inherits: PolymorphicBase (5d4bac71)
 
@@ -8,14 +8,14 @@
 0xc: dwPad # DT_UINT (32 bits used)
 0x10: wdMicrophoneHeight # DT_FLOAT (32 bits used)
 0x14: wdMicrophoneXYOffset # DT_FLOAT (32 bits used)
-0x18: unk_4c9095b # DT_FLOAT (32 bits used)
+0x18: flMicrophoneTiltCorrection # DT_FLOAT (32 bits used)
 0x1c: unk_bcf2fa1 # DT_FLOAT (32 bits used)
 0x20: flDopplerFactor # DT_FLOAT (32 bits used)
 0x24: flAttenuationFactor # DT_FLOAT (32 bits used)
-0x28: unk_581b15a # DT_FLOAT (32 bits used)
-0x2c: unk_f1fb37b # DT_FLOAT (32 bits used)
+0x28: flFriendlyAttenuationFactor # DT_FLOAT (32 bits used)
+0x2c: flEnemyAttenuationFactor # DT_FLOAT (32 bits used)
 0x30: unk_a24f195 # DT_FLOAT (32 bits used)
-0x34: unk_de216d0 # unknown 0xe8e345d9
+0x34: unk_de216d0 # ConversationTypeSounds
 0x54: unk_ee2f4d9 # unknown 0xabec9f65
 0x5c: unk_aab60e9 # DT_INT (1 bits used)
 0x60: unk_5e1713 # DT_INT (1 bits used)
@@ -36,7 +36,7 @@
 0x9c: unk_a674d1f # DT_FLOAT (32 bits used)
 0xa0: unk_48115e6 # DT_FLOAT (32 bits used)
 0xa4: unk_1140ffa # DT_FLOAT (32 bits used)
-0xa8: unk_27bd142 # DT_FLOAT (32 bits used)
+0xa8: flMultiplayerSmoothing # DT_FLOAT (32 bits used)
 0xac: unk_b7979d6 # DT_FLOAT (32 bits used)
 0xb0: unk_1dc7c7a # DT_FLOAT (32 bits used)
 0xb4: unk_15e2cbc # DT_FLOAT (32 bits used)
@@ -76,7 +76,7 @@
 0x14c: unk_ed20455 # DT_RGBACOLOR (32 bits used)
 0x150: unk_a879fd8 # DT_RGBACOLOR (32 bits used)
 0x154: unk_614e428 # DT_FLOAT (32 bits used)
-0x158: unk_b7ccb15 # DT_FLOAT (32 bits used)
+0x158: flTranslucencyScale # DT_FLOAT (32 bits used)
 0x15c: unk_ed46ae1 # DT_FLOAT (32 bits used)
 0x160: unk_a3a221d # DT_FLOAT (32 bits used)
 0x164: unk_4450d33 # DT_FLOAT (32 bits used)
@@ -116,7 +116,7 @@
 0x204: unk_13a3e3b # DT_FLOAT (32 bits used)
 0x208: unk_cb97e5a # DT_FLOAT (32 bits used)
 0x20c: unk_8fb07f8 # DT_FLOAT (32 bits used)
-0x210: unk_ae24927 # DT_FLOAT (32 bits used)
+0x210: flFinalLevels # DT_FLOAT (32 bits used)
 0x214: unk_c9de46 # DT_FLOAT (32 bits used)
 0x218: unk_b3fd1d8 # DT_FLOAT (32 bits used)
 0x21c: unk_5594707 # DT_FLOAT (32 bits used)
@@ -139,8 +139,8 @@
 0x260: unk_bc4473 # DT_FLOAT (32 bits used)
 0x264: unk_cb3bd6f # DT_FLOAT (32 bits used)
 0x268: unk_e69e500 # DT_FLOAT (32 bits used)
-0x270: unk_9d0dad3 # DT_VARIABLEARRAY => unknown 0x11e7e638
-0x280: unk_63a579c # DT_FIXEDARRAY [6 array size] => unknown 0xdd0bf409
+0x270: arAudioMonsterCategories # DT_VARIABLEARRAY => AudioMonsterCategory
+0x280: arTraversalSurfaceOptions # DT_FIXEDARRAY [6 array size] => TraversalSurfaceOptions
 0x2e0: unk_efa9723 # DT_INT (32 bits used)
 0x2e4: unk_2140bd4 # DT_INT (32 bits used)
 0x2e8: unk_9e6e6b5 # DT_INT (32 bits used)
@@ -155,11 +155,11 @@
 0x30c: unk_575837 # DT_FLOAT (32 bits used)
 0x310: unk_93531cf # DT_FLOAT (32 bits used)
 0x314: unk_4ae2208 # DT_FLOAT (32 bits used)
-0x318: unk_8c41fbd # DT_VARIABLEARRAY => TestDefinitionMusic
+0x318: ptVOParameters # DT_VARIABLEARRAY => WwiseGameParameter
 0x328: unk_5202085 # DT_FLOAT (32 bits used)
 0x32c: unk_c322de7 # DT_FLOAT (32 bits used)
 0x330: unk_aa0944b # DT_FLOAT (32 bits used)
-0x334: unk_f37fb19 # unknown 0x1d308425
+0x334: tShoreWaveSettings # ShoreWaveSettings
 0x354: unk_fa3df7c # DT_FLOAT (32 bits used)
 0x358: unk_c9c8405 # unknown 0x9934af2e
 0x38c: unk_80c61be # unknown 0x19c611ca
@@ -168,8 +168,8 @@
 0x3c0: tVertexDensitySettings # VertexDensitySettings
 0x3c4: unk_32acc50 # unknown 0x2d18fb5c
 0x3d4: tLightInfluenceSettings # LightInfluenceSettings
-0x3d8: unk_edffb30 # DT_VARIABLEARRAY => unknown 0x85177256
-0x3e8: unk_a90a48d # DT_VARIABLEARRAY => unknown 0x39952607
+0x3d8: arFoleyMaterialTags # DT_VARIABLEARRAY => FoleyMaterialTagInfo
+0x3e8: arConditionalAudioStates # DT_VARIABLEARRAY => ConditionalAudioState
 0x3f8: unk_77afde8 # UIMargins
 0x408: unk_6c7ea27 # UIMargins
 0x418: unk_23d823e # UIMargins

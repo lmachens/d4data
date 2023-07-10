@@ -1,17 +1,17 @@
 # Definition: ActorMonsterData
 # Hash: 2f81f05b
-# Flags: 00000000 00000000 00000011 00011010
+# Flags: 0x31a
 
 0x0: eGender # DT_ENUM (32 bits used)
 0x4: fIsNPC # DT_INT (1 bits used)
 0x8: unk_7c902e4 # DT_INT (1 bits used)
 0xc: unk_ac5481c # DT_INT (1 bits used)
-0x10: unk_59a87ea # DT_SNO (32 bits used) {group 0x28 "Sound"}
+0x10: snoNPCOperateSound # DT_SNO (32 bits used) {group 0x28 "Sound"}
 0x14: unk_ac1cb2e # DT_SNO (32 bits used) {group 0x1d "Power"}
 0x18: unk_765a638 # DT_FLOAT (32 bits used)
 0x1c: tNPCServiceData # NPCServiceData
 0x40: eHirelingClass # DT_ENUM (32 bits used)
-0x44: unk_91ce34f # DT_INT (1 bits used)
+0x44: fConvertsDamageToDamageStates # DT_INT (1 bits used)
 0x48: unk_6bce993 # DT_VARIABLEARRAY => unknown 0x5c44ae48
 0x58: unk_6b4a81d # DT_FLOAT (32 bits used)
 0x5c: snoMonsterFamily # DT_SNO (32 bits used) {group 0x52 "MonsterFamily"}
@@ -22,8 +22,8 @@
 0x70: tLevelScaling # LevelScalingData
 0x80: nGoldGranted # DT_INT (32 bits used)
 0x84: snoTreasureClass # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
-0x88: unk_fe8fc24 # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
-0x8c: unk_681033 # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
+0x88: snoTreasureClassElite # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
+0x8c: snoTreasureClassSuperElite # DT_SNO (32 bits used) {group 0x34 "TreasureClass"}
 0x90: flSummonLifetime # DT_FLOAT (32 bits used)
 0x94: nSummonMaxConcurrent # DT_INT (32 bits used)
 0x98: nSummonMaxTotal # DT_INT (32 bits used)
@@ -35,7 +35,7 @@
 0xf0: unk_c8306c # DT_FIXEDARRAY [4 array size] => unknown 0x2d9968c0
 0x110: snoDisallowedAffixes # DT_VARIABLEARRAY (32 bits used) {group 0x6b "MonsterAffix"} => DT_SNO
 0x120: eAITargetStyleNormal # DT_ENUM (32 bits used)
-0x124: unk_67e18ba # DT_ENUM (32 bits used)
+0x124: eAITargetStyleElite # DT_ENUM (32 bits used)
 0x128: unk_130279f # DT_GBID (32 bits used) {group 0x2a}
 0x12c: unk_4b9e5c9 # DT_GBID (32 bits used) {group 0x2a}
 0x130: unk_e7a2637 # DT_UINT (32 bits used)
@@ -47,14 +47,14 @@
 0x1c4: snoPowerPossessed # DT_SNO (32 bits used) {group 0x1d "Power"}
 0x1c8: unk_87dbd3a # DT_ENUM (32 bits used)
 0x1cc: unk_7859c5b # DT_INT (1 bits used)
-0x1d0: unk_6c2321d # DT_INT (1 bits used)
+0x1d0: bIsWorldBoss # DT_INT (1 bits used)
 0x1d4: unk_bc58cee # DT_INT (1 bits used)
 0x1d8: unk_7fdab9c # DT_INT (32 bits used)
 0x1dc: unk_e7ee8f1 # DT_INT (32 bits used)
 0x1e0: unk_e4c90d3 # DT_INT (1 bits used)
 0x1e4: unk_12ecd6a # DT_INT (1 bits used)
-0x1e8: unk_be45ce0 # DT_FLOAT (32 bits used)
-0x1ec: unk_db6a7c7 # DT_FLOAT (32 bits used)
+0x1e8: flHPScalarOverride # DT_FLOAT (32 bits used)
+0x1ec: flDamageScalarOverride # DT_FLOAT (32 bits used)
 0x1f0: unk_c2cc767 # DT_SNO (32 bits used) {group 0xe "EffectGroup"}
 0x1f4: snoStaggerPower # DT_SNO (32 bits used) {group 0x1d "Power"}
 0x1f8: snoStaggerSettings # DT_SNO (32 bits used) {group 0x82 "Stagger"}

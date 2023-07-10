@@ -1,7 +1,7 @@
 # Definition: TriggerEventAddObject
 # Hash: 21e30636
-# Flags: 00000000 00000010 00000011 00111010
-# Inherits: f8c9f5ed
+# Flags: 0x2033a
+# Inherits: TriggerEventRangedDuration (f8c9f5ed)
 # Inherits: TriggerEvent (75d01ad6)
 # Inherits: PolymorphicBase (5d4bac71)
 
@@ -12,7 +12,7 @@
 0x4c: unk_e560b0b # DT_UINT (32 bits used)
 0x50: tDuration # DT_FLOAT (32 bits used)
 0x54: dwTriggerFlags # DT_UINT (32 bits used)
-0x58: unk_a936bd9 # DT_UINT (32 bits used)
+0x58: dwTriggerFlagsEx # DT_UINT (32 bits used)
 0x5c: tCleanup # TriggerCleanup
 0x74: unk_49e9257 # DT_INT (32 bits used)
 0x78: unk_5490979 # DT_INT (32 bits used)
@@ -23,7 +23,7 @@
 0x90: dwID # DT_UINT (32 bits used)
 0x94: tHardpointLinks # DT_FIXEDARRAY [2 array size] => HardpointLink
 0xa4: unk_e7c25e0 # DT_ENUM (32 bits used)
-0xa8: unk_760871b # DT_SNO (32 bits used) {group 0x1d "Power"}
+0xa8: snoPowerEffectParam # DT_SNO (32 bits used) {group 0x1d "Power"}
 0xac: unk_beaacd1 # DT_ENUM (32 bits used)
 0xb0: unk_af58166 # DT_FLOAT (32 bits used)
 0xb4: unk_3ed00d7 # DT_FLOAT (32 bits used)
@@ -36,32 +36,32 @@
 0xd0: unk_773852b # DT_INT (1 bits used)
 0xd4: unk_62ab747 # DT_INT (1 bits used)
 0xd8: snoSubtitles # DT_SNO (32 bits used) {group 0x2a "StringList"}
-0xdc: unk_944e28b # DT_SNO (32 bits used) {group 0x2a "StringList"}
+0xdc: snoClosedCaptions # DT_SNO (32 bits used) {group 0x2a "StringList"}
 0xe0: unk_1426000 # DT_FLOAT (32 bits used)
 0xe4: unk_cb43646 # DT_INT (1 bits used)
 0xe8: fRandomLook # DT_INT (1 bits used)
 0xec: tLookLink # LookLink
 0xf0: unk_48fd494 # DT_INT (1 bits used)
 0xf4: unk_6b8bffc # DT_ENUM (32 bits used)
-0xf8: unk_e1f5441 # DT_SNO (32 bits used) {group 0x8 "AnimSet"}
-0x100: unk_9967c81 # DT_VARIABLEARRAY => unknown 0xa4f1387e
+0xf8: snoAnimSetOverride # DT_SNO (32 bits used) {group 0x8 "AnimSet"}
+0x100: snoPlayerAnimSetOverrides # DT_VARIABLEARRAY => unknown 0xa4f1387e
 0x110: dwSegmentsStep # DT_UINT (32 bits used)
-0x114: unk_6c0cb90 # DT_UINT (32 bits used)
+0x114: dwShaderMapOverride # DT_UINT (32 bits used)
 0x118: nLocalPlayerIndex # DT_INT (32 bits used)
 0x11c: flScale # DT_FLOAT (32 bits used)
 0x120: unk_b0f4eeb # DT_UINT (32 bits used)
 0x124: vecScalar # DT_VECTOR2D
 0x12c: transform # PRTransform
-0x148: unk_315ce85 # HardpointLink
+0x148: tEffectGroupHardpointLink # HardpointLink
 0x150: unk_c7fa18a # DT_RANGE => DT_FLOAT
 0x158: idRActorAttachment # DT_INT (32 bits used)
 0x15c: nPermIndex # DT_INT (32 bits used)
-0x160: unk_c90434d # DT_SNO (32 bits used) {group 0x18 "MarkerSet"}
+0x160: snoCopyFromMarkerSet # DT_SNO (32 bits used) {group 0x18 "MarkerSet"}
 0x164: unk_33e4eec # DT_INT (32 bits used)
-0x168: unk_e0d3870 # DT_UINT (32 bits used)
+0x168: nMaxAttachments # DT_UINT (32 bits used)
 0x16c: unk_a45e6bd # DT_FLOAT (32 bits used)
 0x170: unk_36bc3de # DT_FLOAT (32 bits used)
 0x174: nPriority # DT_INT (32 bits used)
-0x178: unk_245c537 # unknown 0xf74028c3
+0x178: tNPCComponentInstanceData # NPCComponentInstanceData
 0x1a0: ptLightInstanceData # DT_VARIABLEARRAY => LightInstanceData
 0x1b0: null or eof # DT_NULL

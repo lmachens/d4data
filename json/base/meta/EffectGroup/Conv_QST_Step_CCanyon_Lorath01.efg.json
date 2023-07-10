@@ -1,5 +1,5 @@
 {
- "__fileName__": "data/base/meta/EffectGroup/Conv_QST_Step_CCanyon_Lorath01.efg",
+ "__fileName__": "base/meta/EffectGroup/Conv_QST_Step_CCanyon_Lorath01.efg",
  "__snoID__": 484670,
  "__type__": "EffectGroupDefinition",
  "__typeHash__": 2057617923,
@@ -13,14 +13,14 @@
  "unk_19bdc57": 5,
  "unk_7c79fc2": 120,
  "unk_43960c1": 0,
- "unk_e5a6bb1": {
+ "tFallbackEffect": {
   "__type__": "EffectItem",
   "__typeHash__": 4037984604,
   "dwWeight": 0,
   "snoSurfaces": [],
-  "unk_7903361": [],
-  "unk_d5fd413": [],
-  "unk_ae86ed6": [],
+  "arWeaponItemTypes": [],
+  "arMonsterArchetypes": [],
+  "arActorVariantTypes": [],
   "arTopology": [],
   "unk_43e7b5a": [],
   "dwHash": 0,
@@ -38,25 +38,25 @@
       "__type__": "TriggerConditions",
       "__typeHash__": 888408526,
       "flChance": 1,
-      "bMute": 0,
-      "unk_1db3ba0": 0,
+      "bMute": false,
+      "bMuteExternal": false,
       "tDelay": 0,
-      "unk_f0d960e": {
+      "tImpactVelocityRange": {
        "rangeValue1": 0,
        "rangeValue2": 0
       },
-      "unk_1dcbf67": {
+      "tImpactWeightRange": {
        "rangeValue1": 0,
        "rangeValue2": 0
       },
       "eMaterial": 0,
       "dwConditionFlags": 1038,
-      "unk_817e082": 0,
+      "ePlayerCountCondition": 0,
       "unk_b51df67": 0,
       "dwPad": 0
      },
-     "fGenerated": 0,
-     "unk_6cba752": 0,
+     "fGenerated": false,
+     "unk_6cba752": false,
      "unk_e560b0b": 4294967295
     }
    ],
@@ -69,9 +69,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -88,29 +88,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 26.566667556762695,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -124,13 +124,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 446500,
-       "group": 1,
+       "__raw__": 446500,
+       "__group__": 1,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Actor/NPC_QST_Lorath_Combat.acr",
        "groupName": "Actor",
-       "type": "sno",
        "name": "NPC_QST_Lorath_Combat"
       },
       "dwID": 1000,
@@ -157,54 +159,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 3,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 1,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": true,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 0,
@@ -229,7 +211,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -245,48 +227,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -325,9 +282,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 1014079942,
@@ -337,36 +294,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_f3ac1b8f",
+      "__type__": "TriggerEventPlayConversationLine",
       "__typeHash__": 4088142735,
       "dwType": 4088142735,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0.3333333432674408,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 5.566667079925537,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -380,9 +337,9 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_ee01c09": 17,
+      "dwConversationNodeID": 17,
       "dwActorID": 1000,
-      "unk_acdb8a3": 1,
+      "unk_acdb8a3": true,
       "unk_e8a81a5": 4294967295
      }
     ],
@@ -394,9 +351,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 1046413202,
@@ -406,36 +363,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_58ae46c5",
+      "__type__": "TriggerEventActorPlayAnimation",
       "__typeHash__": 1487816389,
       "dwType": 1487816389,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0.13333334028720856,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 5.966667175292969,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -454,30 +411,32 @@
       "unk_4d01218": 0,
       "unk_84dd910": 0,
       "dwActorID": 1000,
-      "unk_b8e650c": 0,
+      "eAnimLayerMode": 0,
       "unk_9209538": 7,
-      "unk_a5153a1": 0,
-      "unk_5ed01be": 0,
-      "unk_9b2ead": 1,
-      "unk_bcac396": {
-       "value": 955290,
-       "group": 29,
+      "unk_a5153a1": false,
+      "unk_5ed01be": false,
+      "unk_9b2ead": true,
+      "snonameAnim": {
+       "__raw__": 955290,
+       "__group__": 29,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Power/AnimKey_Talk.pow",
        "groupName": "Power",
-       "type": "sno",
        "name": "AnimKey_Talk"
       },
-      "unk_85269a4": 0,
-      "unk_701a0bf": 1,
+      "unk_85269a4": false,
+      "fRandomPermutation": true,
       "nPermutationIndex": -1,
-      "unk_32a328c": 0,
+      "unk_32a328c": false,
       "flAnimSpeedScale": 1,
-      "unk_12c22c8": 100,
-      "unk_c7ffac9": 0,
+      "dwAnimWeight": 100,
+      "eAnimLoopMode": 0,
       "unk_c86af88": 0,
       "unk_396c7d1": 0,
-      "unk_515279b": 0,
+      "unk_515279b": false,
       "szLocatorName": 0,
-      "unk_386656b": 0.5
+      "flLocatorBlend": 0.5
      }
     ],
     "tCooldown": 0
@@ -488,9 +447,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 2766375479,
@@ -500,36 +459,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_4fceff15",
+      "__type__": "TriggerEventCameraTransitionToObserver",
       "__typeHash__": 1338965781,
       "dwType": 1338965781,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 2,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -544,16 +503,18 @@
       "unk_5490979": -1,
       "dwPad": 0,
       "snoObserver": {
-       "value": 450966,
-       "group": 26,
+       "__raw__": 450966,
+       "__group__": 26,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/Observer/observer_conversation_simple.obs",
        "groupName": "Observer",
-       "type": "sno",
        "name": "observer_conversation_simple"
       },
-      "unk_74b7ed1": 0,
+      "unk_74b7ed1": false,
       "eTargetType": 1,
       "unk_96c6da9": 0,
-      "unk_a1d7e72": {
+      "tHardpointLinkTarget": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -563,10 +524,10 @@
         "dwHashFlag": 0
        }
       },
-      "unk_bd1644f": 1000,
-      "unk_22446a6": [],
+      "dwTargetID": 1000,
+      "arAdditionalTargets": [],
       "eBlendEasing": 30,
-      "unk_30c3aff": 0
+      "flRadiusConstraint": 0
      }
     ],
     "tCooldown": 0
@@ -577,9 +538,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 1014080073,
@@ -589,36 +550,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_f3ac1b8f",
+      "__type__": "TriggerEventPlayConversationLine",
       "__typeHash__": 4088142735,
       "dwType": 4088142735,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 6.40000057220459,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 6.216667175292969,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -632,9 +593,9 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_ee01c09": 56,
+      "dwConversationNodeID": 56,
       "dwActorID": 1000,
-      "unk_acdb8a3": 1,
+      "unk_acdb8a3": true,
       "unk_e8a81a5": 4294967295
      }
     ],
@@ -646,9 +607,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 1046413333,
@@ -658,36 +619,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_58ae46c5",
+      "__type__": "TriggerEventActorPlayAnimation",
       "__typeHash__": 1487816389,
       "dwType": 1487816389,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 6.200000286102295,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 6.616666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -706,30 +667,32 @@
       "unk_4d01218": 0,
       "unk_84dd910": 0,
       "dwActorID": 1000,
-      "unk_b8e650c": 0,
+      "eAnimLayerMode": 0,
       "unk_9209538": 7,
-      "unk_a5153a1": 0,
-      "unk_5ed01be": 0,
-      "unk_9b2ead": 1,
-      "unk_bcac396": {
-       "value": 955290,
-       "group": 29,
+      "unk_a5153a1": false,
+      "unk_5ed01be": false,
+      "unk_9b2ead": true,
+      "snonameAnim": {
+       "__raw__": 955290,
+       "__group__": 29,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Power/AnimKey_Talk.pow",
        "groupName": "Power",
-       "type": "sno",
        "name": "AnimKey_Talk"
       },
-      "unk_85269a4": 0,
-      "unk_701a0bf": 1,
+      "unk_85269a4": false,
+      "fRandomPermutation": true,
       "nPermutationIndex": -1,
-      "unk_32a328c": 0,
+      "unk_32a328c": false,
       "flAnimSpeedScale": 1,
-      "unk_12c22c8": 100,
-      "unk_c7ffac9": 0,
+      "dwAnimWeight": 100,
+      "eAnimLoopMode": 0,
       "unk_c86af88": 0,
       "unk_396c7d1": 0,
-      "unk_515279b": 0,
+      "unk_515279b": false,
       "szLocatorName": 0,
-      "unk_386656b": 0.5
+      "flLocatorBlend": 0.5
      }
     ],
     "tCooldown": 0
@@ -740,9 +703,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 2766375610,
@@ -752,36 +715,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_4fceff15",
+      "__type__": "TriggerEventCameraTransitionToObserver",
       "__typeHash__": 1338965781,
       "dwType": 1338965781,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 5.400000095367432,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 1.5000001192092896,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -796,16 +759,18 @@
       "unk_5490979": -1,
       "dwPad": 0,
       "snoObserver": {
-       "value": 450966,
-       "group": 26,
+       "__raw__": 450966,
+       "__group__": 26,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/Observer/observer_conversation_simple.obs",
        "groupName": "Observer",
-       "type": "sno",
        "name": "observer_conversation_simple"
       },
-      "unk_74b7ed1": 0,
+      "unk_74b7ed1": false,
       "eTargetType": 1,
       "unk_96c6da9": 0,
-      "unk_a1d7e72": {
+      "tHardpointLinkTarget": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -815,10 +780,10 @@
         "dwHashFlag": 0
        }
       },
-      "unk_bd1644f": 1000,
-      "unk_22446a6": [],
+      "dwTargetID": 1000,
+      "arAdditionalTargets": [],
       "eBlendEasing": 30,
-      "unk_30c3aff": 3
+      "flRadiusConstraint": 3
      }
     ],
     "tCooldown": 0
@@ -829,9 +794,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 1014080108,
@@ -841,36 +806,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_f3ac1b8f",
+      "__type__": "TriggerEventPlayConversationLine",
       "__typeHash__": 4088142735,
       "dwType": 4088142735,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 13.766667366027832,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 2.4166667461395264,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -884,9 +849,9 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_ee01c09": 68,
+      "dwConversationNodeID": 68,
       "dwActorID": 1001,
-      "unk_acdb8a3": 1,
+      "unk_acdb8a3": true,
       "unk_e8a81a5": 4294967295
      }
     ],
@@ -898,9 +863,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 1046413368,
@@ -910,36 +875,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_58ae46c5",
+      "__type__": "TriggerEventActorPlayAnimation",
       "__typeHash__": 1487816389,
       "dwType": 1487816389,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 13.566667556762695,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 2.816666841506958,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -958,30 +923,32 @@
       "unk_4d01218": 0,
       "unk_84dd910": 0,
       "dwActorID": 1001,
-      "unk_b8e650c": 0,
+      "eAnimLayerMode": 0,
       "unk_9209538": 7,
-      "unk_a5153a1": 0,
-      "unk_5ed01be": 0,
-      "unk_9b2ead": 1,
-      "unk_bcac396": {
-       "value": 1083071,
-       "group": 29,
+      "unk_a5153a1": false,
+      "unk_5ed01be": false,
+      "unk_9b2ead": true,
+      "snonameAnim": {
+       "__raw__": 1083071,
+       "__group__": 29,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Power/AnimKey_Talk_Player.pow",
        "groupName": "Power",
-       "type": "sno",
        "name": "AnimKey_Talk_Player"
       },
-      "unk_85269a4": 0,
-      "unk_701a0bf": 1,
+      "unk_85269a4": false,
+      "fRandomPermutation": true,
       "nPermutationIndex": -1,
-      "unk_32a328c": 0,
+      "unk_32a328c": false,
       "flAnimSpeedScale": 1,
-      "unk_12c22c8": 100,
-      "unk_c7ffac9": 0,
+      "dwAnimWeight": 100,
+      "eAnimLoopMode": 0,
       "unk_c86af88": 0,
       "unk_396c7d1": 0,
-      "unk_515279b": 0,
+      "unk_515279b": false,
       "szLocatorName": 0,
-      "unk_386656b": 0.5
+      "flLocatorBlend": 0.5
      }
     ],
     "tCooldown": 0
@@ -992,9 +959,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 1014080106,
@@ -1004,36 +971,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_f3ac1b8f",
+      "__type__": "TriggerEventPlayConversationLine",
       "__typeHash__": 4088142735,
       "dwType": 4088142735,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 17.33333396911621,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.4833335876464844,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -1047,9 +1014,9 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_ee01c09": 66,
+      "dwConversationNodeID": 66,
       "dwActorID": 1000,
-      "unk_acdb8a3": 1,
+      "unk_acdb8a3": true,
       "unk_e8a81a5": 4294967295
      }
     ],
@@ -1061,9 +1028,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 1046413366,
@@ -1073,36 +1040,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_58ae46c5",
+      "__type__": "TriggerEventActorPlayAnimation",
       "__typeHash__": 1487816389,
       "dwType": 1487816389,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 17.13333511352539,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.883333444595337,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -1121,30 +1088,32 @@
       "unk_4d01218": 0,
       "unk_84dd910": 0,
       "dwActorID": 1000,
-      "unk_b8e650c": 0,
+      "eAnimLayerMode": 0,
       "unk_9209538": 7,
-      "unk_a5153a1": 0,
-      "unk_5ed01be": 0,
-      "unk_9b2ead": 1,
-      "unk_bcac396": {
-       "value": 955290,
-       "group": 29,
+      "unk_a5153a1": false,
+      "unk_5ed01be": false,
+      "unk_9b2ead": true,
+      "snonameAnim": {
+       "__raw__": 955290,
+       "__group__": 29,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Power/AnimKey_Talk.pow",
        "groupName": "Power",
-       "type": "sno",
        "name": "AnimKey_Talk"
       },
-      "unk_85269a4": 0,
-      "unk_701a0bf": 1,
+      "unk_85269a4": false,
+      "fRandomPermutation": true,
       "nPermutationIndex": -1,
-      "unk_32a328c": 0,
+      "unk_32a328c": false,
       "flAnimSpeedScale": 1,
-      "unk_12c22c8": 100,
-      "unk_c7ffac9": 0,
+      "dwAnimWeight": 100,
+      "eAnimLoopMode": 0,
       "unk_c86af88": 0,
       "unk_396c7d1": 0,
-      "unk_515279b": 0,
+      "unk_515279b": false,
       "szLocatorName": 0,
-      "unk_386656b": 0.5
+      "flLocatorBlend": 0.5
      }
     ],
     "tCooldown": 0
@@ -1155,9 +1124,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 2766375643,
@@ -1167,36 +1136,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_4fceff15",
+      "__type__": "TriggerEventCameraTransitionToObserver",
       "__typeHash__": 1338965781,
       "dwType": 1338965781,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 16.33333396911621,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 1.5000001192092896,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -1211,16 +1180,18 @@
       "unk_5490979": -1,
       "dwPad": 0,
       "snoObserver": {
-       "value": 450966,
-       "group": 26,
+       "__raw__": 450966,
+       "__group__": 26,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/Observer/observer_conversation_simple.obs",
        "groupName": "Observer",
-       "type": "sno",
        "name": "observer_conversation_simple"
       },
-      "unk_74b7ed1": 0,
+      "unk_74b7ed1": false,
       "eTargetType": 1,
       "unk_96c6da9": 0,
-      "unk_a1d7e72": {
+      "tHardpointLinkTarget": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -1230,10 +1201,10 @@
         "dwHashFlag": 0
        }
       },
-      "unk_bd1644f": 1000,
-      "unk_22446a6": [],
+      "dwTargetID": 1000,
+      "arAdditionalTargets": [],
       "eBlendEasing": 30,
-      "unk_30c3aff": 3
+      "flRadiusConstraint": 3
      }
     ],
     "tCooldown": 0
@@ -1244,9 +1215,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 1014080133,
@@ -1256,36 +1227,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_f3ac1b8f",
+      "__type__": "TriggerEventPlayConversationLine",
       "__typeHash__": 4088142735,
       "dwType": 4088142735,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 21.816667556762695,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0.9333333969116211,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -1299,9 +1270,9 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_ee01c09": 70,
+      "dwConversationNodeID": 70,
       "dwActorID": 1000,
-      "unk_acdb8a3": 1,
+      "unk_acdb8a3": true,
       "unk_e8a81a5": 4294967295
      }
     ],
@@ -1313,9 +1284,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 1046413393,
@@ -1325,36 +1296,36 @@
     "dwMsgKey": -1,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_58ae46c5",
+      "__type__": "TriggerEventActorPlayAnimation",
       "__typeHash__": 1487816389,
       "dwType": 1487816389,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 21.616668701171875,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 1.3333333730697632,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -1373,30 +1344,32 @@
       "unk_4d01218": 0,
       "unk_84dd910": 0,
       "dwActorID": 1000,
-      "unk_b8e650c": 0,
+      "eAnimLayerMode": 0,
       "unk_9209538": 7,
-      "unk_a5153a1": 0,
-      "unk_5ed01be": 0,
-      "unk_9b2ead": 1,
-      "unk_bcac396": {
-       "value": 955290,
-       "group": 29,
+      "unk_a5153a1": false,
+      "unk_5ed01be": false,
+      "unk_9b2ead": true,
+      "snonameAnim": {
+       "__raw__": 955290,
+       "__group__": 29,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Power/AnimKey_Talk.pow",
        "groupName": "Power",
-       "type": "sno",
        "name": "AnimKey_Talk"
       },
-      "unk_85269a4": 0,
-      "unk_701a0bf": 1,
+      "unk_85269a4": false,
+      "fRandomPermutation": true,
       "nPermutationIndex": -1,
-      "unk_32a328c": 0,
+      "unk_32a328c": false,
       "flAnimSpeedScale": 1,
-      "unk_12c22c8": 100,
-      "unk_c7ffac9": 0,
+      "dwAnimWeight": 100,
+      "eAnimLoopMode": 0,
       "unk_c86af88": 0,
       "unk_396c7d1": 0,
-      "unk_515279b": 0,
+      "unk_515279b": false,
       "szLocatorName": 0,
-      "unk_386656b": 0.5
+      "flLocatorBlend": 0.5
      }
     ],
     "tCooldown": 0
@@ -1407,9 +1380,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -1426,29 +1399,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 24.950000762939453,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -1462,14 +1435,9 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
-      "snoname": {
-       "value": -1,
-       "group": 1,
-       "groupName": "Actor",
-       "type": "sno"
-      },
+      "snoname": null,
       "dwID": 1001,
       "tHardpointLinks": [
        {
@@ -1494,54 +1462,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 1,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 1,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": true,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 0,
@@ -1566,7 +1514,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -1582,48 +1530,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -1662,9 +1585,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -1674,36 +1597,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_58ae46c5",
+      "__type__": "TriggerEventActorPlayAnimation",
       "__typeHash__": 1487816389,
       "dwType": 1487816389,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 23.950000762939453,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 1,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -1722,29 +1645,24 @@
       "unk_4d01218": 0,
       "unk_84dd910": 0,
       "dwActorID": 1001,
-      "unk_b8e650c": 0,
+      "eAnimLayerMode": 0,
       "unk_9209538": 7,
-      "unk_a5153a1": 0,
-      "unk_5ed01be": 0,
-      "unk_9b2ead": 1,
-      "unk_bcac396": {
-       "value": -1,
-       "group": -1,
-       "groupName": "None",
-       "type": "sno"
-      },
-      "unk_85269a4": 0,
-      "unk_701a0bf": 1,
+      "unk_a5153a1": false,
+      "unk_5ed01be": false,
+      "unk_9b2ead": true,
+      "snonameAnim": null,
+      "unk_85269a4": false,
+      "fRandomPermutation": true,
       "nPermutationIndex": -1,
-      "unk_32a328c": 1,
+      "unk_32a328c": true,
       "flAnimSpeedScale": 1,
-      "unk_12c22c8": 100,
-      "unk_c7ffac9": 0,
+      "dwAnimWeight": 100,
+      "eAnimLoopMode": 0,
       "unk_c86af88": 0,
       "unk_396c7d1": 0,
-      "unk_515279b": 0,
+      "unk_515279b": false,
       "szLocatorName": 0,
-      "unk_386656b": 0.5
+      "flLocatorBlend": 0.5
      }
     ],
     "tCooldown": 0
@@ -1755,9 +1673,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -1775,32 +1693,32 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0.5333333611488342,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "dwObjectID": 1001,
-      "unk_bd1644f": 1000,
+      "dwTargetID": 1000,
       "aThreshold": 0.4363323152065277,
       "unk_d74c75c": 2.094395160675049,
-      "unk_77ca12a": 1,
-      "unk_23237e1": 0,
+      "unk_77ca12a": true,
+      "unk_23237e1": false,
       "unk_f1b6afc": 12.566370964050293
      }
     ],
@@ -1812,9 +1730,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -1832,32 +1750,32 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 6.600000381469727,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "dwObjectID": 1001,
-      "unk_bd1644f": 1000,
+      "dwTargetID": 1000,
       "aThreshold": 0.4363323152065277,
       "unk_d74c75c": 2.094395160675049,
-      "unk_77ca12a": 1,
-      "unk_23237e1": 0,
+      "unk_77ca12a": true,
+      "unk_23237e1": false,
       "unk_f1b6afc": 12.566370964050293
      }
     ],
@@ -1869,9 +1787,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -1889,32 +1807,32 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 17.533334732055664,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "dwObjectID": 1001,
-      "unk_bd1644f": 1000,
+      "dwTargetID": 1000,
       "aThreshold": 0.4363323152065277,
       "unk_d74c75c": 2.094395160675049,
-      "unk_77ca12a": 1,
-      "unk_23237e1": 0,
+      "unk_77ca12a": true,
+      "unk_23237e1": false,
       "unk_f1b6afc": 12.566370964050293
      }
     ],
@@ -1926,9 +1844,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -1946,32 +1864,32 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 22.01666831970215,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "dwObjectID": 1001,
-      "unk_bd1644f": 1000,
+      "dwTargetID": 1000,
       "aThreshold": 0.4363323152065277,
       "unk_d74c75c": 2.094395160675049,
-      "unk_77ca12a": 1,
-      "unk_23237e1": 0,
+      "unk_77ca12a": true,
+      "unk_23237e1": false,
       "unk_f1b6afc": 12.566370964050293
      }
     ],
@@ -1983,9 +1901,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -1995,7 +1913,7 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_d03fb276",
+      "__type__": "TriggerEventObjectTurnToOriginalFacing",
       "__typeHash__": 3493835382,
       "dwType": 3493835382,
       "dwPad": 0,
@@ -2003,25 +1921,25 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 22.950000762939453,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "dwObjectID": 1001
      }
@@ -2034,9 +1952,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2046,36 +1964,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_708124f7",
+      "__type__": "TriggerEventObjectLookAt",
       "__typeHash__": 1887511799,
       "dwType": 1887511799,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0.3333333432674408,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -2090,7 +2008,7 @@
       "unk_5490979": -1,
       "dwPad": 0,
       "dwObjectID": 1001,
-      "unk_bd1644f": 1000
+      "dwTargetID": 1000
      }
     ],
     "tCooldown": 0
@@ -2101,9 +2019,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2113,36 +2031,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_708124f7",
+      "__type__": "TriggerEventObjectLookAt",
       "__typeHash__": 1887511799,
       "dwType": 1887511799,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 6.40000057220459,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -2157,7 +2075,7 @@
       "unk_5490979": -1,
       "dwPad": 0,
       "dwObjectID": 1001,
-      "unk_bd1644f": 1000
+      "dwTargetID": 1000
      }
     ],
     "tCooldown": 0
@@ -2168,9 +2086,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2180,36 +2098,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_708124f7",
+      "__type__": "TriggerEventObjectLookAt",
       "__typeHash__": 1887511799,
       "dwType": 1887511799,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 17.33333396911621,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -2224,7 +2142,7 @@
       "unk_5490979": -1,
       "dwPad": 0,
       "dwObjectID": 1001,
-      "unk_bd1644f": 1000
+      "dwTargetID": 1000
      }
     ],
     "tCooldown": 0
@@ -2235,9 +2153,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2247,36 +2165,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_708124f7",
+      "__type__": "TriggerEventObjectLookAt",
       "__typeHash__": 1887511799,
       "dwType": 1887511799,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 21.816667556762695,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 1.133333444595337,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -2291,7 +2209,7 @@
       "unk_5490979": -1,
       "dwPad": 0,
       "dwObjectID": 1001,
-      "unk_bd1644f": 1000
+      "dwTargetID": 1000
      }
     ],
     "tCooldown": 0
@@ -2302,9 +2220,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2322,32 +2240,32 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "dwObjectID": 1000,
-      "unk_bd1644f": 1001,
+      "dwTargetID": 1001,
       "aThreshold": 0.4363323152065277,
       "unk_d74c75c": 2.094395160675049,
-      "unk_77ca12a": 1,
-      "unk_23237e1": 0,
+      "unk_77ca12a": true,
+      "unk_23237e1": false,
       "unk_f1b6afc": 12.566370964050293
      }
     ],
@@ -2359,9 +2277,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2379,32 +2297,32 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 13.966667175292969,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "dwObjectID": 1000,
-      "unk_bd1644f": 1001,
+      "dwTargetID": 1001,
       "aThreshold": 0.4363323152065277,
       "unk_d74c75c": 2.094395160675049,
-      "unk_77ca12a": 1,
-      "unk_23237e1": 0,
+      "unk_77ca12a": true,
+      "unk_23237e1": false,
       "unk_f1b6afc": 12.566370964050293
      }
     ],
@@ -2416,9 +2334,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2428,7 +2346,7 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_d03fb276",
+      "__type__": "TriggerEventObjectTurnToOriginalFacing",
       "__typeHash__": 3493835382,
       "dwType": 3493835382,
       "dwPad": 0,
@@ -2436,25 +2354,25 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 22.950000762939453,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "dwObjectID": 1000
      }
@@ -2467,9 +2385,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2479,36 +2397,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_708124f7",
+      "__type__": "TriggerEventObjectLookAt",
       "__typeHash__": 1887511799,
       "dwType": 1887511799,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -2523,7 +2441,7 @@
       "unk_5490979": -1,
       "dwPad": 0,
       "dwObjectID": 1000,
-      "unk_bd1644f": 1001
+      "dwTargetID": 1001
      }
     ],
     "tCooldown": 0
@@ -2534,9 +2452,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2546,36 +2464,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_708124f7",
+      "__type__": "TriggerEventObjectLookAt",
       "__typeHash__": 1887511799,
       "dwType": 1887511799,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 13.766667366027832,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 9.166666984558105,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -2590,7 +2508,7 @@
       "unk_5490979": -1,
       "dwPad": 0,
       "dwObjectID": 1000,
-      "unk_bd1644f": 1001
+      "dwTargetID": 1001
      }
     ],
     "tCooldown": 0
@@ -2601,9 +2519,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2620,29 +2538,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -2656,13 +2574,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 408905,
-       "group": 47,
+       "__raw__": 408905,
+       "__group__": 47,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Weather/weather_convo_vignette.wth",
        "groupName": "Weather",
-       "type": "sno",
        "name": "weather_convo_vignette"
       },
       "dwID": 0,
@@ -2689,54 +2609,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 0,
@@ -2761,7 +2661,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -2777,48 +2677,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 1,
       "unk_36bc3de": 1,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -2857,9 +2732,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2869,7 +2744,7 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_1824fd95",
+      "__type__": "TriggerEventSetAudioState",
       "__typeHash__": 405077397,
       "dwType": 405077397,
       "dwPad": 0,
@@ -2877,36 +2752,36 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
-      "unk_6f68ae7": {
-       "__type__": "Type_1d0f43e",
+      "tAudioState": {
+       "__type__": "WwiseSwitchValue",
        "__typeHash__": 30471230,
        "tGroup": {
-        "__type__": "Type_f18a2f0",
+        "__type__": "WwiseName",
         "__typeHash__": 253272816,
         "uID": 3733891734
        },
        "tValue": {
-        "__type__": "Type_f18a2f0",
+        "__type__": "WwiseName",
         "__typeHash__": 253272816,
         "uID": 907456797
        }
@@ -2921,9 +2796,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2933,36 +2808,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_c250468",
+      "__type__": "TriggerEventFadeOtherPlayers",
       "__typeHash__": 203752552,
       "dwType": 203752552,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -2986,9 +2861,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2998,36 +2873,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_4fceff15",
+      "__type__": "TriggerEventCameraTransitionToObserver",
       "__typeHash__": 1338965781,
       "dwType": 1338965781,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 22.950000762939453,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 1,
-      "unk_6cba752": 0,
+      "fGenerated": true,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 2,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -3041,16 +2916,11 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "snoObserver": {
-       "value": -1,
-       "group": 26,
-       "groupName": "Observer",
-       "type": "sno"
-      },
-      "unk_74b7ed1": 0,
+      "snoObserver": null,
+      "unk_74b7ed1": false,
       "eTargetType": 2,
       "unk_96c6da9": 0,
-      "unk_a1d7e72": {
+      "tHardpointLinkTarget": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -3060,10 +2930,10 @@
         "dwHashFlag": 0
        }
       },
-      "unk_bd1644f": 0,
-      "unk_22446a6": [],
+      "dwTargetID": 0,
+      "arAdditionalTargets": [],
       "eBlendEasing": 30,
-      "unk_30c3aff": 0
+      "flRadiusConstraint": 0
      }
     ],
     "tCooldown": 0
@@ -3107,24 +2977,9 @@
   15
  ],
  "nEffectWeightMethod": 2,
- "snoPower": {
-  "value": -1,
-  "group": 29,
-  "groupName": "Power",
-  "type": "sno"
- },
- "unk_760871b": {
-  "value": -1,
-  "group": 29,
-  "groupName": "Power",
-  "type": "sno"
- },
- "snoConversation": {
-  "value": -1,
-  "group": 12,
-  "groupName": "Conversation",
-  "type": "sno"
- },
+ "snoPower": null,
+ "snoPowerEffectParam": null,
+ "snoConversation": null,
  "unk_e7c25e0": 0,
  "unk_51077dd": {
   "rangeValue1": 0,

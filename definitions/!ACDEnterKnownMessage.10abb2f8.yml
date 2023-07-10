@@ -1,6 +1,6 @@
 # Definition: ACDEnterKnownMessage
 # Hash: 10abb2f8
-# Flags: 00000000 00000000 00000001 00000000
+# Flags: 0x100
 
 0x0: tHeader # RequiredMessageHeader
 0x10: ann # DT_ACD_NETWORK_NAME (64 bits used)
@@ -12,22 +12,22 @@
 0x70: unk_aa2bbb9 # DT_SNO_NAME (64 bits used)
 0x78: nMonsterRarity # DT_OPTIONAL (4 bits used) => DT_INT
 0x80: nItemQuality # DT_OPTIONAL (4 bits used) => DT_INT
-0x88: unk_b3671d5 # DT_OPTIONAL (2 bits used) => DT_INT
+0x88: nItemQualityModifier # DT_OPTIONAL (2 bits used) => DT_INT
 0x90: dwLookHash # DT_UINT (32 bits used)
-0x94: unk_6c0cb90 # DT_UINT (32 bits used)
+0x94: dwShaderMapOverride # DT_UINT (32 bits used)
 0x98: snoMarkerSet # DT_OPTIONAL (32 bits used) => DT_SNO
-0xa0: unk_9cc41dd # DT_OPTIONAL (32 bits used) => DT_INT
-0xa8: unk_a2758c2 # DT_OPTIONAL (32 bits used) => DT_SNO
+0xa0: nMarkerId # DT_OPTIONAL (32 bits used) => DT_INT
+0xa8: snoRootMarkerSet # DT_OPTIONAL (32 bits used) => DT_SNO
 0xb0: unk_7a55b3f # DT_OPTIONAL (32 bits used) => DT_UINT
 0xb8: unk_7d23397 # DT_OPTIONAL (32 bits used) => DT_SNO
 0xc0: unk_3125d0e # DT_OPTIONAL (32 bits used) => DT_UINT
 0xc8: snoAmbientOcclusionOverrideTex # DT_OPTIONAL (32 bits used) => DT_SNO
 0xd0: dwTimeActorCreated # DT_OPTIONAL (32 bits used) => DT_UINT
 0xd8: tEnterKnownLookOverrides # DT_OPTIONAL => EnterKnownLookOverrides
-0x10c: unk_c76aca7 # DT_OPTIONAL => unknown 0x37cff633
+0x10c: tEnterKnownShaderMapOverrides # DT_OPTIONAL => EnterKnownShaderMapOverrides
 0x128: uGizmoHash # DT_OPTIONAL (32 bits used) => DT_UINT
 0x130: unk_9e938b5 # DT_OPTIONAL (64 bits used) => DT_INT64
-0x140: unk_f370a80 # DT_OPTIONAL (64 bits used) => DT_ACD_NETWORK_NAME
+0x140: annSummonedBy # DT_OPTIONAL (64 bits used) => DT_ACD_NETWORK_NAME
 0x14c: unk_b192047 # DT_OPTIONAL (32 bits used) => DT_SNO
 0x154: dwAttachedHardpoint # DT_OPTIONAL (32 bits used) => DT_UINT
 0x15c: dwAttachHardpoint # DT_OPTIONAL (32 bits used) => DT_UINT

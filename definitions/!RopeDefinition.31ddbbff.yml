@@ -1,11 +1,11 @@
 # Definition: RopeDefinition
 # Hash: 31ddbbff
 # SNOFileHeader.dwFormatHash: d57cfa5f
-# Flags: 00000000 00000000 01000011 00111010
+# Flags: 0x433a
 
 0x8: dwRopeFlags # DT_UINT (32 bits used)
 0xc: nWidth # DT_INT (32 bits used)
-0x10: unk_d5039e2 # DT_INT (32 bits used)
+0x10: nTraversalWidth # DT_INT (32 bits used)
 0x14: unk_5be6305 # DT_FLOAT (32 bits used)
 0x18: flLength # DT_FLOAT (32 bits used)
 0x1c: flMass # DT_FLOAT (32 bits used)
@@ -21,7 +21,7 @@
 0xb0: snoMaterial # DT_SNO (32 bits used) {group 0x39 "Material"}
 0xb4: snoPhysics # DT_SNO (32 bits used) {group 0x1c "Physics"}
 0xb8: flWindFactor # DT_FLOAT (32 bits used)
-0xbc: unk_cc2f90c # DT_RANGE => DT_FLOAT
+0xbc: tSystemDurationRange # DT_RANGE => DT_FLOAT
 0xc4: tSystemDurationScalar # InterpolationScalar
 0xe4: flOutroDuration # DT_FLOAT (32 bits used)
 0xe8: pathColorOverTime # unknown 0x560ae4cf
@@ -62,11 +62,11 @@
 0x7a0: unk_fa52de8 # DT_RANGE => DT_FLOAT
 0x7a8: unk_c44c7c8 # unknown 0xcbfdd2ea
 0x7e0: unk_4a82155 # unknown 0xcbfdd2ea
-0x818: unk_340e1fe # DT_INT (32 bits used)
-0x81c: unk_93baab # DT_RANGE => DT_FLOAT
-0x828: unk_9979296 # unknown 0xcbfdd2ea
-0x860: unk_5a2a13a # VectorPath
-0x898: unk_1d019ab # VectorPath
+0x818: nNoiseFrequency # DT_INT (32 bits used)
+0x81c: tNoiseRateRange # DT_RANGE => DT_FLOAT
+0x828: pathNoiseRangeOverLength # unknown 0xcbfdd2ea
+0x860: pathTangentSourceOverTime # VectorPath
+0x898: pathTangentDestinationOverTime # VectorPath
 0x8d0: ptMsgTriggeredEvents # DT_VARIABLEARRAY => MsgTriggeredEvent
 0x8e0: dwMaxSystems # DT_UINT (32 bits used)
 0x8e8: null or eof # DT_NULL

@@ -1,5 +1,5 @@
 {
- "__fileName__": "data/base/meta/EffectGroup/IGC_SLY_1140.efg",
+ "__fileName__": "base/meta/EffectGroup/IGC_SLY_1140.efg",
  "__snoID__": 670906,
  "__type__": "EffectGroupDefinition",
  "__typeHash__": 2057617923,
@@ -13,14 +13,14 @@
  "unk_19bdc57": 5,
  "unk_7c79fc2": 120,
  "unk_43960c1": 1,
- "unk_e5a6bb1": {
+ "tFallbackEffect": {
   "__type__": "EffectItem",
   "__typeHash__": 4037984604,
   "dwWeight": 0,
   "snoSurfaces": [],
-  "unk_7903361": [],
-  "unk_d5fd413": [],
-  "unk_ae86ed6": [],
+  "arWeaponItemTypes": [],
+  "arMonsterArchetypes": [],
+  "arActorVariantTypes": [],
   "arTopology": [],
   "unk_43e7b5a": [],
   "dwHash": 0,
@@ -38,25 +38,25 @@
       "__type__": "TriggerConditions",
       "__typeHash__": 888408526,
       "flChance": 1,
-      "bMute": 0,
-      "unk_1db3ba0": 0,
+      "bMute": false,
+      "bMuteExternal": false,
       "tDelay": 0,
-      "unk_f0d960e": {
+      "tImpactVelocityRange": {
        "rangeValue1": 0,
        "rangeValue2": 0
       },
-      "unk_1dcbf67": {
+      "tImpactWeightRange": {
        "rangeValue1": 0,
        "rangeValue2": 0
       },
       "eMaterial": 0,
       "dwConditionFlags": 1038,
-      "unk_817e082": 0,
+      "ePlayerCountCondition": 0,
       "unk_b51df67": 0,
       "dwPad": 0
      },
-     "fGenerated": 0,
-     "unk_6cba752": 0,
+     "fGenerated": false,
+     "unk_6cba752": false,
      "unk_e560b0b": 4294967295
     }
    ],
@@ -69,9 +69,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -88,29 +88,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 46,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 8,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -124,13 +124,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 214045,
-       "group": 1,
+       "__raw__": 214045,
+       "__group__": 1,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Actor/camera_rig.acr",
        "groupName": "Actor",
-       "type": "sno",
        "name": "camera_rig"
       },
       "dwID": 1140,
@@ -157,54 +159,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 1,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": true,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -229,7 +211,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -245,48 +227,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -325,9 +282,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -344,29 +301,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 46,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -381,7 +338,7 @@
       "unk_5490979": -1,
       "dwPad": 0,
       "eObjectType": 0,
-      "unk_a1d7e72": {
+      "tHardpointLinkTarget": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -402,15 +359,15 @@
         "dwHashFlag": 0
        }
       },
-      "unk_896cea7": 1,
-      "unk_454a2a1": 1,
+      "unk_896cea7": true,
+      "unk_454a2a1": true,
       "eBlendEasing": 32,
       "unk_10734fd": {
        "__type__": "Type_e97cce1f",
        "__typeHash__": 3917270559,
        "unk_9568563": 0,
-       "unk_5c29242": 0,
-       "unk_cf27ac2": 0
+       "unk_5c29242": false,
+       "flCameraOffset": 0
       }
      }
     ],
@@ -422,9 +379,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -442,27 +399,27 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
-      "bOverridePosition": 0,
+      "bOverridePosition": false,
       "vecPosition": {
        "x": 0,
        "y": 0
@@ -478,9 +435,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -497,29 +454,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1070,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -546,9 +503,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -565,29 +522,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 8,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -601,13 +558,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 1391660,
-       "group": 1,
+       "__raw__": 1391660,
+       "__group__": 1,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Actor/IGC_lilith_baselook.acr",
        "groupName": "Actor",
-       "type": "sno",
        "name": "IGC_lilith_baselook"
       },
       "dwID": 114,
@@ -634,54 +593,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 1,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": true,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 67399014
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -706,7 +645,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -722,48 +661,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -802,9 +716,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -814,36 +728,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_58ae46c5",
+      "__type__": "TriggerEventActorPlayAnimation",
       "__typeHash__": 1487816389,
       "dwType": 1487816389,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -862,30 +776,32 @@
       "unk_4d01218": 0,
       "unk_84dd910": 0,
       "dwActorID": 1140,
-      "unk_b8e650c": 0,
+      "eAnimLayerMode": 0,
       "unk_9209538": 7,
-      "unk_a5153a1": 0,
-      "unk_5ed01be": 0,
-      "unk_9b2ead": 1,
-      "unk_bcac396": {
-       "value": 669827,
-       "group": 6,
+      "unk_a5153a1": false,
+      "unk_5ed01be": false,
+      "unk_9b2ead": true,
+      "snonameAnim": {
+       "__raw__": 669827,
+       "__group__": 6,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Anim/igc_sly_camera_1140.ani",
        "groupName": "Animation",
-       "type": "sno",
        "name": "igc_sly_camera_1140"
       },
-      "unk_85269a4": 0,
-      "unk_701a0bf": 0,
+      "unk_85269a4": false,
+      "fRandomPermutation": false,
       "nPermutationIndex": 0,
-      "unk_32a328c": 0,
+      "unk_32a328c": false,
       "flAnimSpeedScale": 1,
-      "unk_12c22c8": 100,
-      "unk_c7ffac9": 0,
+      "dwAnimWeight": 100,
+      "eAnimLoopMode": 0,
       "unk_c86af88": 0,
       "unk_396c7d1": 0,
-      "unk_515279b": 0,
+      "unk_515279b": false,
       "szLocatorName": 0,
-      "unk_386656b": 0.5
+      "flLocatorBlend": 0.5
      }
     ],
     "tCooldown": 0
@@ -896,9 +812,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -908,36 +824,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_58ae46c5",
+      "__type__": "TriggerEventActorPlayAnimation",
       "__typeHash__": 1487816389,
       "dwType": 1487816389,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -956,30 +872,32 @@
       "unk_4d01218": 0,
       "unk_84dd910": 0,
       "dwActorID": 114,
-      "unk_b8e650c": 0,
+      "eAnimLayerMode": 0,
       "unk_9209538": 7,
-      "unk_a5153a1": 0,
-      "unk_5ed01be": 0,
-      "unk_9b2ead": 1,
-      "unk_bcac396": {
-       "value": 669381,
-       "group": 6,
+      "unk_a5153a1": false,
+      "unk_5ed01be": false,
+      "unk_9b2ead": true,
+      "snonameAnim": {
+       "__raw__": 669381,
+       "__group__": 6,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Anim/igc_sly_lilith_1140.ani",
        "groupName": "Animation",
-       "type": "sno",
        "name": "igc_sly_lilith_1140"
       },
-      "unk_85269a4": 0,
-      "unk_701a0bf": 0,
+      "unk_85269a4": false,
+      "fRandomPermutation": false,
       "nPermutationIndex": 0,
-      "unk_32a328c": 0,
+      "unk_32a328c": false,
       "flAnimSpeedScale": 1,
-      "unk_12c22c8": 100,
-      "unk_c7ffac9": 0,
+      "dwAnimWeight": 100,
+      "eAnimLoopMode": 0,
       "unk_c86af88": 0,
       "unk_396c7d1": 0,
-      "unk_515279b": 0,
+      "unk_515279b": false,
       "szLocatorName": 0,
-      "unk_386656b": 0.5
+      "flLocatorBlend": 0.5
      }
     ],
     "tCooldown": 0
@@ -990,9 +908,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -1009,29 +927,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -1045,13 +963,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 710911,
-       "group": 24,
+       "__raw__": 710911,
+       "__group__": 24,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/MarkerSet/IGC_SLY_1140_Lighting_v003.mrk",
        "groupName": "MarkerSet",
-       "type": "sno",
        "name": "IGC_SLY_1140_Lighting_v003"
       },
       "dwID": 1141,
@@ -1078,54 +998,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 1,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": true,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -1150,7 +1050,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -1166,48 +1066,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -1246,9 +1121,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -1265,29 +1140,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 268443648,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -1301,13 +1176,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 39520,
-       "group": 23,
+       "__raw__": 39520,
+       "__group__": 23,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Light/Default_PointLight.lit",
        "groupName": "Light",
-       "type": "sno",
        "name": "Default_PointLight"
       },
       "dwID": 1142,
@@ -1334,54 +1211,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 0,
@@ -1406,7 +1263,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -1422,48 +1279,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 358,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -1503,12 +1335,7 @@
         "tMatTexProjected": {
          "__type__": "MaterialTexture",
          "__typeHash__": 3890408608,
-         "snoTex": {
-          "value": -1,
-          "group": 44,
-          "groupName": "Texture",
-          "type": "sno"
-         },
+         "snoTex": null,
          "ptTexAnim": [
           {
            "__type__": "TexAnim",
@@ -1540,11 +1367,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1564,7 +1391,7 @@
            }
           ]
          },
-         "unk_9e9e1c6": {
+         "pathSourceRadius": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -1580,11 +1407,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1620,11 +1447,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1644,7 +1471,7 @@
            }
           ]
          },
-         "unk_1ee68c6": {
+         "pathFalloffBias": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -1660,11 +1487,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1700,11 +1527,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1740,11 +1567,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1780,11 +1607,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1820,11 +1647,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1860,11 +1687,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1910,11 +1737,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1952,11 +1779,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1976,7 +1803,7 @@
            }
           ]
          },
-         "unk_f7a3d1a": {
+         "pathShadowIntensity": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -1992,11 +1819,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -2016,7 +1843,7 @@
            }
           ]
          },
-         "unk_4d46106": {
+         "pathPivotOffset": {
           "__type__": "VectorPath",
           "__typeHash__": 2594652800,
           "tPathData": {
@@ -2035,27 +1862,11 @@
               "__typeHash__": 991799518,
               "nScalarFunction": 0,
               "dwFlags": 1,
-              "unk_2424d91": {
+              "tInputRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
-              "unk_c9a8e76": {
-               "rangeValue1": 0,
-               "rangeValue2": 1
-              },
-              "eRemapEasing": 0,
-              "szFormulaName": 0
-             },
-             {
-              "__type__": "InterpolationScalar",
-              "__typeHash__": 991799518,
-              "nScalarFunction": 0,
-              "dwFlags": 1,
-              "unk_2424d91": {
-               "rangeValue1": 0,
-               "rangeValue2": 1
-              },
-              "unk_c9a8e76": {
+              "tRemapRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
@@ -2067,11 +1878,27 @@
               "__typeHash__": 991799518,
               "nScalarFunction": 0,
               "dwFlags": 1,
-              "unk_2424d91": {
+              "tInputRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
-              "unk_c9a8e76": {
+              "tRemapRange": {
+               "rangeValue1": 0,
+               "rangeValue2": 1
+              },
+              "eRemapEasing": 0,
+              "szFormulaName": 0
+             },
+             {
+              "__type__": "InterpolationScalar",
+              "__typeHash__": 991799518,
+              "nScalarFunction": 0,
+              "dwFlags": 1,
+              "tInputRange": {
+               "rangeValue1": 0,
+               "rangeValue2": 1
+              },
+              "tRemapRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
@@ -2127,11 +1954,11 @@
          "__typeHash__": 991799518,
          "nScalarFunction": 0,
          "dwFlags": 1,
-         "unk_2424d91": {
+         "tInputRange": {
           "rangeValue1": 0,
           "rangeValue2": 1
          },
-         "unk_c9a8e76": {
+         "tRemapRange": {
           "rangeValue1": 0,
           "rangeValue2": 1
          },
@@ -2150,9 +1977,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2162,7 +1989,7 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_bc26b221",
+      "__type__": "TriggerEventObjectKeyFrame",
       "__typeHash__": 3156652577,
       "dwType": 3156652577,
       "dwPad": 0,
@@ -2170,37 +1997,37 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwObjectID": 1142,
       "arKeys": [
        {
-        "__type__": "Type_f042a8ca",
+        "__type__": "EffectGroupPositionXKeyData",
         "__typeHash__": 4030900426,
         "dwType": 4030900426,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": -40.34321594238281,
@@ -2214,7 +2041,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.0333333015441895,
           "flValue": -40.34321594238281,
@@ -2228,7 +2055,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.5,
           "flValue": -40.36479568481445,
@@ -2242,7 +2069,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.6666667461395264,
           "flValue": -40.33934783935547,
@@ -2256,7 +2083,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.9000000953674316,
           "flValue": -40.3227653503418,
@@ -2270,7 +2097,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.2666666507720947,
           "flValue": -40.30351638793945,
@@ -2284,7 +2111,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.8333332538604736,
           "flValue": -40.311927795410156,
@@ -2300,13 +2127,13 @@
         ]
        },
        {
-        "__type__": "Type_dc847dab",
+        "__type__": "EffectGroupPositionYKeyData",
         "__typeHash__": 3699670443,
         "dwType": 3699670443,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": -49.10311508178711,
@@ -2320,7 +2147,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.0333333015441895,
           "flValue": -49.10311508178711,
@@ -2334,7 +2161,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.5,
           "flValue": -49.0902099609375,
@@ -2348,7 +2175,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.6666667461395264,
           "flValue": -49.10542678833008,
@@ -2362,7 +2189,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.9000000953674316,
           "flValue": -49.11534118652344,
@@ -2376,7 +2203,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.2666666507720947,
           "flValue": -49.126853942871094,
@@ -2390,7 +2217,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.8333332538604736,
           "flValue": -49.121822357177734,
@@ -2406,13 +2233,13 @@
         ]
        },
        {
-        "__type__": "Type_c8c6528c",
+        "__type__": "EffectGroupPositionZKeyData",
         "__typeHash__": 3368440460,
         "dwType": 3368440460,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 2.03542423248291,
@@ -2426,7 +2253,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.0333333015441895,
           "flValue": 2.03542423248291,
@@ -2442,13 +2269,13 @@
         ]
        },
        {
-        "__type__": "Type_22fa43bd",
+        "__type__": "EffectGroupScaleXKeyData",
         "__typeHash__": 586826685,
         "dwType": 586826685,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 1,
@@ -2462,7 +2289,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.0333333015441895,
           "flValue": 1,
@@ -2478,13 +2305,13 @@
         ]
        },
        {
-        "__type__": "Type_f3c189e",
+        "__type__": "EffectGroupScaleYKeyData",
         "__typeHash__": 255596702,
         "dwType": 255596702,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 1,
@@ -2498,7 +2325,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.0333333015441895,
           "flValue": 1,
@@ -2514,13 +2341,13 @@
         ]
        },
        {
-        "__type__": "Type_fb7ded7f",
+        "__type__": "EffectGroupScaleZKeyData",
         "__typeHash__": 4219334015,
         "dwType": 4219334015,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 1,
@@ -2534,7 +2361,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.0333333015441895,
           "flValue": 1,
@@ -2550,13 +2377,13 @@
         ]
        },
        {
-        "__type__": "Type_d64de806",
+        "__type__": "EffectGroupRotationRollKeyData",
         "__typeHash__": 3595429894,
         "dwType": 3595429894,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0,
@@ -2570,7 +2397,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.0333333015441895,
           "flValue": 0,
@@ -2586,13 +2413,13 @@
         ]
        },
        {
-        "__type__": "Type_ecff2185",
+        "__type__": "EffectGroupRotationPitchKeyData",
         "__typeHash__": 3976143237,
         "dwType": 3976143237,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0,
@@ -2606,7 +2433,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.0333333015441895,
           "flValue": 0,
@@ -2622,13 +2449,13 @@
         ]
        },
        {
-        "__type__": "Type_f6ae99be",
+        "__type__": "EffectGroupRotationYawKeyData",
         "__typeHash__": 4138637758,
         "dwType": 4138637758,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": -0.5389049649238586,
@@ -2642,7 +2469,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.0333333015441895,
           "flValue": -0.5389052033424377,
@@ -2669,9 +2496,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2689,39 +2516,41 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "dwActorID": 214,
       "snoAppearance": {
-       "value": 692561,
-       "group": 9,
-       "groupName": "Appearance",
-       "type": "sno"
+       "__raw__": 692561,
+       "__group__": 9,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/Appearance/undefined.app",
+       "groupName": "Appearance"
       },
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 1526414038
       },
-      "unk_279aa5a": 0
+      "unk_279aa5a": false
      }
     ],
     "tCooldown": 0
@@ -2732,9 +2561,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2751,29 +2580,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -2787,13 +2616,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 670727,
-       "group": 47,
+       "__raw__": 670727,
+       "__group__": 47,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Weather/IGC_SLY_Weather_Main.wth",
        "groupName": "Weather",
-       "type": "sno",
        "name": "IGC_SLY_Weather_Main"
       },
       "dwID": 10000,
@@ -2820,54 +2651,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 1,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": true,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -2892,7 +2703,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -2908,48 +2719,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 0,
       "unk_36bc3de": 0.30000001192092896,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -2988,9 +2774,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -3007,29 +2793,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 268443648,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -3043,13 +2829,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 482851,
-       "group": 23,
+       "__raw__": 482851,
+       "__group__": 23,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Light/IGC_Default_SpotLight_Dynamic.lit",
        "groupName": "Light",
-       "type": "sno",
        "name": "IGC_Default_SpotLight_Dynamic"
       },
       "dwID": 999992,
@@ -3076,54 +2864,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 0,
@@ -3148,7 +2916,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -3164,48 +2932,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 1114,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -3246,10 +2989,12 @@
          "__type__": "MaterialTexture",
          "__typeHash__": 3890408608,
          "snoTex": {
-          "value": 379910,
-          "group": 44,
+          "__raw__": 379910,
+          "__group__": 44,
+          "__type__": "DT_SNO",
+          "__typeHash__": 2764331143,
+          "__targetFileName__": "base/meta/Texture/cookie_circle_soft_noCompression.tex",
           "groupName": "Texture",
-          "type": "sno",
           "name": "cookie_circle_soft_noCompression"
          },
          "ptTexAnim": [
@@ -3283,11 +3028,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3307,7 +3052,7 @@
            }
           ]
          },
-         "unk_9e9e1c6": {
+         "pathSourceRadius": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -3323,11 +3068,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3363,11 +3108,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3387,7 +3132,7 @@
            }
           ]
          },
-         "unk_1ee68c6": {
+         "pathFalloffBias": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -3403,11 +3148,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3443,11 +3188,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3483,11 +3228,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3523,11 +3268,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3563,11 +3308,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3603,11 +3348,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3653,11 +3398,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3702,11 +3447,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3726,7 +3471,7 @@
            }
           ]
          },
-         "unk_f7a3d1a": {
+         "pathShadowIntensity": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -3742,11 +3487,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -3766,7 +3511,7 @@
            }
           ]
          },
-         "unk_4d46106": {
+         "pathPivotOffset": {
           "__type__": "VectorPath",
           "__typeHash__": 2594652800,
           "tPathData": {
@@ -3785,27 +3530,11 @@
               "__typeHash__": 991799518,
               "nScalarFunction": 0,
               "dwFlags": 1,
-              "unk_2424d91": {
+              "tInputRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
-              "unk_c9a8e76": {
-               "rangeValue1": 0,
-               "rangeValue2": 1
-              },
-              "eRemapEasing": 0,
-              "szFormulaName": 0
-             },
-             {
-              "__type__": "InterpolationScalar",
-              "__typeHash__": 991799518,
-              "nScalarFunction": 0,
-              "dwFlags": 1,
-              "unk_2424d91": {
-               "rangeValue1": 0,
-               "rangeValue2": 1
-              },
-              "unk_c9a8e76": {
+              "tRemapRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
@@ -3817,11 +3546,27 @@
               "__typeHash__": 991799518,
               "nScalarFunction": 0,
               "dwFlags": 1,
-              "unk_2424d91": {
+              "tInputRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
-              "unk_c9a8e76": {
+              "tRemapRange": {
+               "rangeValue1": 0,
+               "rangeValue2": 1
+              },
+              "eRemapEasing": 0,
+              "szFormulaName": 0
+             },
+             {
+              "__type__": "InterpolationScalar",
+              "__typeHash__": 991799518,
+              "nScalarFunction": 0,
+              "dwFlags": 1,
+              "tInputRange": {
+               "rangeValue1": 0,
+               "rangeValue2": 1
+              },
+              "tRemapRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
@@ -3877,11 +3622,11 @@
          "__typeHash__": 991799518,
          "nScalarFunction": 0,
          "dwFlags": 1,
-         "unk_2424d91": {
+         "tInputRange": {
           "rangeValue1": 0,
           "rangeValue2": 1
          },
-         "unk_c9a8e76": {
+         "tRemapRange": {
           "rangeValue1": 0,
           "rangeValue2": 1
          },
@@ -3900,9 +3645,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -3912,7 +3657,7 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_bc26b221",
+      "__type__": "TriggerEventObjectKeyFrame",
       "__typeHash__": 3156652577,
       "dwType": 3156652577,
       "dwPad": 0,
@@ -3920,37 +3665,37 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwObjectID": 999992,
       "arKeys": [
        {
-        "__type__": "Type_f042a8ca",
+        "__type__": "EffectGroupPositionXKeyData",
         "__typeHash__": 4030900426,
         "dwType": 4030900426,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.5,
           "flValue": -40.402950286865234,
@@ -3964,7 +3709,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.7333333492279053,
           "flValue": -40.41807556152344,
@@ -3978,7 +3723,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": -40.412200927734375,
@@ -3992,7 +3737,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.200000047683716,
           "flValue": -40.40315628051758,
@@ -4006,7 +3751,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.7666666507720947,
           "flValue": -40.40985870361328,
@@ -4022,13 +3767,13 @@
         ]
        },
        {
-        "__type__": "Type_dc847dab",
+        "__type__": "EffectGroupPositionYKeyData",
         "__typeHash__": 3699670443,
         "dwType": 3699670443,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.5,
           "flValue": -49.08271408081055,
@@ -4042,7 +3787,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.7333333492279053,
           "flValue": -49.065425872802734,
@@ -4056,7 +3801,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": -49.06482696533203,
@@ -4070,7 +3815,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.200000047683716,
           "flValue": -49.07601547241211,
@@ -4084,7 +3829,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.7666666507720947,
           "flValue": -49.07529830932617,
@@ -4100,13 +3845,13 @@
         ]
        },
        {
-        "__type__": "Type_c8c6528c",
+        "__type__": "EffectGroupPositionZKeyData",
         "__typeHash__": 3368440460,
         "dwType": 3368440460,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.5,
           "flValue": 1.825562834739685,
@@ -4120,7 +3865,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.7333333492279053,
           "flValue": 1.8755186796188354,
@@ -4134,7 +3879,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 1.8844375610351562,
@@ -4148,7 +3893,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.200000047683716,
           "flValue": 1.8973557949066162,
@@ -4162,7 +3907,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.7666666507720947,
           "flValue": 1.8902391195297241,
@@ -4178,13 +3923,13 @@
         ]
        },
        {
-        "__type__": "Type_22fa43bd",
+        "__type__": "EffectGroupScaleXKeyData",
         "__typeHash__": 586826685,
         "dwType": 586826685,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0,
@@ -4198,7 +3943,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.5,
           "flValue": 1,
@@ -4212,7 +3957,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.7333333492279053,
           "flValue": 1,
@@ -4226,7 +3971,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 1,
@@ -4240,7 +3985,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.200000047683716,
           "flValue": 1,
@@ -4254,7 +3999,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.7666666507720947,
           "flValue": 1,
@@ -4270,13 +4015,13 @@
         ]
        },
        {
-        "__type__": "Type_f3c189e",
+        "__type__": "EffectGroupScaleYKeyData",
         "__typeHash__": 255596702,
         "dwType": 255596702,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0,
@@ -4290,7 +4035,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.5,
           "flValue": 1,
@@ -4304,7 +4049,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.7333333492279053,
           "flValue": 1,
@@ -4318,7 +4063,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 1,
@@ -4332,7 +4077,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.200000047683716,
           "flValue": 1,
@@ -4346,7 +4091,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.7666666507720947,
           "flValue": 1,
@@ -4362,13 +4107,13 @@
         ]
        },
        {
-        "__type__": "Type_fb7ded7f",
+        "__type__": "EffectGroupScaleZKeyData",
         "__typeHash__": 4219334015,
         "dwType": 4219334015,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0,
@@ -4382,7 +4127,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.5,
           "flValue": 1,
@@ -4396,7 +4141,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.7333333492279053,
           "flValue": 1,
@@ -4410,7 +4155,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 1,
@@ -4424,7 +4169,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.200000047683716,
           "flValue": 1,
@@ -4438,7 +4183,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.7666666507720947,
           "flValue": 1,
@@ -4454,13 +4199,13 @@
         ]
        },
        {
-        "__type__": "Type_d64de806",
+        "__type__": "EffectGroupRotationRollKeyData",
         "__typeHash__": 3595429894,
         "dwType": 3595429894,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.5,
           "flValue": -0.29901033639907837,
@@ -4474,7 +4219,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.7333333492279053,
           "flValue": -0.32139065861701965,
@@ -4488,7 +4233,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": -0.3601365089416504,
@@ -4502,7 +4247,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.200000047683716,
           "flValue": -0.3852279782295227,
@@ -4516,7 +4261,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.7666666507720947,
           "flValue": -0.3852282166481018,
@@ -4532,13 +4277,13 @@
         ]
        },
        {
-        "__type__": "Type_ecff2185",
+        "__type__": "EffectGroupRotationPitchKeyData",
         "__typeHash__": 3976143237,
         "dwType": 3976143237,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.5,
           "flValue": -0.24662257730960846,
@@ -4552,7 +4297,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.7333333492279053,
           "flValue": -0.31136852502822876,
@@ -4566,7 +4311,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": -0.42345955967903137,
@@ -4580,7 +4325,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.200000047683716,
           "flValue": -0.4960511326789856,
@@ -4594,7 +4339,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.7666666507720947,
           "flValue": -0.4960514008998871,
@@ -4610,13 +4355,13 @@
         ]
        },
        {
-        "__type__": "Type_f6ae99be",
+        "__type__": "EffectGroupRotationYawKeyData",
         "__typeHash__": 4138637758,
         "dwType": 4138637758,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.5,
           "flValue": 2.366764783859253,
@@ -4630,7 +4375,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.7333333492279053,
           "flValue": 2.4575510025024414,
@@ -4644,7 +4389,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 2.614724636077881,
@@ -4658,7 +4403,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.200000047683716,
           "flValue": 2.7165122032165527,
@@ -4672,7 +4417,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.7666666507720947,
           "flValue": 2.7165122032165527,
@@ -4699,9 +4444,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -4718,29 +4463,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -4754,13 +4499,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwActorID": 214,
       "snoname": {
-       "value": 710345,
-       "group": 27,
+       "__raw__": 710345,
+       "__group__": 27,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Particle/fxSandbox_mmoseley_embers_D.prt",
        "groupName": "Particle",
-       "type": "sno",
        "name": "fxSandbox_mmoseley_embers_D"
       },
       "dwID": 11409098,
@@ -4787,54 +4534,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 1,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -4859,7 +4586,7 @@
         "z": 0.09000000357627869
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -4875,48 +4602,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -4955,9 +4657,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -4974,29 +4676,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -5010,13 +4712,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwActorID": 214,
       "snoname": {
-       "value": 713523,
-       "group": 27,
+       "__raw__": 713523,
+       "__group__": 27,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Particle/fxSandbox_mmoseley_embers_E_midR_cheek.prt",
        "groupName": "Particle",
-       "type": "sno",
        "name": "fxSandbox_mmoseley_embers_E_midR_cheek"
       },
       "dwID": 11409103,
@@ -5043,54 +4747,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 1,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -5115,7 +4799,7 @@
         "z": -0.05000000074505806
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -5131,48 +4815,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -5211,9 +4870,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -5230,29 +4889,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -5266,13 +4925,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwActorID": 214,
       "snoname": {
-       "value": 713688,
-       "group": 27,
+       "__raw__": 713688,
+       "__group__": 27,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Particle/IGC_SLY_1140_environmentVFX_fog_lava_heatDistortion_mouth.prt",
        "groupName": "Particle",
-       "type": "sno",
        "name": "IGC_SLY_1140_environmentVFX_fog_lava_heatDistortion_mouth"
       },
       "dwID": 11409107,
@@ -5299,54 +4960,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 1,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -5371,7 +5012,7 @@
         "z": -0.009999999776482582
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -5387,48 +5028,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -5467,9 +5083,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -5486,29 +5102,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -5522,13 +5138,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwActorID": 214,
       "snoname": {
-       "value": 714739,
-       "group": 27,
+       "__raw__": 714739,
+       "__group__": 27,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Particle/IGC_SLY_1140_environmentVFX_fog_lava_heatBlur_mouth.prt",
        "groupName": "Particle",
-       "type": "sno",
        "name": "IGC_SLY_1140_environmentVFX_fog_lava_heatBlur_mouth"
       },
       "dwID": 11409109,
@@ -5555,54 +5173,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 1,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -5627,7 +5225,7 @@
         "z": -0.009999999776482582
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -5643,48 +5241,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -5723,9 +5296,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -5742,29 +5315,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -5778,13 +5351,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwActorID": 214,
       "snoname": {
-       "value": 715648,
-       "group": 27,
+       "__raw__": 715648,
+       "__group__": 27,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Particle/fxSandbox_mmoseley_embers_E_nose.prt",
        "groupName": "Particle",
-       "type": "sno",
        "name": "fxSandbox_mmoseley_embers_E_nose"
       },
       "dwID": 11409110,
@@ -5811,54 +5386,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 1,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -5883,7 +5438,7 @@
         "z": 0.03999999910593033
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -5899,48 +5454,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -5979,9 +5509,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -5998,29 +5528,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 8,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -6034,13 +5564,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 709615,
-       "group": 1,
+       "__raw__": 709615,
+       "__group__": 1,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Actor/igc_bloodpetals.acr",
        "groupName": "Actor",
-       "type": "sno",
        "name": "igc_bloodpetals"
       },
       "dwID": 2222,
@@ -6067,54 +5599,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 1,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": true,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -6139,7 +5651,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -6155,48 +5667,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -6235,9 +5722,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -6247,36 +5734,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_58ae46c5",
+      "__type__": "TriggerEventActorPlayAnimation",
       "__typeHash__": 1487816389,
       "dwType": 1487816389,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -6295,30 +5782,32 @@
       "unk_4d01218": 0,
       "unk_84dd910": 0,
       "dwActorID": 2222,
-      "unk_b8e650c": 0,
+      "eAnimLayerMode": 0,
       "unk_9209538": 7,
-      "unk_a5153a1": 0,
-      "unk_5ed01be": 0,
-      "unk_9b2ead": 1,
-      "unk_bcac396": {
-       "value": 712186,
-       "group": 6,
+      "unk_a5153a1": false,
+      "unk_5ed01be": false,
+      "unk_9b2ead": true,
+      "snonameAnim": {
+       "__raw__": 712186,
+       "__group__": 6,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Anim/igc_sly_bloodpetals_1140.ani",
        "groupName": "Animation",
-       "type": "sno",
        "name": "igc_sly_bloodpetals_1140"
       },
-      "unk_85269a4": 0,
-      "unk_701a0bf": 0,
+      "unk_85269a4": false,
+      "fRandomPermutation": false,
       "nPermutationIndex": 0,
-      "unk_32a328c": 0,
+      "unk_32a328c": false,
       "flAnimSpeedScale": 1,
-      "unk_12c22c8": 100,
-      "unk_c7ffac9": 0,
+      "dwAnimWeight": 100,
+      "eAnimLoopMode": 0,
       "unk_c86af88": 0,
       "unk_396c7d1": 0,
-      "unk_515279b": 0,
+      "unk_515279b": false,
       "szLocatorName": 0,
-      "unk_386656b": 0.5
+      "flLocatorBlend": 0.5
      }
     ],
     "tCooldown": 0
@@ -6329,9 +5818,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -6348,29 +5837,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -6384,13 +5873,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwActorID": 214,
       "snoname": {
-       "value": 723667,
-       "group": 27,
+       "__raw__": 723667,
+       "__group__": 27,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Particle/fxSandbox_mmoseley_embers_D_blurred_velFace.prt",
        "groupName": "Particle",
-       "type": "sno",
        "name": "fxSandbox_mmoseley_embers_D_blurred_velFace"
       },
       "dwID": 11409128,
@@ -6417,54 +5908,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 1,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -6489,7 +5960,7 @@
         "z": 0.07000000029802322
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -6505,48 +5976,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -6585,9 +6031,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -6604,29 +6050,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -6640,13 +6086,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwActorID": 214,
       "snoname": {
-       "value": 713497,
-       "group": 27,
+       "__raw__": 713497,
+       "__group__": 27,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Particle/fxSandbox_mmoseley_embers_E_L_cheek.prt",
        "groupName": "Particle",
-       "type": "sno",
        "name": "fxSandbox_mmoseley_embers_E_L_cheek"
       },
       "dwID": 11409133,
@@ -6673,54 +6121,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 1,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -6745,7 +6173,7 @@
         "z": -0.05000000074505806
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -6761,48 +6189,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -6841,9 +6244,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -6860,29 +6263,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -6896,13 +6299,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwActorID": 214,
       "snoname": {
-       "value": 723669,
-       "group": 27,
+       "__raw__": 723669,
+       "__group__": 27,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Particle/fxSandbox_mmoseley_embers_E_botR_cheek_blurred_velFace.prt",
        "groupName": "Particle",
-       "type": "sno",
        "name": "fxSandbox_mmoseley_embers_E_botR_cheek_blurred_velFace"
       },
       "dwID": 11409144,
@@ -6929,54 +6334,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 1,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -7001,7 +6386,7 @@
         "z": -0.10000000149011612
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -7017,48 +6402,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -7097,9 +6457,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -7116,29 +6476,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -7152,13 +6512,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwActorID": 214,
       "snoname": {
-       "value": 723756,
-       "group": 27,
+       "__raw__": 723756,
+       "__group__": 27,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Particle/fxSandbox_mmoseley_embers_D_black_preBlur.prt",
        "groupName": "Particle",
-       "type": "sno",
        "name": "fxSandbox_mmoseley_embers_D_black_preBlur"
       },
       "dwID": 11409146,
@@ -7185,54 +6547,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -7257,7 +6599,7 @@
         "z": 0.07000000029802322
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -7273,48 +6615,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -7353,9 +6670,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -7372,29 +6689,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -7408,13 +6725,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwActorID": 214,
       "snoname": {
-       "value": 723673,
-       "group": 27,
+       "__raw__": 723673,
+       "__group__": 27,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Particle/fxSandbox_mmoseley_embers_E_L_cheek_blurred_velFace.prt",
        "groupName": "Particle",
-       "type": "sno",
        "name": "fxSandbox_mmoseley_embers_E_L_cheek_blurred_velFace"
       },
       "dwID": 11409149,
@@ -7441,54 +6760,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 1,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -7513,7 +6812,7 @@
         "z": -0.05000000074505806
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -7529,48 +6828,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -7609,9 +6883,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -7628,29 +6902,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -7664,13 +6938,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwActorID": 214,
       "snoname": {
-       "value": 723675,
-       "group": 27,
+       "__raw__": 723675,
+       "__group__": 27,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Particle/fxSandbox_mmoseley_embers_E_midR_cheek_blurred_velFace.prt",
        "groupName": "Particle",
-       "type": "sno",
        "name": "fxSandbox_mmoseley_embers_E_midR_cheek_blurred_velFace"
       },
       "dwID": 11409151,
@@ -7697,54 +6973,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 2,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -7769,7 +7025,7 @@
         "z": -0.05000000074505806
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -7785,48 +7041,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -7865,9 +7096,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -7877,7 +7108,7 @@
     "dwMsgKey": 0,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_bc26b221",
+      "__type__": "TriggerEventObjectKeyFrame",
       "__typeHash__": 3156652577,
       "dwType": 3156652577,
       "dwPad": 0,
@@ -7885,37 +7116,37 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwObjectID": 214,
       "arKeys": [
        {
-        "__type__": "Type_e17a1529",
+        "__type__": "EffectGroupMaterialValueKeyData",
         "__typeHash__": 3782874409,
         "dwType": 3782874409,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0.4000000059604645,
@@ -7929,7 +7160,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.46771240234375,
           "flValue": 0.5199999809265137,
@@ -7943,7 +7174,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 0.5600000023841858,
@@ -7957,7 +7188,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.866666555404663,
           "flValue": 1,
@@ -7972,27 +7203,24 @@
          }
         ],
         "snoMaterialValue": {
-         "value": 579283,
-         "group": 81,
+         "__raw__": 579283,
+         "__group__": 81,
+         "__type__": "DT_SNO",
+         "__typeHash__": 2764331143,
+         "__targetFileName__": "base/meta/MaterialValue/IGC_ScalarFrame.mtv",
          "groupName": "MaterialValue",
-         "type": "sno",
          "name": "IGC_ScalarFrame"
         },
-        "snoMaterialFilter": {
-         "value": -1,
-         "group": 57,
-         "groupName": "Material",
-         "type": "sno"
-        }
+        "snoMaterialFilter": null
        },
        {
-        "__type__": "Type_e17a1529",
+        "__type__": "EffectGroupMaterialValueKeyData",
         "__typeHash__": 3782874409,
         "dwType": 3782874409,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.46771240234375,
           "flValue": 0,
@@ -8007,27 +7235,24 @@
          }
         ],
         "snoMaterialValue": {
-         "value": 702994,
-         "group": 81,
+         "__raw__": 702994,
+         "__group__": 81,
+         "__type__": "DT_SNO",
+         "__typeHash__": 2764331143,
+         "__targetFileName__": "base/meta/MaterialValue/IGC_ScalarFrame_Offset.mtv",
          "groupName": "MaterialValue",
-         "type": "sno",
          "name": "IGC_ScalarFrame_Offset"
         },
-        "snoMaterialFilter": {
-         "value": -1,
-         "group": 57,
-         "groupName": "Material",
-         "type": "sno"
-        }
+        "snoMaterialFilter": null
        },
        {
-        "__type__": "Type_e17a1529",
+        "__type__": "EffectGroupMaterialValueKeyData",
         "__typeHash__": 3782874409,
         "dwType": 3782874409,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.46771240234375,
           "flValue": 0,
@@ -8041,7 +7266,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.133333444595337,
           "flValue": 0,
@@ -8055,7 +7280,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.866666555404663,
           "flValue": 1,
@@ -8070,27 +7295,24 @@
          }
         ],
         "snoMaterialValue": {
-         "value": 722219,
-         "group": 81,
+         "__raw__": 722219,
+         "__group__": 81,
+         "__type__": "DT_SNO",
+         "__typeHash__": 2764331143,
+         "__targetFileName__": "base/meta/MaterialValue/IGC_ScalarFrame_OverDrive.mtv",
          "groupName": "MaterialValue",
-         "type": "sno",
          "name": "IGC_ScalarFrame_OverDrive"
         },
-        "snoMaterialFilter": {
-         "value": -1,
-         "group": 57,
-         "groupName": "Material",
-         "type": "sno"
-        }
+        "snoMaterialFilter": null
        },
        {
-        "__type__": "Type_e17a1529",
+        "__type__": "EffectGroupMaterialValueKeyData",
         "__typeHash__": 3782874409,
         "dwType": 3782874409,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 3,
@@ -8105,18 +7327,15 @@
          }
         ],
         "snoMaterialValue": {
-         "value": 725214,
-         "group": 81,
+         "__raw__": 725214,
+         "__group__": 81,
+         "__type__": "DT_SNO",
+         "__typeHash__": 2764331143,
+         "__targetFileName__": "base/meta/MaterialValue/IGC_Emissive_PerShot_Mult.mtv",
          "groupName": "MaterialValue",
-         "type": "sno",
          "name": "IGC_Emissive_PerShot_Mult"
         },
-        "snoMaterialFilter": {
-         "value": -1,
-         "group": 57,
-         "groupName": "Material",
-         "type": "sno"
-        }
+        "snoMaterialFilter": null
        }
       ],
       "unk_9717a7e": 3.866666555404663
@@ -8130,9 +7349,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -8149,29 +7368,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -8185,13 +7404,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 692562,
-       "group": 1,
+       "__raw__": 692562,
+       "__group__": 1,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Actor/igc_yorinsoulstoneheadvariant.acr",
        "groupName": "Actor",
-       "type": "sno",
        "name": "igc_yorinsoulstoneheadvariant"
       },
       "dwID": 214,
@@ -8218,54 +7439,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 1,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": true,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 4189822210
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 1013966687,
@@ -8290,7 +7491,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -8306,48 +7507,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -8386,9 +7562,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -8398,36 +7574,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_58ae46c5",
+      "__type__": "TriggerEventActorPlayAnimation",
       "__typeHash__": 1487816389,
       "dwType": 1487816389,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -8446,30 +7622,32 @@
       "unk_4d01218": 0,
       "unk_84dd910": 0,
       "dwActorID": 214,
-      "unk_b8e650c": 0,
+      "eAnimLayerMode": 0,
       "unk_9209538": 7,
-      "unk_a5153a1": 0,
-      "unk_5ed01be": 0,
-      "unk_9b2ead": 1,
-      "unk_bcac396": {
-       "value": 994979,
-       "group": 6,
+      "unk_a5153a1": false,
+      "unk_5ed01be": false,
+      "unk_9b2ead": true,
+      "snonameAnim": {
+       "__raw__": 994979,
+       "__group__": 6,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Anim/IGC_SLY_yorinsoulstoneheadvariant_1140.ani",
        "groupName": "Animation",
-       "type": "sno",
        "name": "IGC_SLY_yorinsoulstoneheadvariant_1140"
       },
-      "unk_85269a4": 0,
-      "unk_701a0bf": 0,
+      "unk_85269a4": false,
+      "fRandomPermutation": false,
       "nPermutationIndex": 0,
-      "unk_32a328c": 0,
+      "unk_32a328c": false,
       "flAnimSpeedScale": 1,
-      "unk_12c22c8": 100,
-      "unk_c7ffac9": 0,
+      "dwAnimWeight": 100,
+      "eAnimLoopMode": 0,
       "unk_c86af88": 0,
       "unk_396c7d1": 0,
-      "unk_515279b": 0,
+      "unk_515279b": false,
       "szLocatorName": 0,
-      "unk_386656b": 0.5
+      "flLocatorBlend": 0.5
      }
     ],
     "tCooldown": 0
@@ -8480,9 +7658,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -8499,29 +7677,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 3.866666793823242,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -8545,9 +7723,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -8565,30 +7743,30 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
-      "unk_8dea4d9": 0,
+      "unk_8dea4d9": false,
       "nFadeGroup": 22,
       "eBehavior": 0,
-      "unk_2b48a58": 0
+      "unk_2b48a58": false
      }
     ],
     "tCooldown": 0
@@ -8630,24 +7808,9 @@
   30
  ],
  "nEffectWeightMethod": 2,
- "snoPower": {
-  "value": -1,
-  "group": 29,
-  "groupName": "Power",
-  "type": "sno"
- },
- "unk_760871b": {
-  "value": -1,
-  "group": 29,
-  "groupName": "Power",
-  "type": "sno"
- },
- "snoConversation": {
-  "value": -1,
-  "group": 12,
-  "groupName": "Conversation",
-  "type": "sno"
- },
+ "snoPower": null,
+ "snoPowerEffectParam": null,
+ "snoConversation": null,
  "unk_e7c25e0": 0,
  "unk_51077dd": {
   "rangeValue1": 0,

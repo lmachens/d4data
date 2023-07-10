@@ -1,22 +1,22 @@
 # Definition: QuestDefinition
 # Hash: 3ed1aefb
-# SNOFileHeader.dwFormatHash: 851b10ab
-# Flags: 00000000 00000000 01000011 00111010
+# SNOFileHeader.dwFormatHash: c9779f22
+# Flags: 0x433a
 
 0x8: eQuestType # DT_ENUM (32 bits used)
-0xc: unk_f88ee86 # DT_ENUM (32 bits used)
-0x10: unk_4c4339b # DT_ENUM (32 bits used)
-0x14: unk_f522ece # DT_ENUM (32 bits used)
+0xc: ePlayerQuestType # DT_ENUM (32 bits used)
+0x10: eEventQuestType # DT_ENUM (32 bits used)
+0x14: eInstanceQuestType # DT_ENUM (32 bits used)
 0x18: eRepeatType # DT_ENUM (32 bits used)
 0x1c: eVignetteType # DT_ENUM (32 bits used)
 0x20: unk_43f3849 # DT_INT (32 bits used)
 0x24: unk_48a2b16 # DT_INT (32 bits used)
-0x28: unk_d060a69 # MarkerHandle
+0x28: tMarkerHandleStartLocation # MarkerHandle
 0x30: vecStartLocation # DT_VECTOR3D
-0x3c: unk_6a4ec7f # DT_SNO (32 bits used) {group 0x30 "World"}
-0x40: unk_c2e8448 # MarkerHandle
-0x48: unk_ff5c704 # DT_VECTOR3D
-0x54: unk_506369e # DT_SNO (32 bits used) {group 0x30 "World"}
+0x3c: snoWorldStartLocation # DT_SNO (32 bits used) {group 0x30 "World"}
+0x40: tMarkerHandleDevStartLocation # MarkerHandle
+0x48: vecDevStartLocation # DT_VECTOR3D
+0x54: snoWorldDevStartLocation # DT_SNO (32 bits used) {group 0x30 "World"}
 0x58: unk_d2181f0 # DT_STARTLOC_NAME (32 bits used)
 0x5c: snoLevelArea # DT_SNO (32 bits used) {group 0x16 "LevelArea"}
 0x60: unk_f956a05 # DT_INT (1 bits used)
@@ -24,7 +24,7 @@
 0x68: flParticipationRadius # DT_FLOAT (32 bits used)
 0x6c: unk_8881b0e # DT_FLOAT (32 bits used)
 0x70: dwNextUID # DT_UINT (32 bits used)
-0x74: unk_b89b77f # DT_INT (1 bits used)
+0x74: fPrioritySideQuest # DT_INT (1 bits used)
 0x78: unk_c18cabd # DT_INT (1 bits used)
 0x7c: unk_79f6e17 # DT_ENUM (32 bits used)
 0x80: gbidSubzoneModifierTag # DT_GBID (32 bits used) {group 0x3c}
@@ -32,27 +32,22 @@
 0x88: eBountyTier # DT_ENUM (32 bits used)
 0x8c: eBountyType # DT_ENUM (32 bits used)
 0x90: unk_313dbf6 # DT_INT (1 bits used)
-0x94: unk_834fdbf # DT_UINT (32 bits used)
+0x94: dwRegionSourceCallbackUID # DT_UINT (32 bits used)
 0x98: unk_b83e7b1 # DT_ENUM (32 bits used)
 0x9c: unk_942bcdb # DT_INT (32 bits used)
 0xa0: dwFlags # DT_UINT (32 bits used)
 0xa8: arQuestPhases # DT_POLYMORPHIC_VARIABLEARRAY => DT_INT64
-0xc0: unk_1755172 # DT_VARIABLEARRAY => ReputationValuePair
+0xc0: arRequiredReputations # DT_VARIABLEARRAY => ReputationValuePair
 0xd0: arReputationRewards # DT_VARIABLEARRAY => ReputationValuePair
-0xe0: unk_46e3956 # DT_VARIABLEARRAY (32 bits used) {group 0x1f "Quest"} => DT_SNO
+0xe0: arRequiredCompletedQuests # DT_VARIABLEARRAY (32 bits used) {group 0x1f "Quest"} => DT_SNO
 0xf0: snoStartCondition # DT_SNO (32 bits used) {group 0x33 "Condition"}
-0xf8: unk_c47e01a # DT_CSTRING (8 bits used) => DT_BYTE
-0x108: unk_993f312 # DT_CSTRING (8 bits used) => DT_BYTE
-0x118: unk_39af3bb # DT_CSTRING (8 bits used) => DT_BYTE
-0x128: unk_857ebd2 # DT_CSTRING (8 bits used) => DT_BYTE
-0x138: unk_556de93 # DT_CSTRING (8 bits used) => DT_BYTE
-0x148: arFollowers # DT_VARIABLEARRAY => QuestFollower
-0x158: arQuestItems # DT_VARIABLEARRAY (32 bits used) {group 0x49 "Item"} => DT_SNO
-0x168: arQuestDungeons # DT_VARIABLEARRAY (32 bits used) {group 0x30 "World"} => DT_SNO
-0x178: unk_2aa5f20 # DT_VARIABLEARRAY (32 bits used) {group 0x1f "Quest"} => DT_SNO
-0x188: unk_b43b442 # DT_VARIABLEARRAY (32 bits used) {group 0x2d} => DT_GBID
-0x198: gbidSurveyType # DT_GBID (32 bits used) {group 0x39}
-0x19c: unk_b37e635 # DT_GBID (32 bits used) {group 0x39}
-0x1a0: snoAudioContext # DT_SNO (32 bits used) {group 0x5d "AudioContext"}
-0x1a8: unk_af3a4c1 # DT_VARIABLEARRAY (32 bits used) {group 0x49 "Item"} => DT_SNO
-0x1b8: null or eof # DT_NULL
+0xf8: arFollowers # DT_VARIABLEARRAY => QuestFollower
+0x108: arQuestItems # DT_VARIABLEARRAY (32 bits used) {group 0x49 "Item"} => DT_SNO
+0x118: arQuestDungeons # DT_VARIABLEARRAY (32 bits used) {group 0x30 "World"} => DT_SNO
+0x128: unk_2aa5f20 # DT_VARIABLEARRAY (32 bits used) {group 0x1f "Quest"} => DT_SNO
+0x138: unk_b43b442 # DT_VARIABLEARRAY (32 bits used) {group 0x2d} => DT_GBID
+0x148: gbidSurveyType # DT_GBID (32 bits used) {group 0x39}
+0x14c: gbidNightmareDungeonSurveyType # DT_GBID (32 bits used) {group 0x39}
+0x150: snoAudioContext # DT_SNO (32 bits used) {group 0x5d "AudioContext"}
+0x158: arAllReferencedItems # DT_VARIABLEARRAY (32 bits used) {group 0x49 "Item"} => DT_SNO
+0x168: null or eof # DT_NULL

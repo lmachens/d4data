@@ -1,5 +1,5 @@
 {
- "__fileName__": "data/base/meta/EffectGroup/IGC_POP_6545.efg",
+ "__fileName__": "base/meta/EffectGroup/IGC_POP_6545.efg",
  "__snoID__": 1039710,
  "__type__": "EffectGroupDefinition",
  "__typeHash__": 2057617923,
@@ -13,14 +13,14 @@
  "unk_19bdc57": 5,
  "unk_7c79fc2": 120,
  "unk_43960c1": 0,
- "unk_e5a6bb1": {
+ "tFallbackEffect": {
   "__type__": "EffectItem",
   "__typeHash__": 4037984604,
   "dwWeight": 0,
   "snoSurfaces": [],
-  "unk_7903361": [],
-  "unk_d5fd413": [],
-  "unk_ae86ed6": [],
+  "arWeaponItemTypes": [],
+  "arMonsterArchetypes": [],
+  "arActorVariantTypes": [],
   "arTopology": [],
   "unk_43e7b5a": [],
   "dwHash": 0,
@@ -38,25 +38,25 @@
       "__type__": "TriggerConditions",
       "__typeHash__": 888408526,
       "flChance": 1,
-      "bMute": 0,
-      "unk_1db3ba0": 0,
+      "bMute": false,
+      "bMuteExternal": false,
       "tDelay": 0,
-      "unk_f0d960e": {
+      "tImpactVelocityRange": {
        "rangeValue1": 0,
        "rangeValue2": 0
       },
-      "unk_1dcbf67": {
+      "tImpactWeightRange": {
        "rangeValue1": 0,
        "rangeValue2": 0
       },
       "eMaterial": 0,
       "dwConditionFlags": 1038,
-      "unk_817e082": 0,
+      "ePlayerCountCondition": 0,
       "unk_b51df67": 0,
       "dwPad": 0
      },
-     "fGenerated": 0,
-     "unk_6cba752": 0,
+     "fGenerated": false,
+     "unk_6cba752": false,
      "unk_e560b0b": 4294967295
     }
    ],
@@ -69,9 +69,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -88,29 +88,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 7.033333778381348,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -124,13 +124,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 214045,
-       "group": 1,
+       "__raw__": 214045,
+       "__group__": 1,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Actor/camera_rig.acr",
        "groupName": "Actor",
-       "type": "sno",
        "name": "camera_rig"
       },
       "dwID": 6545,
@@ -157,54 +159,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 1,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": true,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 326787930,
@@ -229,7 +211,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -245,48 +227,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -325,9 +282,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -337,36 +294,36 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_58ae46c5",
+      "__type__": "TriggerEventActorPlayAnimation",
       "__typeHash__": 1487816389,
       "dwType": 1487816389,
       "tConditions": {
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -385,30 +342,32 @@
       "unk_4d01218": 0,
       "unk_84dd910": 0,
       "dwActorID": 6545,
-      "unk_b8e650c": 0,
+      "eAnimLayerMode": 0,
       "unk_9209538": 7,
-      "unk_a5153a1": 0,
-      "unk_5ed01be": 0,
-      "unk_9b2ead": 1,
-      "unk_bcac396": {
-       "value": 1040495,
-       "group": 6,
+      "unk_a5153a1": false,
+      "unk_5ed01be": false,
+      "unk_9b2ead": true,
+      "snonameAnim": {
+       "__raw__": 1040495,
+       "__group__": 6,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Anim/IGC_POP_camera_6545.ani",
        "groupName": "Animation",
-       "type": "sno",
        "name": "IGC_POP_camera_6545"
       },
-      "unk_85269a4": 0,
-      "unk_701a0bf": 0,
+      "unk_85269a4": false,
+      "fRandomPermutation": false,
       "nPermutationIndex": 0,
-      "unk_32a328c": 0,
+      "unk_32a328c": false,
       "flAnimSpeedScale": 1,
-      "unk_12c22c8": 100,
-      "unk_c7ffac9": 0,
+      "dwAnimWeight": 100,
+      "eAnimLoopMode": 0,
       "unk_c86af88": 0,
       "unk_396c7d1": 0,
-      "unk_515279b": 0,
+      "unk_515279b": false,
       "szLocatorName": 0,
-      "unk_386656b": 0.5
+      "flLocatorBlend": 0.5
      }
     ],
     "tCooldown": 0
@@ -419,9 +378,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -438,29 +397,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1070,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -475,7 +434,7 @@
       "unk_5490979": -1,
       "dwPad": 0,
       "eObjectType": 0,
-      "unk_a1d7e72": {
+      "tHardpointLinkTarget": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -496,15 +455,15 @@
         "dwHashFlag": 0
        }
       },
-      "unk_896cea7": 1,
-      "unk_454a2a1": 1,
+      "unk_896cea7": true,
+      "unk_454a2a1": true,
       "eBlendEasing": 32,
       "unk_10734fd": {
        "__type__": "Type_e97cce1f",
        "__typeHash__": 3917270559,
        "unk_9568563": 0,
-       "unk_5c29242": 0,
-       "unk_cf27ac2": 0
+       "unk_5c29242": false,
+       "flCameraOffset": 0
       }
      }
     ],
@@ -516,9 +475,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -536,27 +495,27 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
-      "bOverridePosition": 0,
+      "bOverridePosition": false,
       "vecPosition": {
        "x": 0,
        "y": 0
@@ -572,9 +531,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -591,29 +550,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 7.033333778381348,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -627,13 +586,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 1031645,
-       "group": 1,
+       "__raw__": 1031645,
+       "__group__": 1,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Actor/igc_necground_staticmesh.acr",
        "groupName": "Actor",
-       "type": "sno",
        "name": "igc_necground_staticmesh"
       },
       "dwID": 4004,
@@ -660,54 +621,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 1,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": true,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 67399014
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 4046247540,
@@ -732,7 +673,7 @@
         "z": 0.0010000000474974513
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -748,48 +689,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -828,9 +744,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -847,29 +763,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 7.033333778381348,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -893,9 +809,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -912,29 +828,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 7.033333778381348,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -948,13 +864,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 1204791,
-       "group": 47,
+       "__raw__": 1204791,
+       "__group__": 47,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Weather/IGC_POP_Weather_6545.wth",
        "groupName": "Weather",
-       "type": "sno",
        "name": "IGC_POP_Weather_6545"
       },
       "dwID": 6546,
@@ -981,54 +899,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 0,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": false,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 0,
@@ -1053,7 +951,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -1069,48 +967,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 0,
       "unk_36bc3de": 0,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -1149,9 +1022,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -1168,29 +1041,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 7.033333778381348,
       "dwTriggerFlags": 8192,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -1204,13 +1077,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 0,
       "snoname": {
-       "value": 1204800,
-       "group": 24,
+       "__raw__": 1204800,
+       "__group__": 24,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/MarkerSet/Prefab_IGC_POP_Lighting_6545_v001.mrk",
        "groupName": "MarkerSet",
-       "type": "sno",
        "name": "Prefab_IGC_POP_Lighting_6545_v001"
       },
       "dwID": 6547,
@@ -1237,54 +1112,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 1,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": true,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 326787930,
@@ -1309,7 +1164,7 @@
         "z": 0
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -1325,48 +1180,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -1405,9 +1235,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -1424,29 +1254,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 7.033333778381348,
       "dwTriggerFlags": 268443648,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -1460,13 +1290,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 1014,
       "snoname": {
-       "value": 482851,
-       "group": 23,
+       "__raw__": 482851,
+       "__group__": 23,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Light/IGC_Default_SpotLight_Dynamic.lit",
        "groupName": "Light",
-       "type": "sno",
        "name": "IGC_Default_SpotLight_Dynamic"
       },
       "dwID": 6548,
@@ -1493,54 +1325,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 1,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": true,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 326787930,
@@ -1565,7 +1377,7 @@
         "z": 1.5
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -1581,48 +1393,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -1663,10 +1450,12 @@
          "__type__": "MaterialTexture",
          "__typeHash__": 3890408608,
          "snoTex": {
-          "value": 379910,
-          "group": 44,
+          "__raw__": 379910,
+          "__group__": 44,
+          "__type__": "DT_SNO",
+          "__typeHash__": 2764331143,
+          "__targetFileName__": "base/meta/Texture/cookie_circle_soft_noCompression.tex",
           "groupName": "Texture",
-          "type": "sno",
           "name": "cookie_circle_soft_noCompression"
          },
          "ptTexAnim": [
@@ -1700,11 +1489,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1724,7 +1513,7 @@
            }
           ]
          },
-         "unk_9e9e1c6": {
+         "pathSourceRadius": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -1740,11 +1529,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1780,11 +1569,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1804,7 +1593,7 @@
            }
           ]
          },
-         "unk_1ee68c6": {
+         "pathFalloffBias": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -1820,11 +1609,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1860,11 +1649,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1900,11 +1689,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1940,11 +1729,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -1980,11 +1769,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -2020,11 +1809,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -2070,11 +1859,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -2168,11 +1957,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -2192,7 +1981,7 @@
            }
           ]
          },
-         "unk_f7a3d1a": {
+         "pathShadowIntensity": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -2208,11 +1997,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -2232,7 +2021,7 @@
            }
           ]
          },
-         "unk_4d46106": {
+         "pathPivotOffset": {
           "__type__": "VectorPath",
           "__typeHash__": 2594652800,
           "tPathData": {
@@ -2251,27 +2040,11 @@
               "__typeHash__": 991799518,
               "nScalarFunction": 0,
               "dwFlags": 1,
-              "unk_2424d91": {
+              "tInputRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
-              "unk_c9a8e76": {
-               "rangeValue1": 0,
-               "rangeValue2": 1
-              },
-              "eRemapEasing": 0,
-              "szFormulaName": 0
-             },
-             {
-              "__type__": "InterpolationScalar",
-              "__typeHash__": 991799518,
-              "nScalarFunction": 0,
-              "dwFlags": 1,
-              "unk_2424d91": {
-               "rangeValue1": 0,
-               "rangeValue2": 1
-              },
-              "unk_c9a8e76": {
+              "tRemapRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
@@ -2283,11 +2056,27 @@
               "__typeHash__": 991799518,
               "nScalarFunction": 0,
               "dwFlags": 1,
-              "unk_2424d91": {
+              "tInputRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
-              "unk_c9a8e76": {
+              "tRemapRange": {
+               "rangeValue1": 0,
+               "rangeValue2": 1
+              },
+              "eRemapEasing": 0,
+              "szFormulaName": 0
+             },
+             {
+              "__type__": "InterpolationScalar",
+              "__typeHash__": 991799518,
+              "nScalarFunction": 0,
+              "dwFlags": 1,
+              "tInputRange": {
+               "rangeValue1": 0,
+               "rangeValue2": 1
+              },
+              "tRemapRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
@@ -2343,11 +2132,11 @@
          "__typeHash__": 991799518,
          "nScalarFunction": 0,
          "dwFlags": 1,
-         "unk_2424d91": {
+         "tInputRange": {
           "rangeValue1": 0,
           "rangeValue2": 1
          },
-         "unk_c9a8e76": {
+         "tRemapRange": {
           "rangeValue1": 0,
           "rangeValue2": 1
          },
@@ -2366,9 +2155,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -2378,7 +2167,7 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_bc26b221",
+      "__type__": "TriggerEventObjectKeyFrame",
       "__typeHash__": 3156652577,
       "dwType": 3156652577,
       "dwPad": 0,
@@ -2386,37 +2175,37 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwObjectID": 6548,
       "arKeys": [
        {
-        "__type__": "Type_f042a8ca",
+        "__type__": "EffectGroupPositionXKeyData",
         "__typeHash__": 4030900426,
         "dwType": 4030900426,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": -33.288734436035156,
@@ -2430,7 +2219,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.7333333492279053,
           "flValue": -33.35547637939453,
@@ -2444,7 +2233,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.8666666746139526,
           "flValue": -33.36737823486328,
@@ -2458,7 +2247,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": -33.387901306152344,
@@ -2472,7 +2261,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.1333333253860474,
           "flValue": -33.401031494140625,
@@ -2486,7 +2275,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.2333333492279053,
           "flValue": -33.40397644042969,
@@ -2500,7 +2289,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.7333333492279053,
           "flValue": -33.32025909423828,
@@ -2514,7 +2303,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.8666666746139526,
           "flValue": -33.32080078125,
@@ -2528,7 +2317,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": -33.338768005371094,
@@ -2542,7 +2331,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.133333444595337,
           "flValue": -33.362144470214844,
@@ -2556,7 +2345,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.2666666507720947,
           "flValue": -33.38676452636719,
@@ -2570,7 +2359,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.866666555404663,
           "flValue": -33.52069854736328,
@@ -2584,7 +2373,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": -33.52031707763672,
@@ -2598,7 +2387,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.133333444595337,
           "flValue": -33.513282775878906,
@@ -2612,7 +2401,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.9000000953674316,
           "flValue": -33.44989776611328,
@@ -2626,7 +2415,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": -33.436363220214844,
@@ -2640,7 +2429,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4.099999904632568,
           "flValue": -33.436363220214844,
@@ -2654,7 +2443,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": -33.455810546875,
@@ -2668,7 +2457,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": -33.42372131347656,
@@ -2684,13 +2473,13 @@
         ]
        },
        {
-        "__type__": "Type_dc847dab",
+        "__type__": "EffectGroupPositionYKeyData",
         "__typeHash__": 3699670443,
         "dwType": 3699670443,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": -10.316047668457031,
@@ -2704,7 +2493,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.7333333492279053,
           "flValue": -10.050491333007812,
@@ -2718,7 +2507,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.8666666746139526,
           "flValue": -10.031536102294922,
@@ -2732,7 +2521,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": -10.028732299804688,
@@ -2746,7 +2535,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.1333333253860474,
           "flValue": -10.042495727539062,
@@ -2760,7 +2549,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.2333333492279053,
           "flValue": -10.065746307373047,
@@ -2774,7 +2563,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.7333333492279053,
           "flValue": -10.290264129638672,
@@ -2788,7 +2577,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.8666666746139526,
           "flValue": -10.320831298828125,
@@ -2802,7 +2591,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": -10.342254638671875,
@@ -2816,7 +2605,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.133333444595337,
           "flValue": -10.338897705078125,
@@ -2830,7 +2619,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.2666666507720947,
           "flValue": -10.317333221435547,
@@ -2844,7 +2633,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.866666555404663,
           "flValue": -10.026477813720703,
@@ -2858,7 +2647,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": -9.99930191040039,
@@ -2872,7 +2661,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.133333444595337,
           "flValue": -9.972614288330078,
@@ -2886,7 +2675,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.9000000953674316,
           "flValue": -9.797256469726562,
@@ -2900,7 +2689,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": -9.764724731445312,
@@ -2914,7 +2703,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4.099999904632568,
           "flValue": -9.732994079589844,
@@ -2928,7 +2717,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": -9.420726776123047,
@@ -2942,7 +2731,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": -9.104774475097656,
@@ -2958,13 +2747,13 @@
         ]
        },
        {
-        "__type__": "Type_c8c6528c",
+        "__type__": "EffectGroupPositionZKeyData",
         "__typeHash__": 3368440460,
         "dwType": 3368440460,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0.8977001309394836,
@@ -2978,7 +2767,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.7333333492279053,
           "flValue": 0.8321625590324402,
@@ -2992,7 +2781,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.8666666746139526,
           "flValue": 0.8237156867980957,
@@ -3006,7 +2795,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 0.80965256690979,
@@ -3020,7 +2809,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.1333333253860474,
           "flValue": 0.7978701591491699,
@@ -3034,7 +2823,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.2333333492279053,
           "flValue": 0.7897109389305115,
@@ -3048,7 +2837,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.7333333492279053,
           "flValue": 0.7587348818778992,
@@ -3062,7 +2851,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.8666666746139526,
           "flValue": 0.7503103017807007,
@@ -3076,7 +2865,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 0.7352912425994873,
@@ -3090,7 +2879,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.133333444595337,
           "flValue": 0.7320590019226074,
@@ -3104,7 +2893,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.2666666507720947,
           "flValue": 0.7344478964805603,
@@ -3118,7 +2907,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.866666555404663,
           "flValue": 0.8260142207145691,
@@ -3132,7 +2921,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 0.8387327194213867,
@@ -3146,7 +2935,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.133333444595337,
           "flValue": 0.833865225315094,
@@ -3160,7 +2949,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.9000000953674316,
           "flValue": 0.6737946271896362,
@@ -3174,7 +2963,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 0.6770737171173096,
@@ -3188,7 +2977,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4.099999904632568,
           "flValue": 0.6806224584579468,
@@ -3202,7 +2991,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 0.6913686990737915,
@@ -3216,7 +3005,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 0.8604782223701477,
@@ -3232,13 +3021,13 @@
         ]
        },
        {
-        "__type__": "Type_d64de806",
+        "__type__": "EffectGroupRotationRollKeyData",
         "__typeHash__": 3595429894,
         "dwType": 3595429894,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0.4190467298030853,
@@ -3252,7 +3041,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.7333333492279053,
           "flValue": 0.4345378577709198,
@@ -3266,7 +3055,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.8666666746139526,
           "flValue": 0.43558958172798157,
@@ -3280,7 +3069,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 0.43643245100975037,
@@ -3294,7 +3083,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.1333333253860474,
           "flValue": 0.4364948272705078,
@@ -3308,7 +3097,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.2333333492279053,
           "flValue": 0.4365723133087158,
@@ -3322,7 +3111,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.7333333492279053,
           "flValue": 0.4375373125076294,
@@ -3336,7 +3125,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.8666666746139526,
           "flValue": 0.4376366138458252,
@@ -3350,7 +3139,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 0.4377140700817108,
@@ -3364,7 +3153,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.133333444595337,
           "flValue": 0.4376181364059448,
@@ -3378,7 +3167,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.2666666507720947,
           "flValue": 0.43746474385261536,
@@ -3392,7 +3181,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.866666555404663,
           "flValue": 0.43586280941963196,
@@ -3406,7 +3195,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 0.43574362993240356,
@@ -3420,7 +3209,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.133333444595337,
           "flValue": 0.4355745315551758,
@@ -3434,7 +3223,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.9000000953674316,
           "flValue": 0.43239304423332214,
@@ -3448,7 +3237,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 0.43227168917655945,
@@ -3462,7 +3251,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4.099999904632568,
           "flValue": 0.43213900923728943,
@@ -3476,7 +3265,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 0.42401793599128723,
@@ -3490,7 +3279,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 0.43466174602508545,
@@ -3506,13 +3295,13 @@
         ]
        },
        {
-        "__type__": "Type_ecff2185",
+        "__type__": "EffectGroupRotationPitchKeyData",
         "__typeHash__": 3976143237,
         "dwType": 3976143237,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": -2.2664387226104736,
@@ -3526,7 +3315,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.7333333492279053,
           "flValue": -2.1240394115448,
@@ -3540,7 +3329,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.8666666746139526,
           "flValue": -2.1143715381622314,
@@ -3554,7 +3343,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": -2.1066243648529053,
@@ -3568,7 +3357,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.1333333253860474,
           "flValue": -2.104471445083618,
@@ -3582,7 +3371,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.2333333492279053,
           "flValue": -2.1018004417419434,
@@ -3596,7 +3385,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.7333333492279053,
           "flValue": -2.0685224533081055,
@@ -3610,7 +3399,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.8666666746139526,
           "flValue": -2.065098762512207,
@@ -3624,7 +3413,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": -2.0624260902404785,
@@ -3638,7 +3427,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.133333444595337,
           "flValue": -2.0637528896331787,
@@ -3652,7 +3441,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.2666666507720947,
           "flValue": -2.0658743381500244,
@@ -3666,7 +3455,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.866666555404663,
           "flValue": -2.0880401134490967,
@@ -3680,7 +3469,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": -2.089688777923584,
@@ -3694,7 +3483,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.133333444595337,
           "flValue": -2.0920286178588867,
@@ -3708,7 +3497,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.9000000953674316,
           "flValue": -2.13604736328125,
@@ -3722,7 +3511,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": -2.1377267837524414,
@@ -3736,7 +3525,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4.099999904632568,
           "flValue": -2.1392552852630615,
@@ -3750,7 +3539,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": -2.2327558994293213,
@@ -3764,7 +3553,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": -2.1474428176879883,
@@ -3780,13 +3569,13 @@
         ]
        },
        {
-        "__type__": "Type_f6ae99be",
+        "__type__": "EffectGroupRotationYawKeyData",
         "__typeHash__": 4138637758,
         "dwType": 4138637758,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 2.973875045776367,
@@ -3800,7 +3589,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.7333333492279053,
           "flValue": 3.03387713432312,
@@ -3814,7 +3603,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.8666666746139526,
           "flValue": 3.0379505157470703,
@@ -3828,7 +3617,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 3.041215181350708,
@@ -3842,7 +3631,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.1333333253860474,
           "flValue": 3.0421509742736816,
@@ -3856,7 +3645,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.2333333492279053,
           "flValue": 3.043311834335327,
@@ -3870,7 +3659,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.7333333492279053,
           "flValue": 3.057776927947998,
@@ -3884,7 +3673,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.8666666746139526,
           "flValue": 3.05926513671875,
@@ -3898,7 +3687,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 3.060426950454712,
@@ -3912,7 +3701,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.133333444595337,
           "flValue": 3.059857130050659,
@@ -3926,7 +3715,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.2666666507720947,
           "flValue": 3.0589468479156494,
@@ -3940,7 +3729,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.866666555404663,
           "flValue": 3.0494353771209717,
@@ -3954,7 +3743,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 3.0487279891967773,
@@ -3968,7 +3757,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.133333444595337,
           "flValue": 3.0477242469787598,
@@ -3982,7 +3771,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.9000000953674316,
           "flValue": 3.028834342956543,
@@ -3996,7 +3785,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 3.028113842010498,
@@ -4010,7 +3799,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4.099999904632568,
           "flValue": 3.027463436126709,
@@ -4024,7 +3813,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 2.9876701831817627,
@@ -4038,7 +3827,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 3.0232045650482178,
@@ -4054,13 +3843,13 @@
         ]
        },
        {
-        "__type__": "Type_22fa43bd",
+        "__type__": "EffectGroupScaleXKeyData",
         "__typeHash__": 586826685,
         "dwType": 586826685,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0.9999997019767761,
@@ -4074,7 +3863,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.7333333492279053,
           "flValue": 0.9999998211860657,
@@ -4088,7 +3877,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.8666666746139526,
           "flValue": 0.9999997615814209,
@@ -4102,7 +3891,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 0.9999998211860657,
@@ -4116,7 +3905,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.1333333253860474,
           "flValue": 0.9999997019767761,
@@ -4130,7 +3919,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.2333333492279053,
           "flValue": 0.9999997615814209,
@@ -4144,7 +3933,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.7333333492279053,
           "flValue": 0.9999999403953552,
@@ -4158,7 +3947,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.8666666746139526,
           "flValue": 0.9999998807907104,
@@ -4172,7 +3961,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 0.9999997615814209,
@@ -4186,7 +3975,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.133333444595337,
           "flValue": 0.9999998211860657,
@@ -4200,7 +3989,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.2666666507720947,
           "flValue": 0.9999998211860657,
@@ -4214,7 +4003,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.866666555404663,
           "flValue": 0.9999998211860657,
@@ -4228,7 +4017,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 0.9999998211860657,
@@ -4242,7 +4031,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.133333444595337,
           "flValue": 0.9999998211860657,
@@ -4256,7 +4045,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.9000000953674316,
           "flValue": 0.9999997615814209,
@@ -4270,7 +4059,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 0.9999997615814209,
@@ -4284,7 +4073,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4.099999904632568,
           "flValue": 0.9999997615814209,
@@ -4298,7 +4087,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 0.9999998807907104,
@@ -4312,7 +4101,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 1,
@@ -4328,13 +4117,13 @@
         ]
        },
        {
-        "__type__": "Type_f3c189e",
+        "__type__": "EffectGroupScaleYKeyData",
         "__typeHash__": 255596702,
         "dwType": 255596702,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0.9999997019767761,
@@ -4348,7 +4137,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.7333333492279053,
           "flValue": 0.9999998211860657,
@@ -4362,7 +4151,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.8666666746139526,
           "flValue": 0.9999997615814209,
@@ -4376,7 +4165,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 0.9999998211860657,
@@ -4390,7 +4179,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.1333333253860474,
           "flValue": 0.9999997019767761,
@@ -4404,7 +4193,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.2333333492279053,
           "flValue": 0.9999997615814209,
@@ -4418,7 +4207,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.7333333492279053,
           "flValue": 0.9999999403953552,
@@ -4432,7 +4221,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.8666666746139526,
           "flValue": 0.9999998807907104,
@@ -4446,7 +4235,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 0.9999997615814209,
@@ -4460,7 +4249,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.133333444595337,
           "flValue": 0.9999998211860657,
@@ -4474,7 +4263,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.2666666507720947,
           "flValue": 0.9999998211860657,
@@ -4488,7 +4277,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.866666555404663,
           "flValue": 0.9999998211860657,
@@ -4502,7 +4291,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 0.9999998211860657,
@@ -4516,7 +4305,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.133333444595337,
           "flValue": 0.9999998211860657,
@@ -4530,7 +4319,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.9000000953674316,
           "flValue": 0.9999997615814209,
@@ -4544,7 +4333,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 0.9999997615814209,
@@ -4558,7 +4347,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4.099999904632568,
           "flValue": 0.9999997615814209,
@@ -4572,7 +4361,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 0.9999998807907104,
@@ -4586,7 +4375,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 1,
@@ -4602,13 +4391,13 @@
         ]
        },
        {
-        "__type__": "Type_fb7ded7f",
+        "__type__": "EffectGroupScaleZKeyData",
         "__typeHash__": 4219334015,
         "dwType": 4219334015,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0.9999997019767761,
@@ -4622,7 +4411,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.7333333492279053,
           "flValue": 0.9999998211860657,
@@ -4636,7 +4425,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0.8666666746139526,
           "flValue": 0.9999997615814209,
@@ -4650,7 +4439,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 0.9999998211860657,
@@ -4664,7 +4453,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.1333333253860474,
           "flValue": 0.9999997019767761,
@@ -4678,7 +4467,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.2333333492279053,
           "flValue": 0.9999997615814209,
@@ -4692,7 +4481,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.7333333492279053,
           "flValue": 0.9999999403953552,
@@ -4706,7 +4495,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1.8666666746139526,
           "flValue": 0.9999998807907104,
@@ -4720,7 +4509,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 0.9999997615814209,
@@ -4734,7 +4523,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.133333444595337,
           "flValue": 0.9999998211860657,
@@ -4748,7 +4537,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.2666666507720947,
           "flValue": 0.9999998211860657,
@@ -4762,7 +4551,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2.866666555404663,
           "flValue": 0.9999998211860657,
@@ -4776,7 +4565,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 0.9999998211860657,
@@ -4790,7 +4579,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.133333444595337,
           "flValue": 0.9999998211860657,
@@ -4804,7 +4593,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3.9000000953674316,
           "flValue": 0.9999997615814209,
@@ -4818,7 +4607,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 0.9999997615814209,
@@ -4832,7 +4621,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4.099999904632568,
           "flValue": 0.9999997615814209,
@@ -4846,7 +4635,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 0.9999998807907104,
@@ -4860,7 +4649,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 1,
@@ -4887,9 +4676,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -4906,29 +4695,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -4952,9 +4741,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -4971,29 +4760,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 0,
-       "unk_1db3ba0": 0,
+       "bMute": false,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1070,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 0,
       "dwTriggerFlags": 0,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -5020,9 +4809,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -5039,29 +4828,29 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 1,
-       "unk_1db3ba0": 0,
+       "bMute": true,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
       "tDuration": 7.033333778381348,
       "dwTriggerFlags": 268443648,
-      "unk_a936bd9": 0,
+      "dwTriggerFlagsEx": 0,
       "tCleanup": {
        "__type__": "TriggerCleanup",
        "__typeHash__": 2029186460,
@@ -5075,13 +4864,15 @@
       "unk_49e9257": -1,
       "unk_5490979": -1,
       "dwPad": 0,
-      "unk_85269a4": 1,
+      "unk_85269a4": true,
       "dwActorID": 1014,
       "snoname": {
-       "value": 482851,
-       "group": 23,
+       "__raw__": 482851,
+       "__group__": 23,
+       "__type__": "DT_SNO_NAME",
+       "__typeHash__": 3339108615,
+       "__targetFileName__": "base/meta/Light/IGC_Default_SpotLight_Dynamic.lit",
        "groupName": "Light",
-       "type": "sno",
        "name": "IGC_Default_SpotLight_Dynamic"
       },
       "dwID": 6549,
@@ -5108,54 +4899,34 @@
        }
       ],
       "unk_e7c25e0": 0,
-      "unk_760871b": {
-       "value": -1,
-       "group": 29,
-       "groupName": "Power",
-       "type": "sno"
-      },
+      "snoPowerEffectParam": null,
       "unk_beaacd1": 0,
       "unk_af58166": 0,
       "unk_3ed00d7": 0,
       "dwSeed": 0,
-      "fBillboard": 0,
+      "fBillboard": false,
       "eAddType": 0,
-      "unk_fbdc534": 1,
-      "fKeepOriginal": 0,
-      "fEnableMovement": 0,
-      "unk_773852b": 0,
-      "unk_62ab747": 1,
-      "snoSubtitles": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
-      "unk_944e28b": {
-       "value": -1,
-       "group": 42,
-       "groupName": "StringList",
-       "type": "sno"
-      },
+      "unk_fbdc534": true,
+      "fKeepOriginal": false,
+      "fEnableMovement": false,
+      "unk_773852b": false,
+      "unk_62ab747": true,
+      "snoSubtitles": null,
+      "snoClosedCaptions": null,
       "unk_1426000": 0,
-      "unk_cb43646": 0,
-      "fRandomLook": 0,
+      "unk_cb43646": false,
+      "fRandomLook": false,
       "tLookLink": {
        "__type__": "LookLink",
        "__typeHash__": 2394153027,
        "dwLookHash": 0
       },
-      "unk_48fd494": 0,
+      "unk_48fd494": false,
       "unk_6b8bffc": 0,
-      "unk_e1f5441": {
-       "value": -1,
-       "group": 8,
-       "groupName": "AnimSet",
-       "type": "sno"
-      },
-      "unk_9967c81": [],
+      "snoAnimSetOverride": null,
+      "snoPlayerAnimSetOverrides": [],
       "dwSegmentsStep": 0,
-      "unk_6c0cb90": 4294967295,
+      "dwShaderMapOverride": 4294967295,
       "nLocalPlayerIndex": 0,
       "flScale": 1,
       "unk_b0f4eeb": 326787930,
@@ -5180,7 +4951,7 @@
         "z": 1.5
        }
       },
-      "unk_315ce85": {
+      "tEffectGroupHardpointLink": {
        "__type__": "HardpointLink",
        "__typeHash__": 3639617719,
        "tInfo": {
@@ -5196,48 +4967,23 @@
       },
       "idRActorAttachment": 0,
       "nPermIndex": 0,
-      "unk_c90434d": {
-       "value": -1,
-       "group": 24,
-       "groupName": "MarkerSet",
-       "type": "sno"
-      },
+      "snoCopyFromMarkerSet": null,
       "unk_33e4eec": 0,
-      "unk_e0d3870": 0,
+      "nMaxAttachments": 0,
       "unk_a45e6bd": 5,
       "unk_36bc3de": 5,
       "nPriority": 100,
-      "unk_245c537": {
-       "__type__": "Type_f74028c3",
+      "tNPCComponentInstanceData": {
+       "__type__": "NPCComponentInstanceData",
        "__typeHash__": 4148177091,
-       "unk_a253b80": {
-        "__type__": "Type_9bdeeb8c",
+       "tNPCColorSet": {
+        "__type__": "NPCColorSet",
         "__typeHash__": 2615077772,
         "arEquipmentDyes": [
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         },
-         {
-          "value": -1,
-          "group": 122,
-          "groupName": "Dye",
-          "type": "sno"
-         }
+         null,
+         null,
+         null,
+         null
         ],
         "nHairColor": 0,
         "nSkinColor": 0
@@ -5278,10 +5024,12 @@
          "__type__": "MaterialTexture",
          "__typeHash__": 3890408608,
          "snoTex": {
-          "value": 379910,
-          "group": 44,
+          "__raw__": 379910,
+          "__group__": 44,
+          "__type__": "DT_SNO",
+          "__typeHash__": 2764331143,
+          "__targetFileName__": "base/meta/Texture/cookie_circle_soft_noCompression.tex",
           "groupName": "Texture",
-          "type": "sno",
           "name": "cookie_circle_soft_noCompression"
          },
          "ptTexAnim": [
@@ -5315,11 +5063,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5339,7 +5087,7 @@
            }
           ]
          },
-         "unk_9e9e1c6": {
+         "pathSourceRadius": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -5355,11 +5103,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5395,11 +5143,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5419,7 +5167,7 @@
            }
           ]
          },
-         "unk_1ee68c6": {
+         "pathFalloffBias": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -5435,11 +5183,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5475,11 +5223,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5515,11 +5263,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5555,11 +5303,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5595,11 +5343,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5635,11 +5383,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5685,11 +5433,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5783,11 +5531,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5807,7 +5555,7 @@
            }
           ]
          },
-         "unk_f7a3d1a": {
+         "pathShadowIntensity": {
           "__type__": "Type_cbfdd2ea",
           "__typeHash__": 3422409450,
           "tHeader": {
@@ -5823,11 +5571,11 @@
              "__typeHash__": 991799518,
              "nScalarFunction": 0,
              "dwFlags": 1,
-             "unk_2424d91": {
+             "tInputRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
-             "unk_c9a8e76": {
+             "tRemapRange": {
               "rangeValue1": 0,
               "rangeValue2": 1
              },
@@ -5847,7 +5595,7 @@
            }
           ]
          },
-         "unk_4d46106": {
+         "pathPivotOffset": {
           "__type__": "VectorPath",
           "__typeHash__": 2594652800,
           "tPathData": {
@@ -5866,27 +5614,11 @@
               "__typeHash__": 991799518,
               "nScalarFunction": 0,
               "dwFlags": 1,
-              "unk_2424d91": {
+              "tInputRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
-              "unk_c9a8e76": {
-               "rangeValue1": 0,
-               "rangeValue2": 1
-              },
-              "eRemapEasing": 0,
-              "szFormulaName": 0
-             },
-             {
-              "__type__": "InterpolationScalar",
-              "__typeHash__": 991799518,
-              "nScalarFunction": 0,
-              "dwFlags": 1,
-              "unk_2424d91": {
-               "rangeValue1": 0,
-               "rangeValue2": 1
-              },
-              "unk_c9a8e76": {
+              "tRemapRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
@@ -5898,11 +5630,27 @@
               "__typeHash__": 991799518,
               "nScalarFunction": 0,
               "dwFlags": 1,
-              "unk_2424d91": {
+              "tInputRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
-              "unk_c9a8e76": {
+              "tRemapRange": {
+               "rangeValue1": 0,
+               "rangeValue2": 1
+              },
+              "eRemapEasing": 0,
+              "szFormulaName": 0
+             },
+             {
+              "__type__": "InterpolationScalar",
+              "__typeHash__": 991799518,
+              "nScalarFunction": 0,
+              "dwFlags": 1,
+              "tInputRange": {
+               "rangeValue1": 0,
+               "rangeValue2": 1
+              },
+              "tRemapRange": {
                "rangeValue1": 0,
                "rangeValue2": 1
               },
@@ -5958,11 +5706,11 @@
          "__typeHash__": 991799518,
          "nScalarFunction": 0,
          "dwFlags": 1,
-         "unk_2424d91": {
+         "tInputRange": {
           "rangeValue1": 0,
           "rangeValue2": 1
          },
-         "unk_c9a8e76": {
+         "tRemapRange": {
           "rangeValue1": 0,
           "rangeValue2": 1
          },
@@ -5981,9 +5729,9 @@
    "__typeHash__": 4037984604,
    "dwWeight": 0,
    "snoSurfaces": [],
-   "unk_7903361": [],
-   "unk_d5fd413": [],
-   "unk_ae86ed6": [],
+   "arWeaponItemTypes": [],
+   "arMonsterArchetypes": [],
+   "arActorVariantTypes": [],
    "arTopology": [],
    "unk_43e7b5a": [],
    "dwHash": 0,
@@ -5993,7 +5741,7 @@
     "dwMsgKey": 5000,
     "ptTriggerEvent": [
      {
-      "__type__": "Type_bc26b221",
+      "__type__": "TriggerEventObjectKeyFrame",
       "__typeHash__": 3156652577,
       "dwType": 3156652577,
       "dwPad": 0,
@@ -6001,37 +5749,37 @@
        "__type__": "TriggerConditions",
        "__typeHash__": 888408526,
        "flChance": 1,
-       "bMute": 1,
-       "unk_1db3ba0": 0,
+       "bMute": true,
+       "bMuteExternal": false,
        "tDelay": 0,
-       "unk_f0d960e": {
+       "tImpactVelocityRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
-       "unk_1dcbf67": {
+       "tImpactWeightRange": {
         "rangeValue1": 0,
         "rangeValue2": 0
        },
        "eMaterial": 0,
        "dwConditionFlags": 1038,
-       "unk_817e082": 0,
+       "ePlayerCountCondition": 0,
        "unk_b51df67": 0,
        "dwPad": 0
       },
-      "fGenerated": 0,
-      "unk_6cba752": 0,
+      "fGenerated": false,
+      "unk_6cba752": false,
       "unk_e560b0b": 4294967295,
-      "unk_85269a4": 0,
+      "unk_85269a4": false,
       "dwObjectID": 6549,
       "arKeys": [
        {
-        "__type__": "Type_f042a8ca",
+        "__type__": "EffectGroupPositionXKeyData",
         "__typeHash__": 4030900426,
         "dwType": 4030900426,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": -33.26890563964844,
@@ -6045,7 +5793,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": -33.422889709472656,
@@ -6059,7 +5807,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": -33.35199737548828,
@@ -6073,7 +5821,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": -33.50654602050781,
@@ -6087,7 +5835,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": -33.4677734375,
@@ -6101,7 +5849,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": -33.47621154785156,
@@ -6115,7 +5863,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": -33.43083953857422,
@@ -6131,13 +5879,13 @@
         ]
        },
        {
-        "__type__": "Type_dc847dab",
+        "__type__": "EffectGroupPositionYKeyData",
         "__typeHash__": 3699670443,
         "dwType": 3699670443,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": -10.352951049804688,
@@ -6151,7 +5899,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": -10.06326675415039,
@@ -6165,7 +5913,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": -10.313175201416016,
@@ -6179,7 +5927,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": -10.016067504882812,
@@ -6193,7 +5941,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": -9.765945434570312,
@@ -6207,7 +5955,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": -9.425838470458984,
@@ -6221,7 +5969,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": -9.119449615478516,
@@ -6237,13 +5985,13 @@
         ]
        },
        {
-        "__type__": "Type_c8c6528c",
+        "__type__": "EffectGroupPositionZKeyData",
         "__typeHash__": 3368440460,
         "dwType": 3368440460,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0.8930066823959351,
@@ -6257,7 +6005,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 0.831763744354248,
@@ -6271,7 +6019,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 0.7311691641807556,
@@ -6285,7 +6033,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 0.830354630947113,
@@ -6299,7 +6047,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 0.6589811444282532,
@@ -6313,7 +6061,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 0.7213019132614136,
@@ -6327,7 +6075,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 0.8839107155799866,
@@ -6343,13 +6091,13 @@
         ]
        },
        {
-        "__type__": "Type_d64de806",
+        "__type__": "EffectGroupRotationRollKeyData",
         "__typeHash__": 3595429894,
         "dwType": 3595429894,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0.4047205150127411,
@@ -6363,7 +6111,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 0.4470555782318115,
@@ -6377,7 +6125,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 0.4377140700817108,
@@ -6391,7 +6139,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 0.43574362993240356,
@@ -6405,7 +6153,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 0.43227168917655945,
@@ -6419,7 +6167,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 0.4240179657936096,
@@ -6433,7 +6181,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 0.4346616864204407,
@@ -6449,13 +6197,13 @@
         ]
        },
        {
-        "__type__": "Type_ecff2185",
+        "__type__": "EffectGroupRotationPitchKeyData",
         "__typeHash__": 3976143237,
         "dwType": 3976143237,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": -2.350311756134033,
@@ -6469,7 +6217,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": -1.8851473331451416,
@@ -6483,7 +6231,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": -2.0624260902404785,
@@ -6497,7 +6245,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": -2.089688777923584,
@@ -6511,7 +6259,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": -2.1377267837524414,
@@ -6525,7 +6273,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": -2.2327561378479004,
@@ -6539,7 +6287,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": -2.1474428176879883,
@@ -6555,13 +6303,13 @@
         ]
        },
        {
-        "__type__": "Type_f6ae99be",
+        "__type__": "EffectGroupRotationYawKeyData",
         "__typeHash__": 4138637758,
         "dwType": 4138637758,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 2.940309524536133,
@@ -6575,7 +6323,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 3.1361942291259766,
@@ -6589,7 +6337,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 3.060426950454712,
@@ -6603,7 +6351,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 3.0487279891967773,
@@ -6617,7 +6365,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 3.028113842010498,
@@ -6631,7 +6379,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 2.987670421600342,
@@ -6645,7 +6393,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 3.0232045650482178,
@@ -6661,13 +6409,13 @@
         ]
        },
        {
-        "__type__": "Type_22fa43bd",
+        "__type__": "EffectGroupScaleXKeyData",
         "__typeHash__": 586826685,
         "dwType": 586826685,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0.9999996423721313,
@@ -6681,7 +6429,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 0.9999996423721313,
@@ -6695,7 +6443,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 0.9999997019767761,
@@ -6709,7 +6457,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 0.9999997615814209,
@@ -6723,7 +6471,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 0.9999997615814209,
@@ -6737,7 +6485,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 0.9999999403953552,
@@ -6751,7 +6499,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 1,
@@ -6767,13 +6515,13 @@
         ]
        },
        {
-        "__type__": "Type_f3c189e",
+        "__type__": "EffectGroupScaleYKeyData",
         "__typeHash__": 255596702,
         "dwType": 255596702,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0.9999996423721313,
@@ -6787,7 +6535,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 0.9999996423721313,
@@ -6801,7 +6549,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 0.9999997019767761,
@@ -6815,7 +6563,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 0.9999997615814209,
@@ -6829,7 +6577,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 0.9999997615814209,
@@ -6843,7 +6591,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 0.9999999403953552,
@@ -6857,7 +6605,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 1,
@@ -6873,13 +6621,13 @@
         ]
        },
        {
-        "__type__": "Type_fb7ded7f",
+        "__type__": "EffectGroupScaleZKeyData",
         "__typeHash__": 4219334015,
         "dwType": 4219334015,
         "dwPad": 0,
         "arKeyItems": [
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 0,
           "flValue": 0.9999996423721313,
@@ -6893,7 +6641,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 1,
           "flValue": 0.9999996423721313,
@@ -6907,7 +6655,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 2,
           "flValue": 0.9999997019767761,
@@ -6921,7 +6669,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 3,
           "flValue": 0.9999997615814209,
@@ -6935,7 +6683,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 4,
           "flValue": 0.9999997615814209,
@@ -6949,7 +6697,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 5.333333492279053,
           "flValue": 0.9999999403953552,
@@ -6963,7 +6711,7 @@
           }
          },
          {
-          "__type__": "Type_e852fd63",
+          "__type__": "EffectGroupKey",
           "__typeHash__": 3897752931,
           "flTime": 6.700000286102295,
           "flValue": 1,
@@ -7001,24 +6749,9 @@
   5
  ],
  "nEffectWeightMethod": 2,
- "snoPower": {
-  "value": -1,
-  "group": 29,
-  "groupName": "Power",
-  "type": "sno"
- },
- "unk_760871b": {
-  "value": -1,
-  "group": 29,
-  "groupName": "Power",
-  "type": "sno"
- },
- "snoConversation": {
-  "value": -1,
-  "group": 12,
-  "groupName": "Conversation",
-  "type": "sno"
- },
+ "snoPower": null,
+ "snoPowerEffectParam": null,
+ "snoConversation": null,
  "unk_e7c25e0": 0,
  "unk_51077dd": {
   "rangeValue1": 0,

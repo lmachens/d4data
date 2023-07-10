@@ -1,12 +1,12 @@
 # Definition: ParticleDefinition
 # Hash: 7fe2e83d
 # SNOFileHeader.dwFormatHash: 2d445b2a
-# Flags: 00000000 00000000 01000011 00111010
+# Flags: 0x433a
 
 0x8: eType # DT_ENUM (32 bits used)
 0xc: dwFlags # DT_UINT (32 bits used)
 0x10: dwFlagsEx # DT_UINT (32 bits used)
-0x14: unk_75794f7 # DT_UINT (32 bits used)
+0x14: dwFlagsEx2 # DT_UINT (32 bits used)
 0x18: tSystemDuration # DT_FLOAT (32 bits used)
 0x1c: tOutroDuration # DT_FLOAT (32 bits used)
 0x20: tPrepumpDuration # DT_FLOAT (32 bits used)
@@ -17,21 +17,21 @@
 0x60: pathSystemCount # DT_VARIABLEARRAY => unknown 0xcc354444
 0x70: unk_63560e2 # DT_VARIABLEARRAY => unknown 0xcc354444
 0x80: pathSystemAlpha # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
-0x90: unk_4acb006 # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
+0x90: pathSystemAlphaAux # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
 0xa0: pathParticleDuration # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
 0xb0: pathInitialScale # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
 0xc0: pathInitialSourceRelativeSpread # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
 0xd0: pathInitialSourceRelativeVelocity # DT_VARIABLEARRAY => VectorPath
 0xe0: pathInitialWorldRelativeVelocity # DT_VARIABLEARRAY => VectorPath
-0xf0: unk_8535190 # DT_VARIABLEARRAY => VectorPath
+0xf0: pathInitialAngularVelocity # DT_VARIABLEARRAY => VectorPath
 0x100: pathSystemSpawnRate # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
 0x110: pathSystemSpeedSpawnRate # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
 0x120: pathSystemSpeedDurationFactor # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
 0x130: unk_e44919 # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
-0x140: unk_5e70a3d # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
-0x150: unk_f627bde # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
-0x160: unk_475af70 # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
-0x170: unk_79fc11d # DT_VARIABLEARRAY => VectorPath
+0x140: pathNoiseFrequency # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
+0x150: pathNoiseSmoothness # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
+0x160: pathNoiseAmplitude # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
+0x170: pathNoiseAmplitudeRange # DT_VARIABLEARRAY => VectorPath
 0x180: unk_24aa41d # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
 0x190: snoMaterial # DT_SNO (32 bits used) {group 0x39 "Material"}
 0x194: snoHoudini # DT_SNO (32 bits used) {group 0x65 "HoudiniParticleSim"}
@@ -47,7 +47,7 @@
 0x1bc: flClutterZOffset # DT_FLOAT (32 bits used)
 0x1c0: snoActor # DT_SNO (32 bits used) {group 0x1 "Actor"}
 0x1c4: tLookLink # LookLink
-0x1c8: unk_6c0cb90 # DT_UINT (32 bits used)
+0x1c8: dwShaderMapOverride # DT_UINT (32 bits used)
 0x1cc: unk_fabd80a # bcQuat
 0x1e0: ptEmitter # DT_POLYMORPHIC_VARIABLEARRAY => EmitterDataBase
 0x1f8: pathParticleColor # DT_VARIABLEARRAY => unknown 0x560ae4cf
@@ -73,9 +73,9 @@
 0x338: pathMotionCylinderAxis # DT_VARIABLEARRAY => VectorPath
 0x348: pathMotionSphereRadialPos # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
 0x358: pathMotionSphereRadialVel # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
-0x368: unk_3de401d # DT_VARIABLEARRAY => VectorPath
-0x378: unk_3de5852 # DT_VARIABLEARRAY => VectorPath
-0x388: unk_3ddfeb2 # DT_VARIABLEARRAY => VectorPath
+0x368: pathMotionWorldPos # DT_VARIABLEARRAY => VectorPath
+0x378: pathMotionWorldVel # DT_VARIABLEARRAY => VectorPath
+0x388: pathMotionWorldAcc # DT_VARIABLEARRAY => VectorPath
 0x398: pathMotionRelativeCartesianPos # DT_VARIABLEARRAY => VectorPath
 0x3a8: pathMotionRelativeCartesianVel # DT_VARIABLEARRAY => VectorPath
 0x3b8: pathMotionRelativeCartesianAcc # DT_VARIABLEARRAY => VectorPath
@@ -95,12 +95,12 @@
 0x438: unk_a0877a9 # DT_FLOAT (32 bits used)
 0x43c: unk_63d7722 # DT_FLOAT (32 bits used)
 0x440: snoVectorField # DT_SNO (32 bits used) {group 0x58 "VectorField"}
-0x444: unk_a4cad4f # DT_VECTOR3D
-0x450: unk_817d767 # DT_ENUM (32 bits used)
-0x454: unk_16aecc9 # DT_FLOAT (32 bits used)
+0x444: vecVectorFieldDim # DT_VECTOR3D
+0x450: eVectorFieldAddressMode # DT_ENUM (32 bits used)
+0x454: flVectorFieldScrollSpeed # DT_FLOAT (32 bits used)
 0x458: unk_8f7c9c1 # DT_VARIABLEARRAY => unknown 0xcbfdd2ea
 0x468: unk_cddc4fd # DT_VARIABLEARRAY => VectorPath
-0x478: unk_b4a20d4 # DT_VARIABLEARRAY => VectorPath
+0x478: pathVectorFieldRotation # DT_VARIABLEARRAY => VectorPath
 0x488: unk_da1d404 # DT_FLOAT (32 bits used)
 0x48c: unk_5a7f188 # DT_FLOAT (32 bits used)
 0x490: null or eof # DT_NULL
