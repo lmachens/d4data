@@ -31,15 +31,15 @@ globalMarkers.ptContent[0].arGlobalMarkerActors.forEach((actor) => {
     return;
   }
   const point = normalizePoint(actor.tWorldTransform.wp);
-  const id = actor.ptData[0].unk_c420444.name;
+  const id = actor.ptData[0].snoSpecifiedWorld.name;
   // if (id.includes("Prologue")) {
   //   return;
   // }
-  const rewardName = actor.ptData[0].unk_4908570.name;
   const isCellar =
     !id.startsWith("DGN_") && CELLAR_TYPES.includes(actor.snoActor.name);
 
   let aspectId = null;
+  const rewardName = actor.ptData[0].unk_4908570?.name;
   if (rewardName) {
     const trackedReward = JSON.parse(
       readFileSync(`../json/base/meta/TrackedReward/${rewardName}.trd.json`)
@@ -89,6 +89,21 @@ globalMarkers.ptContent[0].arGlobalMarkerActors.forEach((actor) => {
   };
   if (aspectId) {
     node.aspectId = aspectId;
+    let className = "";
+    if (aspectId.includes("Barb")) {
+      className = "Barbarian";
+    } else if (aspectId.includes("Druid")) {
+      className = "Druid";
+    } else if (aspectId.includes("Necro")) {
+      className = "Necromancer";
+    } else if (aspectId.includes("Sorc")) {
+      className = "Sorcerer";
+    } else if (aspectId.includes("Rogue")) {
+      className = "Rogue";
+    } else if (aspectId.includes("Generic")) {
+      className = "Generic";
+    }
+    node.className = className;
   }
 
   if (isCellar) {
@@ -140,6 +155,7 @@ const prodDungeons = dungeons.map((dungeon) => {
     description: dungeonsDict["enUS"][`${dungeon.id}_description`],
     x: dungeon.x,
     y: dungeon.y,
+    className: dungeon.className,
   };
   if (dungeon.aspectId) {
     node.aspect = "Aspect " + aspectsDict["enUS"][`${dungeon.aspectId}_name`];

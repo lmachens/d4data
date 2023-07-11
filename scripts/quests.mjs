@@ -18,10 +18,18 @@ readdirSync("../json/base/meta/Quest").forEach((fileName) => {
   }
 
   let point;
-  if (markerSet.unk_ff5c704.x === 0 && markerSet.unk_ff5c704.y === 0) {
+  if (
+    markerSet.vecStartLocation.x !== 0 &&
+    markerSet.vecStartLocation.y !== 0
+  ) {
     point = normalizePoint(markerSet.vecStartLocation);
+  } else if (
+    markerSet.vecDevStartLocation.x !== 0 &&
+    markerSet.vecDevStartLocation.y !== 0
+  ) {
+    point = normalizePoint(markerSet.vecDevStartLocation);
   } else {
-    point = normalizePoint(markerSet.unk_ff5c704);
+    return;
   }
   const terms = readTerms(`Quest_${id}`, "enUS");
   const name = terms.find((term) => term.szLabel === "Name");
@@ -42,7 +50,7 @@ readdirSync("../json/base/meta/Quest").forEach((fileName) => {
   if (id.startsWith("Bounty_")) {
     if (
       markerSet.arQuestPhases.some(
-        (questPhase) => questPhase.snoReward.value === 1236629
+        (questPhase) => questPhase.snoReward === 1236629
       )
     ) {
       bounties.push(quest);
