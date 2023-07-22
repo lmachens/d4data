@@ -82,6 +82,7 @@
    "name": "mount_horse"
   }
  ],
+ "arStoreAnimSets": [],
  "snoAnimTree": {
   "__raw__": 356567,
   "__group__": 67,
@@ -102,10 +103,14 @@
   "__typeHash__": 2394153027,
   "dwLookHash": 2431237745
  },
- "unk_3d234d5": 4294967295,
+ "dwDefaultShaderMapOverride": 4294967295,
  "tScaleRange": {
   "rangeValue1": 1,
   "rangeValue2": 0
+ },
+ "unk_945ec7b": {
+  "rangeValue1": 0.8500000238418579,
+  "rangeValue2": 0.30000001192092896
  },
  "wcylBounds": {
   "__type__": "AxialCylinder",
@@ -245,7 +250,7 @@
    "unk_c5b3851": 0.20000000298023224,
    "unk_523b9d9": [],
    "unk_ce78a30": {
-    "__type__": "Type_17bd50db",
+    "__type__": "ActorHitCollisionShape",
     "__typeHash__": 398282971,
     "unk_20b45d7": 4294967295,
     "eType": 0,
@@ -253,14 +258,14 @@
     "flLength": 0,
     "aPitch": 0,
     "aYaw": 0,
-    "unk_711980c": {
+    "vBoneLocalOffset": {
      "x": 0,
      "y": 0,
      "z": 0
     }
    },
    "unk_f26505b": {
-    "__type__": "Type_17bd50db",
+    "__type__": "ActorHitCollisionShape",
     "__typeHash__": 398282971,
     "unk_20b45d7": 4294967295,
     "eType": 0,
@@ -268,7 +273,7 @@
     "flLength": 0,
     "aPitch": 0,
     "aYaw": 0,
-    "unk_711980c": {
+    "vBoneLocalOffset": {
      "x": 0,
      "y": 0,
      "z": 0
@@ -318,6 +323,7 @@
     "name": "Mount"
    },
    "szArchetype": 3631355,
+   "unk_de0631b": null,
    "eBaseElement": -1,
    "snoMainHand": null,
    "snoOffHand": null,
@@ -371,35 +377,36 @@
      "__type__": "Type_2d9968c0",
      "__typeHash__": 765028544,
      "snoAffix": null,
-     "unk_828ec72": 0
+     "nMinLevelReq": 0
     },
     {
      "__type__": "Type_2d9968c0",
      "__typeHash__": 765028544,
      "snoAffix": null,
-     "unk_828ec72": 10
+     "nMinLevelReq": 10
     },
     {
      "__type__": "Type_2d9968c0",
      "__typeHash__": 765028544,
      "snoAffix": null,
-     "unk_828ec72": 20
+     "nMinLevelReq": 20
     },
     {
      "__type__": "Type_2d9968c0",
      "__typeHash__": 765028544,
      "snoAffix": null,
-     "unk_828ec72": 30
+     "nMinLevelReq": 30
     }
    ],
    "snoDisallowedAffixes": [],
+   "arForcedMonsterTags": [],
    "eAITargetStyleNormal": 0,
    "eAITargetStyleElite": 0,
    "unk_130279f": null,
    "unk_4b9e5c9": null,
    "unk_e7a2637": 7,
    "szInternalName": "",
-   "unk_d3dddc4": false,
+   "bDoesRetreat": false,
    "unk_50569ba": false,
    "unk_7a3dc4a": 4095,
    "snoMount": null,
@@ -455,7 +462,7 @@
    "unk_401dfd8": 0.25,
    "unk_f68cd00": 5,
    "unk_f68cc02": 15,
-   "unk_16266ca": 0.5,
+   "flBossCameraSmoothing": 0.5,
    "unk_5428a5e": 5,
    "unk_3b9132c": 40,
    "unk_c0cc954": 45,
@@ -489,7 +496,7 @@
      "szBoneName": 3185014670,
      "flJitterStrength": 0.10000000149011612,
      "flJitterSpeed": 5,
-     "unk_36bc3de": 0.15000000596046448,
+     "flBlendOutTime": 0.15000000596046448,
      "flDuration": 0.4000000059604645
     }
    ],
@@ -504,7 +511,7 @@
    "nHardpointIndexForRope": -1,
    "fDoesntCauseCriticalBloodEffect": false,
    "fNeverPlayGethitJitter": false,
-   "unk_2bf030e": [
+   "arNormalHitEffectGroups": [
     {
      "__raw__": 145948,
      "__group__": 14,
@@ -791,8 +798,11 @@
    "__type__": "ActorUIData",
    "__typeHash__": 3096716593,
    "hPortraitImage": 2740010207,
+   "unk_e3dc66d": false,
+   "unk_a94748a": 0,
+   "unk_a0b181c": 0,
    "hMinimapIcon": 0,
-   "unk_f51d2b3": 0,
+   "hMinimapIconGizmoUsed": 0,
    "fMinimapActiveByDefault": false,
    "fMinimapRespectsFoW": true,
    "unk_98a6ae1": true,
@@ -1019,6 +1029,98 @@
        "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor004.sdt",
        "groupName": "SoundTable",
        "name": "FOLY_MOUN_Trophy_Stor004"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949018
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1578209,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor009.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor009"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949042
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1578210,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor010.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor010"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949043
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1563544,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor011.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor011"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949044
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1571939,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor012.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor012"
       }
      ]
     },
@@ -1396,6 +1498,374 @@
      "tFoleyMaterialTag": {
       "__type__": "FoleyMaterialTag",
       "__typeHash__": 2077459498,
+      "szTag": 537949109
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1480014,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor031.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor031"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949110
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1473333,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor032.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor032"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949111
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1523130,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor033.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor033"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949112
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1523131,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor034.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor034"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949113
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1571932,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor035.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor035"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949114
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1571933,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor036.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor036"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949115
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1571934,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor037.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor037"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949116
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1571935,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor038.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor038"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949117
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1535568,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor039.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor039"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949141
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1521148,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor040.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor040"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949142
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1578211,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor041.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor041"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949143
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1578212,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor042.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor042"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949144
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1578195,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor043.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor043"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949145
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1578196,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor044.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor044"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949146
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1565778,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor045.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor045"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949147
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1565779,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor046.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor046"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
       "szTag": 537949148
      },
      "unk_f77a839": [
@@ -1410,6 +1880,29 @@
        "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor047.sdt",
        "groupName": "SoundTable",
        "name": "FOLY_MOUN_Trophy_Stor047"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949149
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1563530,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor048.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor048"
       }
      ]
     },
@@ -1534,6 +2027,121 @@
      "tFoleyMaterialTag": {
       "__type__": "FoleyMaterialTag",
       "__typeHash__": 2077459498,
+      "szTag": 537949178
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1502959,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor054.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor054"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949179
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1507866,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor055.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor055"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949180
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1578204,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor056.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor056"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949181
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1496897,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor057.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor057"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949182
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1515193,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor058.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor058"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
       "szTag": 537949183
      },
      "unk_f77a839": [
@@ -1571,6 +2179,144 @@
        "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor060.sdt",
        "groupName": "SoundTable",
        "name": "FOLY_MOUN_Trophy_Stor060"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949210
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1507867,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor063.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor063"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949211
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1515590,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor064.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor064"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949212
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1515618,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor065.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor065"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949213
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1507829,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor066.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor066"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949214
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1496898,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor067.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor067"
+      }
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 537949215
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      {
+       "__raw__": 1507886,
+       "__group__": 79,
+       "__type__": "DT_SNO",
+       "__typeHash__": 2764331143,
+       "__targetFileName__": "base/meta/SoundTable/FOLY_MOUN_Trophy_Stor068.sdt",
+       "groupName": "SoundTable",
+       "name": "FOLY_MOUN_Trophy_Stor068"
       }
      ]
     },
@@ -1655,7 +2401,37 @@
      "tFoleyMaterialTag": {
       "__type__": "FoleyMaterialTag",
       "__typeHash__": 2077459498,
+      "szTag": 1224857868
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
       "szTag": 1427845258
+     },
+     "unk_f77a839": [
+      null,
+      null,
+      null,
+      null
+     ]
+    },
+    {
+     "__type__": "ActorFoleySoundOverride",
+     "__typeHash__": 88475393,
+     "tFoleyMaterialTag": {
+      "__type__": "FoleyMaterialTag",
+      "__typeHash__": 2077459498,
+      "szTag": 1485200948
      },
      "unk_f77a839": [
       null,
@@ -2657,13 +3433,14 @@
   {
    "__type__": "ActorMountData",
    "__typeHash__": 1015376646,
-   "eMountRarity": 0
+   "eMountRarity": 0,
+   "unk_40ae170": null
   }
  ],
  "ptPostprocessed": "0",
  "snoPrefabAttachment": null,
  "unk_d2b5e35": 1,
- "unk_2607092": 0,
- "unk_79da2a0": 4294967295,
+ "szPrefabLookOverride": 0,
+ "dwPrefabShaderMapOverride": 4294967295,
  "arRTPCOverrides": []
 }

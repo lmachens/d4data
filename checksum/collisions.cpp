@@ -233,7 +233,7 @@ bool correctType(uint32_t *tmp, uint32_t currentChecksum) {
       return typePrefixes[typeHash].count(subdict[0][tmp[0]]) > 0;
     }
     else {
-      return true; //typePrefixes[0].count(subdict[0][tmp[0]]) > 0;
+      return false; //typePrefixes[0].count(subdict[0][tmp[0]]) > 0;
     }
   }
 
@@ -446,6 +446,16 @@ void loadFieldTypeMap (bool common = true) {
 
   typePrefixes[0].insert("t"); // ?
 
+  // Fake type DT_BOOL
+  typePrefixes[0x3d461b83].insert("b");
+  typePrefixes[0x3d461b83].insert("f");
+  if (!common) typePrefixes[0x3d461b83].insert("m_b");
+  if (!common) typePrefixes[0x3d461b83].insert("m_f");
+
+  // Fake type DT_FLOAT_ARRAY
+  typePrefixes[0xb0a53e8b].insert("af");
+
+  // Rest of existing types.
   typePrefixes[2408934].insert("aabb");
   if (!common) typePrefixes[231895989].insert("h");
   typePrefixes[248064347].insert("wp");
@@ -454,7 +464,6 @@ void loadFieldTypeMap (bool common = true) {
   if (!common) typePrefixes[1028015787].insert("u");
   if (!common) typePrefixes[1028015787].insert("n");
   if (!common) typePrefixes[1028015787].insert("game");
-  if (!common) typePrefixes[1028015787].insert("b");
   if (!common) typePrefixes[1028015787].insert("twin");
   typePrefixes[1028111660].insert("e");
   if (!common) typePrefixes[1028111660].insert("id");
@@ -469,7 +478,6 @@ void loadFieldTypeMap (bool common = true) {
   if (!common) typePrefixes[1028680983].insert("s");
   if (!common) typePrefixes[1028680983].insert("id");
   if (!common) typePrefixes[1028680983].insert("w");
-  if (!common) typePrefixes[1028680983].insert("b");
   if (!common) typePrefixes[1028680983].insert("sno");
   typePrefixes[1028759507].insert("bone");
   typePrefixes[1028759507].insert("dw");
@@ -512,10 +520,8 @@ void loadFieldTypeMap (bool common = true) {
   typePrefixes[2450313795].insert("sz");
   typePrefixes[2588169118].insert("local");
   typePrefixes[2594652800].insert("path");
-  typePrefixes[2764320258].insert("b");
   if (!common) typePrefixes[2764320258].insert("count");
   if (!common) typePrefixes[2764320258].insert("e");
-  typePrefixes[2764320258].insert("f");
   if (!common) typePrefixes[2764320258].insert("i");
   typePrefixes[2764320258].insert("id");
   if (!common) typePrefixes[2764320258].insert("is");
@@ -537,10 +543,8 @@ void loadFieldTypeMap (bool common = true) {
   typePrefixes[3063971755].insert("h");
   if (!common) typePrefixes[3121633597].insert("a");
   typePrefixes[3121633597].insert("ann");
-  typePrefixes[3121633597].insert("b");
   typePrefixes[3121633597].insert("dw");
   typePrefixes[3121633597].insert("e");
-  if (!common) typePrefixes[3121633597].insert("f");
   typePrefixes[3121633597].insert("fl");
   typePrefixes[3121633597].insert("h");
   typePrefixes[3121633597].insert("n");
@@ -580,15 +584,8 @@ void loadFieldTypeMap (bool common = true) {
   typePrefixes[3846829457].insert("s");
   typePrefixes[3848460434].insert("s");
   typePrefixes[3864020909].insert("a");
-  if (!common) typePrefixes[3864020909].insert("cell");
-  if (!common) typePrefixes[3864020909].insert("dw");
-  typePrefixes[3864020909].insert("f");
   typePrefixes[3864020909].insert("fl");
-  if (!common) typePrefixes[3864020909].insert("inv");
-  if (!common) typePrefixes[3864020909].insert("m_cell");
-  typePrefixes[3864020909].insert("n");
-  if (!common) typePrefixes[3864020909].insert("pt");
-  typePrefixes[3864020909].insert("wd");
+  if (!common) typePrefixes[3864020909].insert("wd");
   typePrefixes[3867655596].insert("a");
   if (!common) typePrefixes[3867655596].insert("blend");
   if (!common) typePrefixes[3867655596].insert("constraint");
@@ -602,7 +599,6 @@ void loadFieldTypeMap (bool common = true) {
   if (!common) typePrefixes[3867655596].insert("sz");
   typePrefixes[3867655596].insert("u");
   typePrefixes[3877855748].insert("fl");
-  typePrefixes[3877855748].insert("f");
   typePrefixes[3955716320].insert("q");
   typePrefixes[4111826321].insert("transform");
   typePrefixes[4121727419].insert("id");
@@ -627,6 +623,7 @@ int main(int argc, char *argv[]) {
   bool gettingThreads = false;
   bool gettingDict = false;
   bool useCommonPrefixes = true;
+  bool literalDict = false;
 
   signal(SIGINT, &signal_callback_handler);
   signal(SIGTERM, &signal_callback_handler);
@@ -704,6 +701,9 @@ int main(int argc, char *argv[]) {
       }
       else if(arg == "--dict") {
         gettingDict = true;
+      }
+      else if(arg == "--literal") {
+        literalDict = true;
       }
       else if(arg == "--threads") {
         gettingThreads = true;
@@ -854,15 +854,59 @@ int main(int argc, char *argv[]) {
   int32_t dictmax = dict.size();
   std::unordered_map<std::string, bool> dictmap;
 
-  if (!wordsOnly) {
-    for (const auto &baseelem : defaultDict) {
-      dictmap[baseelem] = true;
-    }
-  }
-
   if (useDict) {
+    if (dictPathOrString == "../english_dict.txt") {
+      for (const auto &baseelem : getDict("../dict.txt")) {
+        if (baseelem.length() > 1 || wordsOnly) {
+          if (literalDict) {
+            if (!dictmap[baseelem]) {
+              dictmap[baseelem] = true;
+              dict.push_back(baseelem);
+            }
+
+            continue;
+          }
+
+          std::string elem = baseelem;
+          std::string newelem = elem;
+          std::string newelem2 = elem;
+
+          std::transform(newelem.begin(), newelem.end(), newelem.begin(), [](unsigned char c){ return std::toupper(c); });
+          std::transform(newelem2.begin(), newelem2.end(), newelem2.begin(), [](unsigned char c){ return std::tolower(c); });
+
+          if (ignoreAllCaps && isAllCaps(elem)) {
+            continue;
+          }
+
+          if (hashType == 2 && !dictmap[newelem2]) {
+            dictmap[newelem2] = true;
+            dict.push_back(newelem2);
+            continue;
+          }
+
+          if (elem == newelem2) {
+            elem = newelem.substr(0, 1) + newelem2.substr(1);
+          }
+
+          if (!dictmap[elem]) {
+            dictmap[elem] = true;
+            dict.push_back(elem);
+          }
+        }
+      }
+    }
+
     for (const auto &baseelem : getDict(dictPathOrString)) {
-      if (baseelem.length() > 1) {
+      if (baseelem.length() > 1 || wordsOnly) {
+        if (literalDict) {
+          if (!dictmap[baseelem]) {
+            dictmap[baseelem] = true;
+            dict.push_back(baseelem);
+          }
+
+          continue;
+        }
+
         std::string elem = baseelem;
         std::string newelem = elem;
         std::string newelem2 = elem;
@@ -874,8 +918,9 @@ int main(int argc, char *argv[]) {
           continue;
         }
 
-        if (hashType == 2) {
+        if (hashType == 2 && !dictmap[newelem2]) {
           dictmap[newelem2] = true;
+          dict.push_back(newelem2);
           continue;
         }
 
@@ -883,18 +928,26 @@ int main(int argc, char *argv[]) {
           elem = newelem.substr(0, 1) + newelem2.substr(1);
         }
 
-        dictmap[elem] = true;
+        if (!dictmap[elem]) {
+          dictmap[elem] = true;
+          dict.push_back(elem);
+        }
       }
     }
   }
 
-  for (const auto elem : dictmap) {
-    dict.push_back(elem.first);
+  if (!wordsOnly) {
+    for (const auto &baseelem : defaultDict) {
+      if (!dictmap[baseelem]) {
+        dictmap[baseelem] = true;
+        dict.push_back(baseelem);
+      }
+    }
   }
 
   if (hashType == 1) {
     if (noPrefix) {
-      if (subdict[0].size() < 1) {
+      if (!literalDict && subdict[0].size() < 1) {
         std::transform(dict.cbegin(), dict.cend(), std::back_inserter(subdict[0]), [](std::string s) {
           if (!s.empty()) {
               s[0] = std::tolower(s[0]);

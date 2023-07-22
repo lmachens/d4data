@@ -1,5 +1,5 @@
 const fs = require('fs');
-const node_path = require('node:path');
+const node_path = require('path');
 const definitions = require('./definitions.json');
 
 const attributes = Object.values(require('./attributes.json')).reduce((t, v) => {
@@ -10,19 +10,17 @@ const attributes = Object.values(require('./attributes.json')).reduce((t, v) => 
 const snoGroups = require('./json/snoGroups.json');
 const snoFileInfo = require('./json/snoFileInfo.json');
 
-const DEV_NONE = 0;
-const DEV_INFO = 1;
-const DEV_VERBOSE = 2;
-
-const devAttributes = DEV_INFO;
-
 process.chdir(__dirname);
 
 let toc = {};
+let tocflat = {};
+let replacedSnos = {};
+let encryptedSnos = {};
 let snoPayloadMap = {};
 let gbid = fs.existsSync('json/GBID.json') ? JSON.parse(fs.readFileSync('json/GBID.json'), null, ' ') : {};
 let readLog = [];
-let fieldHashes = {};
+let incoming = {};
+let outgoing = {};
 
 function gbidHash(str) {
   let hash = new Uint32Array(1);
@@ -58,15 +56,13 @@ function fieldHash(str) {
   return hash[0] & 0xFFFFFFF;
 }
 
-fs.readFileSync('names.txt').toString().split(/[\n\r\s]+/gi).forEach(word => {
-  let hash = fieldHash(word);
+if (!fs.existsSync('json/')) {
+  fs.mkdirSync('json');
+}
 
-  fieldHashes[hash] = fieldHashes[hash] || [];
-
-  if (!fieldHashes[hash].includes(word)) {
-    fieldHashes[hash].push(word);
-  }
-});
+if (!fs.existsSync('json/base/')) {
+  fs.mkdirSync('json/base');
+}
 
 if (fs.existsSync('data/base/CoreTOC.dat')) {
   let file = fs.readFileSync('data/base/CoreTOC.dat');
@@ -92,25 +88,17 @@ if (fs.existsSync('data/base/CoreTOC.dat')) {
       let name = file.subarray(pName, pName + nameLength).toString();
       toc[snoGroup] = toc[snoGroup] || {};
       toc[snoGroup][snoId] = name;
+      tocflat[snoId] = [name, snoGroup];
     }
   }
 
   fs.writeFileSync('json/base/CoreTOC.dat.json', JSON.stringify(toc, null, ' '));
+  fs.writeFileSync('json/CoreTOC_flat.json', JSON.stringify(tocflat, null, ' '));
 }
 else {
   toc = JSON.parse(fs.readFileSync('json/base/CoreTOC.dat.json'));
+  tocflat = JSON.parse(fs.readFileSync('json/CoreTOC_flat.json'));
 }
-
-let tocLookup = {};
-
-Object.keys(toc).forEach(group => {
-  Object.keys(toc[group]).forEach(snoID => {
-    tocLookup[snoID] = {
-      group,
-      name: toc[group][snoID],
-    };
-  });
-});
 
 if (fs.existsSync('data/base/CoreTOCSharedPayloadsMapping.dat')) {
   let file = fs.readFileSync('data/base/CoreTOCSharedPayloadsMapping.dat');
@@ -120,11 +108,11 @@ if (fs.existsSync('data/base/CoreTOCSharedPayloadsMapping.dat')) {
     let source = file.readUInt32LE(8 + i * 8);
     let destination = file.readUInt32LE(12 + i * 8);
 
-    if (tocLookup[source] && tocLookup[destination]) {
-      let [sourceDir, sourceExt] = snoFileInfo[tocLookup[source].group];
-      let sourceName = tocLookup[source].name;
-      let [destinationDir, destinationExt] = snoFileInfo[tocLookup[destination].group];
-      let destinationName = tocLookup[destination].name;
+    if (tocflat[source] && tocflat[destination]) {
+      let [sourceDir, sourceExt] = snoFileInfo[tocflat[source][1]];
+      let sourceName = tocflat[source][0];
+      let [destinationDir, destinationExt] = snoFileInfo[tocflat[destination][1]];
+      let destinationName = tocflat[destination][0];
       snoPayloadMap[`base/payload/${sourceDir}/${sourceName}.${sourceExt}`] = `base/payload/${destinationDir}/${destinationName}.${destinationExt}`;
     }
   }
@@ -135,20 +123,53 @@ else {
   snoPayloadMap = JSON.parse(fs.readFileSync('json/base/CoreTOCSharedPayloadsMapping.dat.json'));
 }
 
-function devCombine(normal, dev, verbose) {
-  let ret = {};
+if (fs.existsSync('data/base/CoreTOCReplacedSnosMapping.dat')) {
+  let file = fs.readFileSync('data/base/CoreTOCReplacedSnosMapping.dat');
+  let entryCount = file.readUInt32LE(4);
 
-  if (dev && devAttributes >= DEV_INFO) {
-    Object.assign(ret, dev);
+  for (let i = 0; i < entryCount; i++) {
+    let snoID = file.readInt32LE(8 + i * 24 + 4);
+    let unk0 = file.readInt32LE(8 + i * 24 + 16);
+    let unk1 = file.readInt32LE(8 + i * 24 + 20);
+
+    let rec = [
+      file.readInt32LE(8 + i * 24),
+      file.subarray(8 + i * 24 + 8, 8 + i * 24 + 16).toString('hex'),
+    ];
+
+    if (unk0 !== -1 || unk1 !== 0) {
+      throw new Error('Unexpected data!');
+    }
+
+    if (replacedSnos[snoID]) {
+      throw new Error('Replacement sno already exists!');
+    }
+
+    replacedSnos[snoID] = rec;
   }
 
-  if (verbose && devAttributes >= DEV_VERBOSE) {
-    Object.assign(ret, verbose);
+  fs.writeFileSync('json/base/CoreTOCReplacedSnosMapping.dat.json', JSON.stringify(replacedSnos, null, ' '));
+}
+else {
+  replacedSnos = JSON.parse(fs.readFileSync('json/base/CoreTOCReplacedSnosMapping.dat.json'));
+}
+
+if (fs.existsSync('data/base/EncryptedSNOs.dat')) {
+  let file = fs.readFileSync('data/base/EncryptedSNOs.dat');
+  let entryCount = file.readUInt32LE(4);
+
+  for (let i = 0; i < entryCount; i++) {
+    let group = file.readInt32LE(8 + i * 16);
+    let snoID = file.readInt32LE(8 + i * 16 + 4);
+    let encryptionKeyID = file.subarray(8 + i * 16 + 8, 8 + i * 16 + 16).toString('hex');
+
+    encryptedSnos[snoID] = [group, encryptionKeyID];
   }
 
-  Object.assign(ret, normal);
-
-  return ret;
+  fs.writeFileSync('json/base/EncryptedSNOs.dat.json', JSON.stringify(encryptedSnos, null, ' '));
+}
+else {
+  encryptedSnos = JSON.parse(fs.readFileSync('json/base/EncryptedSNOs.dat.json'));
 }
 
 function getTypeHashFromFormatHash (dwFormatHash) {
@@ -181,6 +202,14 @@ function getTypeSize (type) {
   }
 
   return getTypeSize(type.slice(1));
+}
+
+function findSnoGroup(id) {
+  if (tocflat[id]) {
+    return tocflat[id][1];
+  }
+
+  return 0;
 }
 
 let basicTypes = {
@@ -225,7 +254,7 @@ let basicTypes = {
 
     results.readLength += 4;
     if (file.readInt32LE(offset)) {
-      ret.value = readStructure(file, typeHashes.slice(1), offset + 4, field, [...fieldPath, c], results);
+      ret.value = readStructure.bind(this)(file, typeHashes.slice(1), offset + 4, field, [...fieldPath, c], results);
     }
     else {
       ret.value = null;
@@ -237,23 +266,34 @@ let basicTypes = {
 
     ret.__raw__ = file.readInt32LE(offset);
 
-    if (ret.__raw__ === -1 || ret.__raw__ === 0xFFFFFFFF) {
+    if (ret.__raw__ === -1 || ret.__raw__ === 0 || ret.__raw__ === 0xFFFFFFFF) {
       ret.__raw__ = null;
       return;
     }
 
-    ret.__group__ = field.group;
+    if (replacedSnos[ret.__raw__]) {
+      ret.__replaced__ = replacedSnos[ret.__raw__][1];
+    }
+
+    if (encryptedSnos[ret.__raw__]) {
+      ret.__encrypted__ = encryptedSnos[ret.__raw__][1];
+    }
+
+    ret.__group__ = findSnoGroup(ret.__raw__) || field.group || -1;
     ret.__type__ = 'DT_SNO';
     ret.__typeHash__ = typeHashes[0];
+    this.references = this.references || {};
+    this.references[ret.__raw__] = ret.__raw__;
 
-    if (toc[ret.__group__] && snoFileInfo[ret.__group__]) {
-      ret.__targetFileName__ = 'base/meta/' + snoFileInfo[ret.__group__][0] + '/' + toc[ret.__group__][ret.__raw__] + '.' + snoFileInfo[ret.__group__][1];
+    if (tocflat[ret.__raw__] && snoFileInfo[ret.__group__] && snoFileInfo[ret.__group__][1]) {
+      let baseDir = ret.__group__ == 42 ? 'enUS_Text' : 'base';
+      ret.__targetFileName__ = baseDir + '/meta/' + snoFileInfo[ret.__group__][0] + '/' + tocflat[ret.__raw__][0] + '.' + snoFileInfo[ret.__group__][1];
     }
 
     ret.groupName = snoGroups[ret.__group__];
 
-    if (toc[ret.__group__] && toc[ret.__group__][ret.__raw__]) {
-      ret.name = toc[ret.__group__][ret.__raw__];
+    if (tocflat[ret.__raw__]) {
+      ret.name = tocflat[ret.__raw__][0];
     }
   },
   "DT_SNO_NAME": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
@@ -262,23 +302,34 @@ let basicTypes = {
 
     ret.__raw__ = file.readInt32LE(offset + 4);
 
-    if (ret.__raw__ === -1 || ret.__raw__ === 0xFFFFFFFF) {
+    if (ret.__raw__ === -1 || ret.__raw__ === 0 || ret.__raw__ === 0xFFFFFFFF) {
       ret.__raw__ = null;
       return;
     }
 
-    ret.__group__ = file.readInt32LE(offset);
+    if (replacedSnos[ret.__raw__]) {
+      ret.__replaced__ = replacedSnos[ret.__raw__][1];
+    }
+
+    if (encryptedSnos[ret.__raw__]) {
+      ret.__encrypted__ = encryptedSnos[ret.__raw__][1];
+    }
+
+    ret.__group__ = findSnoGroup(ret.__raw__) || file.readInt32LE(offset) || -1;
     ret.__type__ = 'DT_SNO_NAME';
     ret.__typeHash__ = typeHashes[0];
+    this.references = this.references || {};
+    this.references[ret.__raw__] = ret.__raw__;
 
-    if (toc[ret.__group__] && snoFileInfo[ret.__group__]) {
-      ret.__targetFileName__ = 'base/meta/' + snoFileInfo[ret.__group__][0] + '/' + toc[ret.__group__][ret.__raw__] + '.' + snoFileInfo[ret.__group__][1];
+    if (tocflat[ret.__raw__] && snoFileInfo[ret.__group__] && snoFileInfo[ret.__group__][1]) {
+      let baseDir = ret.__group__ == 42 ? 'enUS_Text' : 'base';
+      ret.__targetFileName__ = baseDir + '/meta/' + snoFileInfo[ret.__group__][0] + '/' + tocflat[ret.__raw__][0] + '.' + snoFileInfo[ret.__group__][1];
     }
 
     ret.groupName = snoGroups[ret.__group__];
 
-    if (toc[ret.__group__] && toc[ret.__group__][ret.__raw__]) {
-      ret.name = toc[ret.__group__][ret.__raw__];
+    if (tocflat[ret.__raw__]) {
+      ret.name = tocflat[ret.__raw__][0];
     }
   },
   "DT_GBID": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
@@ -295,12 +346,10 @@ let basicTypes = {
     ret.__type__ = 'DT_GBID';
     ret.__typeHash__ = typeHashes[0];
 
-    if (devAttributes >= DEV_INFO) {
-      ret.group = field.group;
+    ret.group = field.group;
 
-      if (gbid[ret.group] && gbid[ret.group][ret.__raw__] && gbid[ret.group][ret.__raw__].length) {
-        ret.name = gbid[ret.group][ret.__raw__][0];
-      }
+    if (gbid[ret.group] && gbid[ret.group][ret.__raw__] && gbid[ret.group][ret.__raw__].length) {
+      ret.name = gbid[ret.group][ret.__raw__][0];
     }
   },
   "DT_STARTLOC_NAME": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
@@ -345,8 +394,8 @@ let basicTypes = {
     readLog.push({fieldPath: fieldPath.join('.') + ' @ ' + offset, value: ret});
     let typeSize = getTypeSize(typeHashes.slice(1));
     let subresults = { readLength: 0 };
-    ret.rangeValue1 = readStructure(file, typeHashes.slice(1), offset, field, [...fieldPath, 'value1'], subresults);
-    ret.rangeValue2 = readStructure(file, typeHashes.slice(1), offset + subresults.readLength, field, [...fieldPath, 'value2'], subresults);
+    ret.rangeValue1 = readStructure.bind(this)(file, typeHashes.slice(1), offset, field, [...fieldPath, 'value1'], subresults);
+    ret.rangeValue2 = readStructure.bind(this)(file, typeHashes.slice(1), offset + subresults.readLength, field, [...fieldPath, 'value2'], subresults);
     results.readLength += subresults.readLength;
   },
   "DT_FIXEDARRAY": function (ret, file, typeHashes, offset, field, fieldPath, results = { readLength: 0 }) {
@@ -357,7 +406,7 @@ let basicTypes = {
     let subresults = { readLength: 0 };
 
     for (let c = 0; c < field.arrayLength; c++) {
-      ret.value.push(readStructure(file, typeHashes.slice(1), offset + subresults.readLength, field, [...fieldPath, c], subresults));
+      ret.value.push(readStructure.bind(this)(file, typeHashes.slice(1), offset + subresults.readLength, field, [...fieldPath, c], subresults));
     }
 
     results.readLength += subresults.readLength;
@@ -384,13 +433,6 @@ let basicTypes = {
     let dataSize = file.readInt32LE(offset + 12);
 
     results.readLength += 16;
-
-    if (devAttributes > DEV_INFO) {
-      ret.__padding1__ = padding1;
-      ret.__padding2__ = padding2;
-      ret.__dataOffset__ = dataOffset;
-      ret.__dataSize__ = dataSize;
-    }
 
     if (padding1 || padding2) {
       ret.__error__ = 'Unexpected value in padding!';
@@ -439,7 +481,7 @@ let basicTypes = {
       else {
         for (let c = 0; dataSize > 0; c++) {
           let subresults = { readLength: 0 };
-          let struct = readStructure(file, typeHashes.slice(1), dataOffset, field, [...fieldPath, c], subresults);
+          let struct = readStructure.bind(this)(file, typeHashes.slice(1), dataOffset, field, [...fieldPath, c], subresults);
           if (subresults.readLength < 1) {
             break;
           }
@@ -463,15 +505,6 @@ let basicTypes = {
     let padding3 = file.readInt32LE(offset + 20);
 
     results.readLength += 24;
-
-    if (devAttributes > DEV_INFO) {
-      ret.__padding1__ = padding1;
-      ret.__padding2__ = padding2;
-      ret.__dataOffset__ = dataOffset;
-      ret.__dataSize__ = dataSize;
-      ret.__dataCount__ = dataCount;
-      ret.__padding3__ = padding3;
-    }
 
     if (padding1 || padding2 || padding3) {
       ret.__error__ = 'Unexpected value in padding!';
@@ -531,11 +564,11 @@ let basicTypes = {
         ret.value.length = dataCount;
 
         for (let c = 0; c < dataCount && dataSize > 0; c++) {
-          let polyBase = readStructure(file, [0x5d4bac71], dataOffset, field, [...fieldPath, c]);
+          let polyBase = readStructure.bind(this)(file, [0x5d4bac71], dataOffset, field, [...fieldPath, c]);
           let polyTypes = [polyBase.dwType.value === undefined ? polyBase.dwType : polyBase.dwType.value, ...typeHashes.slice(1)];
           let subresults = { readLength: 0 };
 
-          ret.value[c] = readStructure(file, polyTypes, dataOffset, field, [...fieldPath, c], subresults);
+          ret.value[c] = readStructure.bind(this)(file, polyTypes, dataOffset, field, [...fieldPath, c], subresults);
 
           dataOffset += subresults.readLength;
           dataSize -= subresults.readLength;
@@ -551,13 +584,6 @@ let basicTypes = {
     let compiledSize = file.readInt32LE(offset + 28);
 
     results.readLength += 32;
-
-    if (devAttributes > DEV_INFO) {
-      ret.__formulaOffset__ = formulaOffset;
-      ret.__formulaSize__ = formulaSize;
-      ret.__compiledOffset__ = compiledOffset;
-      ret.__compiledSize__ = compiledSize;
-    }
 
     while (formulaSize > 0 && file.readUInt8(formulaOffset + formulaSize - 1) === 0) {
       formulaSize--;
@@ -675,17 +701,13 @@ function readStructure(file, typeHashes, offset, field, fieldPath, results = { r
     }
   }
 
-  let ret = devCombine({}, devInfo, {
-    __type__: type.name,
-    __typeHash__: type.hash,
-    __fileOffset__: offset,
-  });
+  let ret = Object.assign({}, devInfo);
 
   if (type.type === "complex") {
     let subresults = { readLength: 0 };
 
     type.fields.forEach(field => {
-      ret[field.name] = readStructure(file, field.type, offset + field.offset, field, [...fieldPath, field.name], subresults);
+      ret[field.name] = readStructure.bind(this)(file, field.type, offset + field.offset, field, [...fieldPath, field.name], subresults);
 
       if (ret.eAttribute !== null && ret.eAttribute !== undefined) {
         ret.__eAttribute_name__ = attributes[ret.eAttribute].name;
@@ -715,7 +737,7 @@ function readStructure(file, typeHashes, offset, field, fieldPath, results = { r
     }
   }
   else if (type.type === "basic" && basicTypes[type.name]) {
-    basicTypes[type.name](ret, file, typeHashes, offset, field, fieldPath, results);
+    basicTypes[type.name].bind(this)(ret, file, typeHashes, offset, field, fieldPath, results);
   }
   else {
     throw new Error('Unhandled type: ' + type.name);
@@ -798,8 +820,23 @@ fileNames.forEach((fileName, index) => {
       let dwSignature = header.readUInt32LE(0);
 
       if (dwSignature === 0xdeadbeef) {
-        let data = readStructure(file, [getTypeHashFromFormatHash(header.readUInt32LE(4))], 0, null, [fileName]);
+        let globals = {
+          test: true,
+        };
+
+        let data = readStructure.bind(globals)(file, [getTypeHashFromFormatHash(header.readUInt32LE(4))], 0, null, [fileName]);
         let snoID = file.readUInt32LE(0);
+
+        if (globals.references) {
+          let refs = Object.values(globals.references);
+
+          refs.forEach(snoIDTarget => {
+            incoming[snoIDTarget] = incoming[snoIDTarget] || {};
+            incoming[snoIDTarget][snoID] = snoID;
+            outgoing[snoID] = outgoing[snoID] || {};
+            outgoing[snoID][snoIDTarget] = snoIDTarget;
+          });
+        }
 
         console.log('#' + index, newFileName);
 
@@ -810,18 +847,22 @@ fileNames.forEach((fileName, index) => {
 
         let payloadName = fileName.replace(/^data\/base\/meta/g, 'base/payload');
 
+        if (!Object.keys(data).length) {
+          debugger;
+        }
+
         if (snoPayloadMap[payloadName]) {
-          fs.writeFileSync(newFileName, JSON.stringify(devCombine(data, {
+          fs.writeFileSync(newFileName, JSON.stringify(Object.assign({
             __fileName__: fileName.replace(/^data\//g, ''),
             __snoID__: snoID,
             __payloadOverride__: snoPayloadMap[payloadName],
-          }), null, ' ') + '\n');
+          }, data), null, ' ') + '\n');
         }
         else {
-          fs.writeFileSync(newFileName, JSON.stringify(devCombine(data, {
+          fs.writeFileSync(newFileName, JSON.stringify(Object.assign({
             __fileName__: fileName.replace(/^data\//g, ''),
             __snoID__: snoID,
-          }), null, ' ') + '\n');
+          }, data), null, ' ') + '\n');
         }
 
         success++;
@@ -829,7 +870,9 @@ fileNames.forEach((fileName, index) => {
     }
   } catch (err) {
     console.error(err);
-    fs.writeFileSync(newFileName, '{}');
+    fs.writeFileSync(newFileName, JSON.stringify({
+      err,
+    }));
   }
 });
 
@@ -840,5 +883,16 @@ if (Object.values(gbMap).length) {
 if (Object.values(gbid).length) {
   fs.writeFileSync('json/GBID.json', JSON.stringify(gbid, null, ' '));
 }
+
+Object.keys(outgoing).forEach(key => {
+  outgoing[key] = Object.values(outgoing[key]);
+});
+
+Object.keys(incoming).forEach(key => {
+  incoming[key] = Object.values(incoming[key]);
+});
+
+fs.writeFileSync('json/outgoingSnoReferences.json', JSON.stringify(outgoing));
+fs.writeFileSync('json/incomingSnoReferences.json', JSON.stringify(incoming));
 
 console.log('Processed', success, 'of', total, 'files.');

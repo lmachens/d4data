@@ -1,138 +1,234 @@
 const fs = require('fs');
 
-let prefix = {};
-let dict = {};
-
-let banned = {
-  'wcyl': true,
+let dict = {
+  '2D': 0,
+  '3D': 0,
+  '4D': 0,
 };
 
-let names = {};
-let newnames = {};
+let prefixes = {
+  'a': 'a',
+  'aabb': 'aabb',
+  'af': 'af',
+  'ann': 'ann',
+  'ar': 'ar',
+  'arn': 'arn',
+  'arr': 'arr',
+  'at': 'at',
+  'attachment': 'attachment',
+  'b': 'b',
+  'blend': 'blend',
+  'bone': 'bone',
+  'cell': 'cell',
+  'constraint': 'constraint',
+  'count': 'count',
+  'dw': 'dw',
+  'e': 'e',
+  'end': 'end',
+  'f': 'f',
+  'face': 'face',
+  'fl': 'fl',
+  'follower': 'follower',
+  'game': 'game',
+  'gbid': 'gbid',
+  'h': 'h',
+  'i': 'i',
+  'id': 'id',
+  'inv': 'inv',
+  'is': 'is',
+  'local': 'local',
+  'm': 'm',
+  'max': 'max',
+  'n': 'n',
+  'p': 'p',
+  'path': 'path',
+  'plane': 'plane',
+  'pn': 'pn',
+  'pt': 'pt',
+  'q': 'q',
+  'rgba': 'rgba',
+  'rgbaval': 'rgbaval',
+  's': 's',
+  'sample': 'sample',
+  'sno': 'sno',
+  'snoname': 'snoname',
+  'start': 'start',
+  'sz': 'sz',
+  't': 't',
+  'transform': 'transform',
+  'triangle': 'triangle',
+  'twin': 'twin',
+  'u': 'u',
+  'us': 'us',
+  'v': 'v',
+  'vec': 'vec',
+  'vertex': 'vertex',
+  'w': 'w',
+  'wcyl': 'wcyl',
+  'wd': 'wd',
+  'wp': 'wp',
+  'ws': 'ws',
+  'wv': 'wv',
+};
 
-fs.readFileSync('names.txt').toString().split(/\s+/gi).forEach(name => {
-  names[name] = name;
-});
+let markov = {};
 
-Object.keys(names).forEach(name => {
-  let matches = name.split(/^((?:(?:m_)?(?:a|ar|arn|arr|b|bc|dw|e|f|fl|gbid|h|i|id|rgba|is|inv|wcyl|m|n|p|pn|pt|pgbid|q|s|ser|sz|t|tag|u|v|vec|pwv|sno|pdw|vw|wd|wvp|rgbaval|wp|wr|ws|wv|bone|cell|end|game|local|max|parent|path|plane|sample|start|twin|vertex|count|l))(?=[0-9A-Z_]))/g).filter(Boolean);
+let typeNames = {};
+let fieldNames = {};
 
-  matches.forEach(subname => {
-    if (/^[^a-zA-Z]+$/.test(subname)) {
-      return;
-    }
+let definitions = require('./definitions.json');
 
-    if (/^((?:m_)?(?:a|ar|arn|arr|b|bc|dw|e|f|fl|gbid|h|i|id|rgba|is|inv|wcyl|m|n|p|pn|pt|pgbid|q|s|ser|sz|t|tag|u|v|vec|pwv|sno|pdw|vw|wd|wvp|rgbaval|wp|wr|ws|wv|bone|cell|end|game|local|max|parent|path|plane|sample|start|twin|vertex|count|l))$/g.test(subname)) {
-      if (!prefix[subname]) {
-        prefix[subname] = names[name];
+Object.values(definitions).forEach(definition => {
+  if (definition.name.slice(0, 5) !== 'Type_' && definition.type === 'complex') {
+    typeNames[definition.name] = definition.name;
+  }
+
+  if (definition.fields && definition.fields.length) {
+    definition.fields.forEach(field => {
+      if (field.name.slice(0, 4) !== 'unk_') {
+        fieldNames[field.name] = field.name;
       }
-    } else {
-      newnames[subname] = names[name];
-    }
-  });
+    });
+  }
 });
 
-names = newnames;
-newnames = {};
+function isWord (str) {
+  return str && str.length;
+}
 
-Object.keys(names).forEach(name => {
-  let matches = name.split(/(3x3|4x4|BCVEC2I|IDs(?![a-z])|By(?![a-z])|To(?![a-z])|In(?![a-z])|Is(?![a-z])|On(?![a-z])|No(?![a-z])|(?<![0-9])2D|(?<![0-9])3D|(?<![0-9])4D)/g).filter(Boolean);
-
-  matches.forEach(subname => {
-    if (/^([^a-zA-Z]+)$/.test(subname) || subname.length < 3) {
-      return;
+function *parseTypeName (name) {
+  for (let subname of name.split(/(_|FoW|(?<![0-9])[234]D)/g).filter(isWord)) {
+    if (subname === '_') {
+      continue;
     }
 
-    if (/^(3x3|4x4|BCVEC2I|IDs(?![a-z])|By(?![a-z])|To(?![a-z])|In(?![a-z])|Is(?![a-z])|On(?![a-z])|No(?![a-z])|(?<![0-9])2D|(?<![0-9])3D|(?<![0-9])4D)$/g.test(subname) || /^[a-z]{3,}$/g.test(subname)) {
-      if (!dict[subname]) {
-        dict[subname] = names[name];
+    if (subname === 'FoW' || subname === '2D' || subname === '3D' || subname === '4D') {
+      yield subname;
+      continue;
+    }
+
+    for (let subsubname of subname.split(/([A-Z][a-z][a-z0-9]*)/g).filter(isWord)) {
+      if (subsubname.slice(1) === subsubname.slice(1).toLowerCase()) {
+        subsubname = subsubname.toLowerCase();
       }
-    } else {
-      newnames[subname] = names[name];
+
+      yield subsubname;
     }
-  });
-});
+  }
+}
 
-names = newnames;
-newnames = {};
+function *parseFieldName (name) {
+  name = name.split('m_').pop();
 
-Object.keys(names).forEach(name => {
-  let matches = name.split(/([A-Z][a-z]{2,})/g).filter(Boolean);
+  let parts = name.split(/^([a-z0-9_]+)/g);
 
-  matches.forEach(subname => {
-    if (/^[^a-zA-Z]+$/.test(subname)) {
-      return;
-    }
+  if (parts.length === 3) {
+    let prefix = parts[1];
 
-    if (/^([A-Z][a-z]+)$/g.test(subname) || /^[a-z]{3,}$/g.test(subname)) {
-      if (!dict[subname]) {
-        dict[subname] = names[name];
-      }
-    } else {
-      newnames[subname] = names[name];
-    }
-  });
-});
-
-names = newnames;
-newnames = {};
-
-Object.keys(names).forEach(name => {
-  let matches = name.split(/([A-Z]{2,})/g).filter(Boolean);
-
-  matches.forEach(subname => {
-    if (/^[^a-zA-Z]+$/.test(subname)) {
-      return;
+    if (!prefixes[prefix] && prefix.length > 1) {
+      yield prefix;
     }
 
-    if (/^([A-Z]{2,})$/g.test(subname) || /^[a-z]{3,}$/g.test(subname)) {
-      if (!dict[subname]) {
-        dict[subname] = names[name];
-      }
-    } else {
-      newnames[subname] = names[name];
-    }
-  });
-});
+    parts = parts.slice(2);
+  }
 
-names = newnames;
-newnames = {};
+  for (let subname of parts) {
+    for (let subsubname of parseTypeName(subname)) {
+      yield subsubname;
+    }  
+  }
+}
 
-Object.keys(names).forEach(name => {
-  let matches = name.split(/_+/g).filter(Boolean);
+for (let i in typeNames) {
+  let names = Array.from(parseTypeName(typeNames[i]));
 
-  matches.forEach(subname => {
-    if (subname.length > 1 && !/^[^a-z]+$/gi.test(subname)) {
-      newnames[subname] = names[name];
-    }
-  });
-});
+  for (let subname of names) {
+    if (subname.length > 1) {
+      if (/[a-z]/gi.test(subname)) {
+        dict[subname] = (dict[subname] || 0) + 1;
 
-names = newnames;
-newnames = {};
+        let orig = subname;
 
-Object.keys(names).forEach(name => {
-  let matches = name.split(/([a-z]+[0-9]*)/g).filter(Boolean);
+        while ('0123456789'.indexOf(subname[subname.length - 1]) >= 0) {
+          subname = subname.slice(0, -1);
+        }
   
-  matches.forEach(subname => {
-    if (subname.toLowerCase() == '') {
-      debugger;
-    }
-
-    if (subname.length > 2 && !/^[^a-z]+$/gi.test(subname) && !banned[subname.toLowerCase()]) {
-      if (!dict[subname]) {
-        dict[subname] = names[name];
+        if (subname !== orig && subname.length > 1) {
+          dict[subname] = dict[subname] || 0;
+        }  
       }
     }
+  }
+
+  for (let len = 2; len <= names.length; len++) {
+    for (let i = 0; i < names.length; i++) {
+      let cluster = names.slice(i, len).filter(str => str && str.length);
+
+      if (cluster.length === len) {
+        cluster = cluster.join(' ');
+        markov[cluster] = (markov[cluster] || 0) + 1;
+      }
+    }
+  }
+}
+
+for (let i in fieldNames) {
+  let names = Array.from(parseFieldName(fieldNames[i]));
+
+  for (let subname of names) {
+    if (subname.length > 1) {
+      if (/[a-z]/gi.test(subname)) {
+        dict[subname] = (dict[subname] || 0) + 1;
+
+        let orig = subname;
+
+        while ('0123456789'.indexOf(subname[subname.length - 1]) >= 0) {
+          subname = subname.slice(0, -1);
+        }
+  
+        if (subname !== orig && subname.length > 1) {
+          dict[subname] = dict[subname] || 0;
+        }  
+      }
+    }
+  }
+
+  for (let len = 2; len <= names.length; len++) {
+    for (let i = 0; i < names.length; i++) {
+      let cluster = names.slice(i, len).filter(str => str && str.length);
+
+      if (cluster.length === len) {
+        cluster = cluster.join(' ');
+        markov[cluster] = (markov[cluster] || 0) + 1;
+      }
+    }
+  }
+}
+
+Object.keys(markov).filter(key => markov[key] > 0).forEach(chain => {
+  let count = markov[chain];
+
+  chain = chain.split(' ');
+
+  chain = chain.map(word => {
+    if (word === word.toLowerCase() && word !== 'dm') {
+      return word.slice(0, 1).toUpperCase() + word.slice(1);
+    }
+
+    return word;
   });
+
+  chain = chain.join('');
+
+  dict[chain] = (dict[chain] || 0) + count;
 });
 
-names = newnames;
-newnames = {};
+fs.writeFileSync(__dirname + '/dict.txt', Object.keys(dict).sort((a, b) => {
+  if (dict[b] - dict[a]) {
+    return dict[b] - dict[a];
+  }
 
-fs.writeFileSync('dict.txt', Object.keys(dict).sort().join('\n'));
+  let tmp = [a, b].sort();
 
-dict = Object.assign({}, JSON.parse(fs.readFileSync('dict_expanded.json').toString()), dict);
-
-fs.writeFileSync('dict_expanded.json', JSON.stringify(dict, null, ' '));
-fs.writeFileSync('dict_expanded.txt', Object.keys(dict).sort().join('\n'));
+  return tmp.indexOf(a) - tmp.indexOf(b);
+}).join('\n'));

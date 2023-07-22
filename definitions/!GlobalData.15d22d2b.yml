@@ -83,7 +83,7 @@
 0x19c: flMonsterCritDamageScalar # DT_FLOAT (32 bits used)
 0x1a0: flPlayerCritDamageScalar # DT_FLOAT (32 bits used)
 0x1a4: flPvPMaxCritDamagePercent # DT_FLOAT (32 bits used)
-0x1a8: unk_66251ff # DT_FLOAT (32 bits used)
+0x1a8: flDefaultDamageVariance # DT_FLOAT (32 bits used)
 0x1ac: unk_251341c # DT_FLOAT (32 bits used)
 0x1b0: unk_352d6bc # DT_FLOAT (32 bits used)
 0x1b4: unk_e248d9d # DT_FLOAT (32 bits used)
@@ -214,7 +214,7 @@
 0x740: flCombatRadius # DT_FLOAT (32 bits used)
 0x744: unk_a04a7d5 # DT_FLOAT (32 bits used)
 0x748: flTargetAbandonTime # DT_FLOAT (32 bits used)
-0x74c: unk_e24f012 # DT_FLOAT (32 bits used)
+0x74c: flBossTargetAbandonTime # DT_FLOAT (32 bits used)
 0x750: unk_a26a857 # DT_FLOAT (32 bits used)
 0x754: unk_9a3861e # DT_UINT (32 bits used)
 0x758: unk_27a4780 # DT_FLOAT (32 bits used)
@@ -389,7 +389,7 @@
 0xe90: unk_765a638 # DT_FLOAT (32 bits used)
 0xe94: unk_d12a366 # DT_FLOAT (32 bits used)
 0xe98: unk_3ab153e # DT_FLOAT (32 bits used)
-0xe9c: unk_bd7bb9e # DT_FLOAT (32 bits used)
+0xe9c: flConversationCancelDistance # DT_FLOAT (32 bits used)
 0xea0: unk_ab69427 # DT_FLOAT (32 bits used)
 0xea4: unk_7ebfadb # DT_FIXEDARRAY (32 bits used) [8 array size] {group 0x30 "World"} => DT_SNO
 0xec4: unk_4a7cb26 # DT_FLOAT (32 bits used)
@@ -442,29 +442,30 @@
 0xfb0: unk_3021a92 # DT_UINT (32 bits used)
 0xfb4: unk_496cffb # DT_UINT (32 bits used)
 0xfb8: unk_56d4995 # DT_FLOAT (32 bits used)
-0xfc0: arCurrencyCaps # DT_FIXEDARRAY (64 bits used) [28 array size] => DT_INT64
-0x10a0: unk_606852d # unknown 0x3b00e8b9
-0x10b8: unk_bf59715 # DT_VARIABLEARRAY => ActorEffectData
-0x10c8: unk_2bb7f27 # DT_FLOAT (32 bits used)
-0x10cc: unk_50c5dba # DT_FLOAT (32 bits used)
-0x10d0: unk_a19cbf3 # DT_FLOAT (32 bits used)
-0x10d4: flPowerEffectIntensityPerSkillRank # DT_FLOAT (32 bits used)
-0x10d8: flMaxPowerEffectIntensityFromSkillRanks # DT_FLOAT (32 bits used)
-0x10dc: unk_57c5af4 # DT_FLOAT (32 bits used)
-0x10e0: unk_7125533 # DT_VARIABLEARRAY => ScalarFunctionFormula
-0x10f0: unk_5beabc1 # DT_FLOAT (32 bits used)
-0x10f4: unk_72ee1ae # DT_FLOAT (32 bits used)
-0x10f8: unk_b59ed1 # DT_FLOAT (32 bits used)
-0x10fc: unk_38b5fed # DT_FLOAT (32 bits used)
-0x1100: unk_dbc6f0d # DT_UINT (32 bits used)
-0x1104: unk_9ea22ec # DT_UINT (32 bits used)
-0x1108: unk_9155d6b # DT_INT (32 bits used)
-0x110c: unk_b1d46f8 # DT_INT (32 bits used)
-0x1110: unk_9f4060e # DT_FLOAT (32 bits used)
-0x1114: unk_2cbcb69 # DT_FLOAT (32 bits used)
-0x1118: unk_603d082 # DT_FLOAT (32 bits used)
-0x111c: unk_c20677a # DT_SNO (32 bits used) {group 0xe "EffectGroup"}
-0x1120: unk_bad483c # DT_FLOAT (32 bits used)
-0x1124: unk_f883e95 # DT_FLOAT (32 bits used)
-0x1128: unk_ae661d1 # DT_FLOAT (32 bits used)
-0x1130: null or eof # DT_NULL
+0xfc0: arCurrencyCaps # DT_FIXEDARRAY (64 bits used) [31 array size] => DT_INT64
+0x10b8: unk_606852d # unknown 0x3b00e8b9
+0x10d0: unk_bf59715 # DT_VARIABLEARRAY => ActorEffectData
+0x10e0: unk_2bb7f27 # DT_FLOAT (32 bits used)
+0x10e4: unk_50c5dba # DT_FLOAT (32 bits used)
+0x10e8: unk_a19cbf3 # DT_FLOAT (32 bits used)
+0x10ec: flPowerEffectIntensityPerSkillRank # DT_FLOAT (32 bits used)
+0x10f0: flMaxPowerEffectIntensityFromSkillRanks # DT_FLOAT (32 bits used)
+0x10f4: unk_57c5af4 # DT_FLOAT (32 bits used)
+0x10f8: arSeasons # DT_VARIABLEARRAY (32 bits used) {group 0x89 "Season"} => DT_SNO
+0x1108: tScalarFormulas # DT_VARIABLEARRAY => ScalarFunctionFormula
+0x1118: unk_5beabc1 # DT_FLOAT (32 bits used)
+0x111c: unk_72ee1ae # DT_FLOAT (32 bits used)
+0x1120: unk_b59ed1 # DT_FLOAT (32 bits used)
+0x1124: unk_38b5fed # DT_FLOAT (32 bits used)
+0x1128: unk_dbc6f0d # DT_UINT (32 bits used)
+0x112c: unk_9ea22ec # DT_UINT (32 bits used)
+0x1130: unk_9155d6b # DT_INT (32 bits used)
+0x1134: unk_b1d46f8 # DT_INT (32 bits used)
+0x1138: unk_9f4060e # DT_FLOAT (32 bits used)
+0x113c: unk_2cbcb69 # DT_FLOAT (32 bits used)
+0x1140: unk_603d082 # DT_FLOAT (32 bits used)
+0x1144: unk_c20677a # DT_SNO (32 bits used) {group 0xe "EffectGroup"}
+0x1148: unk_bad483c # DT_FLOAT (32 bits used)
+0x114c: unk_f883e95 # DT_FLOAT (32 bits used)
+0x1150: unk_ae661d1 # DT_FLOAT (32 bits used)
+0x1158: null or eof # DT_NULL

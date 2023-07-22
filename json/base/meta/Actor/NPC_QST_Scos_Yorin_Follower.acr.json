@@ -99,6 +99,7 @@
    "name": "NPC_Yorin_Idle"
   }
  ],
+ "arStoreAnimSets": [],
  "snoAnimTree": {
   "__raw__": 845641,
   "__group__": 67,
@@ -702,7 +703,7 @@
       "flBlendTime": 0.20000000298023224,
       "eBlendCurve": 0
      },
-     "unk_dd1cd6f": 0,
+     "nDefaultChildIndex": 0,
      "nSyncGroupIndex": 0,
      "nOverrideID": 70
     }
@@ -715,10 +716,14 @@
   "__typeHash__": 2394153027,
   "dwLookHash": 0
  },
- "unk_3d234d5": 4294967295,
+ "dwDefaultShaderMapOverride": 4294967295,
  "tScaleRange": {
   "rangeValue1": 1,
   "rangeValue2": 0
+ },
+ "unk_945ec7b": {
+  "rangeValue1": 0.8500000238418579,
+  "rangeValue2": 0.30000001192092896
  },
  "wcylBounds": {
   "__type__": "AxialCylinder",
@@ -815,13 +820,13 @@
     "__type__": "CollisionSettings",
     "__typeHash__": 3066352125,
     "snoCollision": {
-     "__raw__": 1052118,
+     "__raw__": 1438654,
      "__group__": 127,
      "__type__": "DT_SNO",
      "__typeHash__": 2764331143,
-     "__targetFileName__": "base/meta/CollisionSettings/NPC_Moving.col",
+     "__targetFileName__": "base/meta/CollisionSettings/NPC_Follower.col",
      "groupName": "CollisionSettings",
-     "name": "NPC_Moving"
+     "name": "NPC_Follower"
     },
     "tCustomCollFlags": {
      "__type__": "ActorCollisionFlags",
@@ -866,7 +871,7 @@
    "unk_c5b3851": 1,
    "unk_523b9d9": [],
    "unk_ce78a30": {
-    "__type__": "Type_17bd50db",
+    "__type__": "ActorHitCollisionShape",
     "__typeHash__": 398282971,
     "unk_20b45d7": 4294967295,
     "eType": 0,
@@ -874,14 +879,14 @@
     "flLength": 0,
     "aPitch": 0,
     "aYaw": 0,
-    "unk_711980c": {
+    "vBoneLocalOffset": {
      "x": 0,
      "y": 0,
      "z": 0
     }
    },
    "unk_f26505b": {
-    "__type__": "Type_17bd50db",
+    "__type__": "ActorHitCollisionShape",
     "__typeHash__": 398282971,
     "unk_20b45d7": 4294967295,
     "eType": 0,
@@ -889,7 +894,7 @@
     "flLength": 0,
     "aPitch": 0,
     "aYaw": 0,
-    "unk_711980c": {
+    "vBoneLocalOffset": {
      "x": 0,
      "y": 0,
      "z": 0
@@ -939,6 +944,7 @@
     "name": "NPC"
    },
    "szArchetype": 955330225,
+   "unk_de0631b": null,
    "eBaseElement": -1,
    "snoMainHand": null,
    "snoOffHand": null,
@@ -992,35 +998,36 @@
      "__type__": "Type_2d9968c0",
      "__typeHash__": 765028544,
      "snoAffix": null,
-     "unk_828ec72": 0
+     "nMinLevelReq": 0
     },
     {
      "__type__": "Type_2d9968c0",
      "__typeHash__": 765028544,
      "snoAffix": null,
-     "unk_828ec72": 10
+     "nMinLevelReq": 10
     },
     {
      "__type__": "Type_2d9968c0",
      "__typeHash__": 765028544,
      "snoAffix": null,
-     "unk_828ec72": 20
+     "nMinLevelReq": 20
     },
     {
      "__type__": "Type_2d9968c0",
      "__typeHash__": 765028544,
      "snoAffix": null,
-     "unk_828ec72": 30
+     "nMinLevelReq": 30
     }
    ],
    "snoDisallowedAffixes": [],
+   "arForcedMonsterTags": [],
    "eAITargetStyleNormal": 6,
    "eAITargetStyleElite": 6,
    "unk_130279f": null,
    "unk_4b9e5c9": null,
    "unk_e7a2637": 7,
    "szInternalName": "",
-   "unk_d3dddc4": false,
+   "bDoesRetreat": false,
    "unk_50569ba": false,
    "unk_7a3dc4a": 0,
    "snoMount": {
@@ -1076,7 +1083,7 @@
    "unk_401dfd8": 0.25,
    "unk_f68cd00": 5,
    "unk_f68cc02": 15,
-   "unk_16266ca": 0.5,
+   "flBossCameraSmoothing": 0.5,
    "unk_5428a5e": 5,
    "unk_3b9132c": 40,
    "unk_c0cc954": 45,
@@ -1176,6 +1183,7 @@
     "groupName": "Power",
     "name": "Death"
    },
+   "unk_2a26311": null,
    "unk_6f9a204": false
   }
  ],
@@ -1186,7 +1194,7 @@
    "nHardpointIndexForRope": -1,
    "fDoesntCauseCriticalBloodEffect": false,
    "fNeverPlayGethitJitter": true,
-   "unk_2bf030e": [
+   "arNormalHitEffectGroups": [
     {
      "__raw__": 145948,
      "__group__": 14,
@@ -1473,8 +1481,11 @@
    "__type__": "ActorUIData",
    "__typeHash__": 3096716593,
    "hPortraitImage": 0,
+   "unk_e3dc66d": false,
+   "unk_a94748a": 0,
+   "unk_a0b181c": 0,
    "hMinimapIcon": 3603575875,
-   "unk_f51d2b3": 0,
+   "hMinimapIconGizmoUsed": 0,
    "fMinimapActiveByDefault": true,
    "fMinimapRespectsFoW": true,
    "unk_98a6ae1": true,
@@ -1632,7 +1643,7 @@
  "ptPostprocessed": "0",
  "snoPrefabAttachment": null,
  "unk_d2b5e35": 1,
- "unk_2607092": 0,
- "unk_79da2a0": 4294967295,
+ "szPrefabLookOverride": 0,
+ "dwPrefabShaderMapOverride": 4294967295,
  "arRTPCOverrides": []
 }

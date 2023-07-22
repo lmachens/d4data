@@ -161,8 +161,8 @@
  "unk_923b5fb": false,
  "unk_e517f6f": false,
  "eHitSound": 0,
- "unk_4d7691e": {
-  "__type__": "Type_3940c0fe",
+ "onHitSounds": {
+  "__type__": "OnHitSounds",
   "__typeHash__": 960545022,
   "unk_85f3271": {
    "__raw__": 367832,
@@ -218,7 +218,7 @@
   "value": "SF_1",
   "compiled": "BQAAAAcAAAAAAAAAAAAAAAAAAAAAAAAA"
  },
- "unk_b26a921": {
+ "tResourceCostReductionCoefficient": {
   "value": "1",
   "compiled": "BgAAAAAAgD8AAAAA"
  },
@@ -255,7 +255,7 @@
  "unk_767809": 0,
  "bCastTargetAllies": false,
  "bCastTargetEnemies": true,
- "unk_7095076": false,
+ "bCastTargetPlayersOnly": false,
  "tCastTargetNecroCorpsesOnly": {
   "value": "0",
   "compiled": "BgAAAAAAAAAAAAAA"
@@ -288,13 +288,13 @@
   "value": "0",
   "compiled": "BgAAAAAAAAAAAAAA"
  },
- "unk_3587b29": true,
+ "bRequiresPathToTarget": true,
  "bIsApproachPower": false,
  "snoPowerApproach": null,
  "unk_f70b0d": -1,
  "unk_e65d245": null,
  "unk_17dddfd": true,
- "unk_d897ba6": {
+ "tMovementPowerData": {
   "__type__": "ActorMovementPowerData",
   "__typeHash__": 2543084619,
   "unk_b1f0f4e": {
@@ -302,7 +302,7 @@
    "compiled": "BgAAAAAAAAAAAAAA"
   },
   "unk_c31445d": 1.7453292608261108,
-  "unk_6661ef2": 50,
+  "flFacingDistanceThreshold": 50,
   "unk_f8c5768": -1,
   "flSpeedMultiplier": 1,
   "bIgnorePathfinding": false,
@@ -313,7 +313,7 @@
   "unk_b804e2d": 0,
   "unk_9369802": 1,
   "snoAnimKeyOverride": null,
-  "unk_9ab5680": null,
+  "gbidDynamicMovementDataOverride": null,
   "unk_f05bba": {
    "value": "0",
    "compiled": "BgAAAAAAAAAAAAAA"
@@ -333,8 +333,8 @@
  "bInvulnerableDuring": false,
  "bUntargetableDuring": false,
  "bCannotDieDuring": false,
- "unk_636a66b": false,
- "unk_160bc26": false,
+ "bCannotBeInterruptedDuring": false,
+ "bStunnedUnstoppableIdDuring": false,
  "bIgnoreGravityDuring": false,
  "unk_7a416a6": false,
  "arCCInfo": [
@@ -581,7 +581,7 @@
  "bIsCraftItemName": false,
  "unk_744a4fd": false,
  "unk_a8611dd": false,
- "unk_365e3c2": true,
+ "bUsableInPrologue": true,
  "unk_83d96df": false,
  "unk_9aaab79": false,
  "unk_b15bf7f": false,
@@ -690,7 +690,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -700,7 +700,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,
@@ -786,7 +786,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -796,7 +796,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,
@@ -882,7 +882,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -892,7 +892,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,
@@ -978,7 +978,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -988,7 +988,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,
@@ -1074,7 +1074,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -1084,7 +1084,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 1,
@@ -1122,10 +1122,10 @@
    "dwID": 3278203150,
    "dwBuffId": 14,
    "bHarmful": false,
-   "bInfinite": true,
+   "bInfinite": false,
    "tDuration": {
-    "value": "1",
-    "compiled": "BgAAAAAAgD8AAAAA"
+    "value": "SF_23",
+    "compiled": "BQAAAB0AAAAAAAAAAAAAAAAAAAAAAAAA"
    },
    "tMaxStackCount": {
     "value": "1",
@@ -1170,7 +1170,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -1180,7 +1180,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,
@@ -1266,7 +1266,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -1276,7 +1276,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,
@@ -1362,7 +1362,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -1372,7 +1372,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,
@@ -1435,7 +1435,7 @@
    "__typeHash__": 551777591,
    "tFormula": {
     "value": "Affix_Value_1#legendary_druid_060",
-    "compiled": "BQAAAAAAAADQAwAAYNgIAAAAAAAAAAAA"
+    "compiled": "BQAAAAAAAADUAwAAYNgIAAAAAAAAAAAA"
    }
   },
   {
@@ -1466,8 +1466,8 @@
    "__type__": "ScriptFormulaInfo",
    "__typeHash__": 551777591,
    "tFormula": {
-    "value": "0.5",
-    "compiled": "BgAAAAAAAD8AAAAA"
+    "value": "",
+    "compiled": ""
    }
   },
   {
@@ -1507,7 +1507,7 @@
    "__typeHash__": 551777591,
    "tFormula": {
     "value": "Affix_Value_1#Legendary_Druid_116 / 100",
-    "compiled": "BQAAAAAAAADQAwAA5NQIAAAAAAAGAAAAAADIQg4AAAAAAAAA"
+    "compiled": "BQAAAAAAAADUAwAA5NQIAAAAAAAGAAAAAADIQg4AAAAAAAAA"
    }
   },
   {
@@ -1563,7 +1563,7 @@
    "__typeHash__": 551777591,
    "tFormula": {
     "value": "Affix_Value_2#legendary_druid_060/100",
-    "compiled": "BQAAAAAAAADRAwAAYNgIAAAAAAAGAAAAAADIQg4AAAAAAAAA"
+    "compiled": "BQAAAAAAAADVAwAAYNgIAAAAAAAGAAAAAADIQg4AAAAAAAAA"
    }
   },
   {
@@ -1571,7 +1571,7 @@
    "__typeHash__": 551777591,
    "tFormula": {
     "value": "Affix_Value_1#legendary_druid_104",
-    "compiled": "BQAAAAAAAADQAwAA62YSAAAAAAAAAAAA"
+    "compiled": "BQAAAAAAAADUAwAA62YSAAAAAAAAAAAA"
    }
   },
   {
@@ -1579,7 +1579,7 @@
    "__typeHash__": 551777591,
    "tFormula": {
     "value": "Affix_Value_2#legendary_druid_104 / 100",
-    "compiled": "BQAAAAAAAADRAwAA62YSAAAAAAAGAAAAAADIQg4AAAAAAAAA"
+    "compiled": "BQAAAAAAAADVAwAA62YSAAAAAAAGAAAAAADIQg4AAAAAAAAA"
    }
   },
   {
@@ -1588,6 +1588,14 @@
    "tFormula": {
     "value": "Mod.Upgrade1 ? 1 : 0",
     "compiled": "BQAAAFoAAAD/////2QgaoAAAAAAGAAAAAACAPwYAAAAAAAAAEAAAAAAAAAA="
+   }
+  },
+  {
+   "__type__": "ScriptFormulaInfo",
+   "__typeHash__": 551777591,
+   "tFormula": {
+    "value": "6",
+    "compiled": "BgAAAAAAwEAAAAAA"
    }
   }
  ],
@@ -1605,8 +1613,8 @@
     "__typeHash__": 1185241065,
     "eType": 0,
     "tHitpointScalar": {
-     "value": "SF_7",
-     "compiled": "BQAAAA0AAAAAAAAAAAAAAAAAAAAAAAAA"
+     "value": "0",
+     "compiled": "BgAAAAAAAAAAAAAA"
     },
     "tFlatLevel": {
      "value": "0",
@@ -1664,7 +1672,7 @@
    "unk_15c6c03": false,
    "unk_e842c84": false,
    "unk_b8f2b": 1,
-   "unk_79ce2e1": false,
+   "bHasCombatEffectOverride": false,
    "tCombatEffectOverride": {
     "value": "100",
     "compiled": "BgAAAAAAyEIAAAAA"
@@ -1679,7 +1687,7 @@
    "unk_5885b8": 0,
    "unk_f38eac9": false,
    "unk_67260fc": {
-    "__type__": "Type_3940c0fe",
+    "__type__": "OnHitSounds",
     "__typeHash__": 960545022,
     "unk_85f3271": null,
     "unk_4588331": null,
@@ -1757,7 +1765,7 @@
    "unk_15c6c03": false,
    "unk_e842c84": false,
    "unk_b8f2b": 1,
-   "unk_79ce2e1": false,
+   "bHasCombatEffectOverride": false,
    "tCombatEffectOverride": {
     "value": "100",
     "compiled": "BgAAAAAAyEIAAAAA"
@@ -1772,7 +1780,7 @@
    "unk_5885b8": 0,
    "unk_f38eac9": false,
    "unk_67260fc": {
-    "__type__": "Type_3940c0fe",
+    "__type__": "OnHitSounds",
     "__typeHash__": 960545022,
     "unk_85f3271": null,
     "unk_4588331": null,
@@ -1850,7 +1858,7 @@
    "unk_15c6c03": false,
    "unk_e842c84": false,
    "unk_b8f2b": -1,
-   "unk_79ce2e1": true,
+   "bHasCombatEffectOverride": true,
    "tCombatEffectOverride": {
     "value": "0",
     "compiled": "BgAAAAAAAAAAAAAA"
@@ -1865,7 +1873,7 @@
    "unk_5885b8": 0,
    "unk_f38eac9": false,
    "unk_67260fc": {
-    "__type__": "Type_3940c0fe",
+    "__type__": "OnHitSounds",
     "__typeHash__": 960545022,
     "unk_85f3271": null,
     "unk_4588331": null,
@@ -1882,7 +1890,7 @@
    "dwModId": 0,
    "dwModMask": 1,
    "unk_94cc84e": 0,
-   "bAppendDescription": false,
+   "bAppendDescription": true,
    "unk_7b47c37": false,
    "arSkillTags": [
     {

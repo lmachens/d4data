@@ -113,8 +113,8 @@
  "unk_923b5fb": false,
  "unk_e517f6f": false,
  "eHitSound": 2,
- "unk_4d7691e": {
-  "__type__": "Type_3940c0fe",
+ "onHitSounds": {
+  "__type__": "OnHitSounds",
   "__typeHash__": 960545022,
   "unk_85f3271": null,
   "unk_4588331": null,
@@ -146,7 +146,7 @@
   "value": "0",
   "compiled": "BgAAAAAAAAAAAAAA"
  },
- "unk_b26a921": {
+ "tResourceCostReductionCoefficient": {
   "value": "1",
   "compiled": "BgAAAAAAgD8AAAAA"
  },
@@ -183,7 +183,7 @@
  "unk_767809": 0,
  "bCastTargetAllies": false,
  "bCastTargetEnemies": true,
- "unk_7095076": false,
+ "bCastTargetPlayersOnly": false,
  "tCastTargetNecroCorpsesOnly": {
   "value": "0",
   "compiled": "BgAAAAAAAAAAAAAA"
@@ -216,13 +216,13 @@
   "value": "0",
   "compiled": "BgAAAAAAAAAAAAAA"
  },
- "unk_3587b29": true,
+ "bRequiresPathToTarget": true,
  "bIsApproachPower": false,
  "snoPowerApproach": null,
  "unk_f70b0d": -1,
  "unk_e65d245": null,
  "unk_17dddfd": true,
- "unk_d897ba6": {
+ "tMovementPowerData": {
   "__type__": "ActorMovementPowerData",
   "__typeHash__": 2543084619,
   "unk_b1f0f4e": {
@@ -230,7 +230,7 @@
    "compiled": "BgAAAAAAAAAAAAAA"
   },
   "unk_c31445d": 3.1415927410125732,
-  "unk_6661ef2": 0,
+  "flFacingDistanceThreshold": 0,
   "unk_f8c5768": -1,
   "flSpeedMultiplier": 1,
   "bIgnorePathfinding": false,
@@ -241,7 +241,7 @@
   "unk_b804e2d": 0,
   "unk_9369802": 1,
   "snoAnimKeyOverride": null,
-  "unk_9ab5680": null,
+  "gbidDynamicMovementDataOverride": null,
   "unk_f05bba": {
    "value": "0",
    "compiled": "BgAAAAAAAAAAAAAA"
@@ -261,8 +261,8 @@
  "bInvulnerableDuring": false,
  "bUntargetableDuring": false,
  "bCannotDieDuring": false,
- "unk_636a66b": false,
- "unk_160bc26": false,
+ "bCannotBeInterruptedDuring": false,
+ "bStunnedUnstoppableIdDuring": false,
  "bIgnoreGravityDuring": false,
  "unk_7a416a6": false,
  "arCCInfo": [
@@ -501,7 +501,7 @@
  "bIsCraftItemName": false,
  "unk_744a4fd": false,
  "unk_a8611dd": false,
- "unk_365e3c2": true,
+ "bUsableInPrologue": true,
  "unk_83d96df": false,
  "unk_9aaab79": false,
  "unk_b15bf7f": false,
@@ -610,7 +610,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -620,7 +620,103 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
+    "__typeHash__": 4138865712,
+    "unk_c63f49e": true,
+    "dwCCFlags": 0,
+    "tSlowAmount": {
+     "value": "0",
+     "compiled": "BgAAAAAAAAAAAAAA"
+    },
+    "tChillAmount": {
+     "value": "0",
+     "compiled": "BgAAAAAAAAAAAAAA"
+    },
+    "tStaggerMultiplier": {
+     "value": "1",
+     "compiled": "BgAAAAAAgD8AAAAA"
+    }
+   },
+   "bHasDamageShield": false,
+   "tDamageShield": {
+    "__type__": "HitpointSpecifier",
+    "__typeHash__": 1185241065,
+    "eType": 0,
+    "tHitpointScalar": {
+     "value": "0",
+     "compiled": "BgAAAAAAAAAAAAAA"
+    },
+    "tFlatLevel": {
+     "value": "0",
+     "compiled": "BgAAAAAAAAAAAAAA"
+    }
+   }
+  },
+  {
+   "__type__": "PowerBuffDefinition",
+   "__typeHash__": 1071057721,
+   "dwID": 3505322200,
+   "dwBuffId": 14,
+   "bHarmful": false,
+   "bInfinite": false,
+   "tDuration": {
+    "value": "1.1",
+    "compiled": "BgAAAM3MjD8AAAAA"
+   },
+   "tMaxStackCount": {
+    "value": "1",
+    "compiled": "BgAAAAAAgD8AAAAA"
+   },
+   "unk_89134c5": false,
+   "bShowDuration": false,
+   "bCancellable": false,
+   "unk_99b5752": false,
+   "unk_93cd85f": false,
+   "unk_5c11505": false,
+   "unk_9eb6fb0": false,
+   "unk_e8f1e19": false,
+   "unk_9cb4832": false,
+   "unk_71ba554": false,
+   "hIcon": 0,
+   "hFloatingIcon": 0,
+   "unk_78b0ca1": 0,
+   "unk_c35001": 0,
+   "unk_395ccd6": false,
+   "unk_200bd12": false,
+   "tDOT": {
+    "__type__": "Type_e3f28f16",
+    "__typeHash__": 3824324374,
+    "eDamageType": -1,
+    "tDamage": {
+     "__type__": "HitpointSpecifier",
+     "__typeHash__": 1185241065,
+     "eType": 0,
+     "tHitpointScalar": {
+      "value": "0",
+      "compiled": "BgAAAAAAAAAAAAAA"
+     },
+     "tFlatLevel": {
+      "value": "0",
+      "compiled": "BgAAAAAAAAAAAAAA"
+     }
+    },
+    "unk_89dc285": false,
+    "unk_6331bb5": 1,
+    "unk_f551941": -1,
+    "unk_dd4b5bf": false,
+    "unk_3d768b7": false,
+    "unk_b8f2b": -1,
+    "bHasCombatEffectOverride": false,
+    "tCombatEffectOverride": {
+     "value": "100",
+     "compiled": "BgAAAAAAyEIAAAAA"
+    },
+    "unk_693b6db": false,
+    "unk_d50fe6e": false
+   },
+   "unk_dcb22bd": false,
+   "tCrowdControl": {
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,
@@ -706,7 +802,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -716,7 +812,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,
@@ -802,7 +898,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -812,7 +908,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,
@@ -898,7 +994,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -908,7 +1004,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,
@@ -994,7 +1090,7 @@
     "unk_dd4b5bf": false,
     "unk_3d768b7": false,
     "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
+    "bHasCombatEffectOverride": false,
     "tCombatEffectOverride": {
      "value": "100",
      "compiled": "BgAAAAAAyEIAAAAA"
@@ -1004,103 +1100,7 @@
    },
    "unk_dcb22bd": false,
    "tCrowdControl": {
-    "__type__": "Type_f6b21430",
-    "__typeHash__": 4138865712,
-    "unk_c63f49e": true,
-    "dwCCFlags": 0,
-    "tSlowAmount": {
-     "value": "0",
-     "compiled": "BgAAAAAAAAAAAAAA"
-    },
-    "tChillAmount": {
-     "value": "0",
-     "compiled": "BgAAAAAAAAAAAAAA"
-    },
-    "tStaggerMultiplier": {
-     "value": "1",
-     "compiled": "BgAAAAAAgD8AAAAA"
-    }
-   },
-   "bHasDamageShield": false,
-   "tDamageShield": {
-    "__type__": "HitpointSpecifier",
-    "__typeHash__": 1185241065,
-    "eType": 0,
-    "tHitpointScalar": {
-     "value": "0",
-     "compiled": "BgAAAAAAAAAAAAAA"
-    },
-    "tFlatLevel": {
-     "value": "0",
-     "compiled": "BgAAAAAAAAAAAAAA"
-    }
-   }
-  },
-  {
-   "__type__": "PowerBuffDefinition",
-   "__typeHash__": 1071057721,
-   "dwID": 2011243455,
-   "dwBuffId": 11,
-   "bHarmful": false,
-   "bInfinite": false,
-   "tDuration": {
-    "value": "1.1",
-    "compiled": "BgAAAM3MjD8AAAAA"
-   },
-   "tMaxStackCount": {
-    "value": "1",
-    "compiled": "BgAAAAAAgD8AAAAA"
-   },
-   "unk_89134c5": false,
-   "bShowDuration": false,
-   "bCancellable": false,
-   "unk_99b5752": false,
-   "unk_93cd85f": false,
-   "unk_5c11505": false,
-   "unk_9eb6fb0": false,
-   "unk_e8f1e19": false,
-   "unk_9cb4832": false,
-   "unk_71ba554": false,
-   "hIcon": 0,
-   "hFloatingIcon": 0,
-   "unk_78b0ca1": 0,
-   "unk_c35001": 0,
-   "unk_395ccd6": false,
-   "unk_200bd12": false,
-   "tDOT": {
-    "__type__": "Type_e3f28f16",
-    "__typeHash__": 3824324374,
-    "eDamageType": -1,
-    "tDamage": {
-     "__type__": "HitpointSpecifier",
-     "__typeHash__": 1185241065,
-     "eType": 0,
-     "tHitpointScalar": {
-      "value": "0",
-      "compiled": "BgAAAAAAAAAAAAAA"
-     },
-     "tFlatLevel": {
-      "value": "0",
-      "compiled": "BgAAAAAAAAAAAAAA"
-     }
-    },
-    "unk_89dc285": false,
-    "unk_6331bb5": 1,
-    "unk_f551941": -1,
-    "unk_dd4b5bf": false,
-    "unk_3d768b7": false,
-    "unk_b8f2b": -1,
-    "unk_79ce2e1": false,
-    "tCombatEffectOverride": {
-     "value": "100",
-     "compiled": "BgAAAAAAyEIAAAAA"
-    },
-    "unk_693b6db": false,
-    "unk_d50fe6e": false
-   },
-   "unk_dcb22bd": false,
-   "tCrowdControl": {
-    "__type__": "Type_f6b21430",
+    "__type__": "PowerBuffCrowdControl",
     "__typeHash__": 4138865712,
     "unk_c63f49e": true,
     "dwCCFlags": 0,

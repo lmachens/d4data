@@ -1,6 +1,6 @@
 # Definition: PowerDefinition
 # Hash: 14af0cb6
-# SNOFileHeader.dwFormatHash: e2cb6d1e
+# SNOFileHeader.dwFormatHash: 2d60542
 # Flags: 0x433a
 
 0x8: szInternalName # DT_CHARARRAY (7 bits used) [64 array size]
@@ -65,7 +65,7 @@
 0x210: unk_923b5fb # DT_INT (1 bits used)
 0x214: unk_e517f6f # DT_INT (1 bits used)
 0x218: eHitSound # DT_ENUM (32 bits used)
-0x21c: unk_4d7691e # unknown 0x3940c0fe
+0x21c: onHitSounds # OnHitSounds
 0x228: unk_1a5392 # DT_INT (32 bits used)
 0x22c: unk_97eadb8 # DT_UINT (32 bits used)
 0x230: unk_5e1a52d # DT_INT (1 bits used)
@@ -77,7 +77,7 @@
 0x290: tMaxCharges # DT_STRING_FORMULA
 0x2b0: tRechargeTime # DT_STRING_FORMULA
 0x2d0: tCooldownTime # DT_STRING_FORMULA
-0x2f0: unk_b26a921 # DT_STRING_FORMULA
+0x2f0: tResourceCostReductionCoefficient # DT_STRING_FORMULA
 0x310: unk_86a6e05 # DT_STRING_FORMULA
 0x330: bTargetGroundOnly # DT_INT (1 bits used)
 0x334: unk_fc01065 # DT_ENUM (32 bits used)
@@ -100,7 +100,7 @@
 0x378: unk_767809 # DT_FLOAT (32 bits used)
 0x37c: bCastTargetAllies # DT_INT (1 bits used)
 0x380: bCastTargetEnemies # DT_INT (1 bits used)
-0x384: unk_7095076 # DT_INT (1 bits used)
+0x384: bCastTargetPlayersOnly # DT_INT (1 bits used)
 0x388: tCastTargetNecroCorpsesOnly # DT_STRING_FORMULA
 0x3a8: unk_b9b985 # DT_STRING_FORMULA
 0x3c8: unk_bcdb405 # DT_INT (1 bits used)
@@ -118,13 +118,13 @@
 0x430: unk_8b4e7a # DT_ENUM (32 bits used)
 0x434: unk_44bbb8e # DT_INT (1 bits used)
 0x438: tAttackRadius # DT_STRING_FORMULA
-0x458: unk_3587b29 # DT_INT (1 bits used)
+0x458: bRequiresPathToTarget # DT_INT (1 bits used)
 0x45c: bIsApproachPower # DT_INT (1 bits used)
 0x460: snoPowerApproach # DT_SNO (32 bits used) {group 0x1d "Power"}
 0x464: unk_f70b0d # DT_ENUM (32 bits used)
 0x468: unk_e65d245 # DT_GBID (32 bits used) {group 0x22}
 0x46c: unk_17dddfd # DT_INT (1 bits used)
-0x470: unk_d897ba6 # ActorMovementPowerData
+0x470: tMovementPowerData # ActorMovementPowerData
 0x4e8: eMovementStyleOverride # DT_ENUM (32 bits used)
 0x4ec: eFacingStyleOverride # DT_ENUM (32 bits used)
 0x4f0: unk_6714077 # DT_INT (1 bits used)
@@ -139,8 +139,8 @@
 0x514: bInvulnerableDuring # DT_INT (1 bits used)
 0x518: bUntargetableDuring # DT_INT (1 bits used)
 0x51c: bCannotDieDuring # DT_INT (1 bits used)
-0x520: unk_636a66b # DT_INT (1 bits used)
-0x524: unk_160bc26 # DT_INT (1 bits used)
+0x520: bCannotBeInterruptedDuring # DT_INT (1 bits used)
+0x524: bStunnedUnstoppableIdDuring # DT_INT (1 bits used)
 0x528: bIgnoreGravityDuring # DT_INT (1 bits used)
 0x52c: unk_7a416a6 # DT_INT (1 bits used)
 0x530: arCCInfo # DT_FIXEDARRAY [14 array size] => PowerCrowdControlInfo
@@ -154,7 +154,7 @@
 0xa8c: bIsCraftItemName # DT_INT (1 bits used)
 0xa90: unk_744a4fd # DT_INT (1 bits used)
 0xa94: unk_a8611dd # DT_INT (1 bits used)
-0xa98: unk_365e3c2 # DT_INT (1 bits used)
+0xa98: bUsableInPrologue # DT_INT (1 bits used)
 0xa9c: unk_83d96df # DT_INT (1 bits used)
 0xaa0: unk_9aaab79 # DT_INT (1 bits used)
 0xaa4: unk_b15bf7f # DT_INT (1 bits used)
