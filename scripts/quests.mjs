@@ -47,7 +47,9 @@ readdirSync("../json/base/meta/Quest").forEach((fileName) => {
     name: name.szText,
     description: toast.szText,
   };
-  if (id.startsWith("Bounty_")) {
+  if (id.endsWith("_hidden")) {
+    return;
+  } else if (id.startsWith("Bounty_")) {
     if (
       markerSet.arQuestPhases.some(
         (questPhase) => questPhase.snoReward === 1236629
