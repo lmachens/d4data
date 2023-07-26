@@ -74,6 +74,9 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
     const spawnLocType = marker.ptBase[0]?.gbidSpawnLocType;
 
     const point = normalizePoint(marker.transform.wp);
+    if (!marker.snoname) {
+      return;
+    }
     const stringId = `${marker.snoname.groupName}_${marker.snoname.name}`;
     try {
       LOCALES.forEach((locale) => {
