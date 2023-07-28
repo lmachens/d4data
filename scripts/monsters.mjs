@@ -72,21 +72,22 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
       y: point[1] / 1.65,
     };
     if (
-      !nodes.some(
-        (n) => n.name === node.name && n.x === node.x && n.y === node.y
+      nodes.some(
+        (n) => n.term === node.term && n.x === node.x && n.y === node.y
       )
     ) {
-      nodes.push(node);
+      return;
     }
+    nodes.push(node);
   });
 });
 
-const names = nodes.reduce((acc, node) => {
-  acc[node.snoName] = acc[node.snoName] ? acc[node.snoName] + 1 : 1;
-  return acc;
-}, {});
+// const names = nodes.reduce((acc, node) => {
+//   acc[node.snoName] = acc[node.snoName] ? acc[node.snoName] + 1 : 1;
+//   return acc;
+// }, {});
 
-console.log(names);
+// console.log(names);
 
 const grouped = nodes.reduce((acc, { family, ...node }) => {
   if (!acc[family]) {
@@ -100,8 +101,6 @@ Object.entries(grouped).forEach(([family, nodes]) => {
   const prod = nodes.map((node) => {
     return {
       name: node.term,
-      type: node.type,
-      family: node.family,
       x: node.x,
       y: node.y,
     };
@@ -111,6 +110,7 @@ Object.entries(grouped).forEach(([family, nodes]) => {
     `../out/monsters_${family}.ts`,
     `export const ${family}Monsters = ${JSON.stringify(prod, null, 2)};`
   );
+  console.log(family, prod.length);
 });
 
 writeFileSync("../out/monsters.json", JSON.stringify(nodes, null, 2));
