@@ -5,7 +5,8 @@ import { normalizePoint } from "./lib.mjs";
 const families = [
   "Bandit",
   "Cannibal",
-  "Cultists",
+  "Cultist",
+  "Demon",
   "Drown",
   "Fallen",
   "Ghost",
@@ -38,9 +39,12 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
   );
   markerSet.tMarkerSet.forEach((marker) => {
     const snoNameName = marker.snoname?.name?.toLowerCase();
+    const family = families.find((family) =>
+      `${snoNameName}_`.startsWith(family)
+    );
     if (
       !snoNameName ||
-      !families.some((family) => `${snoNameName}_`.startsWith(family)) ||
+      !family ||
       skippable.some((skip) => snoNameName.includes(skip))
     ) {
       return;
@@ -63,11 +67,17 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
       snoName: snoNameName,
       term,
       type,
-      family: families.find((family) => snoNameName.startsWith(family)),
+      family,
       x: point[0] / 1.65,
       y: point[1] / 1.65,
     };
-    nodes.push(node);
+    if (
+      !nodes.some(
+        (n) => n.name === node.name && n.x === node.x && n.y === node.y
+      )
+    ) {
+      nodes.push(node);
+    }
   });
 });
 
@@ -78,15 +88,29 @@ const names = nodes.reduce((acc, node) => {
 
 console.log(names);
 
-const prod = nodes.map((node) => {
-  return {
-    name: node.term,
-    type: node.type,
-    family: node.family,
-    x: node.x,
-    y: node.y,
-  };
+const grouped = nodes.reduce((acc, { family, ...node }) => {
+  if (!acc[family]) {
+    acc[family] = [];
+  }
+  acc[family].push(node);
+  return acc;
+}, {});
+
+Object.entries(grouped).forEach(([family, nodes]) => {
+  const prod = nodes.map((node) => {
+    return {
+      name: node.term,
+      type: node.type,
+      family: node.family,
+      x: node.x,
+      y: node.y,
+    };
+  });
+
+  writeFileSync(
+    `../out/monsters_${family}.ts`,
+    `export const ${family}Monsters = ${JSON.stringify(prod, null, 2)};`
+  );
 });
-writeFileSync("../out/monsters.prod.json", JSON.stringify(prod, null, 2));
 
 writeFileSync("../out/monsters.json", JSON.stringify(nodes, null, 2));
