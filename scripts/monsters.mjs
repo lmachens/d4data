@@ -2,8 +2,32 @@ import { readFileSync, readdirSync, writeFileSync } from "./fs.mjs";
 import { LOCALES, readTerm } from "./i18n.mjs";
 import { normalizePoint } from "./lib.mjs";
 
-const families = ["Goatman"];
-const skippable = ["Chest", "Cluster", "Wall"];
+const families = [
+  "Bandit",
+  "Cannibal",
+  "Cultists",
+  "Drown",
+  "Fallen",
+  "Ghost",
+  "Goatman",
+  "Knight",
+  "Skeleton",
+  "Snake",
+  "Spider",
+  "Vampire",
+  "Werewolf",
+  "Wildlife",
+  "Zombie",
+].map((family) => family.toLowerCase());
+const skippable = [
+  "Arrangement",
+  "Chest",
+  "Cluster",
+  "Collection",
+  "Intro",
+  "prologue",
+  "Wall",
+].map((skip) => skip.toLowerCase());
 const nodes = [];
 readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
   if (fileName.endsWith(".json") === false) {
@@ -13,15 +37,15 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
     readFileSync("../json/base/meta/MarkerSet/" + fileName)
   );
   markerSet.tMarkerSet.forEach((marker) => {
-    const snoNameName = marker.snoname?.name;
+    const snoNameName = marker.snoname?.name?.toLowerCase();
     if (
       !snoNameName ||
-      !families.some((family) => snoNameName.startsWith(family)) ||
+      !families.some((family) => `${snoNameName}_`.startsWith(family)) ||
       skippable.some((skip) => snoNameName.includes(skip))
     ) {
       return;
     }
-    const stringId = `${marker.snoname.groupName}_${snoNameName}`;
+    const stringId = `${marker.snoname.groupName}_${marker.snoname.name}`;
     const term = readTerm(stringId, LOCALES[0])?.szText;
     if (!term) {
       return;
@@ -29,27 +53,17 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
     const point = normalizePoint(marker.transform.wp);
     const id = marker.dwHash.toString();
     let type;
-    if (snoNameName.toLowerCase().includes("boss")) {
+    if (snoNameName.includes("boss")) {
       type = "boss";
-    } else if (snoNameName.includes("melee")) {
-      type = "melee";
-    } else if (snoNameName.toLowerCase().includes("ranged")) {
-      type = "ranged";
-    } else if (snoNameName.toLowerCase().includes("sorcerer")) {
-      type = "sorcerer";
-    } else if (snoNameName.toLowerCase().includes("brute")) {
-      type = "brute";
     } else {
-      console.warn("Unknown type for", snoNameName);
+      type = snoNameName.split("_")[1];
     }
     const node = {
       name: `${stringId}-${id}`,
       snoName: snoNameName,
       term,
       type,
-      family: families
-        .find((family) => snoNameName.startsWith(family))
-        .toLowerCase(),
+      family: families.find((family) => snoNameName.startsWith(family)),
       x: point[0] / 1.65,
       y: point[1] / 1.65,
     };
