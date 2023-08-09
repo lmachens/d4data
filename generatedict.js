@@ -1,6 +1,7 @@
 const fs = require('fs');
 
 const MAX_MARKOV_CHAIN = 3;
+const ALLOW_FILE_MARKOV = false;
 
 let dict = {
   '2D': 0,
@@ -77,8 +78,12 @@ let markov = {};
 
 let typeNames = {};
 let fieldNames = {};
+let attributeNames = {};
+let tocNames = {};
 
 let definitions = require('./definitions.json');
+let attributes = require('./attributes.json');
+let toc = require('./json/CoreTOC_flat.json');
 
 Object.values(definitions).forEach(definition => {
   if (definition.name.slice(0, 5) !== 'Type_' && definition.type === 'complex') {
@@ -94,13 +99,30 @@ Object.values(definitions).forEach(definition => {
   }
 });
 
+Object.values(attributes).forEach(attribute => {
+  attributeNames[attribute.name] = attribute.name;
+});
+
+Object.values(toc).forEach(entry => {
+  tocNames[entry[0]] = entry[0];
+});
+
 function isWord (str) {
   return str && str.length;
 }
 
+function goodName (str) {
+  return /^[a-zA-Z]/g.test(str) && /[aeiou]/g.test(str);
+}
+
+let skipName = {
+  '_': true,
+  '-': true,
+};
+
 function *parseTypeName (name) {
-  for (let subname of name.split(/(_|FoW|(?<![0-9])[234]D)/g).filter(isWord)) {
-    if (subname === '_') {
+  for (let subname of name.split(/( |-|_|\d+x\d+|FoW|(?<![0-9])[234]D)/g).filter(isWord)) {
+    if (skipName[subname]) {
       continue;
     }
 
@@ -109,12 +131,14 @@ function *parseTypeName (name) {
       continue;
     }
 
-    for (let subsubname of subname.split(/([A-Z][a-z][a-z0-9]*)/g).filter(isWord)) {
+    for (let subsubname of subname.split(/\(|\)|([A-Z][a-z][a-z0-9]*)/g).filter(isWord)) {
       if (subsubname.slice(1) === subsubname.slice(1).toLowerCase()) {
         subsubname = subsubname.toLowerCase();
       }
 
-      yield subsubname;
+      if (subsubname.length > 1) {
+        yield subsubname;
+      }
     }
   }
 }
@@ -164,7 +188,7 @@ for (let i in typeNames) {
 
   for (let len = 2; len <= Math.min(MAX_MARKOV_CHAIN, names.length); len++) {
     for (let i = 0; i < names.length; i++) {
-      let cluster = names.slice(i, len).filter(str => str && str.length);
+      let cluster = names.slice(i, i + len).filter(str => str && str.length);
 
       if (cluster.length === len) {
         cluster = cluster.join(' ');
@@ -197,7 +221,77 @@ for (let i in fieldNames) {
 
   for (let len = 2; len <= Math.min(MAX_MARKOV_CHAIN, names.length); len++) {
     for (let i = 0; i < names.length; i++) {
-      let cluster = names.slice(i, len).filter(str => str && str.length);
+      let cluster = names.slice(i, i + len).filter(str => str && str.length);
+
+      if (cluster.length === len) {
+        cluster = cluster.join(' ');
+        markov[cluster] = (markov[cluster] || 0) + 1;
+      }
+    }
+  }
+}
+
+for (let i in attributeNames) {
+  let names = Array.from(parseTypeName(attributeNames[i]));
+
+  for (let subname of names) {
+    if (subname.length > 1) {
+      if (goodName(subname)) {
+        dict[subname] = (dict[subname] || 0) + 1;
+
+        let orig = subname;
+
+        while ('0123456789'.indexOf(subname[subname.length - 1]) >= 0) {
+          subname = subname.slice(0, -1);
+        }
+  
+        if (subname !== orig && subname.length > 1) {
+          dict[subname] = dict[subname] || 0;
+        }  
+      }
+    }
+  }
+
+  for (let len = 2; len <= Math.min(MAX_MARKOV_CHAIN, names.length); len++) {
+    for (let i = 0; i < names.length; i++) {
+      let cluster = names.slice(i, i + len).filter(str => isWord(str) && goodName(str));
+
+      if (cluster.length === len) {
+        cluster = cluster.join(' ');
+        markov[cluster] = (markov[cluster] || 0) + 1;
+      }
+    }
+  }
+}
+
+for (let i in tocNames) {
+  let names = Array.from(parseTypeName(tocNames[i]));
+
+  for (let subname of names) {
+    if (subname.length > 1) {
+      if (goodName(subname)) {
+        dict[subname] = (dict[subname] || 0) + 1;
+
+        let orig = subname;
+
+        while ('0123456789'.indexOf(subname[subname.length - 1]) >= 0) {
+          subname = subname.slice(0, -1);
+        }
+  
+        if (subname !== orig && subname.length > 1) {
+          dict[subname] = dict[subname] || 0;
+        }  
+      }
+    }
+  }
+
+  if (!ALLOW_FILE_MARKOV) {
+    continue;
+  }
+
+  for (let len = 2; len <= Math.min(MAX_MARKOV_CHAIN, names.length); len++) {
+    for (let i = 0; i < names.length; i++) {
+      let cluster = names.slice(i, i + len).filter(str => isWord(str) && goodName(str));
 
       if (cluster.length === len) {
         cluster = cluster.join(' ');
@@ -225,7 +319,19 @@ Object.keys(markov).filter(key => markov[key] > 0).forEach(chain => {
   dict[chain] = (dict[chain] || 0) + count;
 });
 
-fs.writeFileSync(__dirname + '/dict.txt', Object.keys(dict).sort((a, b) => {
+let exclusions = {};
+
+fs.readFileSync(__dirname + '/base_exclusions.txt').toString().split(/\s+/g).filter(Boolean).forEach(word => {
+  exclusions[word.toLowerCase()] = word.toLowerCase();
+});
+
+if (fs.existsSync(__dirname + '/exclusions.txt')) {
+  fs.readFileSync(__dirname + '/exclusions.txt').toString().split(/\s+/g).filter(Boolean).forEach(word => {
+    exclusions[word.toLowerCase()] = word.toLowerCase();
+  });
+}
+
+fs.writeFileSync(__dirname + '/dict.txt', Object.keys(dict).filter(word => !exclusions[word.toLowerCase()]).sort((a, b) => {
   if (dict[b] - dict[a]) {
     return dict[b] - dict[a];
   }
