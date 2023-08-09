@@ -34,20 +34,12 @@ const territories = continent.unk_675bda3.map((camp) => {
   return territory;
 });
 
-writeFileSync("../out/territories.json", JSON.stringify(territories, null, 2));
-writeFileSync(
-  "../out/territories_old.json",
-  JSON.stringify(
-    territories.map((territory) => ({
-      ...territory,
-      points: territory.points.map((point) => [
-        point[0] / 1.65,
-        point[1] / 1.65,
-      ]),
-    })),
-    null,
-    2
-  )
-);
-writeFileSync("../out/territories.terms.json", JSON.stringify(terms, null, 2));
-console.log("done", territories.length);
+const production = territories.map((territory) => ({
+  ...territory,
+  points: territory.points.map((point) => [point[0] / 1.65, point[1] / 1.65]),
+}));
+
+export default {
+  nodes: production,
+  dict: terms,
+};

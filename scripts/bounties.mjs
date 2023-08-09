@@ -1,7 +1,12 @@
 import bounties from "../json/base/meta/Global/bounties.glo.json" assert { type: "json" };
-import { readFileSync, writeFileSync } from "./fs.mjs";
-import { readTerms } from "./i18n.mjs";
+import { readFileSync } from "./fs.mjs";
+import { LOCALES, readTerms } from "./i18n.mjs";
 import { normalizePoint } from "./lib.mjs";
+
+const dict = LOCALES.reduce((acc, locale) => {
+  acc[locale] = {};
+  return acc;
+}, {});
 
 const HELLTIDE_WORLD_STATES = [
   "Bounty_LE_Tier1_Frac_Tundra",
@@ -22,23 +27,36 @@ bounties.ptContent[0].arBountyZones.forEach((bountyZone) => {
       bounty.snoWorldState.name.startsWith(worldState)
     );
     const [, , , zone, subzone] = bounty.snoWorldState.name.split("_");
-    const terms = readTerms(`Quest_${bounty.snoQuest.name}`);
-    const name = terms
-      .find((term) => term.szLabel === "Name")
-      .szText.replace("{c_red}", "")
-      .replace("{/c}", "");
-    const description = terms.find((term) => term.szLabel === "Toast").szText;
+    const id = bounty.snoQuest.name;
+    let hasTerms = false;
+    LOCALES.forEach((locale) => {
+      const terms = readTerms(`Quest_${id}`, locale);
+      const name =
+        terms
+          .find((term) => term.szLabel === "Name")
+          ?.szText.replace("{c_red}", "")
+          .replace("{/c}", "") || dict.enUS[id].name;
+      const description =
+        terms.find((term) => term.szLabel === "Toast")?.szText ||
+        dict.enUS[id].description;
+
+      dict[locale][id] = {
+        name,
+        description,
+      };
+      hasTerms = true;
+    });
+    if (!hasTerms) {
+      console.log("No terms for", id);
+      return;
+    }
 
     const quest = JSON.parse(
-      readFileSync(
-        "../json/base/meta/Quest/" + bounty.snoQuest.name + ".qst.json"
-      )
+      readFileSync("../json/base/meta/Quest/" + id + ".qst.json")
     );
     const position = normalizePoint(quest.vecStartLocation);
     const event = {
-      // id: bounty.snoQuest.name,
-      name,
-      description,
+      id,
       zone,
       // subzone,
       // isHelltide,
@@ -58,12 +76,7 @@ bounties.ptContent[0].arBountyZones.forEach((bountyZone) => {
   });
 });
 
-writeFileSync(
-  `../out/bounties.json`,
-  JSON.stringify(
-    bountiesEvents.sort((a, b) => a.zone.localeCompare(b.zone)),
-    null,
-    2
-  )
-);
-console.log(`Processed ${bountiesEvents.length} bountiesEvents`);
+export default {
+  nodes: bountiesEvents.sort((a, b) => a.zone.localeCompare(b.zone)),
+  dict,
+};

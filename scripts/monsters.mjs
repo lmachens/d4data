@@ -2,6 +2,11 @@ import { readFileSync, readdirSync, writeFileSync } from "./fs.mjs";
 import { LOCALES, readTerm } from "./i18n.mjs";
 import { normalizePoint } from "./lib.mjs";
 
+const dict = LOCALES.reduce((acc, locale) => {
+  acc[locale] = {};
+  return acc;
+}, {});
+
 const families = [
   "Bandit",
   "Cannibal",
@@ -50,12 +55,26 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
       return;
     }
     const stringId = `${marker.snoname.groupName}_${marker.snoname.name}`;
-    const term = readTerm(stringId, LOCALES[0])?.szText;
-    if (!term) {
+    // const id = marker.dwHash.toString();
+
+    let hasTerms = false;
+    LOCALES.forEach((locale) => {
+      const term = readTerm(stringId, locale);
+      if (term) {
+        if (!dict[locale][family]) {
+          dict[locale][family] = {};
+        }
+
+        dict[locale][family][stringId] = term.szText;
+        hasTerms = true;
+      }
+    });
+    if (!hasTerms) {
+      // console.log("No terms for", id);
       return;
     }
+
     const point = normalizePoint(marker.transform.wp);
-    const id = marker.dwHash.toString();
     let type;
     if (snoNameName.includes("boss")) {
       type = "boss";
@@ -63,9 +82,7 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
       type = snoNameName.split("_")[1];
     }
     const node = {
-      name: `${stringId}-${id}`,
-      snoName: snoNameName,
-      term,
+      id: stringId,
       type,
       family,
       x: point[0] / 1.65,
@@ -73,7 +90,7 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
     };
     if (
       nodes.some(
-        (n) => n.term === node.term && n.x === node.x && n.y === node.y
+        (n) => n.stringId === node.stringId && n.x === node.x && n.y === node.y
       )
     ) {
       return;
@@ -81,13 +98,6 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
     nodes.push(node);
   });
 });
-
-// const names = nodes.reduce((acc, node) => {
-//   acc[node.snoName] = acc[node.snoName] ? acc[node.snoName] + 1 : 1;
-//   return acc;
-// }, {});
-
-// console.log(names);
 
 const grouped = nodes.reduce((acc, { family, ...node }) => {
   if (!acc[family]) {
@@ -97,20 +107,19 @@ const grouped = nodes.reduce((acc, { family, ...node }) => {
   return acc;
 }, {});
 
-Object.entries(grouped).forEach(([family, nodes]) => {
+const result = {
+  nodes: {},
+  dict,
+};
+Object.entries(grouped).map(([family, nodes]) => {
   const prod = nodes.map((node) => {
     return {
-      name: node.term,
+      id: node.id,
       x: node.x,
       y: node.y,
     };
   });
-
-  writeFileSync(
-    `../out/monsters_${family}.ts`,
-    `export const ${family}Monsters = ${JSON.stringify(prod, null, 2)};`
-  );
-  console.log(family, prod.length);
+  result.nodes[family] = prod;
 });
 
-writeFileSync("../out/monsters.json", JSON.stringify(nodes, null, 2));
+export default result;

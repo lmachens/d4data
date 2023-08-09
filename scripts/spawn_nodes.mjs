@@ -3,7 +3,7 @@ import { LOCALES, readTerm } from "./i18n.mjs";
 import { normalizePoint } from "./lib.mjs";
 
 const spawnNodes = [];
-const terms = LOCALES.reduce((acc, locale) => {
+const dict = LOCALES.reduce((acc, locale) => {
   acc[locale] = {
     zones: {},
     nodes: {},
@@ -22,7 +22,7 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
   LOCALES.forEach((locale) => {
     const term = readTerm(`LevelArea_${id}`, locale);
     if (term) {
-      terms[locale].zones[`LevelArea_${id}`] = term;
+      dict[locale].zones[`LevelArea_${id}`] = term;
     }
   });
 
@@ -33,16 +33,17 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
     }
     const point = normalizePoint(marker.transform.wp);
 
-    const [zone, subzone] = id.split("_");
-
     const node = {
       // id: id + "_" + marker.nID,
       x: point[0] / 1.65,
       y: point[1] / 1.65,
-      spawnType: spawnLocType.name,
-      zone,
-      subzone,
+      spawnType: spawnLocType.name.replace("UberSubzone_", ""),
     };
+    if (spawnLocType.name.includes("Chest_t3")) {
+      const [zone, subzone] = id.split("_");
+      node.zone = zone;
+      node.subzone = subzone;
+    }
     spawnNodes.push(node);
   });
 });
@@ -55,12 +56,7 @@ const nodes = spawnNodes.reduce((acc, { spawnType, ...node }) => {
   return acc;
 }, {});
 
-Object.entries(nodes).forEach(([spawnType, nodes]) => {
-  writeFileSync(
-    `../out/spawn_${spawnType}.json`,
-    JSON.stringify(nodes, null, 2)
-  );
-});
-writeFileSync("../out/spawnNodes.terms.json", JSON.stringify(terms, null, 2));
-
-console.log("spawnNodes", spawnNodes.length);
+export default {
+  nodes,
+  // dict,
+};

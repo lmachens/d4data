@@ -25,4 +25,6 @@ readdirSync("../json/base/meta/MarkerSet").forEach((fileName) => {
   });
 });
 
-writeFileSync("../out/strongholds.json", JSON.stringify(nodes, null, 2));
+export default {
+  nodes,
+};

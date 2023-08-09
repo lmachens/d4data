@@ -1,10 +1,10 @@
 import { LOCALES, readTerms } from "./i18n.mjs";
-import { readFileSync, writeFileSync } from "./fs.mjs";
+import { readFileSync } from "./fs.mjs";
 import { normalizePoint } from "./lib.mjs";
 import globalMarkers from "../json/base/meta/Global/global_markers.glo.json" assert { type: "json" };
 import hiddenCaches from "../json/base/meta/GameBalance/HiddenCaches.gam.json" assert { type: "json" };
 
-const altarsOfLilith = [];
+const nodes = [];
 const dict = LOCALES.reduce((acc, locale) => {
   acc[locale] = {};
   return acc;
@@ -67,21 +67,20 @@ globalMarkers.ptContent[0].arGlobalMarkerActors.forEach((actor) => {
       );
       dict[locale][id].description = normalize(term.szText);
     }
+
+    dict[locale][id].description += ` +${trackedReward.flAmount}`;
   });
 
   const node = {
     id: id,
-    name: dict["enUS"][id].name,
-    description: `${hiddenCache.snoTrackedReward.name} +${trackedReward.flAmount}`,
     attribute: attribute,
     x: point[0] / 1.65,
     y: point[1] / 1.65,
   };
-  altarsOfLilith.push(node);
+  nodes.push(node);
 });
 
-writeFileSync(
-  "../out/altarsOfLilith.json",
-  JSON.stringify(altarsOfLilith, null, 2)
-);
-writeFileSync("../out/altarsOfLilith.dict.json", JSON.stringify(dict, null, 2));
+export default {
+  nodes,
+  dict,
+};
