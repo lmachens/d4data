@@ -1,20 +1,53 @@
-import altars from "./altarsOfLilith.mjs";
-import bounties from "./bounties.mjs";
-import dungeons from "./dungeons.mjs";
-import monsters from "./monsters.mjs";
-import spawnNodes from "./spawn_nodes.mjs";
-import services from "./services.mjs";
-import strongholds from "./strongholds.mjs";
-import territories from "./territories.mjs";
+import getAltars from "./altarsOfLilith.mjs";
+import getBounties from "./bounties.mjs";
+import getDungeons from "./dungeons.mjs";
+import getMonsters from "./monsters.mjs";
+import getSpawnNodes from "./spawn_nodes.mjs";
+import getQuests from "./quests.mjs";
+import getServices from "./services.mjs";
+import getStrongholds from "./strongholds.mjs";
+import getTerritories from "./territories.mjs";
 
 import { writeFileSync } from "./fs.mjs";
 import { LOCALES } from "./i18n.mjs";
 import { toCamelCase } from "./lib.mjs";
 
+const SCRIPT = process.argv[2];
+console.log(`Running ${SCRIPT ?? "all"} script`);
+const EMPTY = {
+  nodes: [],
+  dict: LOCALES.reduce((acc, locale) => {
+    acc[locale] = {};
+    return acc;
+  }, {}),
+};
+const altars = !SCRIPT || SCRIPT === "altars" ? getAltars() : EMPTY;
+const bounties = !SCRIPT || SCRIPT === "bounties" ? getBounties() : EMPTY;
+const dungeons =
+  !SCRIPT || SCRIPT === "dungeons"
+    ? getDungeons()
+    : {
+        dungeons: EMPTY,
+        sideQuestDungeons: EMPTY,
+        campaignDungeons: EMPTY,
+        cellars: EMPTY,
+        aspects: EMPTY,
+      };
+const monsters = !SCRIPT || SCRIPT === "monsters" ? getMonsters() : EMPTY;
+const spawnNodes =
+  !SCRIPT || SCRIPT === "spawn_nodes" ? getSpawnNodes() : EMPTY;
+const quests = !SCRIPT || SCRIPT === "quests" ? getQuests() : EMPTY;
+const services = !SCRIPT || SCRIPT === "services" ? getServices() : EMPTY;
+const strongholds =
+  !SCRIPT || SCRIPT === "strongholds" ? getStrongholds() : EMPTY;
+const territories =
+  !SCRIPT || SCRIPT === "territories" ? getTerritories() : EMPTY;
+
 writeFileSync(
   `../out/nodes/altars.ts`,
   `export const altars = ${JSON.stringify(altars.nodes, null, 2)};`
 );
+
 writeFileSync(
   `../out/nodes/events.ts`,
   `export const events = ${JSON.stringify(bounties.nodes, null, 2)};`
@@ -49,6 +82,26 @@ Object.entries(monsters.nodes).forEach(([key, value]) => {
     `export const ${key}Monsters = ${JSON.stringify(value, null, 2)};`
   );
 });
+writeFileSync(
+  `../out/nodes/campaignQuests.ts`,
+  `export const campaignQuests = ${JSON.stringify(
+    quests.campaignQuests.nodes,
+    null,
+    2
+  )};`
+);
+writeFileSync(
+  `../out/nodes/events.ts`,
+  `export const events = ${JSON.stringify(quests.bounties.nodes, null, 2)};`
+);
+writeFileSync(
+  `../out/nodes/sideQuests.ts`,
+  `export const sideQuests = ${JSON.stringify(
+    quests.sideQuests.nodes,
+    null,
+    2
+  )};`
+);
 
 Object.entries(spawnNodes.nodes).forEach(([key, value]) => {
   const name = toCamelCase(key);
@@ -82,6 +135,9 @@ LOCALES.forEach((locale) => {
     cellars: dungeons.cellars.dict[locale],
     aspects: dungeons.aspects.dict[locale],
     territories: territories.dict[locale],
+    campaignQuests: quests.campaignQuests.dict[locale],
+    events: quests.bounties.dict[locale],
+    sideQuests: quests.sideQuests.dict[locale],
   };
   Object.entries(monsters.dict[locale]).forEach(([key, value]) => {
     dict[`monsters_${key}`] = value;
