@@ -40,12 +40,14 @@ export default () => {
       return;
     }
     const point = normalizePoint(actor.tWorldTransform.wp);
-    const id = actor.ptData[0].snoSpecifiedWorld.name;
+    const stringId = actor.ptData[0].snoSpecifiedWorld.name;
+    const id = `dungeons:${stringId}@${point[0]},${point[1]}`;
     // if (id.includes("Prologue")) {
     //   return;
     // }
     const isCellar =
-      !id.startsWith("DGN_") && CELLAR_TYPES.includes(actor.snoActor.name);
+      !stringId.startsWith("DGN_") &&
+      CELLAR_TYPES.includes(actor.snoActor.name);
 
     let aspectId = null;
     const rewardName = actor.ptData[0].unk_4908570?.name;
@@ -59,7 +61,7 @@ export default () => {
 
     let hasTerms = false;
     LOCALES.forEach((locale) => {
-      const worldTerms = readTerms(`World_${id}`, locale);
+      const worldTerms = readTerms(`World_${stringId}`, locale);
       if (worldTerms.length > 0) {
         hasTerms = true;
         const name = worldTerms
@@ -74,17 +76,17 @@ export default () => {
             description,
           };
         } else {
-          if (id.startsWith("DGN_")) {
+          if (stringId.startsWith("DGN_")) {
             dungeonsDict[locale][id] = {
               name,
               description,
             };
-          } else if (id.startsWith("QST_")) {
+          } else if (stringId.startsWith("QST_")) {
             sideQuestDungeonsDict[locale][id] = {
               name,
               description,
             };
-          } else if (id.startsWith("CSD")) {
+          } else if (stringId.startsWith("CSD")) {
             campaignDungeonsDict[locale][id] = {
               name,
               description,
@@ -97,21 +99,21 @@ export default () => {
           `Affix_${aspectId.toLowerCase()}`,
           locale
         );
-        aspectsDict[locale][aspectId] = aspectTerms.find(
-          (term) => term.szLabel === "Name"
-        ).szText;
+        aspectsDict[locale][aspectId] = {
+          name: aspectTerms.find((term) => term.szLabel === "Name").szText,
+        };
       }
       // aspectsDict[locale][`${aspectId}_description`] = aspectTerms[1];
     });
     if (!hasTerms) {
-      console.log("No terms for", id);
+      console.log("No terms for", stringId);
       return;
     }
 
     const node = {
       id: id,
-      x: point[0] / 1.65,
-      y: point[1] / 1.65,
+      x: point[0],
+      y: point[1],
     };
     if (aspectId) {
       node.aspectId = aspectId;
@@ -135,20 +137,20 @@ export default () => {
     if (isCellar) {
       cellars.push(node);
     } else {
-      if (id.startsWith("DGN_")) {
+      if (stringId.startsWith("DGN_")) {
         if (!dungeons.some((d) => d.x === node.x && d.y === node.y)) {
           dungeons.push(node);
         }
-      } else if (id.startsWith("QST_")) {
+      } else if (stringId.startsWith("QST_")) {
         if (!sideQuestDungeons.some((d) => d.x === node.x && d.y === node.y)) {
           sideQuestDungeons.push(node);
         }
-      } else if (id.startsWith("CSD")) {
+      } else if (stringId.startsWith("CSD")) {
         if (!campaignDungeons.some((d) => d.x === node.x && d.y === node.y)) {
           campaignDungeons.push(node);
         }
       } else {
-        console.log("Unknown dungeon type", id);
+        console.log("Unknown dungeon type", stringId);
       }
     }
   });

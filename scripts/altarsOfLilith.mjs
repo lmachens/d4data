@@ -19,10 +19,12 @@ export default () => {
       return;
     }
     const point = normalizePoint(actor.tWorldTransform.wp);
-    const id = actor.snoLevelArea.name;
+    const stringId = actor.snoLevelArea.name;
+    const id = `altars:${actor.snoLevelArea.name}@${point[0]},${point[1]}`;
+
     let hasTerms = false;
     LOCALES.forEach((locale) => {
-      const worldTerms = readTerms(`LevelArea_${id}`, locale);
+      const worldTerms = readTerms(`LevelArea_${stringId}`, locale);
       if (worldTerms.length > 0) {
         dict[locale][id] = {
           name: worldTerms[0].szText,
@@ -78,8 +80,8 @@ export default () => {
     const node = {
       id: id,
       attribute: attribute,
-      x: point[0] / 1.65,
-      y: point[1] / 1.65,
+      x: point[0],
+      y: point[1],
     };
     nodes.push(node);
   });

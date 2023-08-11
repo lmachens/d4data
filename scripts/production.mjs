@@ -7,9 +7,10 @@ import getQuests from "./quests.mjs";
 import getServices from "./services.mjs";
 import getStrongholds from "./strongholds.mjs";
 import getTerritories from "./territories.mjs";
+import getWaypoints from "./waypoints.mjs";
 
 import { writeFileSync } from "./fs.mjs";
-import { LOCALES } from "./i18n.mjs";
+import { LOCALES, readTerm, readTerms } from "./i18n.mjs";
 import { toCamelCase } from "./lib.mjs";
 
 const SCRIPT = process.argv[2];
@@ -36,12 +37,20 @@ const dungeons =
 const monsters = !SCRIPT || SCRIPT === "monsters" ? getMonsters() : EMPTY;
 const spawnNodes =
   !SCRIPT || SCRIPT === "spawn_nodes" ? getSpawnNodes() : EMPTY;
-const quests = !SCRIPT || SCRIPT === "quests" ? getQuests() : EMPTY;
+const quests =
+  !SCRIPT || SCRIPT === "quests"
+    ? getQuests()
+    : {
+        campaignQuests: EMPTY,
+        bounties: EMPTY,
+        sideQuests: EMPTY,
+      };
 const services = !SCRIPT || SCRIPT === "services" ? getServices() : EMPTY;
 const strongholds =
   !SCRIPT || SCRIPT === "strongholds" ? getStrongholds() : EMPTY;
 const territories =
   !SCRIPT || SCRIPT === "territories" ? getTerritories() : EMPTY;
+const waypoints = !SCRIPT || SCRIPT === "waypoints" ? getWaypoints() : EMPTY;
 
 writeFileSync(
   `../out/nodes/altars.ts`,
@@ -90,10 +99,10 @@ writeFileSync(
     2
   )};`
 );
-writeFileSync(
-  `../out/nodes/events.ts`,
-  `export const events = ${JSON.stringify(quests.bounties.nodes, null, 2)};`
-);
+// writeFileSync(
+//   `../out/nodes/events.ts`,
+//   `export const events = ${JSON.stringify(quests.bounties.nodes, null, 2)};`
+// );
 writeFileSync(
   `../out/nodes/sideQuests.ts`,
   `export const sideQuests = ${JSON.stringify(
@@ -124,6 +133,10 @@ Object.entries(services.nodes).forEach(([key, value]) => {
     `export const ${key} = ${JSON.stringify(value, null, 2)};`
   );
 });
+writeFileSync(
+  `../out/nodes/waypoints.ts`,
+  `export const waypoints = ${JSON.stringify(waypoints.nodes, null, 2)};`
+);
 
 LOCALES.forEach((locale) => {
   const dict = {
@@ -136,8 +149,9 @@ LOCALES.forEach((locale) => {
     aspects: dungeons.aspects.dict[locale],
     territories: territories.dict[locale],
     campaignQuests: quests.campaignQuests.dict[locale],
-    events: quests.bounties.dict[locale],
+    // events: quests.bounties.dict[locale],
     sideQuests: quests.sideQuests.dict[locale],
+    waypoints: waypoints.dict[locale],
   };
   Object.entries(monsters.dict[locale]).forEach(([key, value]) => {
     dict[`monsters_${key}`] = value;
@@ -145,6 +159,15 @@ LOCALES.forEach((locale) => {
   Object.entries(services.dict[locale]).forEach(([key, value]) => {
     dict[key] = value;
   });
+
+  const aspect = readTerms("UIToolTips", locale).find(
+    (term) => term.szLabel === "AspectPower"
+  ).szText;
+  dict.generic = {
+    aspect: {
+      name: aspect,
+    },
+  };
 
   writeFileSync(
     `../out/dictionaries/${locale.slice(0, 2)}.json`,

@@ -1,6 +1,6 @@
 import { readFileSync, readdirSync, writeFileSync } from "./fs.mjs";
 import { LOCALES, readTerm } from "./i18n.mjs";
-import { normalizePoint } from "./lib.mjs";
+import { normalizePoint, toCamelCase } from "./lib.mjs";
 
 export default () => {
   const spawnNodes = [];
@@ -19,9 +19,10 @@ export default () => {
     const markerSet = JSON.parse(
       readFileSync("../json/base/meta/MarkerSet/" + fileName)
     );
-    const id = fileName.split(" ")[0];
+    const stringId = fileName.split(" ")[0];
+    const id = `spawnNodes$${stringId}`;
     LOCALES.forEach((locale) => {
-      const term = readTerm(`LevelArea_${id}`, locale);
+      const term = readTerm(`LevelArea_${stringId}`, locale);
       if (term) {
         dict[locale].zones[`LevelArea_${id}`] = term;
       }
@@ -34,14 +35,17 @@ export default () => {
       }
       const point = normalizePoint(marker.transform.wp);
 
+      const spawnType = toCamelCase(
+        spawnLocType.name.replace("UberSubzone_", "")
+      );
       const node = {
-        // id: id + "_" + marker.nID,
-        x: point[0] / 1.65,
-        y: point[1] / 1.65,
-        spawnType: spawnLocType.name.replace("UberSubzone_", ""),
+        id: `spawnNodes:${spawnType}@${point[0]},${point[1]}`,
+        x: point[0],
+        y: point[1],
+        spawnType,
       };
-      if (spawnLocType.name.includes("Chest_t3")) {
-        const [zone, subzone] = id.split("_");
+      if (spawnLocType.name.includes("3")) {
+        const [zone, subzone] = stringId.split("_");
         node.zone = zone;
         node.subzone = subzone;
       }

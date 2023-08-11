@@ -26,14 +26,6 @@ export default () => {
     const markerSet = JSON.parse(
       readFileSync("../json/base/meta/Quest/" + fileName)
     );
-    const id = fileName.replace(".qst.json", "");
-    if (
-      id.includes("_Template_") ||
-      id.includes("_Test_") ||
-      id.endsWith("_hidden")
-    ) {
-      return;
-    }
 
     let point;
     if (
@@ -49,6 +41,15 @@ export default () => {
     } else {
       return;
     }
+    const stringId = fileName.replace(".qst.json", "");
+    const id = `quests:${stringId}@${point[0]},${point[1]}`;
+    if (
+      id.includes("_Template_") ||
+      id.includes("_Test_") ||
+      id.endsWith("_hidden")
+    ) {
+      return;
+    }
 
     const isBounty =
       id.startsWith("Bounty_") &&
@@ -60,7 +61,7 @@ export default () => {
 
     let hasTerms = false;
     LOCALES.forEach((locale) => {
-      const terms = readTerms(`Quest_${id}`, locale);
+      const terms = readTerms(`Quest_${stringId}`, locale);
       const name = terms.find((term) => term.szLabel === "Name");
       const toast =
         terms.find((term) => term.szLabel === "Toast") ||
@@ -87,14 +88,14 @@ export default () => {
     });
 
     if (!hasTerms) {
-      console.log(`Missing terms for ${id}`);
+      console.log(`Missing terms for ${stringId}`);
       return;
     }
 
     const quest = {
       id,
-      x: point[0] / 1.65,
-      y: point[1] / 1.65,
+      x: point[0],
+      y: point[1],
     };
     if (isBounty) {
       bounties.push(quest);

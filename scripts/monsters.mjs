@@ -56,7 +56,8 @@ export default () => {
         return;
       }
       const stringId = `${marker.snoname.groupName}_${marker.snoname.name}`;
-      // const id = marker.dwHash.toString();
+      const point = normalizePoint(marker.transform.wp);
+      const id = `monsters:${stringId}@${point[0]},${point[1]}`;
 
       let hasTerms = false;
       LOCALES.forEach((locale) => {
@@ -75,7 +76,6 @@ export default () => {
         return;
       }
 
-      const point = normalizePoint(marker.transform.wp);
       let type;
       if (snoNameName.includes("boss")) {
         type = "boss";
@@ -83,17 +83,14 @@ export default () => {
         type = snoNameName.split("_")[1];
       }
       const node = {
-        id: stringId,
+        id,
         type,
         family,
-        x: point[0] / 1.65,
-        y: point[1] / 1.65,
+        x: point[0],
+        y: point[1],
       };
       if (
-        nodes.some(
-          (n) =>
-            n.stringId === node.stringId && n.x === node.x && n.y === node.y
-        )
+        nodes.some((n) => n.id === node.id && n.x === node.x && n.y === node.y)
       ) {
         return;
       }

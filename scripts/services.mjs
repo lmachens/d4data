@@ -27,13 +27,25 @@ export default () => {
         return;
       }
       const point = normalizePoint(marker.transform.wp);
-      const id = fileName.split(" ")[0];
+      const id = `services:${fileName.split(" ")[0]}@${point[0]},${point[1]}`;
       const stringId = `${marker.snoname.groupName}_${marker.snoname.name}`;
       const node = {
         id: id,
-        x: point[0] / 1.65,
-        y: point[1] / 1.65,
+        x: point[0],
+        y: point[1],
       };
+
+      if (
+        nodes.some(
+          (t) =>
+            t.id === node.id &&
+            // t.type === node.type &&
+            t.x === node.x &&
+            t.y === node.y
+        )
+      ) {
+        return;
+      }
 
       // TWN_Frac_Nevesk_Service_Healer
       const matched = marker.snoname.name.match(
@@ -45,8 +57,17 @@ export default () => {
       let hasTerms = false;
       LOCALES.forEach((locale) => {
         const term = readTerm(stringId, locale);
-        if (term && role) {
-          const camelCaseRole = toCamelCase(role);
+        if (
+          term &&
+          [
+            "Healer",
+            "StableMaster",
+            "Jeweler",
+            "Alchemist",
+            "Occultist",
+          ].includes(role)
+        ) {
+          const camelCaseRole = toCamelCase(role) + "s";
           if (!dict[locale][camelCaseRole]) {
             dict[locale][camelCaseRole] = {};
           }
@@ -61,17 +82,6 @@ export default () => {
         return;
       }
 
-      if (
-        nodes.some(
-          (t) =>
-            t.id === node.id &&
-            // t.type === node.type &&
-            t.x === node.x &&
-            t.y === node.y
-        )
-      ) {
-        return;
-      }
       nodes.push(node);
 
       if (role === "Healer") {

@@ -28,10 +28,15 @@ export default () => {
         bounty.snoWorldState.name.startsWith(worldState)
       );
       const [, , , zone, subzone] = bounty.snoWorldState.name.split("_");
-      const id = bounty.snoQuest.name;
+      const stringId = bounty.snoQuest.name;
+      const quest = JSON.parse(
+        readFileSync("../json/base/meta/Quest/" + stringId + ".qst.json")
+      );
+      const point = normalizePoint(quest.vecStartLocation);
+      const id = `events:${bounty.snoQuest.name}@${point[0]},${point[1]}`;
       let hasTerms = false;
       LOCALES.forEach((locale) => {
-        const terms = readTerms(`Quest_${id}`, locale);
+        const terms = readTerms(`Quest_${stringId}`, locale);
         const name =
           terms
             .find((term) => term.szLabel === "Name")
@@ -52,17 +57,13 @@ export default () => {
         return;
       }
 
-      const quest = JSON.parse(
-        readFileSync("../json/base/meta/Quest/" + id + ".qst.json")
-      );
-      const position = normalizePoint(quest.vecStartLocation);
       const event = {
         id,
         zone,
         // subzone,
         // isHelltide,
-        x: position[0] / 1.65,
-        y: position[1] / 1.65,
+        x: point[0],
+        y: point[1],
       };
       if (
         !bountiesEvents.some(

@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, writeFileSync } from "./fs.mjs";
+import { readFileSync, readdirSync } from "./fs.mjs";
 import { normalizePoint } from "./lib.mjs";
 
 export default () => {
@@ -19,8 +19,9 @@ export default () => {
       }
       const point = normalizePoint(marker.transform.wp);
       const node = {
-        x: point[0] / 1.65,
-        y: point[1] / 1.65,
+        id: `strongholds:${fileName.split(" ")[0]}@${point[0]},${point[1]}`,
+        x: point[0],
+        y: point[1],
       };
       nodes.push(node);
     });
