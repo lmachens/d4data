@@ -44,20 +44,22 @@ export default () => {
     const stringId = fileName.replace(".qst.json", "");
     const id = `quests:${stringId}@${point[0]},${point[1]}`;
     if (
-      id.includes("_Template_") ||
-      id.includes("_Test_") ||
-      id.endsWith("_hidden")
+      stringId.includes("_Template_") ||
+      stringId.includes("_Test_") ||
+      stringId.endsWith("_hidden")
     ) {
       return;
     }
 
     const isBounty =
-      id.startsWith("Bounty_") &&
+      stringId.startsWith("Bounty_") &&
       markerSet.arQuestPhases.some(
         (questPhase) => questPhase.snoReward?.groupName === "TreasureClass"
       );
-    const isSideQuest = markerSet.eQuestType === 0;
-    const isCampaignQuest = markerSet.eQuestType === 2;
+    const isSideQuest =
+      !stringId.startsWith("Bounty_") && markerSet.eQuestType === 0;
+    const isCampaignQuest =
+      !stringId.startsWith("Bounty_") && markerSet.eQuestType === 2;
 
     let hasTerms = false;
     LOCALES.forEach((locale) => {

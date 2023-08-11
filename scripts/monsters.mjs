@@ -67,7 +67,9 @@ export default () => {
             dict[locale][family] = {};
           }
 
-          dict[locale][family][stringId] = term.szText;
+          dict[locale][family][stringId] = {
+            name: term.szText,
+          };
           hasTerms = true;
         }
       });
@@ -84,6 +86,7 @@ export default () => {
       }
       const node = {
         id,
+        termId: stringId,
         type,
         family,
         x: point[0],
@@ -114,6 +117,7 @@ export default () => {
     const prod = nodes.map((node) => {
       return {
         id: node.id,
+        termId: node.termId,
         x: node.x,
         y: node.y,
       };
