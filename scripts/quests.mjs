@@ -42,7 +42,6 @@ export default () => {
       return;
     }
     const stringId = fileName.replace(".qst.json", "");
-    const id = `quests:${stringId}@${point[0]},${point[1]}`;
     if (
       stringId.includes("_Template_") ||
       stringId.includes("_Test_") ||
@@ -60,6 +59,17 @@ export default () => {
       !stringId.startsWith("Bounty_") && markerSet.eQuestType === 0;
     const isCampaignQuest =
       !stringId.startsWith("Bounty_") && markerSet.eQuestType === 2;
+
+    let id;
+    if (isBounty) {
+      id = "bounties";
+    } else if (isSideQuest) {
+      id = "sideQuests";
+    } else if (isCampaignQuest) {
+      id = "campaignQuests";
+    }
+
+    id += `:${stringId}@${point[0]},${point[1]}`;
 
     let hasTerms = false;
     LOCALES.forEach((locale) => {

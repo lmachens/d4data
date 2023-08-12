@@ -39,7 +39,7 @@ export default () => {
         spawnLocType.name.replace("UberSubzone_", "")
       );
       const node = {
-        id: `spawnNodes:${spawnType}@${point[0]},${point[1]}`,
+        id: `${spawnType}:${spawnType}@${point[0]},${point[1]}`,
         x: point[0],
         y: point[1],
         spawnType,

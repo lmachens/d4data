@@ -1,6 +1,6 @@
 import { readFileSync } from "./fs.mjs";
 
-export const LOCALES = ["enUS", "deDE", "frFR", "ruRU", "esES"];
+export const LOCALES = ["enUS", "deDE", "frFR", "ruRU", "esES", "ptBR"];
 
 export function readTerms(name, locale = LOCALES[0]) {
   try {

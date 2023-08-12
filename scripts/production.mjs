@@ -154,7 +154,7 @@ LOCALES.forEach((locale) => {
     waypoints: waypoints.dict[locale],
   };
   Object.entries(monsters.dict[locale]).forEach(([key, value]) => {
-    dict[`monsters_${key}`] = value;
+    dict[`${key}Monsters`] = value;
   });
   Object.entries(services.dict[locale]).forEach(([key, value]) => {
     dict[key] = value;

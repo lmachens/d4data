@@ -26,8 +26,31 @@ export default () => {
       if (!marker.snoname?.name?.startsWith("TWN")) {
         return;
       }
+
+      // TWN_Frac_Nevesk_Service_Healer
+      const matched = marker.snoname.name.match(
+        /TWN_(?<name>.*)_(?<type>.*)_(?<role>.*)/
+      );
+      const type = matched?.groups?.type;
+      const role = matched?.groups?.role;
+
+      if (
+        ![
+          "Healer",
+          "StableMaster",
+          "Jeweler",
+          "Alchemist",
+          "Occultist",
+        ].includes(role)
+      ) {
+        return;
+      }
       const point = normalizePoint(marker.transform.wp);
-      const id = `services:${fileName.split(" ")[0]}@${point[0]},${point[1]}`;
+      const camelCaseRole = toCamelCase(role) + "s";
+
+      const id = `${camelCaseRole}:${fileName.split(" ")[0]}@${point[0]},${
+        point[1]
+      }`;
       const stringId = `${marker.snoname.groupName}_${marker.snoname.name}`;
       const node = {
         id: id,
@@ -47,27 +70,10 @@ export default () => {
         return;
       }
 
-      // TWN_Frac_Nevesk_Service_Healer
-      const matched = marker.snoname.name.match(
-        /TWN_(?<name>.*)_(?<type>.*)_(?<role>.*)/
-      );
-      const type = matched?.groups?.type;
-      const role = matched?.groups?.role;
-
       let hasTerms = false;
       LOCALES.forEach((locale) => {
         const term = readTerm(stringId, locale);
-        if (
-          term &&
-          [
-            "Healer",
-            "StableMaster",
-            "Jeweler",
-            "Alchemist",
-            "Occultist",
-          ].includes(role)
-        ) {
-          const camelCaseRole = toCamelCase(role) + "s";
+        if (term) {
           if (!dict[locale][camelCaseRole]) {
             dict[locale][camelCaseRole] = {};
           }

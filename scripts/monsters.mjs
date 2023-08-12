@@ -57,7 +57,7 @@ export default () => {
       }
       const stringId = `${marker.snoname.groupName}_${marker.snoname.name}`;
       const point = normalizePoint(marker.transform.wp);
-      const id = `monsters:${stringId}@${point[0]},${point[1]}`;
+      const id = `${family}Monsters:${stringId}@${point[0]},${point[1]}`;
 
       let hasTerms = false;
       LOCALES.forEach((locale) => {

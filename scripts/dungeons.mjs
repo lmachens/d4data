@@ -41,13 +41,27 @@ export default () => {
     }
     const point = normalizePoint(actor.tWorldTransform.wp);
     const stringId = actor.ptData[0].snoSpecifiedWorld.name;
-    const id = `dungeons:${stringId}@${point[0]},${point[1]}`;
     // if (id.includes("Prologue")) {
     //   return;
     // }
     const isCellar =
       !stringId.startsWith("DGN_") &&
       CELLAR_TYPES.includes(actor.snoActor.name);
+    const isDungeon = stringId.startsWith("DGN_");
+    const isSideQuestDungeon = stringId.startsWith("QST_");
+    const isCampaignDungeon = stringId.startsWith("CSD");
+    let id;
+    if (isCellar) {
+      id = "cellars";
+    } else if (isDungeon) {
+      id = "dungeons";
+    } else if (isSideQuestDungeon) {
+      id = "sideQuestDungeons";
+    } else if (isCampaignDungeon) {
+      id = "campaignDungeons";
+    }
+
+    id += `:${stringId}@${point[0]},${point[1]}`;
 
     let aspectId = null;
     const rewardName = actor.ptData[0].unk_4908570?.name;
@@ -76,17 +90,17 @@ export default () => {
             description,
           };
         } else {
-          if (stringId.startsWith("DGN_")) {
+          if (isDungeon) {
             dungeonsDict[locale][id] = {
               name,
               description,
             };
-          } else if (stringId.startsWith("QST_")) {
+          } else if (isSideQuestDungeon) {
             sideQuestDungeonsDict[locale][id] = {
               name,
               description,
             };
-          } else if (stringId.startsWith("CSD")) {
+          } else if (isCampaignDungeon) {
             campaignDungeonsDict[locale][id] = {
               name,
               description,
