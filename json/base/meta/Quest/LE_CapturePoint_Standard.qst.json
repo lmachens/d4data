@@ -41,9 +41,11 @@
  "unk_14dee1b": false,
  "flParticipationRadius": 16,
  "unk_8881b0e": 20,
- "dwNextUID": 257,
+ "dwNextUID": 259,
  "fPrioritySideQuest": false,
- "unk_c18cabd": false,
+ "ePrioritySideQuestType": 0,
+ "ePersistentEventType": -1,
+ "unk_e6be43": [],
  "unk_79f6e17": 0,
  "gbidSubzoneModifierTag": null,
  "snoBountySubzone": null,
@@ -81,7 +83,7 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 2,
        "dwFlags": 0,
        "nNeeded": 1,
@@ -130,14 +132,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3926636179
+        "dwEventEntryHash": 3926636179
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 2,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -153,9 +155,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -165,8 +168,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -175,13 +178,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -191,13 +194,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -207,85 +210,58 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     },
     {
      "__type__": "QuestObjectiveSet",
      "__typeHash__": 297390777,
-     "dwUID": 227,
+     "dwUID": 257,
      "ptLink": [],
      "arCallbacks": [
       {
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
-       "dwUID": 228,
-       "dwFlags": 1,
+       "eProgressBarSource": 0,
+       "dwUID": 258,
+       "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 48,
+        "eEventType": 69,
         "dwListenerFlags": 0,
-        "snoCondition": null,
+        "snoCondition": {
+         "__raw__": 1453905,
+         "__group__": 51,
+         "__type__": "DT_SNO",
+         "__typeHash__": 2764331143,
+         "__targetFileName__": "base/meta/Condition/SME_Vampzone.cnd",
+         "groupName": "Condition",
+         "name": "SME_Vampzone"
+        },
         "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
-        "arEventFilters": [
-         {
-          "__type__": "ScriptMessageMapFilter",
-          "__typeHash__": 3179414430,
-          "tKey": 2197444774,
-          "eVariableType": 1,
-          "pMessageFilter": [
-           {
-            "__type__": "ScriptEventParamPlayer",
-            "__typeHash__": 106673333,
-            "dwType": 106673333,
-            "eParamType": 7,
-            "dwPad": 0,
-            "bIsPlayer": true
-           }
-          ]
-         },
-         {
-          "__type__": "ScriptMessageMapFilter",
-          "__typeHash__": 3179414430,
-          "tKey": 3941013568,
-          "eVariableType": 1,
-          "pMessageFilter": [
-           {
-            "__type__": "ScriptEventParamLinkedMarkerInGroup",
-            "__typeHash__": 4047712805,
-            "dwType": 4047712805,
-            "eParamType": 20,
-            "dwPad": 0,
-            "dwGroupHash": 1921286382,
-            "idValue": 0,
-            "szGroup": "runeTrigger"
-           }
-          ]
-         }
-        ],
+        "arEventFilters": [],
         "unk_492729e": [],
-        "unk_9927fd3": 3442249050
+        "dwEventEntryHash": 58
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -301,183 +277,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
-       "arSnonameTokens": [],
-       "tReputationObjective": {
-        "__type__": "ReputationValuePair",
-        "__typeHash__": 2871889556,
-        "snoReputation": null,
-        "nValue": 0
-       }
-      },
-      {
-       "__type__": "QuestCallback",
-       "__typeHash__": 3067360607,
-       "unk_b185921": 0,
-       "unk_5342cc0": 0,
-       "dwUID": 252,
-       "dwFlags": 1,
-       "nNeeded": 1,
-       "tScriptMessageMap": {
-        "__type__": "ScriptMessageMap",
-        "__typeHash__": 2935055576,
-        "eEventType": 50,
-        "dwListenerFlags": 0,
-        "snoCondition": null,
-        "unk_c3ba01d": false,
-        "flCooldownSeconds": 0,
-        "arEventFilters": [
-         {
-          "__type__": "ScriptMessageMapFilter",
-          "__typeHash__": 3179414430,
-          "tKey": 2197444774,
-          "eVariableType": 1,
-          "pMessageFilter": [
-           {
-            "__type__": "ScriptEventParamPlayer",
-            "__typeHash__": 106673333,
-            "dwType": 106673333,
-            "eParamType": 7,
-            "dwPad": 0,
-            "bIsPlayer": true
-           }
-          ]
-         },
-         {
-          "__type__": "ScriptMessageMapFilter",
-          "__typeHash__": 3179414430,
-          "tKey": 3941013568,
-          "eVariableType": 1,
-          "pMessageFilter": [
-           {
-            "__type__": "ScriptEventParamLinkedMarkerInGroup",
-            "__typeHash__": 4047712805,
-            "dwType": 4047712805,
-            "eParamType": 20,
-            "dwPad": 0,
-            "dwGroupHash": 1921286382,
-            "idValue": 0,
-            "szGroup": "runeTrigger"
-           }
-          ]
-         }
-        ],
-        "unk_492729e": [],
-        "unk_9927fd3": 3442249050
-       },
-       "dwLinesSeconds": 0,
-       "unk_47705e2": 0,
-       "eIndicatorType": 3,
-       "unk_9c1ea4f": 0,
-       "snoWorld": null,
-       "unk_e879cce": null,
-       "fDebugDisable": false,
-       "tRegionDefault": {
-        "__type__": "QuestCallbackRegion",
-        "__typeHash__": 2884204419,
-        "eType": 0,
-        "vPolygonPoints": [],
-        "vCenterPos": {
-         "x": 0,
-         "y": 0
-        },
-        "flRadius": 0,
-        "bValid": false,
-        "bManuallySpecified": false
-       },
-       "arRegionOverrides": [],
-       "unk_6a71535": 0,
-       "arLevelAreas": [],
-       "arSubzones": [],
-       "arSnonameTokens": [],
-       "tReputationObjective": {
-        "__type__": "ReputationValuePair",
-        "__typeHash__": 2871889556,
-        "snoReputation": null,
-        "nValue": 0
-       }
-      },
-      {
-       "__type__": "QuestCallback",
-       "__typeHash__": 3067360607,
-       "unk_b185921": 0,
-       "unk_5342cc0": 0,
-       "dwUID": 253,
-       "dwFlags": 1,
-       "nNeeded": 1,
-       "tScriptMessageMap": {
-        "__type__": "ScriptMessageMap",
-        "__typeHash__": 2935055576,
-        "eEventType": 49,
-        "dwListenerFlags": 0,
-        "snoCondition": null,
-        "unk_c3ba01d": false,
-        "flCooldownSeconds": 0,
-        "arEventFilters": [
-         {
-          "__type__": "ScriptMessageMapFilter",
-          "__typeHash__": 3179414430,
-          "tKey": 2197444774,
-          "eVariableType": 1,
-          "pMessageFilter": [
-           {
-            "__type__": "ScriptEventParamPlayer",
-            "__typeHash__": 106673333,
-            "dwType": 106673333,
-            "eParamType": 7,
-            "dwPad": 0,
-            "bIsPlayer": true
-           }
-          ]
-         },
-         {
-          "__type__": "ScriptMessageMapFilter",
-          "__typeHash__": 3179414430,
-          "tKey": 3941013568,
-          "eVariableType": 1,
-          "pMessageFilter": [
-           {
-            "__type__": "ScriptEventParamLinkedMarkerInGroup",
-            "__typeHash__": 4047712805,
-            "dwType": 4047712805,
-            "eParamType": 20,
-            "dwPad": 0,
-            "dwGroupHash": 1921286382,
-            "idValue": 0,
-            "szGroup": "runeTrigger"
-           }
-          ]
-         }
-        ],
-        "unk_492729e": [],
-        "unk_9927fd3": 3442249050
-       },
-       "dwLinesSeconds": 0,
-       "unk_47705e2": 0,
-       "eIndicatorType": 3,
-       "unk_9c1ea4f": 0,
-       "snoWorld": null,
-       "unk_e879cce": null,
-       "fDebugDisable": false,
-       "tRegionDefault": {
-        "__type__": "QuestCallbackRegion",
-        "__typeHash__": 2884204419,
-        "eType": 0,
-        "vPolygonPoints": [],
-        "vCenterPos": {
-         "x": 0,
-         "y": 0
-        },
-        "flRadius": 0,
-        "bValid": false,
-        "bManuallySpecified": false
-       },
-       "arRegionOverrides": [],
-       "unk_6a71535": 0,
-       "arLevelAreas": [],
-       "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -487,8 +290,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -497,13 +300,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -513,13 +316,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -529,17 +332,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     }
    ],
    "unk_4b2de13": 4294967295,
@@ -550,7 +353,7 @@
    "unk_189b89b": false,
    "nTimerDuration": 0,
    "unk_2bde7b6": false,
-   "unk_d3b7ed7": [],
+   "arQuestChangedDestLevel": [],
    "unk_8280b0e": 0,
    "unk_eff642d": false,
    "unk_fc27941": false,
@@ -609,14 +412,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 84,
        "dwFlags": 0,
        "nNeeded": 4,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 72,
+        "eEventType": 74,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -642,14 +445,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 42500958
+        "dwEventEntryHash": 42500958
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 2,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -665,9 +468,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -677,8 +481,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -687,13 +491,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -703,13 +507,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -719,17 +523,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     },
     {
      "__type__": "QuestObjectiveSet",
@@ -741,182 +545,8 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 143,
-       "dwFlags": 1,
-       "nNeeded": 1,
-       "tScriptMessageMap": {
-        "__type__": "ScriptMessageMap",
-        "__typeHash__": 2935055576,
-        "eEventType": 48,
-        "dwListenerFlags": 0,
-        "snoCondition": null,
-        "unk_c3ba01d": false,
-        "flCooldownSeconds": 0,
-        "arEventFilters": [
-         {
-          "__type__": "ScriptMessageMapFilter",
-          "__typeHash__": 3179414430,
-          "tKey": 2197444774,
-          "eVariableType": 1,
-          "pMessageFilter": [
-           {
-            "__type__": "ScriptEventParamPlayer",
-            "__typeHash__": 106673333,
-            "dwType": 106673333,
-            "eParamType": 7,
-            "dwPad": 0,
-            "bIsPlayer": true
-           }
-          ]
-         },
-         {
-          "__type__": "ScriptMessageMapFilter",
-          "__typeHash__": 3179414430,
-          "tKey": 3941013568,
-          "eVariableType": 1,
-          "pMessageFilter": [
-           {
-            "__type__": "ScriptEventParamLinkedMarkerInGroup",
-            "__typeHash__": 4047712805,
-            "dwType": 4047712805,
-            "eParamType": 20,
-            "dwPad": 0,
-            "dwGroupHash": 1921286382,
-            "idValue": 0,
-            "szGroup": "runeTrigger"
-           }
-          ]
-         }
-        ],
-        "unk_492729e": [],
-        "unk_9927fd3": 3442249050
-       },
-       "dwLinesSeconds": 0,
-       "unk_47705e2": 0,
-       "eIndicatorType": 3,
-       "unk_9c1ea4f": 0,
-       "snoWorld": null,
-       "unk_e879cce": null,
-       "fDebugDisable": false,
-       "tRegionDefault": {
-        "__type__": "QuestCallbackRegion",
-        "__typeHash__": 2884204419,
-        "eType": 0,
-        "vPolygonPoints": [],
-        "vCenterPos": {
-         "x": 0,
-         "y": 0
-        },
-        "flRadius": 0,
-        "bValid": false,
-        "bManuallySpecified": false
-       },
-       "arRegionOverrides": [],
-       "unk_6a71535": 0,
-       "arLevelAreas": [],
-       "arSubzones": [],
-       "arSnonameTokens": [],
-       "tReputationObjective": {
-        "__type__": "ReputationValuePair",
-        "__typeHash__": 2871889556,
-        "snoReputation": null,
-        "nValue": 0
-       }
-      },
-      {
-       "__type__": "QuestCallback",
-       "__typeHash__": 3067360607,
-       "unk_b185921": 0,
-       "unk_5342cc0": 0,
-       "dwUID": 254,
-       "dwFlags": 1,
-       "nNeeded": 1,
-       "tScriptMessageMap": {
-        "__type__": "ScriptMessageMap",
-        "__typeHash__": 2935055576,
-        "eEventType": 50,
-        "dwListenerFlags": 0,
-        "snoCondition": null,
-        "unk_c3ba01d": false,
-        "flCooldownSeconds": 0,
-        "arEventFilters": [
-         {
-          "__type__": "ScriptMessageMapFilter",
-          "__typeHash__": 3179414430,
-          "tKey": 2197444774,
-          "eVariableType": 1,
-          "pMessageFilter": [
-           {
-            "__type__": "ScriptEventParamPlayer",
-            "__typeHash__": 106673333,
-            "dwType": 106673333,
-            "eParamType": 7,
-            "dwPad": 0,
-            "bIsPlayer": true
-           }
-          ]
-         },
-         {
-          "__type__": "ScriptMessageMapFilter",
-          "__typeHash__": 3179414430,
-          "tKey": 3941013568,
-          "eVariableType": 1,
-          "pMessageFilter": [
-           {
-            "__type__": "ScriptEventParamLinkedMarkerInGroup",
-            "__typeHash__": 4047712805,
-            "dwType": 4047712805,
-            "eParamType": 20,
-            "dwPad": 0,
-            "dwGroupHash": 1921286382,
-            "idValue": 0,
-            "szGroup": "runeTrigger"
-           }
-          ]
-         }
-        ],
-        "unk_492729e": [],
-        "unk_9927fd3": 3442249050
-       },
-       "dwLinesSeconds": 0,
-       "unk_47705e2": 0,
-       "eIndicatorType": 3,
-       "unk_9c1ea4f": 0,
-       "snoWorld": null,
-       "unk_e879cce": null,
-       "fDebugDisable": false,
-       "tRegionDefault": {
-        "__type__": "QuestCallbackRegion",
-        "__typeHash__": 2884204419,
-        "eType": 0,
-        "vPolygonPoints": [],
-        "vCenterPos": {
-         "x": 0,
-         "y": 0
-        },
-        "flRadius": 0,
-        "bValid": false,
-        "bManuallySpecified": false
-       },
-       "arRegionOverrides": [],
-       "unk_6a71535": 0,
-       "arLevelAreas": [],
-       "arSubzones": [],
-       "arSnonameTokens": [],
-       "tReputationObjective": {
-        "__type__": "ReputationValuePair",
-        "__typeHash__": 2871889556,
-        "snoReputation": null,
-        "nValue": 0
-       }
-      },
-      {
-       "__type__": "QuestCallback",
-       "__typeHash__": 3067360607,
-       "unk_b185921": 0,
-       "unk_5342cc0": 0,
-       "dwUID": 250,
        "dwFlags": 1,
        "nNeeded": 1,
        "tScriptMessageMap": {
@@ -964,14 +594,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3442249050
+        "dwEventEntryHash": 3442249050
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -987,9 +617,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -1002,7 +633,183 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
+       "dwUID": 254,
+       "dwFlags": 1,
+       "nNeeded": 1,
+       "tScriptMessageMap": {
+        "__type__": "ScriptMessageMap",
+        "__typeHash__": 2935055576,
+        "eEventType": 51,
+        "dwListenerFlags": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
+        "flCooldownSeconds": 0,
+        "arEventFilters": [
+         {
+          "__type__": "ScriptMessageMapFilter",
+          "__typeHash__": 3179414430,
+          "tKey": 2197444774,
+          "eVariableType": 1,
+          "pMessageFilter": [
+           {
+            "__type__": "ScriptEventParamPlayer",
+            "__typeHash__": 106673333,
+            "dwType": 106673333,
+            "eParamType": 7,
+            "dwPad": 0,
+            "bIsPlayer": true
+           }
+          ]
+         },
+         {
+          "__type__": "ScriptMessageMapFilter",
+          "__typeHash__": 3179414430,
+          "tKey": 3941013568,
+          "eVariableType": 1,
+          "pMessageFilter": [
+           {
+            "__type__": "ScriptEventParamLinkedMarkerInGroup",
+            "__typeHash__": 4047712805,
+            "dwType": 4047712805,
+            "eParamType": 20,
+            "dwPad": 0,
+            "dwGroupHash": 1921286382,
+            "idValue": 0,
+            "szGroup": "runeTrigger"
+           }
+          ]
+         }
+        ],
+        "unk_492729e": [],
+        "dwEventEntryHash": 3442249050
+       },
+       "dwLinesSeconds": 0,
+       "unk_47705e2": 0,
+       "eIndicatorType": 3,
+       "unk_9c1ea4f": 0,
+       "snoWorld": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
+       "fDebugDisable": false,
+       "tRegionDefault": {
+        "__type__": "QuestCallbackRegion",
+        "__typeHash__": 2884204419,
+        "eType": 0,
+        "vPolygonPoints": [],
+        "vCenterPos": {
+         "x": 0,
+         "y": 0
+        },
+        "flRadius": 0,
+        "bValid": false,
+        "bManuallySpecified": false
+       },
+       "arRegionOverrides": [],
+       "nValidRegionOverrides": 0,
+       "arLevelAreas": [],
+       "arSubzones": [],
+       "unk_c181024": null,
+       "arSnonameTokens": [],
+       "tReputationObjective": {
+        "__type__": "ReputationValuePair",
+        "__typeHash__": 2871889556,
+        "snoReputation": null,
+        "nValue": 0
+       }
+      },
+      {
+       "__type__": "QuestCallback",
+       "__typeHash__": 3067360607,
+       "unk_b185921": 0,
+       "eProgressBarSource": 0,
+       "dwUID": 250,
+       "dwFlags": 1,
+       "nNeeded": 1,
+       "tScriptMessageMap": {
+        "__type__": "ScriptMessageMap",
+        "__typeHash__": 2935055576,
+        "eEventType": 50,
+        "dwListenerFlags": 0,
+        "snoCondition": null,
+        "unk_c3ba01d": false,
+        "flCooldownSeconds": 0,
+        "arEventFilters": [
+         {
+          "__type__": "ScriptMessageMapFilter",
+          "__typeHash__": 3179414430,
+          "tKey": 2197444774,
+          "eVariableType": 1,
+          "pMessageFilter": [
+           {
+            "__type__": "ScriptEventParamPlayer",
+            "__typeHash__": 106673333,
+            "dwType": 106673333,
+            "eParamType": 7,
+            "dwPad": 0,
+            "bIsPlayer": true
+           }
+          ]
+         },
+         {
+          "__type__": "ScriptMessageMapFilter",
+          "__typeHash__": 3179414430,
+          "tKey": 3941013568,
+          "eVariableType": 1,
+          "pMessageFilter": [
+           {
+            "__type__": "ScriptEventParamLinkedMarkerInGroup",
+            "__typeHash__": 4047712805,
+            "dwType": 4047712805,
+            "eParamType": 20,
+            "dwPad": 0,
+            "dwGroupHash": 1921286382,
+            "idValue": 0,
+            "szGroup": "runeTrigger"
+           }
+          ]
+         }
+        ],
+        "unk_492729e": [],
+        "dwEventEntryHash": 3442249050
+       },
+       "dwLinesSeconds": 0,
+       "unk_47705e2": 0,
+       "eIndicatorType": 3,
+       "unk_9c1ea4f": 0,
+       "snoWorld": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
+       "fDebugDisable": false,
+       "tRegionDefault": {
+        "__type__": "QuestCallbackRegion",
+        "__typeHash__": 2884204419,
+        "eType": 0,
+        "vPolygonPoints": [],
+        "vCenterPos": {
+         "x": 0,
+         "y": 0
+        },
+        "flRadius": 0,
+        "bValid": false,
+        "bManuallySpecified": false
+       },
+       "arRegionOverrides": [],
+       "nValidRegionOverrides": 0,
+       "arLevelAreas": [],
+       "arSubzones": [],
+       "unk_c181024": null,
+       "arSnonameTokens": [],
+       "tReputationObjective": {
+        "__type__": "ReputationValuePair",
+        "__typeHash__": 2871889556,
+        "snoReputation": null,
+        "nValue": 0
+       }
+      },
+      {
+       "__type__": "QuestCallback",
+       "__typeHash__": 3067360607,
+       "unk_b185921": 0,
+       "eProgressBarSource": 0,
        "dwUID": 233,
        "dwFlags": 1,
        "nNeeded": 1,
@@ -1054,14 +861,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 1776065304
+        "dwEventEntryHash": 1776065304
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -1077,9 +884,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -1092,14 +900,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 251,
        "dwFlags": 3,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 76,
+        "eEventType": 78,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -1125,14 +933,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 2197444832
+        "dwEventEntryHash": 2197444832
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 2,
        "unk_9c1ea4f": 84,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -1148,9 +956,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -1160,8 +969,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -1170,13 +979,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -1186,13 +995,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -1202,17 +1011,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     },
     {
      "__type__": "QuestObjectiveSet",
@@ -1224,14 +1033,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 242,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -1273,14 +1082,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -1296,9 +1105,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -1311,14 +1121,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 243,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -1360,14 +1170,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -1383,9 +1193,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -1398,14 +1209,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 244,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -1447,14 +1258,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -1470,9 +1281,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -1482,8 +1294,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -1492,13 +1304,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -1508,13 +1320,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -1524,17 +1336,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     }
    ],
    "unk_4b2de13": 4294967295,
@@ -1545,7 +1357,7 @@
    "unk_189b89b": false,
    "nTimerDuration": 100,
    "unk_2bde7b6": false,
-   "unk_d3b7ed7": [],
+   "arQuestChangedDestLevel": [],
    "unk_8280b0e": 0,
    "unk_eff642d": true,
    "unk_fc27941": true,
@@ -1604,14 +1416,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 25,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 44,
+        "eEventType": 45,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -1656,14 +1468,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 2414055017
+        "dwEventEntryHash": 2414055017
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 2,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -1679,9 +1491,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -1691,8 +1504,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -1701,13 +1514,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -1717,13 +1530,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -1733,17 +1546,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     }
    ],
    "unk_4b2de13": 4294967295,
@@ -1754,7 +1567,7 @@
    "unk_189b89b": false,
    "nTimerDuration": 0,
    "unk_2bde7b6": false,
-   "unk_d3b7ed7": [],
+   "arQuestChangedDestLevel": [],
    "unk_8280b0e": 0,
    "unk_eff642d": false,
    "unk_fc27941": false,
@@ -1806,14 +1619,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 147,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -1855,14 +1668,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -1878,9 +1691,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -1893,14 +1707,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 148,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -1942,14 +1756,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -1965,9 +1779,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -1980,14 +1795,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 149,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -2029,14 +1844,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -2052,9 +1867,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -2067,14 +1883,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 150,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -2116,14 +1932,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -2139,9 +1955,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -2154,14 +1971,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 151,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -2203,14 +2020,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -2226,9 +2043,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -2241,14 +2059,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 152,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -2290,14 +2108,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -2313,9 +2131,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -2328,14 +2147,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 153,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -2377,14 +2196,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -2400,9 +2219,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -2412,8 +2232,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -2422,13 +2242,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -2438,13 +2258,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -2454,17 +2274,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     },
     {
      "__type__": "QuestObjectiveSet",
@@ -2476,14 +2296,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 155,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -2525,14 +2345,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -2548,9 +2368,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -2563,14 +2384,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 156,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -2612,14 +2433,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -2635,9 +2456,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -2650,14 +2472,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 157,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -2699,14 +2521,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -2722,9 +2544,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -2737,14 +2560,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 158,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -2786,14 +2609,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -2809,9 +2632,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -2824,14 +2648,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 159,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -2873,14 +2697,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -2896,9 +2720,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -2911,14 +2736,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 160,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -2960,14 +2785,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -2983,9 +2808,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -2998,14 +2824,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 161,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -3047,14 +2873,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -3070,9 +2896,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -3082,8 +2909,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -3092,13 +2919,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -3108,13 +2935,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -3124,17 +2951,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     },
     {
      "__type__": "QuestObjectiveSet",
@@ -3146,14 +2973,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 163,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -3195,14 +3022,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -3218,9 +3045,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -3233,14 +3061,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 164,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -3282,14 +3110,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -3305,9 +3133,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -3320,14 +3149,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 165,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -3369,14 +3198,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -3392,9 +3221,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -3407,14 +3237,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 166,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -3456,14 +3286,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -3479,9 +3309,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -3494,14 +3325,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 167,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -3543,14 +3374,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -3566,9 +3397,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -3581,14 +3413,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 168,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -3630,14 +3462,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -3653,9 +3485,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -3668,14 +3501,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 169,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -3717,14 +3550,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -3740,9 +3573,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -3752,8 +3586,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -3762,13 +3596,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -3778,13 +3612,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -3794,17 +3628,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     },
     {
      "__type__": "QuestObjectiveSet",
@@ -3816,14 +3650,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 171,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -3865,14 +3699,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -3888,9 +3722,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -3903,14 +3738,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 172,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -3952,14 +3787,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -3975,9 +3810,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -3990,14 +3826,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 173,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -4039,14 +3875,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -4062,9 +3898,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -4077,14 +3914,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 174,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -4126,14 +3963,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -4149,9 +3986,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -4164,14 +4002,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 175,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -4213,14 +4051,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -4236,9 +4074,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -4251,14 +4090,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 176,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -4300,14 +4139,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -4323,9 +4162,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -4338,14 +4178,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 177,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 71,
+        "eEventType": 73,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -4387,14 +4227,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 3271514399
+        "dwEventEntryHash": 3271514399
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -4410,9 +4250,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -4422,8 +4263,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -4432,13 +4273,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -4448,13 +4289,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -4464,17 +4305,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     },
     {
      "__type__": "QuestObjectiveSet",
@@ -4486,14 +4327,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 256,
        "dwFlags": 1,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 80,
+        "eEventType": 82,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -4539,14 +4380,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 1776065304
+        "dwEventEntryHash": 1776065304
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -4562,9 +4403,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -4574,8 +4416,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -4584,13 +4426,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -4600,13 +4442,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -4616,17 +4458,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     }
    ],
    "unk_4b2de13": 4294967295,
@@ -4637,7 +4479,7 @@
    "unk_189b89b": false,
    "nTimerDuration": 0,
    "unk_2bde7b6": false,
-   "unk_d3b7ed7": [],
+   "arQuestChangedDestLevel": [],
    "unk_8280b0e": 0,
    "unk_eff642d": false,
    "unk_fc27941": false,
@@ -4689,14 +4531,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 207,
        "dwFlags": 64,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 59,
+        "eEventType": 61,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -4721,14 +4563,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 1056035637
+        "dwEventEntryHash": 1056035637
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -4744,9 +4586,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -4756,8 +4599,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -4766,13 +4609,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -4782,13 +4625,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -4798,17 +4641,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     },
     {
      "__type__": "QuestObjectiveSet",
@@ -4820,14 +4663,14 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 219,
        "dwFlags": 0,
        "nNeeded": 4,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 72,
+        "eEventType": 74,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
@@ -4853,14 +4696,14 @@
          }
         ],
         "unk_492729e": [],
-        "unk_9927fd3": 42500958
+        "dwEventEntryHash": 42500958
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 2,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -4876,9 +4719,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -4888,8 +4732,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -4898,13 +4742,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -4914,13 +4758,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -4930,17 +4774,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     }
    ],
    "unk_4b2de13": 4294967295,
@@ -4951,7 +4795,7 @@
    "unk_189b89b": false,
    "nTimerDuration": 0,
    "unk_2bde7b6": false,
-   "unk_d3b7ed7": [],
+   "arQuestChangedDestLevel": [],
    "unk_8280b0e": 0,
    "unk_eff642d": false,
    "unk_fc27941": false,
@@ -5003,28 +4847,28 @@
        "__type__": "QuestCallback",
        "__typeHash__": 3067360607,
        "unk_b185921": 0,
-       "unk_5342cc0": 0,
+       "eProgressBarSource": 0,
        "dwUID": 222,
        "dwFlags": 0,
        "nNeeded": 1,
        "tScriptMessageMap": {
         "__type__": "ScriptMessageMap",
         "__typeHash__": 2935055576,
-        "eEventType": 67,
+        "eEventType": 69,
         "dwListenerFlags": 0,
         "snoCondition": null,
         "unk_c3ba01d": false,
         "flCooldownSeconds": 0,
         "arEventFilters": [],
         "unk_492729e": [],
-        "unk_9927fd3": 58
+        "dwEventEntryHash": 58
        },
        "dwLinesSeconds": 0,
        "unk_47705e2": 0,
        "eIndicatorType": 3,
        "unk_9c1ea4f": 0,
        "snoWorld": null,
-       "unk_e879cce": null,
+       "snoObjectiveDiscoveredConversationOverride": null,
        "fDebugDisable": false,
        "tRegionDefault": {
         "__type__": "QuestCallbackRegion",
@@ -5040,9 +4884,10 @@
         "bManuallySpecified": false
        },
        "arRegionOverrides": [],
-       "unk_6a71535": 0,
+       "nValidRegionOverrides": 0,
        "arLevelAreas": [],
        "arSubzones": [],
+       "unk_c181024": null,
        "arSnonameTokens": [],
        "tReputationObjective": {
         "__type__": "ReputationValuePair",
@@ -5052,8 +4897,8 @@
        }
       }
      ],
-     "unk_a845fa9": false,
-     "unk_89d02b1": null,
+     "bGiveFirstTimeReward": false,
+     "snoFirstTimeRewardDisplayItem": null,
      "tFirstTimeReward": {
       "__type__": "QuestReward",
       "__typeHash__": 3387295447,
@@ -5062,13 +4907,13 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tReward": {
       "__type__": "QuestReward",
@@ -5078,13 +4923,13 @@
       "nGoldTier": 2,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "tKeyedDungeonReward": {
       "__type__": "QuestReward",
@@ -5094,17 +4939,17 @@
       "nGoldTier": 0,
       "unk_3592260": -1,
       "snoTrackedReward": null,
-      "unk_b0fd814": false,
-      "unk_186d5e6": {
+      "bOverrideRewardDropLevel": false,
+      "tRewardDropLevelOverride": {
        "__type__": "QuestRewardLevelOverride",
        "__typeHash__": 3777118895,
        "unk_cea351b": -1
       },
-      "unk_f8ed991": []
+      "arFakeItemRewards": []
      },
      "unk_8c63f3c": false,
-     "unk_e903c4e": null,
-     "unk_8f432f8": []
+     "snoObjectiveDiscoveredConversation": null,
+     "arQuestItemsToRemove": []
     }
    ],
    "unk_4b2de13": 4294967295,
@@ -5115,7 +4960,7 @@
    "unk_189b89b": false,
    "nTimerDuration": 0,
    "unk_2bde7b6": false,
-   "unk_d3b7ed7": [],
+   "arQuestChangedDestLevel": [],
    "unk_8280b0e": 0,
    "unk_eff642d": false,
    "unk_fc27941": false,
@@ -5160,6 +5005,7 @@
  "unk_b43b442": [],
  "gbidSurveyType": null,
  "gbidNightmareDungeonSurveyType": null,
+ "unk_9ac873": false,
  "unk_f4b6cde": {
   "__type__": "Type_56ff7d6a",
   "__typeHash__": 1459584362,

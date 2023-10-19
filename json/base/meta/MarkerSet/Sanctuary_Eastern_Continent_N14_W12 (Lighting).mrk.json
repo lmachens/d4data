@@ -78,7 +78,6 @@
     "eCullingLevel": 0,
     "szLookOverride": 0,
     "dwShaderMapOverride": 4294967295,
-    "snoTraversalSurface": null,
     "ptRunTimeMaterialValues": []
    }
   },
@@ -145,7 +144,6 @@
     "eCullingLevel": 0,
     "szLookOverride": 0,
     "dwShaderMapOverride": 4294967295,
-    "snoTraversalSurface": null,
     "ptRunTimeMaterialValues": []
    }
   },
@@ -212,7 +210,6 @@
     "eCullingLevel": 0,
     "szLookOverride": 0,
     "dwShaderMapOverride": 4294967295,
-    "snoTraversalSurface": null,
     "ptRunTimeMaterialValues": []
    }
   },
@@ -279,7 +276,6 @@
     "eCullingLevel": 0,
     "szLookOverride": 0,
     "dwShaderMapOverride": 4294967295,
-    "snoTraversalSurface": null,
     "ptRunTimeMaterialValues": []
    }
   },
@@ -335,10 +331,10 @@
       "flDensity": 1,
       "flHeightScale": 6,
       "flNoiseScale": 0,
-      "unk_5050283": 1,
+      "flNoiseUVScale": 1,
       "flNoiseOffset": 0,
       "flEmissive": 0,
-      "unk_9e04ce9": 0.5,
+      "flScatteringCoeff": 0.5,
       "flAbsorptionCoeff": 0.10000000149011612,
       "flFlowSpeed": 1,
       "flFlowPower": 1,
@@ -350,7 +346,7 @@
       "unk_56127ed": 2,
       "flWindSpeedFactor": 1,
       "pathHeightColor": {
-       "__type__": "Type_560ae4cf",
+       "__type__": "InterpolationPath_RGBAColor",
        "__typeHash__": 1443554511,
        "tHeader": {
         "__type__": "InterpolationPathHeader",
@@ -381,7 +377,7 @@
        },
        "ptArrayNodes": [
         {
-         "__type__": "Type_977100c8",
+         "__type__": "InterpolationNode_RGBAColor",
          "__typeHash__": 2540765384,
          "tValueMin": {
           "r": 255,
@@ -418,7 +414,6 @@
     "eCullingLevel": 0,
     "szLookOverride": 0,
     "dwShaderMapOverride": 4294967295,
-    "snoTraversalSurface": null,
     "ptRunTimeMaterialValues": []
    }
   },
@@ -474,10 +469,10 @@
       "flDensity": 1,
       "flHeightScale": 6,
       "flNoiseScale": 0,
-      "unk_5050283": 1,
+      "flNoiseUVScale": 1,
       "flNoiseOffset": 0,
       "flEmissive": 0,
-      "unk_9e04ce9": 0.5,
+      "flScatteringCoeff": 0.5,
       "flAbsorptionCoeff": 0.10000000149011612,
       "flFlowSpeed": 1,
       "flFlowPower": 1,
@@ -489,7 +484,7 @@
       "unk_56127ed": 2,
       "flWindSpeedFactor": 1,
       "pathHeightColor": {
-       "__type__": "Type_560ae4cf",
+       "__type__": "InterpolationPath_RGBAColor",
        "__typeHash__": 1443554511,
        "tHeader": {
         "__type__": "InterpolationPathHeader",
@@ -520,7 +515,7 @@
        },
        "ptArrayNodes": [
         {
-         "__type__": "Type_977100c8",
+         "__type__": "InterpolationNode_RGBAColor",
          "__typeHash__": 2540765384,
          "tValueMin": {
           "r": 255,
@@ -557,12 +552,11 @@
     "eCullingLevel": 0,
     "szLookOverride": 0,
     "dwShaderMapOverride": 4294967295,
-    "snoTraversalSurface": null,
     "ptRunTimeMaterialValues": []
    }
   }
  ],
- "dwMarkerSetFlags": 133377,
+ "dwMarkerSetFlags": 266753,
  "nLabel": null,
  "snoCampaignEnableCondition": null,
  "arPrefabDataInfo": [],
@@ -584,7 +578,7 @@
     }
    },
    "tVertexAO": {
-    "__type__": "Type_cd5b4347",
+    "__type__": "MarkerInstanceGroupsAO",
     "__typeHash__": 3445310279,
     "arVertexAO": {
      "__type__": "DT_VARIABLEARRAY",
@@ -631,7 +625,7 @@
     }
    },
    "tVertexAO": {
-    "__type__": "Type_cd5b4347",
+    "__type__": "MarkerInstanceGroupsAO",
     "__typeHash__": 3445310279,
     "arVertexAO": {
      "__type__": "DT_VARIABLEARRAY",
@@ -678,7 +672,7 @@
     }
    },
    "tVertexAO": {
-    "__type__": "Type_cd5b4347",
+    "__type__": "MarkerInstanceGroupsAO",
     "__typeHash__": 3445310279,
     "arVertexAO": {
      "__type__": "DT_VARIABLEARRAY",
@@ -756,12 +750,12 @@
        "tCleanup": {
         "__type__": "TriggerCleanup",
         "__typeHash__": 2029186460,
-        "unk_80dc73": 1,
-        "unk_f216739": 0,
-        "unk_8047af2": 0,
-        "unk_4690732": 0,
-        "unk_2041ce1": 1,
-        "unk_c5ce3af": 4
+        "eOnOwnerDeath": 1,
+        "eOnAnimationEnd": 0,
+        "eOnSequenceEnd": 0,
+        "eOnOwnerResurrection": 0,
+        "eOnOwnerDeletion": 1,
+        "eOnOwnerPaused": 4
        },
        "unk_49e9257": -1,
        "unk_5490979": -1,
@@ -808,14 +802,11 @@
        "dwSeed": 0,
        "fBillboard": false,
        "eAddType": 0,
-       "unk_fbdc534": false,
+       "fDoNotParent": false,
        "fKeepOriginal": false,
        "fEnableMovement": false,
        "unk_773852b": false,
        "unk_62ab747": true,
-       "snoSubtitles": null,
-       "snoClosedCaptions": null,
-       "unk_1426000": 0,
        "unk_cb43646": false,
        "fRandomLook": false,
        "tLookLink": {
@@ -870,7 +861,7 @@
        "idRActorAttachment": 0,
        "nPermIndex": 0,
        "snoCopyFromMarkerSet": null,
-       "unk_33e4eec": 0,
+       "nCopyFromMarkerID": 0,
        "nMaxAttachments": 0,
        "flBlendInTime": 5,
        "flBlendOutTime": 5,
@@ -957,12 +948,12 @@
        "tCleanup": {
         "__type__": "TriggerCleanup",
         "__typeHash__": 2029186460,
-        "unk_80dc73": 1,
-        "unk_f216739": 0,
-        "unk_8047af2": 0,
-        "unk_4690732": 0,
-        "unk_2041ce1": 1,
-        "unk_c5ce3af": 4
+        "eOnOwnerDeath": 1,
+        "eOnAnimationEnd": 0,
+        "eOnSequenceEnd": 0,
+        "eOnOwnerResurrection": 0,
+        "eOnOwnerDeletion": 1,
+        "eOnOwnerPaused": 4
        },
        "unk_49e9257": -1,
        "unk_5490979": -1,
@@ -1009,14 +1000,11 @@
        "dwSeed": 0,
        "fBillboard": false,
        "eAddType": 0,
-       "unk_fbdc534": false,
+       "fDoNotParent": false,
        "fKeepOriginal": false,
        "fEnableMovement": false,
        "unk_773852b": false,
        "unk_62ab747": true,
-       "snoSubtitles": null,
-       "snoClosedCaptions": null,
-       "unk_1426000": 0,
        "unk_cb43646": false,
        "fRandomLook": false,
        "tLookLink": {
@@ -1071,7 +1059,7 @@
        "idRActorAttachment": 0,
        "nPermIndex": 0,
        "snoCopyFromMarkerSet": null,
-       "unk_33e4eec": 0,
+       "nCopyFromMarkerID": 0,
        "nMaxAttachments": 0,
        "flBlendInTime": 5,
        "flBlendOutTime": 5,
@@ -1158,12 +1146,12 @@
        "tCleanup": {
         "__type__": "TriggerCleanup",
         "__typeHash__": 2029186460,
-        "unk_80dc73": 1,
-        "unk_f216739": 0,
-        "unk_8047af2": 0,
-        "unk_4690732": 0,
-        "unk_2041ce1": 1,
-        "unk_c5ce3af": 4
+        "eOnOwnerDeath": 1,
+        "eOnAnimationEnd": 0,
+        "eOnSequenceEnd": 0,
+        "eOnOwnerResurrection": 0,
+        "eOnOwnerDeletion": 1,
+        "eOnOwnerPaused": 4
        },
        "unk_49e9257": -1,
        "unk_5490979": -1,
@@ -1210,14 +1198,11 @@
        "dwSeed": 0,
        "fBillboard": false,
        "eAddType": 0,
-       "unk_fbdc534": false,
+       "fDoNotParent": false,
        "fKeepOriginal": false,
        "fEnableMovement": false,
        "unk_773852b": false,
        "unk_62ab747": true,
-       "snoSubtitles": null,
-       "snoClosedCaptions": null,
-       "unk_1426000": 0,
        "unk_cb43646": false,
        "fRandomLook": false,
        "tLookLink": {
@@ -1272,7 +1257,7 @@
        "idRActorAttachment": 0,
        "nPermIndex": 0,
        "snoCopyFromMarkerSet": null,
-       "unk_33e4eec": 0,
+       "nCopyFromMarkerID": 0,
        "nMaxAttachments": 0,
        "flBlendInTime": 5,
        "flBlendOutTime": 5,
@@ -1424,5 +1409,5 @@
   }
  },
  "unk_2f217b0": -1,
- "unk_d0a9662": "0"
+ "ptPrefabAOMap": "0"
 }

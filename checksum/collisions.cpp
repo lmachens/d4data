@@ -14,7 +14,7 @@
 #include <signal.h>
 #include <new>
 
-#if __GNUC__
+#ifdef __GNUC__
   #include <unistd.h>
 #else
   #include <io.h>
@@ -46,7 +46,6 @@ bool paired = false, usingFieldTypeMap = false;
 
 std::vector<std::string> subdict[64];
 std::vector<std::string> dict;
-std::unordered_map<std::string, bool> stringUsed;
 std::unordered_map<uint32_t, std::vector<uint32_t>> fieldTypeMap;
 std::unordered_map<uint32_t, std::unordered_set<std::string>> typePrefixes;
 
@@ -91,10 +90,6 @@ uint32_t typeChecksum(const std::string &str, uint32_t hash) {
   return hash;
 }
 
-uint32_t typeChecksumNonRef(std::string str, uint32_t hash) {
-  return typeChecksum(str, hash);
-}
-
 uint32_t fieldChecksum(const std::string &str, uint32_t hash) {
   for (size_t i = 0; i < str.length(); i++) {
     hash = (hash << 5) + hash + (unsigned char)str[i];
@@ -102,10 +97,6 @@ uint32_t fieldChecksum(const std::string &str, uint32_t hash) {
 
   // field names have an additional mask
   return hash & 0xfffffff;
-}
-
-uint32_t fieldChecksumNonRef(std::string str, uint32_t hash) {
-  return fieldChecksum(str, hash);
 }
 
 uint32_t gbidChecksum(const std::string &str, uint32_t hash) {
@@ -117,12 +108,7 @@ uint32_t gbidChecksum(const std::string &str, uint32_t hash) {
   return hash;
 }
 
-uint32_t gbidChecksumNonRef(std::string str, uint32_t hash) {
-  return gbidChecksum(str, hash);
-}
-
 uint32_t (*checksum)(const std::string &str, uint32_t hash) = typeChecksum;
-uint32_t (*checksumNonRef)(std::string str, uint32_t hash) = typeChecksumNonRef;
 
 auto getDictSize(long pos, long max) {
   // If suffixes exist, use those.
@@ -131,45 +117,37 @@ auto getDictSize(long pos, long max) {
   }
 
   // If positional dict overrides exist, use those.
-  if (subdict[pos].size() > 0) {
-    return subdict[pos].size();
+  const auto subdictSize = subdict[pos].size();
+  if (subdictSize > 0) {
+    return subdictSize;
   }
 
   return dict.size();
 }
 
-std::string getDictEntry(long index, long pos, long max) {
+const std::string &getDictEntry(long index, long pos, long max) {
   // If suffixes exist, use those.
   if (subdict[63].size() > 0 && pos == max - 1) {
     pos = 63;
   }
 
   // If positional dict overrides exist, use those.
-  if (subdict[pos].size() > 0) {
-    return subdict[pos][index];
+  const auto &subdictEntry = subdict[pos];
+  if (!subdictEntry.empty()) {
+    return subdictEntry[index];
   }
 
   return dict[index];
 }
 
 std::string getWord(uint32_t *tmp, int32_t max) {
-  std::string ret = "";
+  std::string ret;
 
   for (int32_t pos = 0; pos < max; pos++) {
-    ret = ret + getDictEntry(tmp[pos], pos, max);
+    ret += getDictEntry(tmp[pos], pos, max);
   }
 
   return ret;
-}
-
-bool hasCaps(std::string word) {
-  for (uint32_t c = 0; c < word.size(); c++) {
-    if (word[c] >= 'A' && word[c] <= 'Z') {
-      return true;
-    }
-  }
-
-  return false;
 }
 
 bool checkPaired(uint32_t *tmp, int32_t max) {
@@ -179,36 +157,36 @@ bool checkPaired(uint32_t *tmp, int32_t max) {
 
   if (hashType == 0) {
     std::string word = getWord(tmp, max);
-    uint32_t wordChecksum = fieldChecksumNonRef("t" + word, 0);
+    uint32_t wordChecksum = fieldChecksum("t" + word, 0);
 
     if (hasChecksum(checksumMatchSecondary, wordChecksum)) {
       return true;
     }
 
-    wordChecksum = fieldChecksumNonRef("pt" + word, 0);
+    wordChecksum = fieldChecksum("pt" + word, 0);
     if (hasChecksum(checksumMatchSecondary, wordChecksum)) {
       return true;
     }
 
-    wordChecksum = fieldChecksumNonRef("ar" + word, 0);
-
-    if (hasChecksum(checksumMatchSecondary, wordChecksum)) {
-      return true;
-    }
-
-    wordChecksum = fieldChecksumNonRef("t" + word + "s", 0);
+    wordChecksum = fieldChecksum("ar" + word, 0);
 
     if (hasChecksum(checksumMatchSecondary, wordChecksum)) {
       return true;
     }
 
-    wordChecksum = fieldChecksumNonRef("pt" + word + "s", 0);
+    wordChecksum = fieldChecksum("t" + word + "s", 0);
 
     if (hasChecksum(checksumMatchSecondary, wordChecksum)) {
       return true;
     }
 
-    wordChecksum = fieldChecksumNonRef("ar" + word + "s", 0);
+    wordChecksum = fieldChecksum("pt" + word + "s", 0);
+
+    if (hasChecksum(checksumMatchSecondary, wordChecksum)) {
+      return true;
+    }
+
+    wordChecksum = fieldChecksum("ar" + word + "s", 0);
 
     if (hasChecksum(checksumMatchSecondary, wordChecksum)) {
       return true;
@@ -229,8 +207,9 @@ bool correctType(uint32_t *tmp, uint32_t currentChecksum) {
   }
 
   for (uint32_t typeHash : fieldTypeMap[currentChecksum]) {
-    if (typePrefixes[typeHash].size()) {
-      return typePrefixes[typeHash].count(subdict[0][tmp[0]]) > 0;
+    const auto &prefixes = typePrefixes[typeHash];
+    if (!prefixes.empty()) {
+      return prefixes.count(subdict[0][tmp[0]]) > 0;
     }
     else {
       return false; //typePrefixes[0].count(subdict[0][tmp[0]]) > 0;
@@ -302,7 +281,7 @@ void collisions(uint32_t *tmp, long pos, long max, uint32_t currentChecksum, uin
 
   for (long c = 0; c < cmax && !terminating; c++) {
     tmp[pos] = c;
-    uint32_t newChecksum = checksumNonRef(getDictEntry(c, pos, max), currentChecksum);
+    uint32_t newChecksum = checksum(getDictEntry(c, pos, max), currentChecksum);
     collisions(tmp, pos + 1, max, newChecksum, hashCount, workerCount > 1 && pos == threadLevel);
   }
 }
@@ -316,70 +295,76 @@ void collisionWorker(WorkerData *workerData) {
   }
 }
 
-std::vector<std::string> defaultDict {
-  "0",
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "_",
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
+const std::string defaultDictLowerCase[] {
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+};
+const std::string defaultDictUpperCase[] {
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+};
+const std::string defaultDictNumbers[] {
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+};
+const std::string defaultDictSpecial[] {
+    "_",
 };
 
 std::vector<std::string> getDict(std::string dictPathOrString) {
@@ -392,24 +377,16 @@ std::vector<std::string> getDict(std::string dictPathOrString) {
   }
 
   if (dict) {
-    std::string tmp;
+    std::string line;
 
-    dict >> tmp;
-    while (dict) {
-      ret.push_back(tmp);
-      dict >> tmp;
+    while (std::getline(dict, line)) {
+      if (line.empty() || line[0] == '#') {
+        continue;
+      }
+      ret.push_back(line);
     }
-  }
-  else {
-    std::stringstream ss(dictPathOrString);
-
-    std::string tmp;
-
-    ss >> tmp;
-    while (ss) {
-      ret.push_back(tmp);
-      ss >> tmp;
-    }
+  } else {
+    std::cerr << "Dictionary " << dictPathOrString << " not found." << std::endl;
   }
 
   return ret;
@@ -438,7 +415,9 @@ void loadFieldTypeMap (bool common = true) {
   fieldTypes >> std::hex >> v1 >> std::hex >> v2;
 
   while (fieldTypes) {
-    fieldTypeMap[v1].push_back(v2);
+    if (checksumMatch.count(v1) > 0 || checksumMatchSecondary.count(v1) > 0) {
+      fieldTypeMap[v1].push_back(v2);
+    }
     fieldTypes >> std::hex >> v1 >> std::hex >> v2;
   }
 
@@ -446,167 +425,224 @@ void loadFieldTypeMap (bool common = true) {
 
   typePrefixes[0].insert("t"); // ?
 
+  const auto HASH_0xf5ac91bb = 0xf5ac91bb; // no unknown left
+  const auto HASH_AABB = typeChecksum("AABB", 0);
+  const auto HASH_AxialCylinder = typeChecksum("AxialCylinder", 0);
+  const auto HASH_DT_ACD_NETWORK_NAME = typeChecksum("DT_ACD_NETWORK_NAME", 0);
+  const auto HASH_DT_BCVEC2I = typeChecksum("DT_BCVEC2I", 0);
+  const auto HASH_DT_BYTE = typeChecksum("DT_BYTE", 0);
+  const auto HASH_DT_CHARARRAY = typeChecksum("DT_CHARARRAY", 0);
+  const auto HASH_DT_CSTRING = typeChecksum("DT_CSTRING", 0);
+  const auto HASH_DT_ENUM = typeChecksum("DT_ENUM", 0);
+  const auto HASH_DT_FIXEDARRAY = typeChecksum("DT_FIXEDARRAY", 0);
+  const auto HASH_DT_FLOAT = typeChecksum("DT_FLOAT", 0);
+  const auto HASH_DT_GBID = typeChecksum("DT_GBID", 0);
+  const auto HASH_DT_INT = typeChecksum("DT_INT", 0);
+  const auto HASH_DT_INT64 = typeChecksum("DT_INT64", 0);
+  const auto HASH_DT_POLYMORPHIC_VARIABLEARRAY = typeChecksum("DT_POLYMORPHIC_VARIABLEARRAY", 0);
+  const auto HASH_DT_RANGE = typeChecksum("DT_RANGE", 0);
+  const auto HASH_DT_RGBACOLOR = typeChecksum("DT_RGBACOLOR", 0);
+  const auto HASH_DT_RGBACOLORVALUE = typeChecksum("DT_RGBACOLORVALUE", 0);
+  const auto HASH_DT_SHARED_SERVER_DATA_ID = typeChecksum("DT_SHARED_SERVER_DATA_ID", 0);
+  const auto HASH_DT_SNO = typeChecksum("DT_SNO", 0);
+  const auto HASH_DT_SNO_NAME = typeChecksum("DT_SNO_NAME", 0);
+  const auto HASH_DT_STARTLOC_NAME = typeChecksum("DT_STARTLOC_NAME", 0);
+  const auto HASH_DT_STRING_FORMULA = typeChecksum("DT_STRING_FORMULA", 0);
+  const auto HASH_DT_TAGMAP = typeChecksum("DT_TAGMAP", 0);
+  const auto HASH_DT_UINT = typeChecksum("DT_UINT", 0);
+  const auto HASH_DT_VARIABLEARRAY = typeChecksum("DT_VARIABLEARRAY", 0);
+  const auto HASH_DT_VECTOR2D = typeChecksum("DT_VECTOR2D", 0);
+  const auto HASH_DT_VECTOR3D = typeChecksum("DT_VECTOR3D", 0);
+  const auto HASH_DT_VECTOR4D = typeChecksum("DT_VECTOR4D", 0);
+  const auto HASH_DT_WORD = typeChecksum("DT_WORD", 0);
+  const auto HASH_GBHandle = typeChecksum("GBHandle", 0);
+  const auto HASH_InterpolationPath_RGBAColor = typeChecksum("InterpolationPath_RGBAColor", 0);
+  const auto HASH_InterpolationPath_float = typeChecksum("InterpolationPath_float", 0);
+  const auto HASH_InterpolationPath_int32 = typeChecksum("InterpolationPath_int32", 0);
+  const auto HASH_Matrix3x3 = typeChecksum("Matrix3x3", 0);
+  const auto HASH_PRSTransform = typeChecksum("PRSTransform", 0);
+  const auto HASH_PRTransform = typeChecksum("PRTransform", 0);
+  const auto HASH_SharedServerWorldPlace = typeChecksum("SharedServerWorldPlace", 0); // no unknown left
+  const auto HASH_SpeedTree8BranchWindLevel = typeChecksum("SpeedTree8BranchWindLevel", 0); // no unknown left
+  const auto HASH_SpeedTree8RippleGroup = typeChecksum("SpeedTree8RippleGroup", 0); // no unknown left
+  const auto HASH_Sphere = typeChecksum("Sphere", 0);
+  const auto HASH_StringLabelHandleEx = typeChecksum("StringLabelHandleEx", 0);
+  const auto HASH_UIControlHandle = typeChecksum("UIControlHandle", 0);
+  const auto HASH_UIImageHandleReference = typeChecksum("UIImageHandleReference", 0);
+  const auto HASH_VectorPath = typeChecksum("VectorPath", 0);
+  const auto HASH_bcQuat = typeChecksum("bcQuat", 0);
+  const auto HASH_dmTransformMirror = typeChecksum("dmTransformMirror", 0); // no unknown left
+
+
   // Fake type DT_BOOL
-  typePrefixes[0x3d461b83].insert("b");
-  typePrefixes[0x3d461b83].insert("f");
-  if (!common) typePrefixes[0x3d461b83].insert("m_b");
-  if (!common) typePrefixes[0x3d461b83].insert("m_f");
+  const auto HASH_DT_BOOL = typeChecksum("DT_BOOL", 0);
+  typePrefixes[HASH_DT_BOOL].insert("b");
+  typePrefixes[HASH_DT_BOOL].insert("f");
+  if (!common) typePrefixes[HASH_DT_BOOL].insert("m_b");
+  if (!common) typePrefixes[HASH_DT_BOOL].insert("m_f");
 
   // Fake type DT_FLOAT_ARRAY
-  typePrefixes[0xb0a53e8b].insert("af");
+  const auto HASH_DT_FLOAT_ARRAY = typeChecksum("DT_FLOAT_ARRAY", 0);
+  typePrefixes[HASH_DT_FLOAT_ARRAY].insert("af");
 
   // Rest of existing types.
-  typePrefixes[2408934].insert("aabb");
-  if (!common) typePrefixes[231895989].insert("h");
-  typePrefixes[248064347].insert("wp");
-  typePrefixes[721585600].insert("h");
-  typePrefixes[1028015787].insert("dw");
-  if (!common) typePrefixes[1028015787].insert("u");
-  if (!common) typePrefixes[1028015787].insert("n");
-  if (!common) typePrefixes[1028015787].insert("game");
-  if (!common) typePrefixes[1028015787].insert("twin");
-  typePrefixes[1028111660].insert("e");
-  if (!common) typePrefixes[1028111660].insert("id");
-  if (!common) typePrefixes[1028111660].insert("n");
-  if (!common) typePrefixes[1028111660].insert("dw");
-  typePrefixes[1028170061].insert("gbid");
-  if (!common) typePrefixes[1028170061].insert("n");
-  typePrefixes[1028680983].insert("dw");
-  typePrefixes[1028680983].insert("h");
-  typePrefixes[1028680983].insert("sz");
-  typePrefixes[1028680983].insert("u");
-  if (!common) typePrefixes[1028680983].insert("s");
-  if (!common) typePrefixes[1028680983].insert("id");
-  if (!common) typePrefixes[1028680983].insert("w");
-  if (!common) typePrefixes[1028680983].insert("sno");
-  typePrefixes[1028759507].insert("bone");
-  typePrefixes[1028759507].insert("dw");
-  if (!common) typePrefixes[1028759507].insert("vertex");
-  if (!common) typePrefixes[1028759507].insert("triangle");
-  if (!common) typePrefixes[1028759507].insert("constraint");
-  if (!common) typePrefixes[1028759507].insert("max");
-  if (!common) typePrefixes[1028759507].insert("plane");
-  typePrefixes[1028759507].insert("n");
-  typePrefixes[1028759507].insert("u");
-  if (!common) typePrefixes[1028759507].insert("m_bone");
-  if (!common) typePrefixes[1028759507].insert("attachment");
-  if (!common) typePrefixes[1028759507].insert("start");
-  if (!common) typePrefixes[1028759507].insert("end");
-  typePrefixes[1443554511].insert("path");
-  typePrefixes[1599239464].insert("local");
-  typePrefixes[1599239464].insert("m_local");
-  typePrefixes[1683664497].insert("ar");
-  if (!common) typePrefixes[1683664497].insert("arn");
-  typePrefixes[1683664497].insert("arr");
-  if (!common) typePrefixes[1683664497].insert("at");
-  typePrefixes[1683664497].insert("pt");
-  typePrefixes[1797021084].insert("h");
-  if (!common) typePrefixes[1797021084].insert("ar");
-  typePrefixes[1931092405].insert("vec");
-  typePrefixes[1931092405].insert("p");
-  typePrefixes[2170423475].insert("m");
-  typePrefixes[2175310548].insert("sz");
-  typePrefixes[2175310548].insert("us");
-  typePrefixes[2193642883].insert("u");
-  typePrefixes[2193642883].insert("dw");
-  typePrefixes[2384880434].insert("rgba");
-  if (!common) typePrefixes[2384880434].insert("fl");
-  typePrefixes[2388214534].insert("ar");
-  if (!common) typePrefixes[2388214534].insert("arn");
-  typePrefixes[2388214534].insert("arr");
-  if (!common) typePrefixes[2388214534].insert("at");
-  typePrefixes[2388214534].insert("pt");
-  typePrefixes[2450313795].insert("v");
-  typePrefixes[2450313795].insert("sz");
-  typePrefixes[2588169118].insert("local");
-  typePrefixes[2594652800].insert("path");
-  if (!common) typePrefixes[2764320258].insert("count");
-  if (!common) typePrefixes[2764320258].insert("e");
-  if (!common) typePrefixes[2764320258].insert("i");
-  typePrefixes[2764320258].insert("id");
-  if (!common) typePrefixes[2764320258].insert("is");
-  if (!common) typePrefixes[2764320258].insert("m_");
-  if (!common) typePrefixes[2764320258].insert("m_bone");
-  if (!common) typePrefixes[2764320258].insert("m_face");
-  if (!common) typePrefixes[2764320258].insert("m_plane");
-  if (!common) typePrefixes[2764320258].insert("m_vertex");
-  typePrefixes[2764320258].insert("n");
-  if (!common) typePrefixes[2764320258].insert("sample");
-  if (!common) typePrefixes[2764320258].insert("sno");
-  if (!common) typePrefixes[2764320258].insert("w");
-  typePrefixes[2764331143].insert("sno");
-  if (!common) typePrefixes[2764331143].insert("h");
-  typePrefixes[2866333320].insert("ann");
-  if (!common) typePrefixes[2866333320].insert("m_ann");
-  typePrefixes[3017070665].insert("wcyl");
-  typePrefixes[3045283369].insert("id");
-  typePrefixes[3063971755].insert("h");
-  if (!common) typePrefixes[3121633597].insert("a");
-  typePrefixes[3121633597].insert("ann");
-  typePrefixes[3121633597].insert("dw");
-  typePrefixes[3121633597].insert("e");
-  typePrefixes[3121633597].insert("fl");
-  typePrefixes[3121633597].insert("h");
-  typePrefixes[3121633597].insert("n");
-  if (!common) typePrefixes[3121633597].insert("q");
-  typePrefixes[3121633597].insert("sno");
-  typePrefixes[3121633597].insert("u");
-  typePrefixes[3121633597].insert("v");
-  typePrefixes[3121633597].insert("wp");
-  typePrefixes[3124492544].insert("v");
-  typePrefixes[3124492544].insert("vec");
-  if (!common) typePrefixes[3124492544].insert("wp");
-  if (!common) typePrefixes[3124492544].insert("wv");
-  typePrefixes[3124492577].insert("wv");
-  typePrefixes[3124492577].insert("wp");
-  typePrefixes[3124492577].insert("v");
-  typePrefixes[3124492577].insert("vec");
-  if (!common) typePrefixes[3124492610].insert("inv");
-  if (!common) typePrefixes[3124492610].insert("m_inv");
-  if (!common) typePrefixes[3124492610].insert("pt");
-  typePrefixes[3124492610].insert("v");
-  if (!common) typePrefixes[3124492610].insert("vec");
-  typePrefixes[3212271855].insert("rgbaval");
-  typePrefixes[3244749660].insert("ar");
-  if (!common) typePrefixes[3244749660].insert("arn");
-  typePrefixes[3244749660].insert("arr");
-  if (!common) typePrefixes[3244749660].insert("at");
-  typePrefixes[3244749660].insert("pt");
-  typePrefixes[3339108615].insert("snoname");
-  typePrefixes[3339108615].insert("sno");
-  typePrefixes[3384912071].insert("ws");
-  typePrefixes[3422409450].insert("path");
-  typePrefixes[3423838001].insert("s");
-  typePrefixes[3493213809].insert("m_e");
-  if (!common) typePrefixes[3493213809].insert("h");
-  typePrefixes[3846829457].insert("sz");
-  if (!common) typePrefixes[3846829457].insert("n");
-  typePrefixes[3846829457].insert("s");
-  typePrefixes[3848460434].insert("s");
-  typePrefixes[3864020909].insert("a");
-  typePrefixes[3864020909].insert("fl");
-  if (!common) typePrefixes[3864020909].insert("wd");
-  typePrefixes[3867655596].insert("a");
-  if (!common) typePrefixes[3867655596].insert("blend");
-  if (!common) typePrefixes[3867655596].insert("constraint");
-  typePrefixes[3867655596].insert("dw");
-  if (!common) typePrefixes[3867655596].insert("follower");
-  typePrefixes[3867655596].insert("m_a");
-  if (!common) typePrefixes[3867655596].insert("m_cell");
-  typePrefixes[3867655596].insert("n");
-  if (!common) typePrefixes[3867655596].insert("pn");
-  typePrefixes[3867655596].insert("pt");
-  if (!common) typePrefixes[3867655596].insert("sz");
-  typePrefixes[3867655596].insert("u");
-  typePrefixes[3877855748].insert("fl");
-  typePrefixes[3955716320].insert("q");
-  typePrefixes[4111826321].insert("transform");
-  typePrefixes[4121727419].insert("id");
+  typePrefixes[HASH_AABB].insert("aabb");
+  if (!common) typePrefixes[HASH_GBHandle].insert("h");
+  typePrefixes[HASH_SharedServerWorldPlace].insert("wp");
+  typePrefixes[HASH_StringLabelHandleEx].insert("h");
+  typePrefixes[HASH_DT_BYTE].insert("dw");
+  if (!common) typePrefixes[HASH_DT_BYTE].insert("u");
+  if (!common) typePrefixes[HASH_DT_BYTE].insert("n");
+  if (!common) typePrefixes[HASH_DT_BYTE].insert("game");
+  if (!common) typePrefixes[HASH_DT_BYTE].insert("twin");
+  typePrefixes[HASH_DT_ENUM].insert("e");
+  if (!common) typePrefixes[HASH_DT_ENUM].insert("id");
+  if (!common) typePrefixes[HASH_DT_ENUM].insert("n");
+  if (!common) typePrefixes[HASH_DT_ENUM].insert("dw");
+  typePrefixes[HASH_DT_GBID].insert("gbid");
+  if (!common) typePrefixes[HASH_DT_GBID].insert("n");
+  typePrefixes[HASH_DT_UINT].insert("dw");
+  typePrefixes[HASH_DT_UINT].insert("h");
+  typePrefixes[HASH_DT_UINT].insert("n");
+  typePrefixes[HASH_DT_UINT].insert("sz");
+  typePrefixes[HASH_DT_UINT].insert("u");
+  if (!common) typePrefixes[HASH_DT_UINT].insert("s");
+  if (!common) typePrefixes[HASH_DT_UINT].insert("id");
+  if (!common) typePrefixes[HASH_DT_UINT].insert("w");
+  if (!common) typePrefixes[HASH_DT_UINT].insert("sno");
+  typePrefixes[HASH_DT_WORD].insert("bone");
+  typePrefixes[HASH_DT_WORD].insert("dw");
+  if (!common) typePrefixes[HASH_DT_WORD].insert("vertex");
+  if (!common) typePrefixes[HASH_DT_WORD].insert("triangle");
+  if (!common) typePrefixes[HASH_DT_WORD].insert("constraint");
+  if (!common) typePrefixes[HASH_DT_WORD].insert("max");
+  if (!common) typePrefixes[HASH_DT_WORD].insert("plane");
+  typePrefixes[HASH_DT_WORD].insert("n");
+  typePrefixes[HASH_DT_WORD].insert("u");
+  if (!common) typePrefixes[HASH_DT_WORD].insert("m_bone");
+  if (!common) typePrefixes[HASH_DT_WORD].insert("attachment");
+  if (!common) typePrefixes[HASH_DT_WORD].insert("start");
+  if (!common) typePrefixes[HASH_DT_WORD].insert("end");
+  typePrefixes[HASH_InterpolationPath_RGBAColor].insert("path");
+  typePrefixes[HASH_dmTransformMirror].insert("local");
+  typePrefixes[HASH_dmTransformMirror].insert("m_local");
+  typePrefixes[HASH_DT_POLYMORPHIC_VARIABLEARRAY].insert("ar");
+  if (!common) typePrefixes[HASH_DT_POLYMORPHIC_VARIABLEARRAY].insert("arn");
+  if (!common) typePrefixes[HASH_DT_POLYMORPHIC_VARIABLEARRAY].insert("arr");
+  if (!common) typePrefixes[HASH_DT_POLYMORPHIC_VARIABLEARRAY].insert("at");
+  typePrefixes[HASH_DT_POLYMORPHIC_VARIABLEARRAY].insert("pt");
+  typePrefixes[HASH_UIImageHandleReference].insert("h");
+  if (!common) typePrefixes[HASH_UIImageHandleReference].insert("ar");
+  typePrefixes[HASH_DT_BCVEC2I].insert("vec");
+  typePrefixes[HASH_DT_BCVEC2I].insert("p");
+  typePrefixes[HASH_Matrix3x3].insert("m");
+  typePrefixes[HASH_DT_CHARARRAY].insert("sz");
+  typePrefixes[HASH_DT_CHARARRAY].insert("us");
+  typePrefixes[HASH_DT_STARTLOC_NAME].insert("u");
+  typePrefixes[HASH_DT_STARTLOC_NAME].insert("dw");
+  typePrefixes[HASH_DT_RGBACOLOR].insert("rgba");
+  if (!common) typePrefixes[HASH_DT_RGBACOLOR].insert("fl");
+  typePrefixes[HASH_DT_FIXEDARRAY].insert("ar");
+  if (!common) typePrefixes[HASH_DT_FIXEDARRAY].insert("arn");
+  if (!common) typePrefixes[HASH_DT_FIXEDARRAY].insert("arr");
+  if (!common) typePrefixes[HASH_DT_FIXEDARRAY].insert("at");
+  typePrefixes[HASH_DT_FIXEDARRAY].insert("pt");
+  typePrefixes[HASH_DT_STRING_FORMULA].insert("v");
+  typePrefixes[HASH_DT_STRING_FORMULA].insert("sz");
+  typePrefixes[HASH_PRTransform].insert("local");
+  typePrefixes[HASH_VectorPath].insert("path");
+  if (!common) typePrefixes[HASH_DT_INT].insert("count");
+  typePrefixes[HASH_DT_INT].insert("dw");
+  if (!common) typePrefixes[HASH_DT_INT].insert("e");
+  if (!common) typePrefixes[HASH_DT_INT].insert("i");
+  if (!common) typePrefixes[HASH_DT_INT].insert("id");
+  if (!common) typePrefixes[HASH_DT_INT].insert("is");
+  if (!common) typePrefixes[HASH_DT_INT].insert("m_");
+  if (!common) typePrefixes[HASH_DT_INT].insert("m_bone");
+  if (!common) typePrefixes[HASH_DT_INT].insert("m_face");
+  if (!common) typePrefixes[HASH_DT_INT].insert("m_plane");
+  if (!common) typePrefixes[HASH_DT_INT].insert("m_vertex");
+  typePrefixes[HASH_DT_INT].insert("n");
+  if (!common) typePrefixes[HASH_DT_INT].insert("sample");
+  if (!common) typePrefixes[HASH_DT_INT].insert("sno");
+  if (!common) typePrefixes[HASH_DT_INT].insert("w");
+  typePrefixes[HASH_DT_SNO].insert("sno");
+  if (!common) typePrefixes[HASH_DT_SNO].insert("h");
+  typePrefixes[HASH_DT_ACD_NETWORK_NAME].insert("ann");
+  if (!common) typePrefixes[HASH_DT_ACD_NETWORK_NAME].insert("m_ann");
+  typePrefixes[HASH_AxialCylinder].insert("wcyl");
+  typePrefixes[HASH_DT_SHARED_SERVER_DATA_ID].insert("id");
+  typePrefixes[HASH_UIControlHandle].insert("h");
+  typePrefixes[HASH_DT_VECTOR2D].insert("v");
+  typePrefixes[HASH_DT_VECTOR2D].insert("vec");
+  if (!common) typePrefixes[HASH_DT_VECTOR2D].insert("wp");
+  if (!common) typePrefixes[HASH_DT_VECTOR2D].insert("wv");
+  typePrefixes[HASH_DT_VECTOR3D].insert("wv");
+  typePrefixes[HASH_DT_VECTOR3D].insert("wp");
+  typePrefixes[HASH_DT_VECTOR3D].insert("v");
+  typePrefixes[HASH_DT_VECTOR3D].insert("vec");
+  if (!common) typePrefixes[HASH_DT_VECTOR4D].insert("inv");
+  if (!common) typePrefixes[HASH_DT_VECTOR4D].insert("m_inv");
+  if (!common) typePrefixes[HASH_DT_VECTOR4D].insert("pt");
+  typePrefixes[HASH_DT_VECTOR4D].insert("v");
+  if (!common) typePrefixes[HASH_DT_VECTOR4D].insert("vec");
+  typePrefixes[HASH_DT_RGBACOLORVALUE].insert("rgbaval");
+  typePrefixes[HASH_DT_VARIABLEARRAY].insert("ar");
+  if (!common) typePrefixes[HASH_DT_VARIABLEARRAY].insert("arn");
+  if (!common) typePrefixes[HASH_DT_VARIABLEARRAY].insert("arr");
+  if (!common) typePrefixes[HASH_DT_VARIABLEARRAY].insert("at");
+  typePrefixes[HASH_DT_VARIABLEARRAY].insert("pt");
+  typePrefixes[HASH_DT_SNO_NAME].insert("snoname");
+  typePrefixes[HASH_DT_SNO_NAME].insert("sno");
+  typePrefixes[HASH_Sphere].insert("ws");
+  typePrefixes[HASH_InterpolationPath_float].insert("path");
+  typePrefixes[HASH_SpeedTree8BranchWindLevel].insert("s");
+  typePrefixes[HASH_DT_TAGMAP].insert("m_e");
+  if (!common) typePrefixes[HASH_DT_TAGMAP].insert("h");
+  typePrefixes[HASH_DT_CSTRING].insert("sz");
+  if (!common) typePrefixes[HASH_DT_CSTRING].insert("n");
+  typePrefixes[HASH_DT_CSTRING].insert("s");
+  typePrefixes[HASH_SpeedTree8RippleGroup].insert("s");
+  if (!common) typePrefixes[HASH_DT_FLOAT].insert("a");
+  typePrefixes[HASH_DT_FLOAT].insert("f");
+  typePrefixes[HASH_DT_FLOAT].insert("fl");
+  if (!common) typePrefixes[HASH_DT_FLOAT].insert("wd");
+  typePrefixes[HASH_DT_INT64].insert("a");
+  if (!common) typePrefixes[HASH_DT_INT64].insert("blend");
+  if (!common) typePrefixes[HASH_DT_INT64].insert("constraint");
+  typePrefixes[HASH_DT_INT64].insert("dw");
+  if (!common) typePrefixes[HASH_DT_INT64].insert("follower");
+  typePrefixes[HASH_DT_INT64].insert("m_a");
+  if (!common) typePrefixes[HASH_DT_INT64].insert("m_cell");
+  typePrefixes[HASH_DT_INT64].insert("n");
+  if (!common) typePrefixes[HASH_DT_INT64].insert("pn");
+  typePrefixes[HASH_DT_INT64].insert("pt");
+  if (!common) typePrefixes[HASH_DT_INT64].insert("sz");
+  typePrefixes[HASH_DT_INT64].insert("u");
+  typePrefixes[HASH_DT_RANGE].insert("fl");
+  typePrefixes[HASH_bcQuat].insert("q");
+  typePrefixes[HASH_PRSTransform].insert("transform");
+  typePrefixes[HASH_0xf5ac91bb].insert("id");
+  typePrefixes[HASH_0xf5ac91bb].insert("t");
+  typePrefixes[HASH_InterpolationPath_int32].insert("path");
 }
 
+#ifdef _WIN32
+#include <Windows.h>
+BOOL WINAPI CtrlHandler(DWORD fdwCtrlType)
+{
+  if (fdwCtrlType == CTRL_C_EVENT) {
+    terminating = true;
+    return true;
+  }
+
+  return false;
+}
+#else
 void signal_callback_handler(int signum) {
   terminating = true;
 }
+#endif
 
 int main(int argc, char *argv[]) {
   uint32_t gettingSubDict = 0;
@@ -624,9 +660,14 @@ int main(int argc, char *argv[]) {
   bool gettingDict = false;
   bool useCommonPrefixes = true;
   bool literalDict = false;
+  bool forceProvidedHashes = false;
 
+#ifdef _WIN32
+  SetConsoleCtrlHandler(CtrlHandler, TRUE);
+#else
   signal(SIGINT, &signal_callback_handler);
   signal(SIGTERM, &signal_callback_handler);
+#endif
 
   int pos = 0;
 
@@ -705,11 +746,15 @@ int main(int argc, char *argv[]) {
       else if(arg == "--literal") {
         literalDict = true;
       }
+      else if(arg == "--force") {
+        forceProvidedHashes = true;
+      }
       else if(arg == "--threads") {
         gettingThreads = true;
       }
       else if(arg[0] == '-') {
-        // discard unknown option
+        std::cerr << "Error: Unknown option: " << arg << "\n";
+        return 1;
       }
       else if(gettingSubDict == 1) {
         std::stringstream ss;
@@ -733,7 +778,7 @@ int main(int argc, char *argv[]) {
           }
         }
         else {
-            subdict[subDictPos].push_back(arg);
+          subdict[subDictPos].push_back(arg);
         }
 
         gettingSubDict = 0;
@@ -801,11 +846,9 @@ int main(int argc, char *argv[]) {
 
   if (hashType == 1) {
     checksum = fieldChecksum;
-    checksumNonRef = fieldChecksumNonRef;
   }
   else if (hashType == 2) {
     checksum = gbidChecksum;
-    checksumNonRef = gbidChecksumNonRef;
   }
 
   if (!isatty(0)) {
@@ -818,23 +861,43 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  if (hashType == 0 && checksumMatch.size() == 0) {
+  ChecksumSetType checksumUnfound;
+  if (hashType == 0) {
     std::ifstream hashes("../unfound_hashes.txt");
     size_t uTmp;
     hashes >> std::hex >> uTmp;
 
     while (hashes) {
-      addChecksum(checksumMatch, uTmp);
+      addChecksum(checksumUnfound, uTmp);
       hashes >> std::hex >> uTmp;
     }
-  } else if(hashType == 1 && checksumMatch.size() == 0) {
+  } else if (hashType == 1) {
     std::ifstream hashes("../unfound_field_hashes.txt");
     size_t uTmp;
 
     hashes >> std::hex >> uTmp;
     while (hashes) {
-      addChecksum(checksumMatch, uTmp);
+      addChecksum(checksumUnfound, uTmp);
       hashes >> std::hex >> uTmp;
+    }
+  }
+
+  bool checksumProvided = false;
+  if (checksumMatch.empty()) {
+    checksumMatch = checksumUnfound;
+  } else {
+    checksumProvided = true;
+    // remove already known hashes
+    if (!forceProvidedHashes) {
+      for (auto it = checksumMatch.begin(), itEnd = checksumMatch.end(); it != itEnd; ) {
+        if (checksumUnfound.count(*it) == 0) {
+          std::cout << "removing already known hash: " << std::hex << *it << "\n";
+          it = checksumMatch.erase(it);
+        } else {
+          ++it;
+        }
+      }
+      std::cout << std::dec << std::endl;
     }
   }
 
@@ -851,98 +914,62 @@ int main(int argc, char *argv[]) {
     paired = false;
   }
 
-  int32_t dictmax = dict.size();
   std::unordered_map<std::string, bool> dictmap;
+  auto addDictEntry = [&dictmap](const std::string &entry) {
+      if (!dictmap[entry]) {
+          dictmap[entry] = true;
+          dict.push_back(entry);
+      }
+  };
 
   if (useDict) {
-    if (dictPathOrString == "../english_dict.txt") {
-      for (const auto &baseelem : getDict("../dict.txt")) {
-        if (baseelem.length() > 1 || wordsOnly) {
-          if (literalDict) {
-            if (!dictmap[baseelem]) {
-              dictmap[baseelem] = true;
-              dict.push_back(baseelem);
+    auto populateDict = [&](const std::string &dictFilePath) {
+        for (const auto &baseelem : getDict(dictFilePath)) {
+            if (baseelem.length() > 1 || wordsOnly) {
+                if (literalDict) {
+                    addDictEntry(baseelem);
+                    continue;
+                }
+
+                if (ignoreAllCaps && isAllCaps(baseelem)) {
+                    continue;
+                }
+
+                std::string elemLower = baseelem;
+                std::transform(elemLower.begin(), elemLower.end(), elemLower.begin(), [](unsigned char c){ return std::tolower(c); });
+
+                if (hashType == 2) {
+                    addDictEntry(elemLower);
+                    continue;
+                }
+
+                std::string elem = baseelem;
+                if (elem == elemLower) {
+                    std::string elemUpper = elem;
+                    std::transform(elemUpper.begin(), elemUpper.end(), elemUpper.begin(), [](unsigned char c){ return std::toupper(c); });
+                    elem = elemUpper.substr(0, 1) + elemLower.substr(1);
+                }
+
+                addDictEntry(elem);
             }
-
-            continue;
-          }
-
-          std::string elem = baseelem;
-          std::string newelem = elem;
-          std::string newelem2 = elem;
-
-          std::transform(newelem.begin(), newelem.end(), newelem.begin(), [](unsigned char c){ return std::toupper(c); });
-          std::transform(newelem2.begin(), newelem2.end(), newelem2.begin(), [](unsigned char c){ return std::tolower(c); });
-
-          if (ignoreAllCaps && isAllCaps(elem)) {
-            continue;
-          }
-
-          if (hashType == 2 && !dictmap[newelem2]) {
-            dictmap[newelem2] = true;
-            dict.push_back(newelem2);
-            continue;
-          }
-
-          if (elem == newelem2) {
-            elem = newelem.substr(0, 1) + newelem2.substr(1);
-          }
-
-          if (!dictmap[elem]) {
-            dictmap[elem] = true;
-            dict.push_back(elem);
-          }
         }
-      }
+    };
+
+    if (dictPathOrString == "../english_dict.txt") {
+      populateDict("../dict.txt");
     }
 
-    for (const auto &baseelem : getDict(dictPathOrString)) {
-      if (baseelem.length() > 1 || wordsOnly) {
-        if (literalDict) {
-          if (!dictmap[baseelem]) {
-            dictmap[baseelem] = true;
-            dict.push_back(baseelem);
-          }
-
-          continue;
-        }
-
-        std::string elem = baseelem;
-        std::string newelem = elem;
-        std::string newelem2 = elem;
-
-        std::transform(newelem.begin(), newelem.end(), newelem.begin(), [](unsigned char c){ return std::toupper(c); });
-        std::transform(newelem2.begin(), newelem2.end(), newelem2.begin(), [](unsigned char c){ return std::tolower(c); });
-
-        if (ignoreAllCaps && isAllCaps(elem)) {
-          continue;
-        }
-
-        if (hashType == 2 && !dictmap[newelem2]) {
-          dictmap[newelem2] = true;
-          dict.push_back(newelem2);
-          continue;
-        }
-
-        if (elem == newelem2) {
-          elem = newelem.substr(0, 1) + newelem2.substr(1);
-        }
-
-        if (!dictmap[elem]) {
-          dictmap[elem] = true;
-          dict.push_back(elem);
-        }
-      }
-    }
+    populateDict(dictPathOrString);
   }
 
-  if (!wordsOnly) {
-    for (const auto &baseelem : defaultDict) {
-      if (!dictmap[baseelem]) {
-        dictmap[baseelem] = true;
-        dict.push_back(baseelem);
-      }
+  if (!wordsOnly || !useDict) {
+    if (hashType != 2) {
+      std::for_each(std::cbegin(defaultDictUpperCase), std::cend(defaultDictUpperCase), addDictEntry);
     }
+
+    std::for_each(std::cbegin(defaultDictLowerCase), std::cend(defaultDictLowerCase), addDictEntry);
+    std::for_each(std::cbegin(defaultDictNumbers), std::cend(defaultDictNumbers), addDictEntry);
+    std::for_each(std::cbegin(defaultDictSpecial), std::cend(defaultDictSpecial), addDictEntry);
   }
 
   if (hashType == 1) {
@@ -956,8 +983,7 @@ int main(int argc, char *argv[]) {
           return s;
         });
       }
-    }
-    else {
+    } else if (subdict[0].empty() || !checksumProvided) {
       loadFieldTypeMap(useCommonPrefixes);
 
       if (subdict[0].size() < 1) {
@@ -984,6 +1010,18 @@ int main(int argc, char *argv[]) {
           subdict[0].push_back(prefixMapEntry.first);
         }
       }
+
+      std::unordered_set<uint32_t> typesReferenced;
+
+      for (uint32_t hash : checksumMatch) {
+        for (uint32_t typeHash : fieldTypeMap[hash]) {
+          typesReferenced.insert(typeHash);
+        }
+      }
+
+      if (typesReferenced.size() == 1) {
+        usingFieldTypeMap = false;
+      }
     }
   }
 
@@ -997,6 +1035,7 @@ int main(int argc, char *argv[]) {
   }
 
   if (checksumMatch.size()) {
+    std::cerr << "Type prefix size: " << typePrefixes.size() << std::endl;
     std::cerr << "Prefix size: " << subdict[0].size() << std::endl;
     std::cerr << "Dictionary size: " << dict.size() << std::endl;
     std::cerr << "Suffix size: " << subdict[63].size() << std::endl;

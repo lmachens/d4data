@@ -31,7 +31,7 @@
  "pathSystemScale": [],
  "pathSystemCount": [
   {
-   "__type__": "Type_cc354444",
+   "__type__": "InterpolationPath_int32",
    "__typeHash__": 3426042948,
    "tHeader": {
     "__type__": "InterpolationPathHeader",
@@ -62,7 +62,7 @@
    },
    "ptArrayNodes": [
     {
-     "__type__": "Type_77e24bbd",
+     "__type__": "InterpolationNode_int32",
      "__typeHash__": 2011319229,
      "tValueMin": 0,
      "tValueMax": 0,
@@ -71,9 +71,9 @@
    ]
   }
  ],
- "unk_63560e2": [
+ "pathSystemBurst": [
   {
-   "__type__": "Type_cc354444",
+   "__type__": "InterpolationPath_int32",
    "__typeHash__": 3426042948,
    "tHeader": {
     "__type__": "InterpolationPathHeader",
@@ -104,7 +104,7 @@
    },
    "ptArrayNodes": [
     {
-     "__type__": "Type_77e24bbd",
+     "__type__": "InterpolationNode_int32",
      "__typeHash__": 2011319229,
      "tValueMin": 1,
      "tValueMax": 1,
@@ -117,7 +117,7 @@
  "pathSystemAlphaAux": [],
  "pathParticleDuration": [
   {
-   "__type__": "Type_cbfdd2ea",
+   "__type__": "InterpolationPath_float",
    "__typeHash__": 3422409450,
    "tHeader": {
     "__type__": "InterpolationPathHeader",
@@ -148,7 +148,7 @@
    },
    "ptArrayNodes": [
     {
-     "__type__": "Type_77aada63",
+     "__type__": "InterpolationNode_float",
      "__typeHash__": 2007685731,
      "tValueMin": 0.44999998807907104,
      "tValueMax": 0.44999998807907104,
@@ -164,7 +164,7 @@
    "__type__": "VectorPath",
    "__typeHash__": 2594652800,
    "tPathData": {
-    "__type__": "Type_41b30aaa",
+    "__type__": "InterpolationPath_bcVec3",
     "__typeHash__": 1102252714,
     "tHeader": {
      "__type__": "InterpolationPathHeader",
@@ -227,7 +227,7 @@
     },
     "ptArrayNodes": [
      {
-      "__type__": "Type_63010143",
+      "__type__": "InterpolationNode_bcVec3",
       "__typeHash__": 1661010243,
       "tValueMin": {
        "x": 0,
@@ -250,24 +250,24 @@
  "pathSystemSpawnRate": [],
  "pathSystemSpeedSpawnRate": [],
  "pathSystemSpeedDurationFactor": [],
- "unk_e44919": [],
+ "pathSystemSpeedFraction": [],
  "pathNoiseFrequency": [],
  "pathNoiseSmoothness": [],
  "pathNoiseAmplitude": [],
  "pathNoiseAmplitudeRange": [],
  "pathCameraOffset": [],
  "snoMaterial": {
-  "__raw__": 208381,
+  "__raw__": 1514562,
   "__group__": 57,
   "__type__": "DT_SNO",
   "__typeHash__": 2764331143,
-  "__targetFileName__": "base/meta/Material/barb_wrathOfTheBerserker_cast_dustDecal.mat",
+  "__targetFileName__": "base/meta/Material/barb_wrathOfTheBerserker_cast_dustDecalAlt.mat",
   "groupName": "Material",
-  "name": "barb_wrathOfTheBerserker_cast_dustDecal"
+  "name": "barb_wrathOfTheBerserker_cast_dustDecalAlt"
  },
  "snoHoudini": null,
  "snoPhysics": null,
- "unk_172022": null,
+ "snoSpawnOnCollision": null,
  "flNormalBias": 0,
  "flWindFactor": 1,
  "flExplosionFactor": 1,
@@ -299,11 +299,79 @@
    "dwPad": 0
   }
  ],
- "pathParticleColor": [],
- "unk_a748ce7": [],
+ "pathParticleColor": [
+  {
+   "__type__": "InterpolationPath_RGBAColor",
+   "__typeHash__": 1443554511,
+   "tHeader": {
+    "__type__": "InterpolationPathHeader",
+    "__typeHash__": 2520702334,
+    "tLoopPointStart": 0,
+    "tLoopPointEnd": 1,
+    "nDistributionFunction": 0,
+    "unk_2312508": 0,
+    "arInterpScalar": [
+     {
+      "__type__": "InterpolationScalar",
+      "__typeHash__": 991799518,
+      "nScalarFunction": 0,
+      "dwFlags": 1,
+      "tInputRange": {
+       "rangeValue1": 0,
+       "rangeValue2": 1
+      },
+      "tRemapRange": {
+       "rangeValue1": 0,
+       "rangeValue2": 1
+      },
+      "eRemapEasing": 0,
+      "szFormulaName": 0
+     }
+    ],
+    "dwFlags": 0
+   },
+   "ptArrayNodes": [
+    {
+     "__type__": "InterpolationNode_RGBAColor",
+     "__typeHash__": 2540765384,
+     "tValueMin": {
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+     },
+     "tValueMax": {
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+     },
+     "tTime": 0
+    },
+    {
+     "__type__": "InterpolationNode_RGBAColor",
+     "__typeHash__": 2540765384,
+     "tValueMin": {
+      "r": 133,
+      "g": 0,
+      "b": 0,
+      "a": 255
+     },
+     "tValueMax": {
+      "r": 145,
+      "g": 0,
+      "b": 0,
+      "a": 255
+     },
+     "tTime": 1
+    }
+   ]
+  }
+ ],
+ "pathParticleColorIntensity": [],
  "pathParticleAlpha": [
   {
-   "__type__": "Type_cbfdd2ea",
+   "__type__": "InterpolationPath_float",
    "__typeHash__": 3422409450,
    "tHeader": {
     "__type__": "InterpolationPathHeader",
@@ -334,7 +402,7 @@
    },
    "ptArrayNodes": [
     {
-     "__type__": "Type_77aada63",
+     "__type__": "InterpolationNode_float",
      "__typeHash__": 2007685731,
      "tValueMin": 0.5253425240516663,
      "tValueMax": 0.5253425240516663,
@@ -345,7 +413,7 @@
  ],
  "pathParticleAlphaAux": [
   {
-   "__type__": "Type_cbfdd2ea",
+   "__type__": "InterpolationPath_float",
    "__typeHash__": 3422409450,
    "tHeader": {
     "__type__": "InterpolationPathHeader",
@@ -376,21 +444,21 @@
    },
    "ptArrayNodes": [
     {
-     "__type__": "Type_77aada63",
+     "__type__": "InterpolationNode_float",
      "__typeHash__": 2007685731,
      "tValueMin": 0.6499999761581421,
      "tValueMax": 0.6499999761581421,
      "tTime": 0
     },
     {
-     "__type__": "Type_77aada63",
+     "__type__": "InterpolationNode_float",
      "__typeHash__": 2007685731,
      "tValueMin": 0.517270028591156,
      "tValueMax": 0.517270028591156,
      "tTime": 0.7327515482902527
     },
     {
-     "__type__": "Type_77aada63",
+     "__type__": "InterpolationNode_float",
      "__typeHash__": 2007685731,
      "tValueMin": 0.04278455674648285,
      "tValueMax": 0.04278455674648285,
@@ -399,10 +467,10 @@
    ]
   }
  ],
- "unk_ed6436f": [],
+ "pathParticleDistortionFactor": [],
  "unk_68b6b45": [
   {
-   "__type__": "Type_cbfdd2ea",
+   "__type__": "InterpolationPath_float",
    "__typeHash__": 3422409450,
    "tHeader": {
     "__type__": "InterpolationPathHeader",
@@ -415,25 +483,25 @@
      {
       "__type__": "InterpolationScalar",
       "__typeHash__": 991799518,
-      "nScalarFunction": 0,
+      "nScalarFunction": 12,
       "dwFlags": 1,
       "tInputRange": {
        "rangeValue1": 0,
        "rangeValue2": 1
       },
       "tRemapRange": {
-       "rangeValue1": 0,
-       "rangeValue2": 1
+       "rangeValue1": 0.5099999904632568,
+       "rangeValue2": 0.25
       },
       "eRemapEasing": 0,
       "szFormulaName": 0
      }
     ],
-    "dwFlags": 12
+    "dwFlags": 4
    },
    "ptArrayNodes": [
     {
-     "__type__": "Type_77aada63",
+     "__type__": "InterpolationNode_float",
      "__typeHash__": 2007685731,
      "tValueMin": 1,
      "tValueMax": 1,
@@ -444,7 +512,7 @@
  ],
  "pathParticleScale": [
   {
-   "__type__": "Type_cbfdd2ea",
+   "__type__": "InterpolationPath_float",
    "__typeHash__": 3422409450,
    "tHeader": {
     "__type__": "InterpolationPathHeader",
@@ -475,7 +543,7 @@
    },
    "ptArrayNodes": [
     {
-     "__type__": "Type_77aada63",
+     "__type__": "InterpolationNode_float",
      "__typeHash__": 2007685731,
      "tValueMin": 18,
      "tValueMax": 18,
@@ -488,16 +556,16 @@
  "pathAngularPosition": [],
  "pathAngularVelocity": [],
  "pathOrientationVelocity": [],
- "unk_2d865ba": [],
+ "pathOrientationVelocity2": [],
  "pathOrientationPosition": [],
- "unk_8c4fe0": [],
+ "pathOrientationPosition2": [],
  "pathOrientationAxis": [],
  "pathOrientationAxis2": [
   {
    "__type__": "VectorPath",
    "__typeHash__": 2594652800,
    "tPathData": {
-    "__type__": "Type_41b30aaa",
+    "__type__": "InterpolationPath_bcVec3",
     "__typeHash__": 1102252714,
     "tHeader": {
      "__type__": "InterpolationPathHeader",
@@ -560,7 +628,7 @@
     },
     "ptArrayNodes": [
      {
-      "__type__": "Type_63010143",
+      "__type__": "InterpolationNode_bcVec3",
       "__typeHash__": 1661010243,
       "tValueMin": {
        "x": 0,
@@ -593,7 +661,7 @@
  "pathMotionRelativeCartesianAcc": [],
  "pathMotionAttractorVel": [],
  "pathMotionAttractorPos": [],
- "unk_15ea201": [],
+ "pathMotionAttractorOri": [],
  "unk_afccc6": [],
  "unk_8dc0a2c": [],
  "nFacing": 1,
