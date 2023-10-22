@@ -64,7 +64,8 @@ export default () => {
     id += `:${stringId}@${point[0]},${point[1]}`;
 
     let aspectId = null;
-    const rewardName = actor.ptData[0].unk_4908570?.name;
+    const rewardName =
+      actor.ptData[0].snoPortalDestObjectiveTrackedReward?.name;
     if (rewardName) {
       const trackedReward = JSON.parse(
         readFileSync(`../json/base/meta/TrackedReward/${rewardName}.trd.json`)

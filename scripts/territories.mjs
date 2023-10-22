@@ -9,7 +9,7 @@ export default () => {
     return acc;
   }, {});
 
-  const territories = continent.unk_675bda3.map((camp) => {
+  const territories = continent.arRegionBoundaries.map((camp) => {
     const stringId = camp.snoTerritory.name;
     const id = `territories:${stringId}`;
     LOCALES.forEach((locale) => {
