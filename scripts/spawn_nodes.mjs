@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, writeFileSync } from "./fs.mjs";
+import { readFileSync, readdirSync } from "./fs.mjs";
 import { LOCALES, readTerm } from "./i18n.mjs";
 import { normalizePoint, toCamelCase } from "./lib.mjs";
 

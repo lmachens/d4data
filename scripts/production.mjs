@@ -1,3 +1,4 @@
+import getActors from "./actors.mjs";
 import getAltars from "./altarsOfLilith.mjs";
 import getBounties from "./bounties.mjs";
 import getDungeons from "./dungeons.mjs";
@@ -22,6 +23,7 @@ const EMPTY = {
     return acc;
   }, {}),
 };
+const actors = !SCRIPT || SCRIPT === "actors" ? getActors() : EMPTY;
 const altars = !SCRIPT || SCRIPT === "altars" ? getAltars() : EMPTY;
 const bounties = !SCRIPT || SCRIPT === "bounties" ? getBounties() : EMPTY;
 const dungeons =
@@ -52,6 +54,10 @@ const territories =
   !SCRIPT || SCRIPT === "territories" ? getTerritories() : EMPTY;
 const waypoints = !SCRIPT || SCRIPT === "waypoints" ? getWaypoints() : EMPTY;
 
+writeFileSync(
+  `../out/nodes/cows.ts`,
+  `export const cows = ${JSON.stringify(actors.cows, null, 2)};`
+);
 writeFileSync(
   `../out/nodes/altars.ts`,
   `export const altars = ${JSON.stringify(altars.nodes, null, 2)};`
@@ -140,6 +146,7 @@ writeFileSync(
 
 LOCALES.forEach((locale) => {
   const dict = {
+    // actors: actors.dict[locale],
     altars: altars.dict[locale],
     events: bounties.dict[locale],
     dungeons: dungeons.dungeons.dict[locale],
