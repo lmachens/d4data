@@ -1,4 +1,4 @@
-import continent from "../json/base/meta/World/Sanctuary_Eastern_Continent.wrl.json" assert { type: "json" };
+import continent from "../json/base/meta/World/Sanctuary_Eastern_Continent.json" assert { type: "json" };
 import { normalizePoint } from "./lib.mjs";
 import { readFileSync } from "./fs.mjs";
 import { LOCALES, readTerm } from "./i18n.mjs";
@@ -9,7 +9,7 @@ export default () => {
     return acc;
   }, {});
 
-  const territories = continent.arRegionBoundaries.map((camp) => {
+  const territories = continent["#0675BDA3"].map((camp) => {
     const stringId = camp.snoTerritory.name;
     const id = `territories:${stringId}`;
     LOCALES.forEach((locale) => {

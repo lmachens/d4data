@@ -23,6 +23,7 @@ const EMPTY = {
     return acc;
   }, {}),
 };
+const monsters = !SCRIPT || SCRIPT === "monsters" ? getMonsters() : EMPTY;
 const actors = !SCRIPT || SCRIPT === "actors" ? getActors() : EMPTY;
 const altars = !SCRIPT || SCRIPT === "altars" ? getAltars() : EMPTY;
 const bounties = !SCRIPT || SCRIPT === "bounties" ? getBounties() : EMPTY;
@@ -36,7 +37,6 @@ const dungeons =
         cellars: EMPTY,
         aspects: EMPTY,
       };
-const monsters = !SCRIPT || SCRIPT === "monsters" ? getMonsters() : EMPTY;
 const spawnNodes =
   !SCRIPT || SCRIPT === "spawn_nodes" ? getSpawnNodes() : EMPTY;
 const quests =

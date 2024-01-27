@@ -22,7 +22,10 @@ export default () => {
     "Bounty_LE_Tier1_Kehj_Oasis",
   ];
   const bountiesEvents = [];
-  bounties.ptContent[0].arBountyZones.forEach((bountyZone) => {
+  [
+    ...bounties.ptContent[0].arBountyZones,
+    ...bounties.ptContent[0].unk_1ecd814,
+  ].forEach((bountyZone) => {
     bountyZone.arBounties.forEach((bounty) => {
       const isHelltide = HELLTIDE_WORLD_STATES.some((worldState) =>
         bounty.snoWorldState.name.startsWith(worldState)
@@ -77,7 +80,6 @@ export default () => {
       }
     });
   });
-
   return {
     nodes: bountiesEvents.sort((a, b) => a.zone.localeCompare(b.zone)),
     dict,
