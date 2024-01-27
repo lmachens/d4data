@@ -1,6 +1,20 @@
 import { readFileSync } from "./fs.mjs";
 
-export const LOCALES = ["enUS", "deDE", "frFR", "ruRU", "esES", "ptBR"];
+export const LOCALES = [
+  "enUS",
+  "deDE",
+  "esES",
+  "frFR",
+  "itIT",
+  "jaJP",
+  "koKR",
+  "plPL",
+  "ptBR",
+  "ruRU",
+  "trTR",
+  "zhCN",
+  "zhTW",
+];
 
 export function readTerms(name, locale = LOCALES[0]) {
   try {
@@ -15,5 +29,13 @@ export function readTerms(name, locale = LOCALES[0]) {
 
 export function readTerm(name, locale = LOCALES[0]) {
   const terms = readTerms(name, locale);
+  if (!terms[0]) {
+    console.warn(`Missing term: ${name} (${locale})`);
+    const enTerms = readTerms(name, "enUS");
+    if (enTerms[0]) {
+      return enTerms[0];
+    }
+    return name;
+  }
   return terms[0];
 }
